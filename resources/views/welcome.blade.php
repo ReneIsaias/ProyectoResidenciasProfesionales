@@ -5,7 +5,7 @@
 <center>
     <h1><p class="text-success">TECNOLOGICO DE ESTUDIOS SUPERIORES DE JILOTEPEC</p></h1>
     <hr>
-  </center>
+</center>
 
 {{-- CAROUSEL --}}
 
@@ -78,9 +78,17 @@
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="p-3 mb-2 bg-dark text-white">¿Qué es esto?</h4>
+          <h4 class="p-3 mb-2 bg-dark text-white">¿Qué son las residencias?</h4>
           <div class="card-body">
-            <p class="card-text">Aquí se realiza el tramite de residencias profecionales del TESJI solo para aquellos alumnos que esten cursando el ultimo semestre y que no cuente con las especificaciones requeridas.</p>
+            <p class="card-text">Trámite a seguir para el desarrollo de
+                un proyecto de trabajo o la aplicación
+                de un modelo en cualquiera de las
+                áreas profesionales establecidas.</p>
+            <p class="card-text">El
+                egresado definirá la problemática y
+                propondrá la solución óptima en base a
+                los conocimientos adquiridos durante la
+                estancia práctica de su profesión.</p>
           </div>
           <div class="card-footer">
             {{-- Puede --}}
@@ -89,9 +97,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="p-3 mb-2 bg-dark text-white">¿Por qué estoy aqui?</h4>
+          <h4 class="p-3 mb-2 bg-dark text-white">Aspectos de relevancia</h4>
           <div class="card-body">
-            <p class="card-text">Dos motivos, el primero que ya puedes realizar el tramiente y el segundo por que quieres saber que es la residencia profecional, aqui te apoyaremos con las dudas que tengas.</p>
+            <p class="card-text">-> Cumplir con el 75% de créditos y ser alumno regular. Cuenta con un valor de 20 créditos.</p>
+            <p class="card-text">-> Duración de 4 a 6 meses para acumular un mínimo de 640 horas.</p>
+            <p class="card-text">-> Solo existe una oportunidad (Excepto causa justificada).</p>
+            <p class="card-text">-> Ningún estudiante podrá participar en proyectos de residencias profesionales, sin ser autorizado oficialmente por la división.</p>
+            <p class="card-text">-> Estructuración de metas claras y alcanzables por parte del egresado.</p>
+            <p class="card-text">-> Los proyectos pueden ser unidisciplinarios, interdisciplinarios y multidisciplinarios.</p>
           </div>
           <div class="card-footer">
             {{-- haber --}}
@@ -204,7 +217,7 @@
       </div>
       <div class="col-lg-6">
         <img class="img-fluid rounded" src="asset/img/diagrama.png" alt="">
-        <center><a href="asset/img/diagrama.png" class="p-3 mb-2 bg-secondary text-white">Ver mejor</a></center>
+        <center><a href="asset/img/diagrama.png" class="p-2  bg-secondary text-white">Ver mejor</a></center>
       </div>
     </div>
 

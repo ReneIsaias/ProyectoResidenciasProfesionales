@@ -18,10 +18,10 @@
         </div>
         <div class="col-sm">
           <ul class="list-unstyled">
-              <li><a href="www.facebook.com">facebook</a></li><br>
-              <li><a href="www.youtube.com">youtube</a></li><br>
-              <li><a href="www.twitter.com">twitter</a></li> <br>
-              <li><a href="mx.linkedin.com">linkedin</a></li><br>
+              <li><a href="#">facebook</a></li><br>
+              <li><a href="#">youtube</a></li><br>
+              <li><a href="#">twitter</a></li> <br>
+              <li><a href="#">linkedin</a></li><br>
           </ul>
         </div>
         <div class="col-sm-3">
