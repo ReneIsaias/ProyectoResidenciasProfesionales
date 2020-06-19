@@ -16,7 +16,7 @@ class CreateTypesavesTable extends Migration
         Schema::create('typesaves', function (Blueprint $table) {
             $table->id();
             $table->string('safeName',100)->unique();
-            $table->string('descriptionSafe',200)->nullable();
+            /* $table->string('descriptionSafe',200)->nullable();  */
             $table->boolean('statusSafe');
             $table->timestamps();
         });

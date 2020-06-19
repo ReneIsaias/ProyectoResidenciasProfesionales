@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Semester extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nameSemester', 'statusSemester',
+    ];
 }

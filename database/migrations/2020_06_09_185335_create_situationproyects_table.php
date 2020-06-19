@@ -16,7 +16,7 @@ class CreateSituationproyectsTable extends Migration
         Schema::create('situationproyects', function (Blueprint $table) {
             $table->id();
             $table->string('projectSituation',100)->unique();
-            $table->string('descriptionSituation',200)->nullable();
+            /* $table->string('descriptionSituation',200)->nullable();  */
             $table->boolean('statusSituation');
             $table->timestamps();
         });

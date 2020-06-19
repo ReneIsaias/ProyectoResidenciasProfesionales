@@ -17,7 +17,7 @@ class CreateCareersTable extends Migration
             $table->id();
             $table->string('keyCareer',20)->unique();
             $table->string('careerName',100)->unique();
-            $table->boolean('careerStatus')->nullable();
+            $table->boolean('careerStatus');
             $table->timestamps();
         });
     }
