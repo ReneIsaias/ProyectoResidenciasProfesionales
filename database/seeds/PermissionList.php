@@ -95,7 +95,46 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
+        //Permission Career
+        $permission = Permission::create([
+            'name' => 'List career',
+            'slug' => 'career.index',
+            'description' => 'A user can list career',
+        ]);
 
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show career',
+            'slug' => 'career.show',
+            'description' => 'A user can see career',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create career',
+            'slug' => 'career.create',
+            'description' => 'A user can create career',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit career',
+            'slug' => 'career.edit',
+            'description' => 'A user can edit career',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy career',
+            'slug' => 'career.destroy',
+            'description' => 'A user can destroy career',
+        ]);
+
+        $permission_all[] = $permission->id;
 
 
         //permission user

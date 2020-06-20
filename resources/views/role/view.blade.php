@@ -13,7 +13,9 @@
                     <div class="container">
                         <h3>Required data</h3>
                         <div class="form-group">
-                            <input type="text" class="form-control"
+                            <h6>Name :</h6>
+                            <input type="text"
+                                class="form-control"
                                 id="name"
                                 placeholder="Name"
                                 name="name"
@@ -22,6 +24,7 @@
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Slug :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="slug"
@@ -32,6 +35,7 @@
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Description :</h6>
                             <textarea  readonly class="form-control" placeholder="Description" name="description" id="description" rows="3">{{ old('description', $role->description) }}</textarea>
                         </div>
                         <hr>

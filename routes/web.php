@@ -40,3 +40,5 @@ Route::resource('/role', 'RoleController')->names('role');
 
 Route::resource('/user', 'UserController', ['except'=>[
     'create','store']])->names('user');
+
+Route::resource('/career', 'CareerController')->names('career');

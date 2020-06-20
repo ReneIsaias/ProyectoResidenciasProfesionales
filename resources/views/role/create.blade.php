@@ -12,6 +12,7 @@
                     <div class="container">
                         <h3>Required data</h3>
                         <div class="form-group">
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="name"
@@ -21,6 +22,7 @@
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Slug :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="slug"
@@ -30,6 +32,7 @@
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Description :</h6>
                             <textarea class="form-control" placeholder="Description" name="description" id="description" rows="3">
                                 {{ old('description') }}
                             </textarea>

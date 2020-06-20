@@ -80,6 +80,17 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Pruebas <span class="caret"></span>
+                        </a>
+                        {{-- Acceso a mis pruebas --}}
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @can('haveaccess','career.index')
+                                <a class="dropdown-item" href="{{ route('career.index') }}">Career</a>
+                            @endcan
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         {{-- Acceso al perfil --}}
