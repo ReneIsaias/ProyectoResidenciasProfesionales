@@ -4,10 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Covenant</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Sector</h2></div>
                 <div class="card-body">
-                @can('haveaccess','covenant.create')
-                    <a href="{{ route('covenant.create') }}"
+                @can('haveaccess','sector.create')
+                    <a href="{{ route('sector.create') }}"
                         class="btn btn-primary float-right"
                         >
                         Create
@@ -26,30 +26,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($covenants as $covenant)
+                                @forelse ($sectors as $sector)
                                     <tr>
-                                        <th scope="row">{{ $covenant->id }}</th>
-                                        <td>{{ $covenant->convenant }}</td>
+                                        <th scope="row">{{ $sector->id }}</th>
+                                        <td>{{ $sector->descriptionSector }}</td>
                                         <td>
-                                            @if ($covenant->statusConvenant == "1")
+                                            @if ($sector->statusSector == "1")
                                                 Activa
                                             @else
                                                 Inactiva
                                             @endif
                                         </td>
                                         <td>
-                                            @can('haveaccess','covenant.show')
-                                                <a class="btn btn-info" href="{{ route('covenant.show',$covenant->id) }}">Show</a>
+                                            @can('haveaccess','sector.show')
+                                                <a class="btn btn-info" href="{{ route('sector.show',$sector->id) }}">Show</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','covenant.edit')
-                                                <a class="btn btn-success" href="{{ route('covenant.edit',$covenant->id) }}">Edit</a>
+                                            @can('haveaccess','sector.edit')
+                                                <a class="btn btn-success" href="{{ route('sector.edit',$sector->id) }}">Edit</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','covenant.destroy')
-                                            <form action="{{ route('covenant.destroy',$covenant->id) }}" method="POST">
+                                            @can('haveaccess','sector.destroy')
+                                            <form action="{{ route('sector.destroy',$sector->id) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">Delete</button>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>covenants</td>
+                                        <td>sectors</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse
@@ -70,7 +70,7 @@
                     </div>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            {{ $covenants->links() }}
+                            {{ $sectors->links() }}
                         </ul>
                     </nav>
                 </div>

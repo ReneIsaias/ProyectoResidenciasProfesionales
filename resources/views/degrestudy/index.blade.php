@@ -4,10 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Covenant</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Degrese Study</h2></div>
                 <div class="card-body">
-                @can('haveaccess','covenant.create')
-                    <a href="{{ route('covenant.create') }}"
+                @can('haveaccess','degrestudy.create')
+                    <a href="{{ route('degrestudy.create') }}"
                         class="btn btn-primary float-right"
                         >
                         Create
@@ -26,30 +26,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($covenants as $covenant)
+                                @forelse ($degrestudys as $degrestudy)
                                     <tr>
-                                        <th scope="row">{{ $covenant->id }}</th>
-                                        <td>{{ $covenant->convenant }}</td>
+                                        <th scope="row">{{ $degrestudy->id }}</th>
+                                        <td>{{ $degrestudy->degreeStudy }}</td>
                                         <td>
-                                            @if ($covenant->statusConvenant == "1")
+                                            @if ($degrestudy->statusDegree == "1")
                                                 Activa
                                             @else
                                                 Inactiva
                                             @endif
                                         </td>
                                         <td>
-                                            @can('haveaccess','covenant.show')
-                                                <a class="btn btn-info" href="{{ route('covenant.show',$covenant->id) }}">Show</a>
+                                            @can('haveaccess','degrestudy.show')
+                                                <a class="btn btn-info" href="{{ route('degrestudy.show',$degrestudy->id) }}">Show</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','covenant.edit')
-                                                <a class="btn btn-success" href="{{ route('covenant.edit',$covenant->id) }}">Edit</a>
+                                            @can('haveaccess','degrestudy.edit')
+                                                <a class="btn btn-success" href="{{ route('degrestudy.edit',$degrestudy->id) }}">Edit</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','covenant.destroy')
-                                            <form action="{{ route('covenant.destroy',$covenant->id) }}" method="POST">
+                                            @can('haveaccess','degrestudy.destroy')
+                                            <form action="{{ route('degrestudy.destroy',$degrestudy->id) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">Delete</button>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>covenants</td>
+                                        <td>degrestudys</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse
@@ -70,7 +70,7 @@
                     </div>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            {{ $covenants->links() }}
+                            {{ $degrestudys->links() }}
                         </ul>
                     </nav>
                 </div>

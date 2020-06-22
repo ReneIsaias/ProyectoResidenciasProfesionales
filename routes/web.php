@@ -56,3 +56,13 @@ Route::resource('/typesafe', 'TypesafeController')->names('typesafe');
 Route::resource('/typefamily', 'TypefamilyController')->names('typefamily');
 
 Route::resource('/post', 'PostController')->names('post');
+
+Route::resource('/degrestudy', 'DegrestudyController')->names('degrestudy');
+
+Route::resource('/sector', 'SectorController')->names('sector');
+
+Route::resource('/situationproyect', 'SituationproyectController')->names('situationproyect');
+
+Route::resource('/turn', 'TurnController')->names('turn');
+
+Route::resource('/typefile', 'TypefileController')->names('typefile');

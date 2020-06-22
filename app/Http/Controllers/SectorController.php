@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sector;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SectorController extends Controller
 {
@@ -14,7 +15,9 @@ class SectorController extends Controller
      */
     public function index()
     {
-        //
+        Gate::authorize('haveaccess','sector.index');
+        $sectors =  Sector::orderBy('id','Desc')->paginate(5);
+        return view('sector.index',compact('sectors'));
     }
 
     /**
@@ -24,7 +27,8 @@ class SectorController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize('haveaccess','sector.create');
+        return view('sector.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class SectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('haveaccess','sector.create');
+        $request->validate([
+            'descriptionSector'     => 'required|max:100|unique:sectors,descriptionSector',
+            'statusSector'          => 'required'
+        ]);
+        $sector = Sector::create($request->all());
+        return redirect()->route('sector.index')
+            ->with('status_success','Sector saved successfully');
     }
 
     /**
@@ -46,7 +57,8 @@ class SectorController extends Controller
      */
     public function show(Sector $sector)
     {
-        //
+        $this->authorize('haveaccess','sector.show');
+        return view('sector.view', compact('sector'));
     }
 
     /**
@@ -57,7 +69,8 @@ class SectorController extends Controller
      */
     public function edit(Sector $sector)
     {
-        //
+         $this->authorize('haveaccess','sector.edit');
+        return view('sector.edit', compact('sector'));
     }
 
     /**
@@ -69,7 +82,14 @@ class SectorController extends Controller
      */
     public function update(Request $request, Sector $sector)
     {
-        //
+        $this->authorize('haveaccess','sector.edit');
+        $request->validate([
+            'descriptionSector'     => 'required|max:100|unique:sectors,descriptionSector,'.$sector->id,
+            'statusSector'          => 'required'
+        ]);
+        $sector -> update($request->all());
+        return redirect()->route('sector.index')
+            ->with('status_success','Sector updated successfully');
     }
 
     /**
@@ -80,6 +100,9 @@ class SectorController extends Controller
      */
     public function destroy(Sector $sector)
     {
-        //
+        $this->authorize('haveaccess','sector.destroy');
+        $sector->delete();
+        return redirect()->route('sector.index')
+            ->with('status_success','Sector successfully removed');
     }
 }

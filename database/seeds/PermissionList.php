@@ -423,6 +423,211 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
+        //Permission degrestudy
+        $permission = Permission::create([
+            'name' => 'List degrestudy',
+            'slug' => 'degrestudy.index',
+            'description' => 'A user can list degrestudy',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show degrestudy',
+            'slug' => 'degrestudy.show',
+            'description' => 'A user can see degrestudy',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create degrestudy',
+            'slug' => 'degrestudy.create',
+            'description' => 'A user can create degrestudy',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit degrestudy',
+            'slug' => 'degrestudy.edit',
+            'description' => 'A user can edit degrestudy',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy degrestudy',
+            'slug' => 'degrestudy.destroy',
+            'description' => 'A user can destroy degrestudy',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        //Permission sector
+        $permission = Permission::create([
+            'name' => 'List sector',
+            'slug' => 'sector.index',
+            'description' => 'A user can list sector',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show sector',
+            'slug' => 'sector.show',
+            'description' => 'A user can see sector',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create sector',
+            'slug' => 'sector.create',
+            'description' => 'A user can create sector',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit sector',
+            'slug' => 'sector.edit',
+            'description' => 'A user can edit sector',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy sector',
+            'slug' => 'sector.destroy',
+            'description' => 'A user can destroy sector',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        //Permission situationproyect
+        $permission = Permission::create([
+            'name' => 'List situationproyect',
+            'slug' => 'situationproyect.index',
+            'description' => 'A user can list situationproyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show situationproyect',
+            'slug' => 'situationproyect.show',
+            'description' => 'A user can see situationproyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create situationproyect',
+            'slug' => 'situationproyect.create',
+            'description' => 'A user can create situationproyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit situationproyect',
+            'slug' => 'situationproyect.edit',
+            'description' => 'A user can edit situationproyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy situationproyect',
+            'slug' => 'situationproyect.destroy',
+            'description' => 'A user can destroy situationproyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        //Permission turn
+        $permission = Permission::create([
+            'name' => 'List turn',
+            'slug' => 'turn.index',
+            'description' => 'A user can list turn',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show turn',
+            'slug' => 'turn.show',
+            'description' => 'A user can see turn',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create turn',
+            'slug' => 'turn.create',
+            'description' => 'A user can create turn',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit turn',
+            'slug' => 'turn.edit',
+            'description' => 'A user can edit turn',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy turn',
+            'slug' => 'turn.destroy',
+            'description' => 'A user can destroy turn',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        //Permission typefile
+        $permission = Permission::create([
+            'name' => 'List typefile',
+            'slug' => 'typefile.index',
+            'description' => 'A user can list typefile',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show typefile',
+            'slug' => 'typefile.show',
+            'description' => 'A user can see typefile',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create typefile',
+            'slug' => 'typefile.create',
+            'description' => 'A user can create typefile',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit typefile',
+            'slug' => 'typefile.edit',
+            'description' => 'A user can edit typefile',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy typefile',
+            'slug' => 'typefile.destroy',
+            'description' => 'A user can destroy typefile',
+        ]);
+
+        $permission_all[] = $permission->id;
+
         //permission user
         $permission = Permission::create([
             'name' => 'List user',

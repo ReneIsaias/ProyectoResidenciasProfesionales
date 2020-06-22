@@ -41,10 +41,9 @@ class CovenantController extends Controller
     {
         Gate::authorize('haveaccess','covenant.create');
         $request->validate([
-            'convenant'         => 'required|max:50',/* unique:covenants,convenant */
-            'statusConvenant'   => 'min:1',
+            'convenant'          => 'required|max:50|unique:covenants,convenant',
+            'statusConvenant'    => 'required'
         ]);
-        return $request;
         $covenant = Covenant::create($request->all());
         return redirect()->route('covenant.index')
             ->with('status_success','Convenant saved successfully');
@@ -83,18 +82,12 @@ class CovenantController extends Controller
      */
     public function update(Request $request, Covenant $covenant)
     {
-         $this->authorize('haveaccess','covenant.edit');
+        $this->authorize('haveaccess','covenant.edit');
         $request->validate([
-            'convenant'         => 'required|max:50|unique:covenants,convenant,'.$covenant->id,
-            'statusConvenant'   => ''
+            'convenant'            => 'required|max:50|unique:covenants,convenant,'.$covenant->id,
+            'statusConvenant'      => 'required'
         ]);
-
-        if ($request->exists('statusConvenant')){
-            $covenant -> update($request->all());
-        }else{
-            $valor = "0";
-            $covenant->update($request->all());
-        }
+        $covenant -> update($request->all());
         return redirect()->route('covenant.index')
             ->with('status_success','Convenant updated successfully');
     }
@@ -107,9 +100,9 @@ class CovenantController extends Controller
      */
     public function destroy(Covenant $covenant)
     {
-         $this->authorize('haveaccess','covenant.destroy');
+        $this->authorize('haveaccess','covenant.destroy');
         $covenant->delete();
         return redirect()->route('covenant.index')
-            ->with('status_success','Convenant successfully removed');
+            ->with('status_success','Covenant successfully removed');
     }
 }

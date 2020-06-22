@@ -108,6 +108,21 @@
                             @can('haveaccess','post.index')
                                 <a class="dropdown-item" href="{{ route('post.index') }}">Post</a>
                             @endcan
+                            @can('haveaccess','degrestudy.index')
+                                <a class="dropdown-item" href="{{ route('degrestudy.index') }}">Degree Study</a>
+                            @endcan
+                            @can('haveaccess','sector.index')
+                                <a class="dropdown-item" href="{{ route('sector.index') }}">Sector</a>
+                            @endcan
+                            @can('haveaccess','situationproyect.index')
+                                <a class="dropdown-item" href="{{ route('situationproyect.index') }}">Situation Project</a>
+                            @endcan
+                            @can('haveaccess','turn.index')
+                                <a class="dropdown-item" href="{{ route('turn.index') }}">Turn</a>
+                            @endcan
+                            @can('haveaccess','typefile.index')
+                                <a class="dropdown-item" href="{{ route('typefile.index') }}">Type File</a>
+                            @endcan
 
                         </div>
                     </li>
