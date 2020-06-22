@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -14,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        Gate::authorize('haveaccess','post.index');
+        $posts =  Post::orderBy('id','Desc')->paginate(5);
+        return view('post.index',compact('posts'));
     }
 
     /**
@@ -24,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize('haveaccess','post.create');
+        return view('post.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('haveaccess','post.create');
+        $request->validate([
+            'namePost'      => 'required|max:100|unique:posts,namePost',
+            'statusPost'    => 'required'
+        ]);
+        $post = Post::create($request->all());
+        return redirect()->route('post.index')
+            ->with('status_success','Post saved successfully');
     }
 
     /**
@@ -46,7 +57,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+         $this->authorize('haveaccess','post.show');
+        return view('post.view', compact('post'));
     }
 
     /**
@@ -57,7 +69,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+         $this->authorize('haveaccess','post.edit');
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -69,7 +82,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->authorize('haveaccess','post.edit');
+        $request->validate([
+            'namePost'        => 'required|max:100|unique:posts,namePost,'.$post->id,
+            'statusPost'      => 'required'
+        ]);
+        $post -> update($request->all());
+        return redirect()->route('post.index')
+            ->with('status_success','Post updated successfully');
     }
 
     /**
@@ -80,6 +100,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+         $this->authorize('haveaccess','post.destroy');
+        $post->delete();
+        return redirect()->route('post.index')
+            ->with('status_success','Post successfully removed');
     }
 }

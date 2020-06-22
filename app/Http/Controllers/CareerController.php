@@ -41,15 +41,11 @@ class CareerController extends Controller
     {
         Gate::authorize('haveaccess','career.create');
         $request->validate([
-            'keyCareer'       => 'required|max:50|unique:careers,keyCareer',
-            'careerName'      => 'required|max:50|unique:careers,careerName',
-            'careerStatus'    => 'required|max:2'
+            'keyCareer'       => 'required|max:20|unique:careers,keyCareer',
+            'careerName'      => 'required|max:100|unique:careers,careerName',
+            'careerStatus'    => 'required'
         ]);
         $career = Career::create($request->all());
-        /* if ($request->get('careerStatus')) {
-            //return $request->all();
-            $role->permissions()->sync($request->get('permission'));
-        } */
         return redirect()->route('career.index')
             ->with('status_success','Career saved successfully');
     }
@@ -89,16 +85,11 @@ class CareerController extends Controller
     {
         $this->authorize('haveaccess','career.edit');
         $request->validate([
-            'keyCareer'         => 'required|max:50|unique:careers,keyCareer,'.$career->id,
-            'careerName'        => 'required|max:50|unique:careers,careerName,'.$career->id,
-            'careerStatus'      => 'required|max:2'
+            'keyCareer'         => 'required|max:20|unique:careers,keyCareer,'.$career->id,
+            'careerName'        => 'required|max:100|unique:careers,careerName,'.$career->id,
+            'careerStatus'      => 'required'
         ]);
-        $career->update($request->all());
-        if ($request->get('careerStatus')) {
-            $estado = "1";
-        }else{
-            $estado = "0";
-        }
+        $career -> update($request->all());
         return redirect()->route('career.index')
             ->with('status_success','Career updated successfully');
     }

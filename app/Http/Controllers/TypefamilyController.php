@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Typefamily;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TypefamilyController extends Controller
 {
@@ -14,7 +15,9 @@ class TypefamilyController extends Controller
      */
     public function index()
     {
-        //
+         Gate::authorize('haveaccess','typefamily.index');
+        $typefamilys =  Typefamily::orderBy('id','Desc')->paginate(5);
+        return view('typefamily.index',compact('typefamilys'));
     }
 
     /**
@@ -24,7 +27,8 @@ class TypefamilyController extends Controller
      */
     public function create()
     {
-        //
+       Gate::authorize('haveaccess','typefamily.create');
+        return view('typefamily.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class TypefamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Gate::authorize('haveaccess','typefamily.create');
+        $request->validate([
+            'descriptionType'   => 'required|max:100|unique:typefamilies,descriptionType',
+            'statusType'        => 'required'
+        ]);
+        $typefamily = Typefamily::create($request->all());
+        return redirect()->route('typefamily.index')
+            ->with('status_success','Type family saved successfully');
     }
 
     /**
@@ -46,7 +57,8 @@ class TypefamilyController extends Controller
      */
     public function show(Typefamily $typefamily)
     {
-        //
+         $this->authorize('haveaccess','typefamily.show');
+        return view('typefamily.view', compact('typefamily'));
     }
 
     /**
@@ -57,7 +69,8 @@ class TypefamilyController extends Controller
      */
     public function edit(Typefamily $typefamily)
     {
-        //
+         $this->authorize('haveaccess','typefamily.edit');
+        return view('typefamily.edit', compact('typefamily'));
     }
 
     /**
@@ -69,7 +82,14 @@ class TypefamilyController extends Controller
      */
     public function update(Request $request, Typefamily $typefamily)
     {
-        //
+        $this->authorize('haveaccess','typefamily.edit');
+        $request->validate([
+            'descriptionType'   => 'required|max:100|unique:typefamilies,descriptionType,'.$typefamily->id,
+            'statusType'        => 'required'
+        ]);
+        $typefamily -> update($request->all());
+        return redirect()->route('typefamily.index')
+            ->with('status_success','type family updated successfully');
     }
 
     /**
@@ -80,6 +100,9 @@ class TypefamilyController extends Controller
      */
     public function destroy(Typefamily $typefamily)
     {
-        //
+        $this->authorize('haveaccess','typefamily.destroy');
+        $typefamily->delete();
+        return redirect()->route('typefamily.index')
+            ->with('status_success','Type family successfully removed');
     }
 }

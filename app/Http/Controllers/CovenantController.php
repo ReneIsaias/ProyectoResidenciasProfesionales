@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Covenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CovenantController extends Controller
 {
@@ -14,7 +15,9 @@ class CovenantController extends Controller
      */
     public function index()
     {
-        //
+        Gate::authorize('haveaccess','covenant.index');
+        $covenants =  Covenant::orderBy('id','Desc')->paginate(5);
+        return view('covenant.index',compact('covenants'));
     }
 
     /**
@@ -24,7 +27,8 @@ class CovenantController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize('haveaccess','covenant.create');
+        return view('covenant.create');
     }
 
     /**
@@ -35,7 +39,15 @@ class CovenantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('haveaccess','covenant.create');
+        $request->validate([
+            'convenant'         => 'required|max:50',/* unique:covenants,convenant */
+            'statusConvenant'   => 'min:1',
+        ]);
+        return $request;
+        $covenant = Covenant::create($request->all());
+        return redirect()->route('covenant.index')
+            ->with('status_success','Convenant saved successfully');
     }
 
     /**
@@ -46,7 +58,8 @@ class CovenantController extends Controller
      */
     public function show(Covenant $covenant)
     {
-        //
+        $this->authorize('haveaccess','covenant.show');
+        return view('covenant.view', compact('covenant'));
     }
 
     /**
@@ -57,7 +70,8 @@ class CovenantController extends Controller
      */
     public function edit(Covenant $covenant)
     {
-        //
+        $this->authorize('haveaccess','covenant.edit');
+        return view('covenant.edit', compact('covenant'));
     }
 
     /**
@@ -69,7 +83,20 @@ class CovenantController extends Controller
      */
     public function update(Request $request, Covenant $covenant)
     {
-        //
+         $this->authorize('haveaccess','covenant.edit');
+        $request->validate([
+            'convenant'         => 'required|max:50|unique:covenants,convenant,'.$covenant->id,
+            'statusConvenant'   => ''
+        ]);
+
+        if ($request->exists('statusConvenant')){
+            $covenant -> update($request->all());
+        }else{
+            $valor = "0";
+            $covenant->update($request->all());
+        }
+        return redirect()->route('covenant.index')
+            ->with('status_success','Convenant updated successfully');
     }
 
     /**
@@ -80,6 +107,9 @@ class CovenantController extends Controller
      */
     public function destroy(Covenant $covenant)
     {
-        //
+         $this->authorize('haveaccess','covenant.destroy');
+        $covenant->delete();
+        return redirect()->route('covenant.index')
+            ->with('status_success','Convenant successfully removed');
     }
 }

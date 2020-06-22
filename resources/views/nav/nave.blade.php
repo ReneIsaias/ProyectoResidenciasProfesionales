@@ -87,6 +87,28 @@
                             @can('haveaccess','career.index')
                                 <a class="dropdown-item" href="{{ route('career.index') }}">Career</a>
                             @endcan
+                            @can('haveaccess','covenant.index')
+                                <a class="dropdown-item" href="{{ route('covenant.index') }}">Convenant</a>
+                            @endcan
+                            @can('haveaccess','semester.index')
+                                <a class="dropdown-item" href="{{ route('semester.index') }}">Semester</a>
+                            @endcan
+                            @can('haveaccess','studyplan.index')
+                                <a class="dropdown-item" href="{{ route('studyplan.index') }}">Study Plan</a>
+                            @endcan
+                            @can('haveaccess','typebeca.index')
+                                <a class="dropdown-item" href="{{ route('typebeca.index') }}">Type Beca</a>
+                            @endcan
+                            @can('haveaccess','typesafe.index')
+                                <a class="dropdown-item" href="{{ route('typesafe.index') }}">Type Save</a>
+                            @endcan
+                            @can('haveaccess','typefamily.index')
+                                <a class="dropdown-item" href="{{ route('typefamily.index') }}">Type Family</a>
+                            @endcan
+                            @can('haveaccess','post.index')
+                                <a class="dropdown-item" href="{{ route('post.index') }}">Post</a>
+                            @endcan
+
                         </div>
                     </li>
                     <li class="nav-item dropdown">

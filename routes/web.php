@@ -42,3 +42,17 @@ Route::resource('/user', 'UserController', ['except'=>[
     'create','store']])->names('user');
 
 Route::resource('/career', 'CareerController')->names('career');
+
+Route::resource('/covenant', 'CovenantController')->names('covenant');
+
+Route::resource('/semester', 'SemesterController')->names('semester');
+
+Route::resource('/studyplan', 'StudyplanController')->names('studyplan');
+
+Route::resource('/typebeca', 'TypebecaController')->names('typebeca');
+
+Route::resource('/typesafe', 'TypesafeController')->names('typesafe');
+
+Route::resource('/typefamily', 'TypefamilyController')->names('typefamily');
+
+Route::resource('/post', 'PostController')->names('post');
