@@ -18,17 +18,13 @@ class CreateStaffTable extends Migration
             $table->string('keyStaff',30)->unique();
             $table->string('nameStaff',30);
             $table->string('firstLastname',30);
-            $table->string('secondLastname',30)->nullable();
-            $table->string('emailStaff',50)->unique();
-            //$table->timestamp('email_verified_at')->nullable();
-            $table->string('passwordStaff',50);
-            //$table->rememberToken();
+            $table->string('secondLastname',30);
+            $table->string('emailStaff',50);
             $table->string('phoneStaff',20);
             $table->boolean('statusStaff');
-            $table->foreignId('id_posts')->references('id')->on('posts')->onDelete('cascade')->nullable();
-            //$table->foreignId('id_typestaff')->references('id')->on('typestaffs')->onDelete('cascade');
-            $table->foreignId('id_degrestudies')->references('id')->on('degrestudies')->onDelete('cascade')->nullable();
-            $table->foreignId('id_careers')->references('id')->on('careers')->onDelete('cascade')->nullable();
+            $table->foreignId('posts_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('degrestudies_id')->references('id')->on('degrestudies')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('careers_id')->references('id')->on('careers')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->timestamps();
         });
     }

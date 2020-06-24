@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Post :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="namePost"
@@ -22,7 +23,11 @@
                                 value="{{ old('namePost' , $post->namePost) }}"
                             >
                         </div>
-                        <h6>Status</h6>
+                        <div class="form-group">
+                            <h6>Description :</h6>
+                            <textarea class="form-control" placeholder="Description Post" name="descriptionPost" id="descriptionPost" rows="3">{{ old('descriptionPost', $post->descriptionPost) }}</textarea>
+                        </div>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="postStatus1" name="statusPost" class="custom-control-input" value="1"
                                 @if ( $post->statusPost =="1" )

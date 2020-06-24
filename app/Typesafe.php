@@ -12,6 +12,8 @@ class Typesafe extends Model
      * @var array
      */
     protected $fillable = [
-        'safeName', 'statusSafe',
+        'safeName',
+        'descriptionSafe',
+        'statusSafe',
     ];
 }

@@ -17,9 +17,10 @@ class CreateTitularsTable extends Migration
             $table->id();
             $table->string('nameTitular',30);
             $table->string('firstLastname',30);
-            $table->string('secondLastname',30)->nullable();
+            $table->string('secondLastname',30);
             $table->string('phoneTitular',20);
-            $table->foreignId('id_posts')->references('id')->on('posts')->onDelete('cascade');
+            $table->boolean('statusTitular');
+            $table->foreignId('posts_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

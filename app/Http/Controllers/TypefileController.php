@@ -16,7 +16,9 @@ class TypefileController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','typefile.index');
+
         $typefiles =  Typefile::orderBy('id','Desc')->paginate(5);
+
         return view('typefile.index',compact('typefiles'));
     }
 
@@ -28,6 +30,7 @@ class TypefileController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','typefile.create');
+
         return view('typefile.create');
     }
 
@@ -40,11 +43,14 @@ class TypefileController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','typefile.create');
+
         $request->validate([
             'descriptionFile'   => 'required|max:100|unique:typefiles,descriptionFile',
             'statusFile'        => 'required'
         ]);
+
         $typefile = Typefile::create($request->all());
+
         return redirect()->route('typefile.index')
             ->with('status_success','Type file saved successfully');
     }
@@ -58,6 +64,7 @@ class TypefileController extends Controller
     public function show(Typefile $typefile)
     {
         $this->authorize('haveaccess','typefile.show');
+
         return view('typefile.view', compact('typefile'));
     }
 
@@ -70,6 +77,7 @@ class TypefileController extends Controller
     public function edit(Typefile $typefile)
     {
         $this->authorize('haveaccess','typefile.edit');
+
         return view('typefile.edit', compact('typefile'));
     }
 
@@ -83,11 +91,14 @@ class TypefileController extends Controller
     public function update(Request $request, Typefile $typefile)
     {
         $this->authorize('haveaccess','typefile.edit');
+
         $request->validate([
             'descriptionFile'   => 'required|max:100|unique:typefiles,descriptionFile,'.$typefile->id,
             'statusFile'        => 'required'
         ]);
+
         $typefile -> update($request->all());
+
         return redirect()->route('typefile.index')
             ->with('status_success','Type file updated successfully');
     }
@@ -101,7 +112,9 @@ class TypefileController extends Controller
     public function destroy(Typefile $typefile)
     {
         $this->authorize('haveaccess','typefile.destroy');
+
         $typefile->delete();
+
         return redirect()->route('typefile.index')
             ->with('status_success','Type file successfully removed');
     }

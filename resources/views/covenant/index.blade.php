@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Covenant</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Convenant</h2></div>
                 <div class="card-body">
                 @can('haveaccess','covenant.create')
                     <a href="{{ route('covenant.create') }}"
@@ -32,9 +32,9 @@
                                         <td>{{ $covenant->convenant }}</td>
                                         <td>
                                             @if ($covenant->statusConvenant == "1")
-                                                Activa
+                                                Activo
                                             @else
-                                                Inactiva
+                                                Inactivo
                                             @endif
                                         </td>
                                         <td>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>covenants</td>
+                                        <td>convenants</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse

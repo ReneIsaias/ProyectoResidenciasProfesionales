@@ -32,9 +32,9 @@
                                         <td>{{ $sector->descriptionSector }}</td>
                                         <td>
                                             @if ($sector->statusSector == "1")
-                                                Activa
+                                                Activo
                                             @else
-                                                Inactiva
+                                                Inactivo
                                             @endif
                                         </td>
                                         <td>

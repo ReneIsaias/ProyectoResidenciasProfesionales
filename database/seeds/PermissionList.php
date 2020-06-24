@@ -16,7 +16,7 @@ class PermissionList extends Seeder
      */
     public function run()
     {
-        //truncate tables
+//truncate tables
         DB::statement("SET foreign_key_checks=0");
             DB::table('role_user')->truncate();
             DB::table('permission_role')->truncate();
@@ -24,9 +24,7 @@ class PermissionList extends Seeder
             Role::truncate();
         DB::statement("SET foreign_key_checks=1");
 
-
-
-        //user admin
+//user admin
         $useradmin= User::where('email','admin@admin.com')->first();
         if ($useradmin) {
             $useradmin->delete();
@@ -37,24 +35,21 @@ class PermissionList extends Seeder
             'password'  => Hash::make('admin')
         ]);
 
-        //rol admin
+//rol admin
         $roladmin=Role::create([
             'name' => 'Admin',
             'slug' => 'admin',
             'description' => 'Administrator',
             'full-access' => 'yes'
-
         ]);
 
-        //table role_user
+//table role_user
         $useradmin->roles()->sync([ $roladmin->id ]);
 
-
-        //permission
+//permission
         $permission_all = [];
 
-
-        //permission role
+//permission role
         $permission = Permission::create([
             'name' => 'List role',
             'slug' => 'role.index',
@@ -95,7 +90,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Career
+//Permission Career
         $permission = Permission::create([
             'name' => 'List career',
             'slug' => 'career.index',
@@ -136,7 +131,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission covenat
+//Permission covenat
         $permission = Permission::create([
             'name' => 'List convenat',
             'slug' => 'covenat.index',
@@ -177,7 +172,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Semester
+//Permission Semester
         $permission = Permission::create([
             'name' => 'List semester',
             'slug' => 'semester.index',
@@ -218,7 +213,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Studyplan
+//Permission Studyplan
         $permission = Permission::create([
             'name' => 'List studyplan',
             'slug' => 'studyplan.index',
@@ -259,7 +254,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Typebeca
+//Permission Typebeca
         $permission = Permission::create([
             'name' => 'List typebeca',
             'slug' => 'typebeca.index',
@@ -300,7 +295,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Typesafe
+//Permission Typesafe
         $permission = Permission::create([
             'name' => 'List typesafe',
             'slug' => 'typesafe.index',
@@ -341,7 +336,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Typefamily
+//Permission Typefamily
         $permission = Permission::create([
             'name' => 'List typefamily',
             'slug' => 'typefamily.index',
@@ -382,7 +377,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission Post
+//Permission Post
         $permission = Permission::create([
             'name' => 'List post',
             'slug' => 'post.index',
@@ -423,7 +418,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission degrestudy
+//Permission degrestudy
         $permission = Permission::create([
             'name' => 'List degrestudy',
             'slug' => 'degrestudy.index',
@@ -464,7 +459,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission sector
+//Permission sector
         $permission = Permission::create([
             'name' => 'List sector',
             'slug' => 'sector.index',
@@ -505,7 +500,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission situationproyect
+//Permission situationproyect
         $permission = Permission::create([
             'name' => 'List situationproyect',
             'slug' => 'situationproyect.index',
@@ -546,7 +541,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission turn
+//Permission turn
         $permission = Permission::create([
             'name' => 'List turn',
             'slug' => 'turn.index',
@@ -587,7 +582,7 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //Permission typefile
+//Permission typefile
         $permission = Permission::create([
             'name' => 'List typefile',
             'slug' => 'typefile.index',
@@ -628,7 +623,48 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
-        //permission user
+//Permission Relative
+        $permission = Permission::create([
+            'name' => 'List relative',
+            'slug' => 'relative.index',
+            'description' => 'A user can list relative',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show relative',
+            'slug' => 'relative.show',
+            'description' => 'A user can see relative',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create relative',
+            'slug' => 'relative.create',
+            'description' => 'A user can create relative',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit relative',
+            'slug' => 'relative.edit',
+            'description' => 'A user can edit relative',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy relative',
+            'slug' => 'relative.destroy',
+            'description' => 'A user can destroy relative',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+//permission user
         $permission = Permission::create([
             'name' => 'List user',
             'slug' => 'user.index',
@@ -662,7 +698,7 @@ class PermissionList extends Seeder
         $permission_all[] = $permission->id;
 
 
-        //new
+//new
         $permission = Permission::create([
             'name' => 'Show own user',
             'slug' => 'userown.show',
@@ -687,7 +723,7 @@ class PermissionList extends Seeder
         $permission_all[] = $permission->id;
         */
 
-        //table permission_role
-        //$roladmin->permissions()->sync( $permission_all);
+//table permission_role
+//$roladmin->permissions()->sync( $permission_all);
     }
 }

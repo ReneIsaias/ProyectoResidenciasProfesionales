@@ -12,6 +12,8 @@ class Career extends Model
      * @var array
      */
     protected $fillable = [
-        'keyCareer', 'careerName', 'careerStatus',
+        'keyCareer',
+        'careerName',
+        'careerStatus',
     ];
 }

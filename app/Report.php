@@ -12,6 +12,9 @@ class Report extends Model
      * @var array
      */
     protected $fillable = [
-        'nameReport', 'descriptionReport', 'statusReport', 'id_typefiles',
+        'nameReport',
+        'descriptionReport',
+        'statusReport',
+        'typefiles_id',
     ];
 }

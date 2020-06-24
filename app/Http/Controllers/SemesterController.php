@@ -16,7 +16,9 @@ class SemesterController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','semester.index');
+
         $semesters =  Semester::orderBy('id','Desc')->paginate(5);
+
         return view('semester.index',compact('semesters'));
     }
 
@@ -28,6 +30,7 @@ class SemesterController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','semester.create');
+
         return view('semester.create');
     }
 
@@ -40,11 +43,14 @@ class SemesterController extends Controller
     public function store(Request $request)
     {
        Gate::authorize('haveaccess','semester.create');
+
         $request->validate([
             'nameSemester'      => 'required|max:100|unique:semesters,nameSemester',
             'statusSemester'    => 'required',
         ]);
+
         $semester = Semester::create($request->all());
+
         return redirect()->route('semester.index')
             ->with('status_success','Semester saved successfully');
     }
@@ -58,6 +64,7 @@ class SemesterController extends Controller
     public function show(Semester $semester)
     {
         $this->authorize('haveaccess','semester.show');
+
         return view('semester.view', compact('semester'));
     }
 
@@ -69,7 +76,8 @@ class SemesterController extends Controller
      */
     public function edit(Semester $semester)
     {
-         $this->authorize('haveaccess','semester.edit');
+        $this->authorize('haveaccess','semester.edit');
+
         return view('semester.edit', compact('semester'));
     }
 
@@ -83,11 +91,14 @@ class SemesterController extends Controller
     public function update(Request $request, Semester $semester)
     {
         $this->authorize('haveaccess','semester.edit');
+
         $request->validate([
             'nameSemester'        => 'required|max:100|unique:semesters,nameSemester,'.$semester->id,
             'statusSemester'      => 'required'
         ]);
+
         $semester -> update($request->all());
+
         return redirect()->route('semester.index')
             ->with('status_success','Semester updated successfully');
     }
@@ -100,8 +111,10 @@ class SemesterController extends Controller
      */
     public function destroy(Semester $semester)
     {
-         $this->authorize('haveaccess','semester.destroy');
+        $this->authorize('haveaccess','semester.destroy');
+
         $semester->delete();
+
         return redirect()->route('semester.index')
             ->with('status_success','Semester successfully removed');
     }

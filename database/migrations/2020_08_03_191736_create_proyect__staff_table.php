@@ -13,13 +13,13 @@ class CreateProyectStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('proyect__staff', function (Blueprint $table) {
+        Schema::create('proyect_staff', function (Blueprint $table) {
             $table->id();
             $table->integer('calification');
             $table->string('descriptionCalification',200)->nullable();
-            $table->foreignId('id_proyects')->references('id')->on('proyects')->onDelete('cascade');
-            $table->foreignId('id_staff')->references('id')->on('staff')->onDelete('cascade');
-            $table->foreignId('id_situationproyects')->references('id')->on('situationproyects')->onDelete('cascade');
+            $table->foreignId('proyects_id')->references('id')->on('proyects')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('staff_id')->references('id')->on('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('situationproyects_id')->references('id')->on('situationproyects')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateProyectStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyect__staff');
+        Schema::dropIfExists('proyect_staff');
     }
 }

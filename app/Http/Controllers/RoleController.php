@@ -17,7 +17,9 @@ class RoleController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','role.index');
+
         $roles =  Role::orderBy('id','Desc')->paginate(5);
+
         return view('role.index',compact('roles'));
     }
 
@@ -29,7 +31,9 @@ class RoleController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','role.create');
+
         $permissions = Permission::get();
+
         return view('role.create', compact('permissions'));
     }
 
@@ -42,16 +46,20 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','role.create');
+
         $request->validate([
-            'name'          => 'required|max:50|unique:roles,name',
-            'slug'          => 'required|max:50|unique:roles,slug',
+            'name'          => 'required|max:100|unique:roles,name',
+            'slug'          => 'required|max:100|unique:roles,slug',
             'full-access'   => 'required|in:yes,no'
         ]);
+
         $role = Role::create($request->all());
+
         //if ($request->get('permission')) {
             //return $request->all();
             $role->permissions()->sync($request->get('permission'));
         //}
+
         return redirect()->route('role.index')
             ->with('status_success','Role saved successfully');
     }
@@ -65,13 +73,15 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         $this->authorize('haveaccess','role.show');
+
         $permission_role=[];
+
         foreach($role->permissions as $permission) {
             $permission_role[]=$permission->id;
         }
-        //return   $permission_role;
-        //return $role;
+
         $permissions = Permission::get();
+
         return view('role.view', compact('permissions','role','permission_role'));
     }
 
@@ -84,13 +94,15 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $this->authorize('haveaccess','role.edit');
+
         $permission_role=[];
+
         foreach($role->permissions as $permission) {
             $permission_role[]=$permission->id;
         }
-        //return   $permission_role;
-        //return $role;
+
         $permissions = Permission::get();
+
         return view('role.edit', compact('permissions','role','permission_role'));
     }
 
@@ -104,16 +116,20 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $this->authorize('haveaccess','role.edit');
+
         $request->validate([
-            'name'          => 'required|max:50|unique:roles,name,'.$role->id,
-            'slug'          => 'required|max:50|unique:roles,slug,'.$role->id,
+            'name'          => 'required|max:100|unique:roles,name,'.$role->id,
+            'slug'          => 'required|max:100|unique:roles,slug,'.$role->id,
             'full-access'   => 'required|in:yes,no'
         ]);
+
         $role->update($request->all());
+
         //if ($request->get('permission')) {
             //return $request->all();
             $role->permissions()->sync($request->get('permission'));
         //}
+
         return redirect()->route('role.index')
             ->with('status_success','Role updated successfully');
     }
@@ -127,7 +143,9 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $this->authorize('haveaccess','role.destroy');
+
         $role->delete();
+
         return redirect()->route('role.index')
             ->with('status_success','Role successfully removed');
     }

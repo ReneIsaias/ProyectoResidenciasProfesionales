@@ -11,8 +11,9 @@
                     @csrf
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Key Career :</h6>
+                            <h6>Key :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="keyCareer"
@@ -23,7 +24,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Career Name :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="careerName"

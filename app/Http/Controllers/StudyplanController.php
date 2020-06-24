@@ -16,7 +16,9 @@ class StudyplanController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','studyplan.index');
+
         $studyplans =  Studyplan::orderBy('id','Desc')->paginate(5);
+
         return view('studyplan.index',compact('studyplans'));
     }
 
@@ -28,6 +30,7 @@ class StudyplanController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','studyplan.create');
+
         return view('studyplan.create');
     }
 
@@ -40,12 +43,16 @@ class StudyplanController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','studyplan.create');
+
         $request->validate([
-            'planStudies'   => 'required|max:100|unique:studyplans,planStudies',
-            'planDate'      => 'required|max:50|date|unique:studyplans,planDate',
-            'planStatus'    => 'required'
+            'planStudies'       => 'required|max:100|unique:studyplans,planStudies',
+            'descriptionPlan'   => 'required|max:200',
+            'planDate'          => 'required|max:50|date|unique:studyplans,planDate',
+            'planStatus'        => 'required'
         ]);
+
         $studyplan = Studyplan::create($request->all());
+
         return redirect()->route('studyplan.index')
             ->with('status_success','Study Plan saved successfully');
     }
@@ -59,6 +66,7 @@ class StudyplanController extends Controller
     public function show(Studyplan $studyplan)
     {
         $this->authorize('haveaccess','studyplan.show');
+
         return view('studyplan.view', compact('studyplan'));
     }
 
@@ -71,6 +79,7 @@ class StudyplanController extends Controller
     public function edit(Studyplan $studyplan)
     {
         $this->authorize('haveaccess','studyplan.edit');
+
         return view('studyplan.edit', compact('studyplan'));
     }
 
@@ -84,12 +93,16 @@ class StudyplanController extends Controller
     public function update(Request $request, Studyplan $studyplan)
     {
         $this->authorize('haveaccess','studyplan.edit');
+
         $request->validate([
-            'planStudies'     => 'required|max:100|unique:studyplans,planStudies,'.$studyplan->id,
-            'planDate'        => 'required|max:50|date|unique:studyplans,planDate,'.$studyplan->id,
-            'planStatus'      => 'required'
+            'planStudies'       => 'required|max:100|unique:studyplans,planStudies,'.$studyplan->id,
+            'descriptionPlan'   => 'required|max:200',
+            'planDate'          => 'required|max:50|date|unique:studyplans,planDate,'.$studyplan->id,
+            'planStatus'        => 'required'
         ]);
+
         $studyplan -> update($request->all());
+
         return redirect()->route('studyplan.index')
             ->with('status_success','Study Plan updated successfully');
     }
@@ -102,8 +115,10 @@ class StudyplanController extends Controller
      */
     public function destroy(Studyplan $studyplan)
     {
-         $this->authorize('haveaccess','studyplan.destroy');
+        $this->authorize('haveaccess','studyplan.destroy');
+
         $studyplan->delete();
+
         return redirect()->route('studyplan.index')
             ->with('status_success','Study Plan successfully removed');
     }

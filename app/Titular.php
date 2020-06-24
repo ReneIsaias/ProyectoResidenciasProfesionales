@@ -12,6 +12,11 @@ class Titular extends Model
      * @var array
      */
     protected $fillable = [
-        'nameTitular', 'firstLastname', 'secondLastname', 'phoneTitular', 'id_posts',
+        'nameTitular',
+        'firstLastname',
+        'secondLastname',
+        'phoneTitular',
+        'statusTitular',
+        'posts_id',
     ];
 }

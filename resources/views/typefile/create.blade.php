@@ -11,8 +11,9 @@
                     @csrf
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Type File :</h6>
+                            <h6>Description :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="descriptionFile"

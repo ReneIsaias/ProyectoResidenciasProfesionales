@@ -12,6 +12,11 @@ class Typefamily extends Model
      * @var array
      */
     protected $fillable = [
-        'descriptionType', 'statusType',
+        'descriptionType',
+        'statusType',
     ];
+
+    public function relatives(){
+        return $this->hasMany('App\Relative','id_typefamilies')->withTimesTamps();
+    }
 }

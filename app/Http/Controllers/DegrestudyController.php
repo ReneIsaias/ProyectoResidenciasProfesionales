@@ -16,7 +16,9 @@ class DegrestudyController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','degrestudy.index');
+
         $degrestudys =  Degrestudy::orderBy('id','Desc')->paginate(5);
+
         return view('degrestudy.index',compact('degrestudys'));
     }
 
@@ -28,6 +30,7 @@ class DegrestudyController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','degrestudy.create');
+
         return view('degrestudy.create');
     }
 
@@ -40,11 +43,14 @@ class DegrestudyController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','degrestudy.create');
+
         $request->validate([
             'degreeStudy'     => 'required|max:100|unique:degrestudies,degreeStudy',
             'statusDegree'    => 'required'
         ]);
+
         $degrestudy = Degrestudy::create($request->all());
+
         return redirect()->route('degrestudy.index')
             ->with('status_success','Degree study saved successfully');
     }
@@ -58,6 +64,7 @@ class DegrestudyController extends Controller
     public function show(Degrestudy $degrestudy)
     {
         $this->authorize('haveaccess','degrestudy.show');
+
         return view('degrestudy.view', compact('degrestudy'));
     }
 
@@ -70,6 +77,7 @@ class DegrestudyController extends Controller
     public function edit(Degrestudy $degrestudy)
     {
         $this->authorize('haveaccess','degrestudy.edit');
+
         return view('degrestudy.edit', compact('degrestudy'));
     }
 
@@ -83,11 +91,14 @@ class DegrestudyController extends Controller
     public function update(Request $request, Degrestudy $degrestudy)
     {
         $this->authorize('haveaccess','degrestudy.edit');
+
         $request->validate([
             'degreeStudy'    => 'required|max:100|unique:degrestudies,degreeStudy,'.$degrestudy->id,
             'statusDegree'   => 'required'
         ]);
+
         $degrestudy -> update($request->all());
+
         return redirect()->route('degrestudy.index')
             ->with('status_success','Degree study updated successfully');
     }
@@ -101,7 +112,9 @@ class DegrestudyController extends Controller
     public function destroy(Degrestudy $degrestudy)
     {
         $this->authorize('haveaccess','degrestudy.destroy');
+
         $degrestudy->delete();
+
         return redirect()->route('degrestudy.index')
             ->with('status_success','Degree study successfully removed');
     }

@@ -12,24 +12,28 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
+                            <h6>Name :</h6>
                             <input type="text" class="form-control"
                                 id="name"
-                                placeholder="Name"
+                                placeholder="Name user"
                                 name="name"
                                 value="{{ old('name', $user->name) }}"
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Email :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="email"
-                                placeholder="email"
+                                placeholder="email user"
                                 name="email"
                                 value="{{ old('email' , $user->email) }}"
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Role :</h6>
                             <select class="form-control"  name="roles" id="roles">
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}"

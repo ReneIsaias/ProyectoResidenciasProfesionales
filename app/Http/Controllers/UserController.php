@@ -16,8 +16,9 @@ class UserController extends Controller
     public function index()
     {
         $this->authorize('haveaccess','user.index');
+
         $users =  User::with('roles')->orderBy('id','Desc')->paginate(10);
-        //return $users;
+
         return view('user.index',compact('users'));
     }
 
@@ -52,8 +53,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         $this->authorize('view', [$user, ['user.show','userown.show'] ]);
+
         $roles= Role::orderBy('name')->get();
-        //return $roles;
+
         return view('user.view', compact('roles', 'user'));
     }
 
@@ -66,8 +68,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $this->authorize('update', [$user, ['user.edit','userown.edit'] ]);
+
         $roles= Role::orderBy('name')->get();
-        //return $roles;
+
         return view('user.edit', compact('roles', 'user'));
     }
 
@@ -81,12 +84,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'          => 'required|max:50|unique:users,name,'.$user->id,
-            'email'         => 'required|max:50|unique:users,email,'.$user->id
+            'name'    => 'required|max:100|unique:users,name,'.$user->id,
+            'email'   => 'required|max:100|unique:users,email,'.$user->id
         ]);
+
         //dd($request->all());
+
         $user->update($request->all());
+
         $user->roles()->sync($request->get('roles'));
+
         return redirect()->route('user.index')
             ->with('status_success','User updated successfully');
     }

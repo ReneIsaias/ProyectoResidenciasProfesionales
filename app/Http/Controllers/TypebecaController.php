@@ -16,7 +16,9 @@ class TypebecaController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','typebeca.index');
+
         $typebecas =  Typebeca::orderBy('id','Desc')->paginate(5);
+
         return view('typebeca.index',compact('typebecas'));
     }
 
@@ -28,6 +30,7 @@ class TypebecaController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','typebeca.create');
+
         return view('typebeca.create');
     }
 
@@ -40,11 +43,14 @@ class TypebecaController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','typebeca.create');
+
         $request->validate([
             'descriptionBeca'   => 'required|max:100|unique:typebecas,descriptionBeca',
             'statusBeca'        => 'required'
         ]);
+
         $typebeca = Typebeca::create($request->all());
+
         return redirect()->route('typebeca.index')
             ->with('status_success','Type Beca saved successfully');
     }
@@ -58,6 +64,7 @@ class TypebecaController extends Controller
     public function show(Typebeca $typebeca)
     {
         $this->authorize('haveaccess','typebeca.show');
+
         return view('typebeca.view', compact('typebeca'));
     }
 
@@ -70,6 +77,7 @@ class TypebecaController extends Controller
     public function edit(Typebeca $typebeca)
     {
         $this->authorize('haveaccess','typebeca.edit');
+
         return view('typebeca.edit', compact('typebeca'));
     }
 
@@ -83,11 +91,14 @@ class TypebecaController extends Controller
     public function update(Request $request, Typebeca $typebeca)
     {
         $this->authorize('haveaccess','typebeca.edit');
+
         $request->validate([
             'descriptionBeca'   => 'required|max:100|unique:typebecas,descriptionBeca,'.$typebeca->id,
             'statusBeca'        => 'required'
         ]);
+
         $typebeca -> update($request->all());
+
         return redirect()->route('typebeca.index')
             ->with('status_success','Type Beca updated successfully');
     }
@@ -100,8 +111,10 @@ class TypebecaController extends Controller
      */
     public function destroy(Typebeca $typebeca)
     {
-         $this->authorize('haveaccess','typebeca.destroy');
+        $this->authorize('haveaccess','typebeca.destroy');
+
         $typebeca->delete();
+
         return redirect()->route('typebeca.index')
             ->with('status_success','Type Beca successfully removed');
     }

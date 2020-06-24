@@ -15,8 +15,8 @@ class CreateCovenantsTable extends Migration
     {
         Schema::create('covenants', function (Blueprint $table) {
             $table->id();
-            $table->string('convenant',50)->unique();
-            /* $table->string('descriptionConvenant',100)->nullable();  */
+            $table->string('convenant',100)->unique();
+            $table->string('descriptionConvenant',200)->nullable();
             $table->boolean('statusConvenant');
             $table->timestamps();
         });

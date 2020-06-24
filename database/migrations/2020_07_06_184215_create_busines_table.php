@@ -15,19 +15,23 @@ class CreateBusinesTable extends Migration
     {
         Schema::create('busines', function (Blueprint $table) {
             $table->id();
-            $table->string('rfcBusiness',50)->unique();
-            $table->string('nameBusiness',100);
-            $table->string('emailBusiness')->unique();
+            $table->string('rfcBusiness',50);
+            $table->string('nameBusiness',200);
+            $table->string('emailBusiness',100);
             $table->string('misionBusiness');
-            $table->string('addresBusiness');
-            $table->string('phoneBusiness',50);
+            $table->string('addresBusiness',250);
+            $table->string('coloniaBusiness',200);
+            $table->string('cityBusiness',100);
+            $table->string('phoneBusiness',20);
             $table->string('cpBusiness',10);
+            $table->string('personFirma',100);
+            $table->string('postPerson',100);
             $table->boolean('statusBusines');
-            $table->foreignId('id_titulars')->references('id')->on('titulars')->onDelete('cascade');
-            $table->foreignId('id_staff')->references('id')->on('staff')->onDelete('cascade');
-            $table->foreignId('id_covenants')->references('id')->on('covenants')->onDelete('cascade');
-            $table->foreignId('id_turns')->references('id')->on('turns')->onDelete('cascade');
-            $table->foreignId('id_sectors')->references('id')->on('sectors')->onDelete('cascade');
+            $table->foreignId('titulars_id')->references('id')->on('titulars')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('staff_id')->references('id')->on('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('covenants_id')->references('id')->on('covenants')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('turns_id')->references('id')->on('turns')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('sectors_id')->references('id')->on('sectors')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

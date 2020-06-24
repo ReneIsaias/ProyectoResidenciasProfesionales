@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Type Saves</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Types Saves</h2></div>
                 <div class="card-body">
                 @can('haveaccess','typesafe.create')
                     <a href="{{ route('typesafe.create') }}"

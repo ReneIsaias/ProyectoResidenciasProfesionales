@@ -12,6 +12,19 @@ class Relative extends Model
      * @var array
      */
     protected $fillable = [
-        'nameRelative', 'firstLastname', 'secondLastname', 'phoneRelative', 'addresRelative', 'id_typefamilies',
+        'nameRelative',
+        'firstLastname',
+        'secondLastname',
+        'phoneRelative',
+        'addresRelative',
+        'statusRelative',
+        'typefamilies_id',
     ];
+
+    public function typefamily(){
+        return $this->belongsTo('App\Typefamily','id_typefamilies','id')->withTimestamps();
+        /* return $this->belongsTo(Typefamily::class)->withwithTimestamps(); */
+        /* return $this->belongsTo('App\Typefamily','typefamilies','id')->withTimesTamps(); */
+        /* return $this->hasOne() */
+    }
 }

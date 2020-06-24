@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Degree Study :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="degreeStudy"
@@ -24,7 +25,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>degrestudy Created :</h6>
+                            <h6>Created :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="created_at"
@@ -34,7 +35,7 @@
                                 readonly
                             >
                         </div>
-                        <h6>Status</h6>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input disabled type="radio" id="degrestudyStatus1" name="statusDegree" class="custom-control-input" value="1"
                                 @if ( $degrestudy->statusDegree =="1" )

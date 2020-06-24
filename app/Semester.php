@@ -12,6 +12,7 @@ class Semester extends Model
      * @var array
      */
     protected $fillable = [
-        'nameSemester', 'statusSemester',
+        'nameSemester',
+        'statusSemester',
     ];
 }

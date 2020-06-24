@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Situation Proyect</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Situations Proyects</h2></div>
                 <div class="card-body">
                 @can('haveaccess','situationproyect.create')
                     <a href="{{ route('situationproyect.create') }}"
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>situationproyects</td>
+                                        <td>situations proyects</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse

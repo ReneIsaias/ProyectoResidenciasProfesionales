@@ -12,6 +12,7 @@ class Sector extends Model
      * @var array
      */
     protected $fillable = [
-        'descriptionSector', 'statusSector',
+        'descriptionSector',
+        'statusSector',
     ];
 }

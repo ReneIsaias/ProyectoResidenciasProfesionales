@@ -66,3 +66,5 @@ Route::resource('/situationproyect', 'SituationproyectController')->names('situa
 Route::resource('/turn', 'TurnController')->names('turn');
 
 Route::resource('/typefile', 'TypefileController')->names('typefile');
+
+Route::resource('/relative', 'RelativeController')->names('relative');

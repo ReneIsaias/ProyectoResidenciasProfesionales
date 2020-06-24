@@ -17,10 +17,11 @@ class CreateRelativesTable extends Migration
             $table->id();
             $table->string('nameRelative',30);
             $table->string('firstLastname',30);
-            $table->string('secondLastname',30)->nullable();
+            $table->string('secondLastname',30);
             $table->string('phoneRelative',20);
             $table->string('addresRelative',200);
-            $table->foreignId('id_typefamilies')->references('id')->on('typefamilies')->onDelete('cascade');
+            $table->boolean('statusRelative');
+            $table->foreignId('typefamilies_id')->references('id')->on('typefamilies')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -12,6 +12,10 @@ class Proyect_Staff extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'calification',
+        'descriptionCalification',
+        'proyects_id',
+        'staff_id',
+        'situationproyects_id',
     ];
 }

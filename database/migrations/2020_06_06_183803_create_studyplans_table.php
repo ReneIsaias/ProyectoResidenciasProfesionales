@@ -16,7 +16,7 @@ class CreateStudyplansTable extends Migration
         Schema::create('studyplans', function (Blueprint $table) {
             $table->id();
             $table->string('planStudies',100)->unique();
-            /* $table->string('descriptionPlan',200)->nullable();  */
+            $table->string('descriptionPlan',200)->nullable();
             $table->date('planDate');
             $table->boolean('planStatus');
             $table->timestamps();

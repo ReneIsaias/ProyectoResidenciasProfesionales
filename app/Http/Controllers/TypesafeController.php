@@ -16,7 +16,9 @@ class TypesafeController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','typesafe.index');
-        $typesafes =  typesafe::orderBy('id','Desc')->paginate(5);
+
+        $typesafes = Typesafe::orderBy('id','Desc')->paginate(5);
+
         return view('typesafe.index',compact('typesafes'));
     }
 
@@ -28,6 +30,7 @@ class TypesafeController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','typesafe.create');
+
         return view('typesafe.create');
     }
 
@@ -40,11 +43,15 @@ class TypesafeController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','typesafe.create');
+
         $request->validate([
-            'safeName'      => 'required|max:100|unique:typesaves,safeName',
-            'statusSafe'    => 'required'
+            'safeName'          => 'required|max:100|unique:typesaves,safeName',
+            'descriptionSafe'   => 'required|max:200',
+            'statusSafe'        => 'required'
         ]);
-        $typesafe = typesafe::create($request->all());
+
+        $typesafe = Typesafe::create($request->all());
+
         return redirect()->route('typesafe.index')
             ->with('status_success','Type Save saved successfully');
     }
@@ -57,7 +64,8 @@ class TypesafeController extends Controller
      */
     public function show(Typesafe $typesafe)
     {
-         $this->authorize('haveaccess','typesafe.show');
+        $this->authorize('haveaccess','typesafe.show');
+
         return view('typesafe.view', compact('typesafe'));
     }
 
@@ -69,7 +77,8 @@ class TypesafeController extends Controller
      */
     public function edit(Typesafe $typesafe)
     {
-         $this->authorize('haveaccess','typesafe.edit');
+        $this->authorize('haveaccess','typesafe.edit');
+
         return view('typesafe.edit', compact('typesafe'));
     }
 
@@ -83,11 +92,15 @@ class TypesafeController extends Controller
     public function update(Request $request, Typesafe $typesafe)
     {
         $this->authorize('haveaccess','typesafe.edit');
+
         $request->validate([
-            'safeName'        => 'required|max:100|unique:typesaves,safeName,'.$typesafe->id,
-            'statusSafe'      => 'required'
+            'safeName'          => 'required|max:100|unique:typesaves,safeName,'.$typesafe->id,
+            'descriptionSafe'   => 'required|max:200',
+            'statusSafe'        => 'required'
         ]);
+
         $typesafe -> update($request->all());
+
         return redirect()->route('typesafe.index')
             ->with('status_success','Type Save updated successfully');
     }
@@ -100,8 +113,10 @@ class TypesafeController extends Controller
      */
     public function destroy(Typesafe $typesafe)
     {
-         $this->authorize('haveaccess','typesafe.destroy');
+        $this->authorize('haveaccess','typesafe.destroy');
+
         $typesafe->delete();
+
         return redirect()->route('typesafe.index')
             ->with('status_success','Type Save successfully removed');
     }

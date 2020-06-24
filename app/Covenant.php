@@ -12,6 +12,8 @@ class Covenant extends Model
      * @var array
      */
     protected $fillable = [
-        'convenant', 'statusConvenant',
+        'convenant',
+        'descriptionConvenant',
+        'statusConvenant',
     ];
 }

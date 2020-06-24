@@ -13,10 +13,10 @@ class CreateResidentStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('resident__staff', function (Blueprint $table) {
+        Schema::create('resident_staff', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_staff')->references('id')->on('staff')->onDelete('cascade');
-            $table->foreignId('id_residents')->references('id')->on('residents')->onDelete('cascade');
+            $table->foreignId('staff_id')->references('id')->on('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('residents_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateResidentStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resident__staff');
+        Schema::dropIfExists('resident_staff');
     }
 }

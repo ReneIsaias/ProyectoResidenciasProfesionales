@@ -12,6 +12,7 @@ class Turn extends Model
      * @var array
      */
     protected $fillable = [
-        'descriptionTurn', 'statusTurn', 'password',
+        'descriptionTurn',
+        'statusTurn',
     ];
 }

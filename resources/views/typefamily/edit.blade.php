@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Type Family :</h6>
+                            <h6>Description :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="descriptionType"
@@ -22,7 +23,7 @@
                                 value="{{ old('descriptionType' , $typefamily->descriptionType) }}"
                             >
                         </div>
-                        <h6>Status</h6>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="typefamilyStatus1" name="statusType" class="custom-control-input" value="1"
                                 @if ( $typefamily->statusType =="1" )

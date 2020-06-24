@@ -12,6 +12,7 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
@@ -38,7 +39,7 @@
                             <textarea class="form-control" placeholder="Description" name="description" id="description" rows="3">{{ old('description', $role->description) }}</textarea>
                         </div>
                         <hr>
-                        <h3>Full Access</h3>
+                        <h3>Full Access :</h3>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes"
                                 @if ( $role['full-access']=="yes" )

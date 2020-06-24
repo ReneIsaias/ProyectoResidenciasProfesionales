@@ -11,6 +11,7 @@
                     @csrf
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
@@ -19,6 +20,7 @@
                                 placeholder="Name"
                                 name="name"
                                 value="{{ old('name') }}"
+                                autofocus
                             >
                         </div>
                         <div class="form-group">
@@ -33,12 +35,10 @@
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea class="form-control" placeholder="Description" name="description" id="description" rows="3">
-                                {{ old('description') }}
-                            </textarea>
+                            <textarea class="form-control" placeholder="Description role" name="description" id="description" rows="3">{{ old('description') }}</textarea>
                         </div>
                         <hr>
-                        <h3>Full Access</h3>
+                        <h3>Full Access :</h3>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="fullaccessyes" name="full-access" class="custom-control-input" value="yes"
                                 @if ( old('full-access')=="yes" )

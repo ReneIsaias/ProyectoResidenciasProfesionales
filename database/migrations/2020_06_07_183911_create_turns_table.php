@@ -15,7 +15,7 @@ class CreateTurnsTable extends Migration
     {
         Schema::create('turns', function (Blueprint $table) {
             $table->id();
-            $table->string('descriptionTurn',50)->unique();
+            $table->string('descriptionTurn',100)->unique();
             $table->boolean('statusTurn');
             $table->timestamps();
         });

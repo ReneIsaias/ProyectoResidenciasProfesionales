@@ -20,7 +20,7 @@ class UserPolicy
         //
     }
 
-   
+
 
     /**
      * Determine whether the user can create models.
@@ -44,15 +44,13 @@ class UserPolicy
     {
         if ($usera->havePermission($perm[0])){
             return true;
-        }else  
-        if ($usera->havePermission($perm[1])){
+        }else if ($usera->havePermission($perm[1])){
             return $usera->id === $user->id;
-        }
-        else {
+        }else {
             return false;
         }
     }
-    
+
     /**
      * Determine whether the user can view the model.
      *
@@ -64,14 +62,10 @@ class UserPolicy
     {
         if ($usera->havePermission($perm[0])){
             return true;
-        }else  
-        if ($usera->havePermission($perm[1])){
+        }else if ($usera->havePermission($perm[1])){
             return $usera->id === $user->id;
-        }
-        else {
+        }else {
             return false;
         }
-
-        
     }
 }

@@ -12,6 +12,7 @@ class Degrestudy extends Model
      * @var array
      */
     protected $fillable = [
-        'degreeStudy', 'statusDegree',
+        'degreeStudy',
+        'statusDegree',
     ];
 }

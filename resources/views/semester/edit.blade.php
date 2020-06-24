@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Semester Name :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="nameSemester"
@@ -22,7 +23,7 @@
                                 value="{{ old('nameSemester' , $semester->nameSemester) }}"
                             >
                         </div>
-                        <h6>Status</h6>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="semesterStatus1" name="statusSemester" class="custom-control-input" value="1"
                                 @if ( $semester->statusSemester =="1" )

@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Type File</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Types Files</h2></div>
                 <div class="card-body">
                 @can('haveaccess','typefile.create')
                     <a href="{{ route('typefile.create') }}"
@@ -32,9 +32,9 @@
                                         <td>{{ $typefile->descriptionFile }}</td>
                                         <td>
                                             @if ($typefile->statusFile == "1")
-                                                Activa
+                                                Activo
                                             @else
-                                                Inactiva
+                                                Inactivo
                                             @endif
                                         </td>
                                         <td>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>typefiles</td>
+                                        <td>types files</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse

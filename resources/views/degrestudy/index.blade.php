@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>degrestudys</td>
+                                        <td>degree studys</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse

@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Convenant :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="convenant"
@@ -23,7 +24,11 @@
                                 autofocus
                             >
                         </div>
-                        <h6>Status</h6>
+                        <div class="form-group">
+                            <h6>Description :</h6>
+                            <textarea class="form-control" name="descriptionConvenant" id="descriptionConvenant" rows="3">{{ old('descriptionConvenant', $covenant->descriptionConvenant) }}</textarea>
+                        </div>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="covenantStatus1" name="statusConvenant" class="custom-control-input" value="1"
                                 @if ( $covenant->statusConvenant =="1" )

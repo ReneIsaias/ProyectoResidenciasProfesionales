@@ -12,6 +12,8 @@ class Situationproyect extends Model
      * @var array
      */
     protected $fillable = [
-        'projectSituation', 'statusSituation',
+        'projectSituation',
+        'descriptionSituation',
+        'statusSituation',
     ];
 }

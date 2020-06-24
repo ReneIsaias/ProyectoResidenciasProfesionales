@@ -61,7 +61,7 @@
                                         <td>hay</td>
                                         <td>roles</td>
                                         <td>registrados</td>
-                                        <td></td>
+                                        <td>aun</td>
                                     </tr>
                                 @endforelse
                             </tbody>

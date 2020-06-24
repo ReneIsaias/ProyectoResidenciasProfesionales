@@ -17,11 +17,10 @@ class Staff extends Model
         'firstLastname',
         'secondLastname',
         'emailStaff',
-        'passwordStaff',
         'phoneStaff',
         'statusStaff',
-        'id_posts',
-        'id_degrestudies',
-        'id_careers',
+        'posts_id',
+        'degrestudies_id',
+        'careers_id',
     ];
 }

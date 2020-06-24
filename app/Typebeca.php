@@ -12,6 +12,7 @@ class Typebeca extends Model
      * @var array
      */
     protected $fillable = [
-        'descriptionBeca', 'statusBeca',
+        'descriptionBeca',
+        'statusBeca',
     ];
 }

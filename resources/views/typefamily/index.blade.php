@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of type Family</h2></div>
+                <div class="card-header bg-dark text-white"><h2>List of Types Family</h2></div>
                 <div class="card-body">
                 @can('haveaccess','typefamily.create')
                     <a href="{{ route('typefamily.create') }}"
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>typefamilys</td>
+                                        <td>type familys</td>
                                         <td>registradas</td>
                                     </tr>
                                 @endforelse

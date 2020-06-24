@@ -65,7 +65,7 @@
                                         <td>hay</td>
                                         <td>careers</td>
                                         <td>registradas</td>
-                                        <td></td>
+                                        <td>-</td>
                                     </tr>
                                 @endforelse
                             </tbody>

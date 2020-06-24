@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Type Save Name :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="safeName"
@@ -24,7 +25,11 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6> Type Save Created :</h6>
+                            <h6>Description :</h6>
+                            <textarea readonly class="form-control" placeholder="Description safe" name="descriptionSafe" id="descriptionSafe" rows="3">{{ old('descriptionSafe', $typesafe->descriptionSafe) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Created :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="created_at"
@@ -34,7 +39,7 @@
                                 readonly
                             >
                         </div>
-                        <h6>Status</h6>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input disabled type="radio" id="typesafeStatus1" name="statusSafe" class="custom-control-input" value="1"
                                 @if ( $typesafe->statusSafe =="1" )

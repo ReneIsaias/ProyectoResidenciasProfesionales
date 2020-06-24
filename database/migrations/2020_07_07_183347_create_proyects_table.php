@@ -18,7 +18,9 @@ class CreateProyectsTable extends Migration
             $table->string('keyProyect',50)->unique();
             $table->string('nameProyect',200)->unique();
             $table->string('descriptionProyect');
-            $table->string('objetivesProyect');
+            $table->string('objGeneProyect');
+            $table->string('objEspeciProyect');
+            $table->string('JustifyProject');
             $table->date('dateStart');
             $table->date('dateEnd');
             $table->integer('qualificationProyect')->nullable();
@@ -26,10 +28,11 @@ class CreateProyectsTable extends Migration
             $table->date('dateRevision')->nullable();
             $table->string('hourlyProyect');
             $table->date('dateRealRevicion')->nullable();
-            $table->foreignId('id_situationproyects')->references('id')->on('situationproyects')->onDelete('cascade')->nullable();
-            $table->foreignId('id_reports')->references('id')->on('reports')->onDelete('cascade')->nullable();
-            $table->foreignId('id_busines')->references('id')->on('busines')->onDelete('cascade');
-            $table->foreignId('id_residents')->references('id')->on('residents')->onDelete('cascade');
+            $table->boolean('statusProject');
+            $table->foreignId('situationproyects_id')->references('id')->on('situationproyects')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('reports_id')->references('id')->on('reports')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('busines_id')->references('id')->on('busines')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('residents_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

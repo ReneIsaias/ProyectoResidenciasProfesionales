@@ -11,8 +11,9 @@
                     @csrf
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Convenant :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="convenant"
@@ -21,6 +22,10 @@
                                 value="{{ old('convenant') }}"
                                 autofocus
                             >
+                        </div>
+                        <div class="form-group">
+                            <h6>Description :</h6>
+                            <textarea class="form-control" placeholder="Description Convenant" name="descriptionConvenant" id="descriptionConvenant" rows="3">{{ old('descriptionConvenant') }}</textarea>
                         </div>
                         <div class="form-group">
                             <input type="hidden"

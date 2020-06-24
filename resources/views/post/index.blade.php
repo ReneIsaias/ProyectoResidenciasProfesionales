@@ -32,9 +32,9 @@
                                         <td>{{ $post->namePost }}</td>
                                         <td>
                                             @if ($post->statusPost == "1")
-                                                Activa
+                                                Activo
                                             @else
-                                                Inactiva
+                                                Inactivo
                                             @endif
                                         </td>
                                         <td>
@@ -62,7 +62,7 @@
                                         <td>No</td>
                                         <td>hay</td>
                                         <td>posts</td>
-                                        <td>registradas</td>
+                                        <td>registrados</td>
                                     </tr>
                                 @endforelse
                             </tbody>

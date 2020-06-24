@@ -12,6 +12,9 @@ class Studyplan extends Model
      * @var array
      */
     protected $fillable = [
-        'planStudies', 'planDate', 'planStatus',
+        'planStudies',
+        'descriptionPlan',
+        'planDate',
+        'planStatus',
     ];
 }

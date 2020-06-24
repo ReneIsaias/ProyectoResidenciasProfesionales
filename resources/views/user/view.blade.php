@@ -12,7 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
+                            <h6>Name :</h6>
                             <input type="text" class="form-control"
                                 id="name"
                                 placeholder="Name"
@@ -22,6 +24,7 @@
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Email :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="email"
@@ -32,6 +35,7 @@
                             >
                         </div>
                         <div class="form-group">
+                            <h6>Role :</h6>
                             <select disabled class="form-control" name="roles" id="roles">
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}"

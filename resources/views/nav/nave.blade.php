@@ -123,7 +123,9 @@
                             @can('haveaccess','typefile.index')
                                 <a class="dropdown-item" href="{{ route('typefile.index') }}">Type File</a>
                             @endcan
-
+                            @can('haveaccess','relative.index')
+                                <a class="dropdown-item" href="{{ route('relative.index') }}">Relative</a>
+                            @endcan
                         </div>
                     </li>
                     <li class="nav-item dropdown">

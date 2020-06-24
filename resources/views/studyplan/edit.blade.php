@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Study Plan :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="planStudies"
@@ -24,7 +25,11 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Study Plan Date :</h6>
+                            <h6>Description :</h6>
+                            <textarea class="form-control" placeholder="Description Plan Study" name="descriptionPlan" id="descriptionPlan" rows="3">{{ old('descriptionPlan', $studyplan->descriptionPlan) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Date :</h6>
                             <input type="date"
                                 class="form-control"
                                 id="planDate"
@@ -33,7 +38,7 @@
                                 value="{{ old('planDate' , $studyplan->planDate) }}"
                             >
                         </div>
-                        <h6>Status</h6>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="studyplanStatus1" name="planStatus" class="custom-control-input" value="1"
                                 @if ( $studyplan->planStatus =="1" )

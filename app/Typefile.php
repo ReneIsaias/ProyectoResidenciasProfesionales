@@ -12,6 +12,7 @@ class Typefile extends Model
      * @var array
      */
     protected $fillable = [
-        'descriptionFile', 'statusFile',
+        'descriptionFile',
+        'statusFile',
     ];
 }

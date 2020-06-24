@@ -11,8 +11,9 @@
                     @csrf
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Name Post :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="namePost"
@@ -21,6 +22,10 @@
                                 value="{{ old('namePost') }}"
                                 autofocus
                             >
+                        </div>
+                        <div class="form-group">
+                            <h6>Description :</h6>
+                            <textarea class="form-control" placeholder="Description Post" name="descriptionPost" id="descriptionPost" rows="3">{{ old('descriptionPost') }}</textarea>
                         </div>
                         <div class="form-group">
                             <input type="hidden"

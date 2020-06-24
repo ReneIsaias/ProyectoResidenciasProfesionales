@@ -12,8 +12,9 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
+                        <br>
                         <div class="form-group">
-                            <h6>Key Career :</h6>
+                            <h6>Key :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="keyCareer"
@@ -24,7 +25,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Career Name :</h6>
+                            <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="careerName"
@@ -35,7 +36,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Career Created :</h6>
+                            <h6>Created :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="created_at"
@@ -45,9 +46,13 @@
                                 readonly
                             >
                         </div>
-                        <h6>Status</h6>
+                        <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input disabled type="radio" id="careerStatus1" name="careerStatus" class="custom-control-input" value="1"
+                            <input disabled type="radio"
+                                id="careerStatus1"
+                                name="careerStatus"
+                                class="custom-control-input"
+                                value="1"
                                 @if ( $career->careerStatus =="1" )
                                     checked
                                 @elseif ( old('careerStatus')=="1" )
@@ -57,7 +62,12 @@
                             <label class="custom-control-label" for="careerStatus1">Activo</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input disabled type="radio" id="careerStatus0" name="careerStatus" class="custom-control-input" value="0"
+                            <input disabled
+                                type="radio"
+                                id="careerStatus0"
+                                name="careerStatus"
+                                class="custom-control-input"
+                                value="0"
                                 @if ( $career->careerStatus =="0" )
                                     checked
                                 @elseif ( old('careerStatus')=="0" )

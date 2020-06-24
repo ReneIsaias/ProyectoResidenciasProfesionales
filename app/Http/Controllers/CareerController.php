@@ -16,7 +16,9 @@ class CareerController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','career.index');
+
         $careers =  Career::orderBy('id','Desc')->paginate(5);
+
         return view('career.index',compact('careers'));
     }
 
@@ -28,6 +30,7 @@ class CareerController extends Controller
     public function create()
     {
         Gate::authorize('haveaccess','career.create');
+
         return view('career.create');
     }
 
@@ -40,12 +43,15 @@ class CareerController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('haveaccess','career.create');
+
         $request->validate([
             'keyCareer'       => 'required|max:20|unique:careers,keyCareer',
             'careerName'      => 'required|max:100|unique:careers,careerName',
             'careerStatus'    => 'required'
         ]);
+
         $career = Career::create($request->all());
+
         return redirect()->route('career.index')
             ->with('status_success','Career saved successfully');
     }
@@ -59,6 +65,7 @@ class CareerController extends Controller
     public function show(Career $career)
     {
         $this->authorize('haveaccess','career.show');
+
         return view('career.view', compact('career'));
     }
 
@@ -71,6 +78,7 @@ class CareerController extends Controller
     public function edit(Career $career)
     {
         $this->authorize('haveaccess','career.edit');
+
         return view('career.edit', compact('career'));
     }
 
@@ -84,12 +92,15 @@ class CareerController extends Controller
     public function update(Request $request, Career $career)
     {
         $this->authorize('haveaccess','career.edit');
+
         $request->validate([
             'keyCareer'         => 'required|max:20|unique:careers,keyCareer,'.$career->id,
             'careerName'        => 'required|max:100|unique:careers,careerName,'.$career->id,
             'careerStatus'      => 'required'
         ]);
+
         $career -> update($request->all());
+
         return redirect()->route('career.index')
             ->with('status_success','Career updated successfully');
     }
@@ -103,7 +114,9 @@ class CareerController extends Controller
     public function destroy(Career $career)
     {
         $this->authorize('haveaccess','career.destroy');
+
         $career->delete();
+
         return redirect()->route('career.index')
             ->with('status_success','Career successfully removed');
     }
