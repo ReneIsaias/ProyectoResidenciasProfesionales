@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Typefile;
 
 class ReportController extends Controller
 {
@@ -14,7 +16,11 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        Gate::authorize('haveaccess','report.index');
+
+        $reports = Report::orderBy('id','Desc')->paginate(5);
+
+        return view('report.index',compact('reports'));
     }
 
     /**
@@ -24,7 +30,11 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize('haveaccess','report.create');
+
+        $typefiles = Typefile::all();
+
+        return view('report.create',compact('typefiles'));
     }
 
     /**
@@ -35,7 +45,19 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('haveaccess','report.create');
+
+        $request->validate([
+            'nameReport'            => 'required|min:2|max:100',
+            'descriptionReport'     => 'required|min:5|max:200',
+            'statusReport'          => 'required',
+            'typefiles_id'          => 'required'
+        ]);
+
+        $report = Report::create($request->all());
+
+        return redirect()->route('report.index')
+            ->with('status_success','Report saved successfully');
     }
 
     /**
@@ -46,7 +68,11 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        //
+         $this->authorize('haveaccess','report.show');
+
+        $typefiles = Typefile::where('id','3');
+
+        return view('report.view', compact('report','typefiles'));
     }
 
     /**
@@ -57,7 +83,11 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        //
+        $this->authorize('haveaccess','report.edit');
+
+        $typefiles = Typefile::all();
+
+        return view('report.edit', compact('report','typefiles'));
     }
 
     /**
@@ -69,7 +99,19 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+        $this->authorize('haveaccess','report.edit');
+
+        $request->validate([
+            'nameReport'          => 'required|min:2|max:100,'.$report->id,
+            'descriptionReport'   => 'required|min:5|max:200,'.$report->id,
+            'statusReport'        => 'required',
+            'typefiles_id'        => 'required'
+        ]);
+
+        $report -> update($request->all());
+
+        return redirect()->route('report.index')
+            ->with('status_success','Report updated successfully');
     }
 
     /**
@@ -80,6 +122,11 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        $this->authorize('haveaccess','report.destroy');
+
+        $report->delete();
+
+        return redirect()->route('report.index')
+            ->with('status_success','Report successfully removed');
     }
 }

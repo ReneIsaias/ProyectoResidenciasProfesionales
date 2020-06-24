@@ -108,7 +108,7 @@ class RelativeController extends Controller
             'nameRelative'       => 'required|min:2|max:30,'.$relative->id,
             'firstLastname'      => 'required|min:5|max:30,'.$relative->id,
             'secondLastname'     => 'required|min:5|max:30,'.$relative->id,
-            'phoneRelative'      => 'required|min:10|max:20,'.$relative->id,
+            'phoneRelative'      => 'required|min:10|max:20|numeric,'.$relative->id,
             'addresRelative'     => 'required|min:10|max:200,'.$relative->id,
             'statusRelative'     => 'required',
             'typefamilies_id'    => 'required'

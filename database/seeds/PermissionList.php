@@ -664,6 +664,88 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
+//Permission titular
+        $permission = Permission::create([
+            'name' => 'List titular',
+            'slug' => 'titular.index',
+            'description' => 'A user can list titular',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show titular',
+            'slug' => 'titular.show',
+            'description' => 'A user can see titular',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create titular',
+            'slug' => 'titular.create',
+            'description' => 'A user can create titular',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit titular',
+            'slug' => 'titular.edit',
+            'description' => 'A user can edit titular',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy titular',
+            'slug' => 'titular.destroy',
+            'description' => 'A user can destroy titular',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+//Permission Report
+        $permission = Permission::create([
+            'name' => 'List report',
+            'slug' => 'report.index',
+            'description' => 'A user can list report',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show report',
+            'slug' => 'report.show',
+            'description' => 'A user can see report',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create report',
+            'slug' => 'report.create',
+            'description' => 'A user can create report',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit report',
+            'slug' => 'report.edit',
+            'description' => 'A user can edit report',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy report',
+            'slug' => 'report.destroy',
+            'description' => 'A user can destroy report',
+        ]);
+
+        $permission_all[] = $permission->id;
+
 //permission user
         $permission = Permission::create([
             'name' => 'List user',

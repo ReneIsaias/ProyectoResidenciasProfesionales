@@ -66,21 +66,24 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Residentes <span class="caret"></span>
+                            tablas debiles <span class="caret"></span>
                         </a>
                         {{-- Acceso a los residentes --}}
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Registrar</a>
-                            <a class="dropdown-item" href="#">Residentes</a>
-                            <a class="dropdown-item" href="#">Evaluar</a>
-                            <a class="dropdown-item" href="#">Proyectos</a>
-                            <a class="dropdown-item" href="#">Actualizar</a>
-                            <a class="dropdown-item" href="#">Archivos</a>
+                            @can('haveaccess','relative.index')
+                                <a class="dropdown-item" href="{{ route('relative.index') }}">Relative</a>
+                            @endcan
+                            @can('haveaccess','titular.index')
+                                <a class="dropdown-item" href="{{ route('titular.index') }}">Titulares</a>
+                            @endcan
+                            @can('haveaccess','report.index')
+                                <a class="dropdown-item" href="{{ route('report.index') }}">Reports</a>
+                            @endcan
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Pruebas <span class="caret"></span>
+                            tablas fuertes <span class="caret"></span>
                         </a>
                         {{-- Acceso a mis pruebas --}}
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -122,9 +125,6 @@
                             @endcan
                             @can('haveaccess','typefile.index')
                                 <a class="dropdown-item" href="{{ route('typefile.index') }}">Type File</a>
-                            @endcan
-                            @can('haveaccess','relative.index')
-                                <a class="dropdown-item" href="{{ route('relative.index') }}">Relative</a>
                             @endcan
                         </div>
                     </li>
