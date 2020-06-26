@@ -55,13 +55,22 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Proyectos <span class="caret"></span>
+                            Mamalonas <span class="caret"></span>
                         </a>
                         {{-- Acceso a los proyectos --}}
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Proyectos</a>
-                            <a class="dropdown-item" href="#">Revisar</a>
-                            <a class="dropdown-item" href="#">Asignar</a>
+                            @can('haveaccess','resident.index')
+                                <a class="dropdown-item" href="{{ route('resident.index') }}">Residents</a>
+                            @endcan
+                            @can('haveaccess','busines.index')
+                                <a class="dropdown-item" href="{{ route('busines.index') }}">Business</a>
+                            @endcan
+                            @can('haveaccess','proyect.index')
+                                <a class="dropdown-item" href="{{ route('proyect.index') }}">Proyects</a>
+                            @endcan
+                            @can('haveaccess','staff.index')
+                                <a class="dropdown-item" href="{{ route('staff.index') }}">Staffs</a>
+                            @endcan
                         </div>
                     </li>
                     <li class="nav-item dropdown">

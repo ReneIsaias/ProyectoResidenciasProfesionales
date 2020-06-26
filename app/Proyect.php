@@ -31,4 +31,24 @@ class Proyect extends Model
         'busines_id',
         'residents_id',
     ];
+
+    public function situationproyect()
+    {
+        return $this->belongsTo('App\Situationproyect', 'situationproyects_id', 'id');
+    }
+
+    public function report()
+    {
+        return $this->belongsTo('App\Report', 'reports_id', 'id');
+    }
+
+    public function busine()
+    {
+        return $this->belongsTo('App\Bisines', 'busines_id', 'id');
+    }
+
+    public function resident()
+    {
+        return $this->belongsTo('App\Resident', 'residents_id', 'id');
+    }
 }

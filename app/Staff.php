@@ -23,4 +23,19 @@ class Staff extends Model
         'degrestudies_id',
         'careers_id',
     ];
+
+    public function post()
+    {
+        return $this->belongsTo('App\Post', 'posts_id', 'id');
+    }
+
+    public function degrestudy()
+    {
+        return $this->belongsTo('App\Degrestudy', 'degrestudies_id', 'id');
+    }
+
+    public function career()
+    {
+        return $this->belongsTo('App\Career', 'careers_id', 'id');
+    }
 }

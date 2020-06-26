@@ -72,3 +72,11 @@ Route::resource('/relative', 'RelativeController')->names('relative');
 Route::resource('/titular', 'TitularController')->names('titular');
 
 Route::resource('/report', 'ReportController')->names('report');
+
+Route::resource('/resident', 'ResidentController')->names('resident');
+
+Route::resource('/busines', 'BusinesController')->names('busines');
+
+Route::resource('/proyect', 'ProyectController')->names('proyect');
+
+Route::resource('/staff', 'StaffController')->names('staff');

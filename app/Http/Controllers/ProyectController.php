@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Proyect;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Situationproyect;
+use App\Report;
+use App\Busines;
+use App\Resident;
 
 class ProyectController extends Controller
 {
@@ -14,7 +19,11 @@ class ProyectController extends Controller
      */
     public function index()
     {
-        //
+        Gate::authorize('haveaccess','proyect.index');
+
+        $proyects = Proyect::with('situationproyect','report','busine','resident')->orderBy('id','Desc')->paginate(10);
+
+        return view('proyect.index',compact('proyects'));
     }
 
     /**
@@ -24,7 +33,14 @@ class ProyectController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize('haveaccess','proyect.create');
+
+        $situationproyects = Situationproyect::where('statusSituation',1)->get();
+        $reports = Report::where('statusReport',1)->get();
+        $busines = Busines::where('statusBusines',1)->get();
+        $residents = Resident::where('statusResident',1)->get();
+
+        return view('proyect.create',compact('situationproyects','reports','busines','residents'));
     }
 
     /**
@@ -35,7 +51,33 @@ class ProyectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('haveaccess','proyect.create');
+
+        $request->validate([
+            'keyProyect'                => 'required|min:8|max:50',
+            'nameProyect'               => 'required|min:10|max:200',
+            'descriptionProyect'        => 'required|min:10',
+            'objGeneProyect'            => 'required|min:10',
+            'objEspeciProyect'          => 'required|min:10',
+            'JustifyProject'            => 'required|min:10',
+            'dateStart'                 => 'required|date',
+            'dateEnd'                   => 'required|date',
+            'qualificationProyect'      => 'required',
+            'revisionProyect'           => 'required',
+            'dateRevision'              => 'required',
+            'hourlyProyect'             => 'required',
+            'dateRealRevicion'          => 'required',
+            'statusProject'             => 'required',
+            'situationproyects_id'      => 'required',
+            'reports_id'                => 'required',
+            'busines_id'                => 'required',
+            'residents_id'              => 'required'
+        ]);
+
+        $proyect = Proyect::create($request->all());
+
+        return redirect()->route('proyect.index')
+            ->with('status_success','Proyect saved successfully');
     }
 
     /**
@@ -46,7 +88,14 @@ class ProyectController extends Controller
      */
     public function show(Proyect $proyect)
     {
-        //
+        $this->authorize('haveaccess','proyect.show');
+
+        $situationproyects = Situationproyect::orderBy('projectSituation')->get();
+        $reports = Report::orderBy('nameReport')->get();
+        $busines = Busines::orderBy('rfcBusiness')->get();
+        $residents = Resident::orderBy('residentRegistration')->get();
+
+        return view('proyect.view', compact('proyect','situationproyects', 'reports','busines','residents'));
     }
 
     /**
@@ -57,7 +106,14 @@ class ProyectController extends Controller
      */
     public function edit(Proyect $proyect)
     {
-        //
+        $this->authorize('haveaccess','proyect.edit');
+
+        $situationproyects = Situationproyect::orderBy('projectSituation')->get();
+        $reports = Report::orderBy('nameReport')->get();
+        $busines = Busines::orderBy('rfcBusiness')->get();
+        $residents = Resident::orderBy('residentRegistration')->get();
+
+        return view('proyect.edit',  compact('proyect','situationproyects', 'reports','busines','residents'));
     }
 
     /**
@@ -69,7 +125,33 @@ class ProyectController extends Controller
      */
     public function update(Request $request, Proyect $proyect)
     {
-        //
+        $this->authorize('haveaccess','proyect.edit');
+
+        $request->validate([
+            'keyProyect'                => 'required|min:8|max:50,'.$proyect->id,
+            'nameProyect'               => 'required|min:10|max:200,'.$proyect->id,
+            'descriptionProyect'        => 'required|min:10,'.$proyect->id,
+            'objGeneProyect'            => 'required|min:10,'.$proyect->id,
+            'objEspeciProyect'          => 'required|min:10,'.$proyect->id,
+            'JustifyProject'            => 'required|min:10',
+            'dateStart'                 => 'required|date',
+            'dateEnd'                   => 'required|date',
+            'qualificationProyect'      => 'required',
+            'revisionProyect'           => 'required',
+            'dateRevision'              => 'required',
+            'hourlyProyect'             => 'required',
+            'dateRealRevicion'          => 'required',
+            'statusProject'             => 'required',
+            'situationproyects_id'      => 'required',
+            'reports_id'                => 'required',
+            'busines_id'                => 'required',
+            'residents_id'              => 'required'
+        ]);
+
+        $proyect -> update($request->all());
+
+        return redirect()->route('proyect.index')
+            ->with('status_success','Proyect updated successfully');
     }
 
     /**
@@ -80,6 +162,11 @@ class ProyectController extends Controller
      */
     public function destroy(Proyect $proyect)
     {
-        //
+         $this->authorize('haveaccess','proyect.destroy');
+
+        $proyect->delete();
+
+        return redirect()->route('proyect.index')
+            ->with('status_success','Proyect successfully removed');
     }
 }

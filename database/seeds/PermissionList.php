@@ -746,6 +746,170 @@ class PermissionList extends Seeder
 
         $permission_all[] = $permission->id;
 
+//Permission Resident
+        $permission = Permission::create([
+            'name' => 'List resident',
+            'slug' => 'resident.index',
+            'description' => 'A user can list resident',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show resident',
+            'slug' => 'resident.show',
+            'description' => 'A user can see resident',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create resident',
+            'slug' => 'resident.create',
+            'description' => 'A user can create resident',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit resident',
+            'slug' => 'resident.edit',
+            'description' => 'A user can edit resident',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy resident',
+            'slug' => 'resident.destroy',
+            'description' => 'A user can destroy resident',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+//Permission busines
+        $permission = Permission::create([
+            'name' => 'List busines',
+            'slug' => 'busines.index',
+            'description' => 'A user can list busines',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show busines',
+            'slug' => 'busines.show',
+            'description' => 'A user can see busines',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create busines',
+            'slug' => 'busines.create',
+            'description' => 'A user can create busines',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit busines',
+            'slug' => 'busines.edit',
+            'description' => 'A user can edit busines',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy busines',
+            'slug' => 'busines.destroy',
+            'description' => 'A user can destroy busines',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+//Permission proyect
+        $permission = Permission::create([
+            'name' => 'List proyect',
+            'slug' => 'proyect.index',
+            'description' => 'A user can list proyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show proyect',
+            'slug' => 'proyect.show',
+            'description' => 'A user can see proyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create proyect',
+            'slug' => 'proyect.create',
+            'description' => 'A user can create proyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit proyect',
+            'slug' => 'proyect.edit',
+            'description' => 'A user can edit proyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy proyect',
+            'slug' => 'proyect.destroy',
+            'description' => 'A user can destroy proyect',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+//Permission staff
+        $permission = Permission::create([
+            'name' => 'List staff',
+            'slug' => 'staff.index',
+            'description' => 'A user can list staff',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Show staff',
+            'slug' => 'staff.show',
+            'description' => 'A user can see staff',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Create staff',
+            'slug' => 'staff.create',
+            'description' => 'A user can create staff',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Edit staff',
+            'slug' => 'staff.edit',
+            'description' => 'A user can edit staff',
+        ]);
+
+        $permission_all[] = $permission->id;
+
+        $permission = Permission::create([
+            'name' => 'Destroy staff',
+            'slug' => 'staff.destroy',
+            'description' => 'A user can destroy staff',
+        ]);
+
+        $permission_all[] = $permission->id;
+
 //permission user
         $permission = Permission::create([
             'name' => 'List user',
