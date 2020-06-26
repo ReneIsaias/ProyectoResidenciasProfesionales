@@ -19,4 +19,13 @@ class Titular extends Model
         'statusTitular',
         'posts_id',
     ];
+
+    /* public function post(){
+        return $this->belongsTo('App\Post','posts_id')->withTimesTamps();
+    } */
+
+    public function post()
+    {
+        return $this->belongsTo('App\Post', 'posts_id', 'id');
+    }
 }

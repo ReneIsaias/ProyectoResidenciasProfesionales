@@ -26,14 +26,16 @@
                         </div>
                         <div class="form-group">
                             <h6>Type Family :</h6>
-                            <select class="form-control"
-                                id="id_typefamilies"
-                                name="id_typefamilies"
-                                disabled>
-                                <option value="{{ old('id_typefamilies' , $relative->id_typefamilies) }}">{{ $relative->id_typefamilies }}</option>
-                                {{-- @foreach ($typefamilys as $typefamily)
-                                    <option value="{{$typefamily->id}}">{{$typefamily->descriptionType}}</option>
-                                @endforeach --}}
+                            <select disabled class="form-control" name="id_typefamilies" id="id_typefamilies">
+                                @foreach($typefamilys as $typefamily)
+                                    <option value="{{ $typefamily->id }}"
+                                        @if($typefamily->descriptionType ==  $relative->typefamily->descriptionType)
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $typefamily->descriptionType }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

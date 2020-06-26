@@ -17,4 +17,14 @@ class Report extends Model
         'statusReport',
         'typefiles_id',
     ];
+
+   /*  public function typefile(){
+        return $this->hasMany('App\Typefile','typefiles_id')->withTimesTamps();
+    } */
+
+
+    public function typefile()
+    {
+        return $this->belongsTo('App\Typefile', 'typefiles_id', 'id');
+    }
 }

@@ -50,7 +50,7 @@
                                 name="posts_id">
                                 <option value="">--Seleccione Post--</option>
                                 @foreach ($posts as $post)
-                                    <option value="{{$post->id}}">{{$post->namePost}}</option>
+                                    <option value="{{ $post->id }}">{{ old('post->namePost',$post->namePost) }}</option>
                                 @endforeach
                             </select>
                         </div>

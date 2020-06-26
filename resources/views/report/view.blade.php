@@ -30,14 +30,16 @@
                         </div>
                         <div class="form-group">
                             <h6>Type File :</h6>
-                            <select class="form-control"
-                                id="typefiles_id"
-                                name="typefiles_id"
-                                disabled>
-                                <option value="{{ old('typefiles_id' , $report->typefiles_id) }}">{{ $report->typefiles_id }}</option>
-                                {{-- @foreach ($typefamilys as $typefamily)
-                                    <option value="{{$typefamily->id}}">{{$typefamily->descriptionType}}</option>
-                                @endforeach --}}
+                            <select disabled class="form-control" name="typefiles_id" id="typefiles_id">
+                                @foreach($typefiles as $typefile)
+                                    <option value="{{ $typefile->id }}"
+                                        @if($typefile->descriptionFile ==  $report->typefile->descriptionFile)
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $typefile->descriptionFile }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <h6>Status :</h6>

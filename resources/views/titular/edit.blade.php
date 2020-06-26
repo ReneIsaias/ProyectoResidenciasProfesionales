@@ -46,12 +46,15 @@
                         </div>
                         <div class="form-group">
                             <h6>Post :</h6>
-                            <select class="form-control"
-                                id="posts_id"
-                                name="posts_id">
-                                <option value="">--Seleccione Post--</option>
-                                @foreach ($posts as $post)
-                                    <option value="{{$post->id}}">{{$post->namePost}}</option>
+                            <select class="form-control"  name="posts_id" id="posts_id">
+                                @foreach($posts as $post)
+                                    <option value="{{ $post->id }}"
+                                        @if( $post->namePost ==  $titular->post->namePost )
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $post->namePost }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

@@ -22,7 +22,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Post    </th>
+                                    <th scope="col">Post(s)</th>
                                     <th scope="col">Status</th>
                                     <th colspan="3"></th>
                                 </tr>
@@ -31,17 +31,12 @@
                                 @forelse ($titulars as $titular)
                                     <tr>
                                         <th scope="row">{{ $titular->id }}</th>
-                                        <td>{{ $titular->nameTitular}}
-                                            {{ $titular->firstLastname}}
-                                            {{ $titular->secondLastname}}
+                                        <td>{{ $titular->nameTitular }}
+                                            {{ $titular->firstLastname }}
+                                            {{ $titular->secondLastname }}
                                         </td>
                                         <td>{{ $titular->phoneTitular }}</td>
-                                        {{-- <td>
-                                            @isset( $titular->typefamilies[0]->descriptionType )
-                                                {{ $titular->typefamilies[0]->descriptionType }}
-                                            @endisset
-                                        </td> --}}
-                                        <td>{{ $titular->posts_id }}</td>
+                                        <td>{{ $titular->post->namePost }}</td>
                                         <td>
                                             @if ($titular->statusTitular== "1")
                                                 Activo

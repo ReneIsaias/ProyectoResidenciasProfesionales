@@ -50,7 +50,7 @@
                                 name="typefamilies_id">
                                 <option value="">--Seleccione Type Family--</option>
                                 @foreach ($typefamilys as $typefamily)
-                                    <option value="{{$typefamily->id}}">{{$typefamily->descriptionType}}</option>
+                                    <option value="{{$typefamily->id}}">{{ old('typefile->descriptionFile', $typefamily->descriptionType) }}</option>
                                 @endforeach
                             </select>
                         </div>

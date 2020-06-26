@@ -46,12 +46,15 @@
                         </div>
                         <div class="form-group">
                             <h6>Type Family :</h6>
-                            <select class="form-control"
-                                id="typefamilies_id"
-                                name="typefamilies_id">
-                                <option value="">--Seleccione Type Family--</option>
-                                @foreach ($typefamilys as $typefamily)
-                                    <option value="{{$typefamily->id}}">{{$typefamily->descriptionType}}</option>
+                            <select class="form-control"  name="typefamilies_id" id="typefamilies_id">
+                                @foreach($typefamilys as $typefamily)
+                                    <option value="{{ $typefamily->id }}"
+                                        @if( $typefamily->descriptionType ==  $relative->typefamily->descriptionType )
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $typefamily->descriptionType }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

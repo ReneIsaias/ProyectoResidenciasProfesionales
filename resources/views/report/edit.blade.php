@@ -30,12 +30,15 @@
                         </div>
                         <div class="form-group">
                             <h6>Type File :</h6>
-                            <select class="form-control"
-                                id="typefiles_id"
-                                name="typefiles_id">
-                                <option value="">--Seleccione Type File--</option>
-                                @foreach ($typefiles as $typefile)
-                                    <option value="{{$typefile->id}}">{{$typefile->descriptionFile}}</option>
+                            <select class="form-control"  name="typefiles_id" id="typefiles_id">
+                                @foreach($typefiles as $typefile)
+                                    <option value="{{ $typefile->id }}"
+                                        @if( $typefile->descriptionFile ==  $report->typefile->descriptionFile )
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $typefile->descriptionFile }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

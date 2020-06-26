@@ -18,7 +18,7 @@ class RelativeController extends Controller
     {
         Gate::authorize('haveaccess','relative.index');
 
-        $relatives =  Relative::orderBy('id','Desc')->paginate(5);
+        $relatives =  Relative::with('typefamily')->orderBy('id','Desc')->paginate(10);
 
         return view('relative.index',compact('relatives'));
     }
@@ -32,7 +32,7 @@ class RelativeController extends Controller
     {
         Gate::authorize('haveaccess','relative.create');
 
-        $typefamilys = Typefamily::all();
+        $typefamilys = Typefamily::where('statusType',1)->get();
 
         return view('relative.create',compact('typefamilys'));
     }
@@ -73,7 +73,7 @@ class RelativeController extends Controller
     {
         $this->authorize('haveaccess','relative.show');
 
-        $typefamilys = Typefamily::where('id','3');
+        $typefamilys = Typefamily::orderBy('descriptionType')->get();
 
         return view('relative.view', compact('relative','typefamilys'));
     }
@@ -88,7 +88,7 @@ class RelativeController extends Controller
     {
         $this->authorize('haveaccess','relative.edit');
 
-        $typefamilys = Typefamily::all();
+        $typefamilys = Typefamily::orderBy('descriptionType')->get();
 
         return view('relative.edit', compact('relative','typefamilys'));
     }
@@ -108,8 +108,8 @@ class RelativeController extends Controller
             'nameRelative'       => 'required|min:2|max:30,'.$relative->id,
             'firstLastname'      => 'required|min:5|max:30,'.$relative->id,
             'secondLastname'     => 'required|min:5|max:30,'.$relative->id,
-            'phoneRelative'      => 'required|min:10|max:20|numeric,'.$relative->id,
-            'addresRelative'     => 'required|min:10|max:200,'.$relative->id,
+            'phoneRelative'      => 'required|min:10|numeric',
+            'addresRelative'     => 'required|min:10|max:200',
             'statusRelative'     => 'required',
             'typefamilies_id'    => 'required'
         ]);

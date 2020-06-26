@@ -18,7 +18,7 @@ class ReportController extends Controller
     {
         Gate::authorize('haveaccess','report.index');
 
-        $reports = Report::orderBy('id','Desc')->paginate(5);
+        $reports = Report::with('typefile')->orderBy('id','Desc')->paginate(10);
 
         return view('report.index',compact('reports'));
     }
@@ -32,7 +32,7 @@ class ReportController extends Controller
     {
         Gate::authorize('haveaccess','report.create');
 
-        $typefiles = Typefile::all();
+        $typefiles = Typefile::where('statusFile',1)->get();
 
         return view('report.create',compact('typefiles'));
     }
@@ -68,9 +68,9 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-         $this->authorize('haveaccess','report.show');
+        $this->authorize('haveaccess','report.show');
 
-        $typefiles = Typefile::where('id','3');
+        $typefiles = Typefile::orderBy('descriptionFile')->get();
 
         return view('report.view', compact('report','typefiles'));
     }
@@ -85,7 +85,7 @@ class ReportController extends Controller
     {
         $this->authorize('haveaccess','report.edit');
 
-        $typefiles = Typefile::all();
+        $typefiles = Typefile::orderBy('descriptionFile')->get();
 
         return view('report.edit', compact('report','typefiles'));
     }

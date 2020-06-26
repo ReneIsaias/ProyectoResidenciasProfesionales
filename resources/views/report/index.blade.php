@@ -21,8 +21,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Type File</th>
+                                    <th scope="col">Type File(s)</th>
                                     <th scope="col">Status</th>
                                     <th colspan="3"></th>
                                 </tr>
@@ -32,8 +31,7 @@
                                     <tr>
                                         <th scope="row">{{ $report->id }}</th>
                                         <td>{{ $report->nameReport }}</td>
-                                        <td>{{ $report->descriptionReport }}</td>
-                                        <td>{{ $report->typefiles_id }}</td>
+                                        <td>{{ $report->typefile->descriptionFile }}</td>
                                         <td>
                                             @if ($report->statusReport == "1")
                                                 Activo

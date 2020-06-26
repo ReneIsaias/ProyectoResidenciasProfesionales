@@ -34,7 +34,7 @@
                                 name="typefiles_id">
                                 <option value="">--Seleccione Type File--</option>
                                 @foreach ($typefiles as $typefile)
-                                    <option value="{{$typefile->id}}">{{ $typefile->descriptionFile }}</option>
+                                    <option value="{{ $typefile->id }}">{{ old('typefile->descriptionFile',$typefile->descriptionFile) }}</option>
                                 @endforeach
                             </select>
                         </div>

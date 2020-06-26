@@ -18,7 +18,7 @@ class TitularController extends Controller
     {
         Gate::authorize('haveaccess','titular.index');
 
-        $titulars = Titular::orderBy('id','Desc')->paginate(5);
+        $titulars = Titular::with('post')->orderBy('id','Desc')->paginate(10);
 
         return view('titular.index',compact('titulars'));
     }
@@ -32,7 +32,7 @@ class TitularController extends Controller
     {
         Gate::authorize('haveaccess','titular.create');
 
-        $posts = Post::all();
+        $posts = Post::where('statusPost',1)->get();
 
         return view('titular.create',compact('posts'));
     }
@@ -49,8 +49,8 @@ class TitularController extends Controller
 
         $request->validate([
             'nameTitular'       => 'required|min:2|max:30',
-            'firstLastname'     => 'required|min:5|max:30',
-            'secondLastname'    => 'required|min:5|max:30',
+            'firstLastname'     => 'required|min:2|max:30',
+            'secondLastname'    => 'required|min:2|max:30',
             'phoneTitular'      => 'required|min:10|numeric',
             'statusTitular'     => 'required',
             'posts_id'          => 'required'
@@ -72,9 +72,9 @@ class TitularController extends Controller
     {
         $this->authorize('haveaccess','titular.show');
 
-        $posts = Post::where('id','3');
+        $posts= Post::orderBy('namePost')->get();
 
-        return view('titular.view', compact('titular','posts'));
+        return view('titular.view', compact('posts','titular'));
     }
 
     /**
@@ -87,7 +87,7 @@ class TitularController extends Controller
     {
         $this->authorize('haveaccess','titular.edit');
 
-        $posts = Post::all();
+        $posts= Post::orderBy('namePost')->get();
 
         return view('titular.edit', compact('titular','posts'));
     }
@@ -105,8 +105,8 @@ class TitularController extends Controller
 
         $request->validate([
             'nameTitular'       => 'required|min:2|max:30,'.$titular->id,
-            'firstLastname'     => 'required|min:5|max:30,'.$titular->id,
-            'secondLastname'    => 'required|min:5|max:30,'.$titular->id,
+            'firstLastname'     => 'required|min:2|max:30,'.$titular->id,
+            'secondLastname'    => 'required|min:2|max:30,'.$titular->id,
             'phoneTitular'      => 'required|min:10|numeric',
             'statusTitular'     => 'required',
             'posts_id'          => 'required'

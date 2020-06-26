@@ -21,19 +21,21 @@
                                 placeholder="nameTitular"
                                 name="nameTitular"
                                 value="{{ $titular->nameTitular }} {{ $titular->firstLastname }} {{ $titular->secondLastname }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <div class="form-group">
                             <h6>Post :</h6>
-                            <select class="form-control"
-                                id="posts_id"
-                                name="posts_id"
-                                disabled>
-                                <option value="{{ old('posts_id' , $titular->posts_id) }}">{{ $titular->posts_id }}</option>
-                                {{-- @foreach ($typefamilys as $typefamily)
-                                    <option value="{{$typefamily->id}}">{{$typefamily->descriptionType}}</option>
-                                @endforeach --}}
+                            <select disabled class="form-control" name="posts_id" id="posts_id">
+                                @foreach($posts as $post)
+                                    <option value="{{ $post->id }}"
+                                        @if($post->namePost ==  $titular->post->namePost)
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $post->namePost }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -44,7 +46,7 @@
                                 placeholder="phoneTitular"
                                 name="phoneTitular"
                                 value="{{ old('phoneTitular' , $titular->phoneTitular) }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>

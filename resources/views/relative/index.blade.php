@@ -36,12 +36,7 @@
                                             {{ $relative->secondLastname}}
                                         </td>
                                         <td>{{ $relative->phoneRelative }}</td>
-                                        {{-- <td>
-                                            @isset( $relative->typefamilies[0]->descriptionType )
-                                                {{ $relative->typefamilies[0]->descriptionType }}
-                                            @endisset
-                                        </td> --}}
-                                        <td>{{ $relative->typefamilies_id }}</td>
+                                        <td>{{ $relative->typefamily->descriptionType }}</td>
                                         <td>
                                             @if ($relative->statusRelative == "1")
                                                 Activa
