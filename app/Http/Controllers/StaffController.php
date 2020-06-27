@@ -52,24 +52,16 @@ class StaffController extends Controller
         Gate::authorize('haveaccess','staff.create');
 
         $request->validate([
-            'staffRegistration'      => 'required|min:8|numeric',
-            'namestaff'              => 'required|min:2|max:30',
-            'firtsLastnamestaff'     => 'required|min:2|max:30',
-            'secondLastnamestaff'    => 'required|min:2|max:30',
-            'emailstaff'             => 'required|email|max:50',
-            'phonestaff'             => 'required|numeric|min:10',
-            'periodstaff'            => 'required|min:2|max:100',
-            'addessstaffe'           => 'required|min:2|max:200',
-            'citystaff'              => 'required|min:3|max:100',
-            'cpstaff'                => 'required|numeric|min:4',
-            'statusstaff'            => 'required',
-            'careers_id'                => 'required',
-            'typesaves_id'              => 'required',
-            'semesters_id'              => 'required',
-            'studyplans_id'             => 'required',
-            'relatives_id'              => 'required',
-            'typebecas_id'              => 'required'
-
+            'keyStaff'          => 'required|min:8|max:30|unique:staff,keyStaff',
+            'nameStaff'         => 'required|min:2|max:30',
+            'firstLastname'     => 'required|min:2|max:30',
+            'secondLastname'    => 'required|min:2|max:30',
+            'emailStaff'        => 'required|email|max:50|unique:staff,emailStaff',
+            'phoneStaff'        => 'required|numeric|min:10|unique:staff,phoneStaff',
+            'statusStaff'       => 'required',
+            'posts_id'          => 'required',
+            'degrestudies_id'   => 'required',
+            'careers_id'        => 'required'
         ]);
 
         $staff = Staff::create($request->all());
@@ -88,14 +80,11 @@ class StaffController extends Controller
     {
         $this->authorize('haveaccess','staff.show');
 
+        $posts = Post::orderBy('namePost')->get();
+        $degrestudys = Degrestudy::orderBy('degreeStudy')->get();
         $careers = Career::orderBy('careerName')->get();
-        $typesafes = Typesafe::orderBy('safeName')->get();
-        $semesters = Semester::orderBy('nameSemester')->get();
-        $studyplans = Studyplan::orderBy('planStudies')->get();
-        $relatives = Relative::orderBy('nameRelative')->get();
-        $typebecas = Typebeca::orderBy('descriptionBeca')->get();
 
-        return view('staff.view', compact('staff','careers', 'typesafes','semesters','studyplans','relatives','typebecas'));
+        return view('staff.view', compact('staff','posts', 'degrestudys','careers'));
     }
 
     /**
@@ -108,14 +97,11 @@ class StaffController extends Controller
     {
         $this->authorize('haveaccess','staff.edit');
 
+        $posts = Post::orderBy('namePost')->get();
+        $degrestudys = Degrestudy::orderBy('degreeStudy')->get();
         $careers = Career::orderBy('careerName')->get();
-        $typesafes = Typesafe::orderBy('safeName')->get();
-        $semesters = Semester::orderBy('nameSemester')->get();
-        $studyplans = Studyplan::orderBy('planStudies')->get();
-        $relatives = Relative::orderBy('nameRelative')->get();
-        $typebecas = Typebeca::orderBy('descriptionBeca')->get();
 
-        return view('staff.edit', compact('staff','careers', 'typesafes','semesters','studyplans','relatives','typebecas'));
+        return view('staff.edit', compact('staff','posts', 'degrestudys','careers'));
     }
 
     /**
@@ -130,23 +116,16 @@ class StaffController extends Controller
         $this->authorize('haveaccess','staff.edit');
 
         $request->validate([
-            'staffRegistration'      => 'required|min:2,'.$staff->id,
-            'namestaff'              => 'required|min:2|max:30,'.$staff->id,
-            'firtsLastnamestaff'     => 'required|min:2|max:30,'.$staff->id,
-            'secondLastnamestaff'    => 'required|min:2|max:30,'.$staff->id,
-            'emailstaff'             => 'required|email|max:50',
-            'phonestaff'             => 'required|numeric|min:10',
-            'periodstaff'            => 'required|min:2|max:100',
-            'addessstaffe'           => 'required|min:2|max:200',
-            'citystaff'              => 'required|min:3|max:100',
-            'cpstaff'                => 'required|numeric|min:4',
-            'statusstaff'            => 'required',
-            'careers_id'                => 'required',
-            'typesaves_id'              => 'required',
-            'semesters_id'              => 'required',
-            'studyplans_id'             => 'required',
-            'relatives_id'              => 'required',
-            'typebecas_id'              => 'required'
+            'keyStaff'          => 'required|min:8|max:30|unique:staff,keyStaff,'.$staff->id,
+            'nameStaff'         => 'required|min:2|max:30,'.$staff->id,
+            'firstLastname'     => 'required|min:2|max:30,'.$staff->id,
+            'secondLastname'    => 'required|min:2|max:30,'.$staff->id,
+            'emailStaff'        => 'required|email|max:50|unique:staff,emailStaff,'.$staff->id,
+            'phoneStaff'        => 'required|numeric|min:10|unique:staff,phoneStaff,'.$staff->id,
+            'statusStaff'       => 'required',
+            'posts_id'          => 'required',
+            'degrestudies_id'   => 'required',
+            'careers_id'        => 'required'
         ]);
 
         $staff -> update($request->all());

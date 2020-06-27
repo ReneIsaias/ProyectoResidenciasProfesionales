@@ -4,23 +4,23 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Edit resident</h2></div>
+                <div class="card-header bg-dark text-white"><h2>Edit Busines</h2></div>
                 <div class="card-body">
                     @include('custom.message')
-                    <form action="{{ route('resident.update', $resident->id) }}" method="POST">
+                    <form action="{{ route('busines.update', $busines->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Matricula :</h6>
+                            <h6>Rfc :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="residentRegistration"
-                                placeholder="Matricual Residente"
-                                name="residentRegistration"
-                                value="{{ old('residentRegistration', $resident->residentRegistration) }}"
+                                id="rfcBusiness"
+                                placeholder="RFC of Busines"
+                                name="rfcBusiness"
+                                value="{{ old('rfcBusiness', $busines->rfcBusiness ) }}"
                                 autofocus
                             >
                         </div>
@@ -28,196 +28,189 @@
                             <h6>Name :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="nameResident"
-                                placeholder="Name Resident"
-                                name="nameResident"
-                                value="{{ old('nameResident', $resident->nameResident) }}"
-                                autofocus
-                            >
-                        </div>
-                        <div class="form-group">
-                            <h6>Firs Last Name :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="firtsLastnameResident"
-                                placeholder="First Lastname Resident"
-                                name="firtsLastnameResident"
-                                value="{{ old('firtsLastnameResident' , $resident->firtsLastnameResident) }}"
-                            >
-                        </div>
-                        <div class="form-group">
-                            <h6>Second Last Name :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="secondLastnameResident"
-                                placeholder="Second Lastname Resident"
-                                name="secondLastnameResident"
-                                value="{{ old('secondLastnameResident' , $resident->secondLastnameResident) }}"
+                                id="nameBusiness"
+                                placeholder="Name Busines"
+                                name="nameBusiness"
+                                value="{{ old('nameBusiness', $busines->nameBusiness ) }}"
                             >
                         </div>
                         <div class="form-group">
                             <h6>Email :</h6>
+                            <input type="email"
+                                class="form-control"
+                                id="emailBusiness"
+                                placeholder="Email Busines"
+                                name="emailBusiness"
+                                value="{{ old('emailBusiness', $busines->emailBusiness ) }}"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Mision :</h6>
+                            <textarea class="form-control" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3">{{ old('misionBusiness', $busines->misionBusiness ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Direction :</h6>
+                            <textarea class="form-control" placeholder="Direction of busines" name="addresBusiness" id="addresBusiness" rows="3">{{ old('addresBusiness', $busines->addresBusiness ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Colonia :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="emailResident"
-                                placeholder="Email Resident"
-                                name="emailResident"
-                                value="{{ old('emailResident' , $resident->emailResident) }}"
+                                id="coloniaBusiness"
+                                placeholder="Colonia of busines"
+                                name="coloniaBusiness"
+                                value="{{ old('coloniaBusiness', $busines->coloniaBusiness ) }}"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>City :</h6>
+                            <input type="text"
+                                class="form-control"
+                                id="cityBusiness"
+                                placeholder="City of busines"
+                                name="cityBusiness"
+                                value="{{ old('cityBusiness', $busines->cityBusiness ) }}"
                             >
                         </div>
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="phoneResident"
-                                placeholder="Phone Resident"
-                                name="phoneResident"
-                                value="{{ old('phoneResident' , $resident->phoneResident) }}"
-                            >
-                        </div>
-                        <div class="form-group">
-                            <h6>Perido :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="periodResident"
-                                placeholder="Period Resident"
-                                name="periodResident"
-                                value="{{ old('periodResident' , $resident->periodResident) }}"
-                            >
-                        </div>
-                        <div class="form-group">
-                            <h6>Direction :</h6>
-                            <textarea class="form-control" placeholder="Direction resident" name="addessResidente" id="addessResidente" rows="3">{{ old('addessResidente', $resident->addessResidente) }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <h6>City :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="cityResident"
-                                placeholder="City Resident"
-                                name="cityResident"
-                                value="{{ old('cityResident' , $resident->cityResident) }}"
+                                id="phoneBusiness"
+                                placeholder="Phone of busines"
+                                name="phoneBusiness"
+                                value="{{ old('phoneBusiness', $busines->phoneBusiness ) }}"
                             >
                         </div>
                         <div class="form-group">
                             <h6>C.P. :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="cpResident"
-                                placeholder="C.P. Resident"
-                                name="cpResident"
-                                value="{{ old('cpResident' , $resident->cpResident) }}"
+                                id="cpBusiness"
+                                placeholder="C.P. of busines"
+                                name="cpBusiness"
+                                value="{{ old('cpBusiness', $busines->cpBusiness ) }}"
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Careers :</h6>
-                            <select class="form-control"  name="careers_id" id="careers_id">
-                                @foreach($careers as $career)
-                                    <option value="{{ $career->id }}"
-                                        @if( $career->careerName ==  $resident->career->careerName )
+                            <h6>Persona Firm :</h6>
+                            <input type="text"
+                                class="form-control"
+                                id="personFirma"
+                                placeholder="Persona of firm convenat"
+                                name="personFirma"
+                                value="{{ old('personFirma', $busines->personFirma ) }}"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Post :</h6>
+                            <select class="form-control" name="postPerson" id="postPerson">
+                                @foreach($posts as $post)
+                                    <option value="{{ $post->namePost }}"
+                                        @if($post->namePost ==  $busines->post->namePost)
                                             selected
                                         @endif
                                         >
-                                        {{ $career->careerName }}
+                                        {{ $post->namePost }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Type Safes :</h6>
-                            <select class="form-control"  name="typesaves_id" id="typesaves_id">
-                                @foreach($typesafes as $typesafe)
-                                    <option value="{{ $typesafe->id }}"
-                                        @if( $typesafe->safeName ==  $resident->typesafe->safeName )
+                            <h6>Titular :</h6>
+                            <select class="form-control" name="titulars_id" id="titulars_id">
+                                @foreach($titulars as $titular)
+                                    <option value="{{ $titular->id }}"
+                                        @if($titular->nameTitular ==  $busines->titular->nameTitular)
                                             selected
                                         @endif
                                         >
-                                        {{ $typesafe->safeName }}
+                                        {{ $titular->nameTitular }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Semesters :</h6>
-                            <select class="form-control"  name="semesters_id" id="semesters_id">
-                                @foreach($semesters as $semester)
-                                    <option value="{{ $semester->id }}"
-                                        @if( $semester->nameSemester ==  $resident->semester->nameSemester )
+                            <h6>Staff :</h6>
+                            <select class="form-control" name="staff_id" id="staff_id">
+                                @foreach($staffs as $staff)
+                                    <option value="{{ $staff->id }}"
+                                        @if($staff->nameStaff ==  $busines->staff->nameStaff)
                                             selected
                                         @endif
                                         >
-                                        {{ $semester->nameSemester }}
+                                        {{ $staff->nameStaff }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Study Plans :</h6>
-                            <select class="form-control"  name="studyplans_id" id="studyplans_id">
-                                @foreach($studyplans as $studyplan)
-                                    <option value="{{ $studyplan->id }}"
-                                        @if( $studyplan->planStudies ==  $resident->studyplan->planStudies )
+                            <h6>Convenant :</h6>
+                            <select class="form-control" name="covenants_id" id="covenants_id">
+                                @foreach($covenants as $covenant)
+                                    <option value="{{ $covenant->id }}"
+                                        @if($covenant->convenant ==  $busines->covenant->convenant)
                                             selected
                                         @endif
                                         >
-                                        {{ $studyplan->planStudies }}
+                                        {{ $covenant->convenant }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Relatives :</h6>
-                            <select class="form-control"  name="relatives_id" id="relatives_id">
-                                @foreach($relatives as $relative)
-                                    <option value="{{ $relative->id }}"
-                                        @if( $relative->nameRelative ==  $resident->relative->nameRelative )
+                            <h6>Turn :</h6>
+                            <select class="form-control" name="turns_id" id="turns_id">
+                                @foreach($turns as $turn)
+                                    <option value="{{ $turn->id }}"
+                                        @if($turn->descriptionTurn ==  $busines->turn->descriptionTurn)
                                             selected
                                         @endif
                                         >
-                                        {{ $relative->nameRelative }}
+                                        {{ $turn->descriptionTurn }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Type Becas :</h6>
-                            <select class="form-control"  name="typebecas_id" id="typebecas_id">
-                                @foreach($typebecas as $typebeca)
-                                    <option value="{{ $typebeca->id }}"
-                                        @if( $typebeca->descriptionBeca ==  $resident->typebeca->descriptionBeca )
+                            <h6>Sector :</h6>
+                            <select class="form-control" name="sectors_id" id="sectors_id">
+                                @foreach($sectors as $sector)
+                                    <option value="{{ $sector->id }}"
+                                        @if($sector->descriptionSector ==  $busines->sector->descriptionSector)
                                             selected
                                         @endif
                                         >
-                                        {{ $typebeca->descriptionBeca }}
+                                        {{ $sector->descriptionSector }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="statusresident1" name="statusResident" class="custom-control-input" value="1"
-                                @if ( $resident->statusResident =="1" )
+                            <input type="radio" id="statusbusines1" name="statusBusines" class="custom-control-input" value="1"
+                                @if ( $busines->statusBusines =="1" )
                                     checked
-                                @elseif ( old('statusResident')=="1" )
+                                @elseif ( old('statusBusines')=="1" )
                                     checked
                                 @endif
                             >
-                            <label class="custom-control-label" for="statusresident1">Activo</label>
+                            <label class="custom-control-label" for="statusbusines1">Activo</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="statusresident0" name="statusResident" class="custom-control-input" value="0"
-                                @if ( $resident->statusResident =="0" )
+                            <input type="radio" id="statusbusines0" name="statusBusines" class="custom-control-input" value="0"
+                                @if ( $busines->statusBusines =="0" )
                                     checked
-                                @elseif ( old('statusResident')=="0" )
+                                @elseif ( old('statusBusines')=="0" )
                                     checked
                                 @endif
                             >
-                            <label class="custom-control-label" for="statusresident0">Inactivo</label>
+                            <label class="custom-control-label" for="statusbusines0">Inactivo</label>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('resident.index') }}">Back</a>
+                                <a class="btn btn-danger" href="{{ route('busines.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center><input class="btn btn-primary" type="submit" value="Save"></center>

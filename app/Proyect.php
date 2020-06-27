@@ -44,7 +44,7 @@ class Proyect extends Model
 
     public function busine()
     {
-        return $this->belongsTo('App\Bisines', 'busines_id', 'id');
+        return $this->belongsTo('App\Busines', 'busines_id', 'id');
     }
 
     public function resident()

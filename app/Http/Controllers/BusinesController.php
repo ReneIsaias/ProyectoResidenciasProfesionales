@@ -10,6 +10,7 @@ use App\Staff;
 use App\Covenant;
 use App\Turn;
 use App\Sector;
+use App\Post;
 
 class BusinesController extends Controller
 {
@@ -23,6 +24,7 @@ class BusinesController extends Controller
         Gate::authorize('haveaccess','busines.index');
 
         $business = Busines::with('titular','staff','covenant','turn','sector')->orderBy('id','Desc')->paginate(10);
+
 
         return view('busines.index',compact('business'));
     }
@@ -41,8 +43,9 @@ class BusinesController extends Controller
         $covenants = Covenant::where('statusConvenant',1)->get();
         $turns = Turn::where('statusTurn',1)->get();
         $sectors = Sector::where('statusSector',1)->get();
+        $posts = Post::orderBy('namePost')->get();
 
-        return view('busines.create',compact('titulars','staffs','covenants','turns','sectors'));
+        return view('busines.create',compact('titulars','staffs','covenants','turns','sectors','posts'));
     }
 
     /**
@@ -53,7 +56,7 @@ class BusinesController extends Controller
      */
     public function store(Request $request)
     {
-       Gate::authorize('haveaccess','busines.create');
+        Gate::authorize('haveaccess','busines.create');
 
         $request->validate([
             'rfcBusiness'      => 'required|min:8|max:50',
@@ -78,7 +81,7 @@ class BusinesController extends Controller
         $busines = Busines::create($request->all());
 
         return redirect()->route('busines.index')
-            ->with('status_success','busines saved successfully');
+            ->with('status_success','Busines saved successfully');
     }
 
     /**
@@ -90,14 +93,16 @@ class BusinesController extends Controller
     public function show(Busines $busines)
     {
         $this->authorize('haveaccess','busines.show');
+        return $busines;
 
         $titulars = Titular::orderBy('nameTitular')->get();
         $staffs = Staff::orderBy('nameStaff')->get();
-        $covenants = Covenant::orderBy('descriptionConvenant')->get();
+        $covenants = Covenant::orderBy('convenant')->get();
         $turns = Turn::orderBy('descriptionTurn')->get();
         $sectors = Sector::orderBy('descriptionSector')->get();
+        $posts = Post::orderBy('namePost')->get();
 
-        return view('busines.view', compact('busines','titulars', 'staffs','covenants','turns','sectors'));
+        return view('busines.view', compact('busines','titulars', 'staffs','covenants','turns','sectors','posts'));
     }
 
     /**
@@ -109,14 +114,16 @@ class BusinesController extends Controller
     public function edit(Busines $busines)
     {
         $this->authorize('haveaccess','busines.edit');
+        return $busines;
 
         $titulars = Titular::orderBy('nameTitular')->get();
         $staffs = Staff::orderBy('nameStaff')->get();
-        $covenants = Covenant::orderBy('descriptionConvenant')->get();
+        $covenants = Covenant::orderBy('convenant')->get();
         $turns = Turn::orderBy('descriptionTurn')->get();
         $sectors = Sector::orderBy('descriptionSector')->get();
+        $posts = Post::orderBy('namePost')->get();
 
-        return view('busines.edit', compact('busines','titulars', 'staffs','covenants','turns','sectors'));
+        return view('busines.edit', compact('busines','titulars', 'staffs','covenants','turns','sectors','posts'));
     }
 
     /**
@@ -128,7 +135,7 @@ class BusinesController extends Controller
      */
     public function update(Request $request, Busines $busines)
     {
-         $this->authorize('haveaccess','busines.edit');
+        $this->authorize('haveaccess','busines.edit');
 
         $request->validate([
             'rfcBusiness'      => 'required|min:8|max:50,'.$busines->id,

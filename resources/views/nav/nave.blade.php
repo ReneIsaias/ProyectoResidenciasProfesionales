@@ -30,19 +30,6 @@
                 {{-- lista de urls --}}
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Solicitud <span class="caret"></span>
-                        </a>
-                        {{-- Acceso a solicitudes --}}
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Tramitar</a>
-                            <a class="dropdown-item" href="#">Detalles</a>
-                            <a class="dropdown-item" href="#">Estado</a>
-                            <a class="dropdown-item" href="#">Solicitudes</a>
-                            <a class="dropdown-item" href="#">Cancelar</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Personal <span class="caret"></span>
                         </a>
                         {{-- Acceso al personal --}}

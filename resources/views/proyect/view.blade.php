@@ -4,210 +4,209 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Resident</h2></div>
+                <div class="card-header bg-dark text-white"><h2>View Proyect</h2></div>
                 <div class="card-body">
                     @include('custom.message')
-                    <form action="{{ route('resident.update', $resident->id) }}" method="POST">
+                    <form action="{{ route('proyect.update', $proyect->id ) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Matricula :</h6>
+                            <h6>Key :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="residentRegistration"
-                                placeholder="residentRegistration"
-                                name="residentRegistration"
-                                value="{{ old('residentRegistration' , $resident->residentRegistration) }}"
+                                id="keyProyect"
+                                placeholder="Proyect Key"
+                                name="keyProyect"
+                                value="{{ old('keyProyect', $proyect->keyProyect ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
-                            <input type="text"
+                            <h6>nameProyect :</h6>
+                            <textarea disabled class="form-control" placeholder="Name of Proyect" name="nameProyect" id="nameProyect" rows="3">{{ old('nameProyect', $proyect->nameProyect ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>descriptionProyect :</h6>
+                            <textarea disabled class="form-control" placeholder="Description of Proyect" name="descriptionProyect" id="descriptionProyect" rows="3">{{ old('descriptionProyect', $proyect->descriptionProyect ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>objGeneProyect :</h6>
+                            <textarea disabled class="form-control" placeholder="Objetive General of Proyect" name="objGeneProyect" id="objGeneProyect" rows="3">{{ old('objGeneProyect', $proyect->objGeneProyect ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>objEspeciProyect :</h6>
+                            <textarea disabled class="form-control" placeholder="objetives Especifics of Proyect" name="objEspeciProyect" id="objEspeciProyect" rows="3">{{ old('objEspeciProyect', $proyect->objEspeciProyect ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>JustifyProject :</h6>
+                            <textarea disabled class="form-control" placeholder="Justify of Proyect" name="JustifyProject" id="JustifyProject" rows="3">{{ old('JustifyProject', $proyect->JustifyProject ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Date Start :</h6>
+                            <input type="date"
                                 class="form-control"
-                                id="nameresident"
-                                placeholder="nameresident"
-                                name="nameresident"
-                                value="{{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}"
+                                id="dateStart"
+                                placeholder="Date start of proyect"
+                                name="dateStart"
+                                value="{{ old('dateStart', $proyect->dateStart ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Email :</h6>
-                            <input type="text"
+                            <h6>Date End :</h6>
+                            <input type="date"
                                 class="form-control"
-                                id="emailResident"
-                                placeholder="emailResident"
-                                name="emailResident"
-                                value="{{ old('emailResident' , $resident->emailResident) }}"
+                                id="dateEnd"
+                                placeholder="Date end of proyect"
+                                name="dateEnd"
+                                value="{{ old('dateEnd', $proyect->dateEnd ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Qualification :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="phoneResident"
-                                placeholder="phoneResident"
-                                name="phoneResident"
-                                value="{{ old('phoneResident' , $resident->phoneResident) }}"
+                                id="qualificationProyect"
+                                placeholder="Qualification of project"
+                                name="qualificationProyect"
+                                value="{{ old('qualificationProyect', $proyect->qualificationProyect ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Period :</h6>
+                            <h6>Revicion :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="periodResident"
-                                placeholder="periodResident"
-                                name="periodResident"
-                                value="{{ old('periodResident' , $resident->periodResident) }}"
+                                id="revisionProyect"
+                                placeholder="Revicion of project"
+                                name="revisionProyect"
+                                value="{{ old('revisionProyect', $proyect->revisionProyect ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
-                            <textarea readonly class="form-control" placeholder="Direction resident" name="addessResidente" id="addessResidente" rows="3">{{ old('addessResidente', $resident->addessResidente) }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <h6>City :</h6>
-                            <input type="text"
+                            <h6>Date :</h6>
+                            <input type="date"
                                 class="form-control"
-                                id="cityResident"
-                                placeholder="cityResident"
-                                name="cityResident"
-                                value="{{ old('cityResident' , $resident->cityResident) }}"
+                                id="dateRevision"
+                                placeholder="Date of Revicion of project "
+                                name="dateRevision"
+                                value="{{ old('dateRevision', $proyect->dateRevision ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>C.P. :</h6>
+                            <h6>Hourly :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="cpResident"
-                                placeholder="cpResident"
-                                name="cpResident"
-                                value="{{ old('cpResident' , $resident->cpResident) }}"
+                                id="hourlyProyect"
+                                placeholder="Hourly of project"
+                                name="hourlyProyect"
+                                value="{{ old('hourlyProyect', $proyect->hourlyProyect ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Careers :</h6>
-                            <select disabled class="form-control" name="careers_id" id="careers_id">
-                                @foreach($careers as $career)
-                                    <option value="{{ $career->id }}"
-                                        @if($career->careerName ==  $resident->career->careerName)
+                            <h6>Date :</h6>
+                            <input type="date"
+                                class="form-control"
+                                id="dateRealRevicion"
+                                placeholder="Date of Revicion real of project"
+                                name="dateRealRevicion"
+                                value="{{ old('dateRealRevicion', $proyect->dateRealRevicion ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Situation :</h6>
+                            <select disabled class="form-control" name="situationproyects_id" id="situationproyects_id">
+                                @foreach($situationproyects as $situationproyect)
+                                    <option value="{{ $situationproyect->id }}"
+                                        @if($situationproyect->projectSituation ==  $proyect->situationproyect->projectSituation)
                                             selected
                                         @endif
                                         >
-                                        {{ $career->careerName }}
+                                        {{ $situationproyect->projectSituation }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Type Saves :</h6>
-                            <select disabled class="form-control" name="typesaves_id" id="typesaves_id">
-                                @foreach($typesafes as $typesafe)
-                                    <option value="{{ $typesafe->id }}"
-                                        @if($typesafe->safeName ==  $resident->typesafe->safeName)
+                            <h6>Report :</h6>
+                            <select disabled class="form-control" name="reports_id" id="reports_id">
+                                @foreach($reports as $report)
+                                    <option value="{{ $report->id }}"
+                                        @if($report->nameReport ==  $proyect->report->nameReport)
                                             selected
                                         @endif
                                         >
-                                        {{ $typesafe->safeName }}
+                                        {{ $report->nameReport }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Semesters :</h6>
-                            <select disabled class="form-control" name="semesters_id" id="semesters_id">
-                                @foreach($semesters as $semester)
-                                    <option value="{{ $semester->id }}"
-                                        @if($semester->nameSemester ==  $resident->semester->nameSemester)
+                            <h6>Busines :</h6>
+                            <select disabled class="form-control" name="busines_id" id="busines_id">
+                                @foreach($busines as $busine)
+                                    <option value="{{ $busine->id }}"
+                                        @if($busine->rfcBusiness ==  $proyect->busine->rfcBusiness)
                                             selected
                                         @endif
                                         >
-                                        {{ $semester->nameSemester }}
+                                        {{ $busine->rfcBusiness }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Study Plans :</h6>
-                            <select disabled class="form-control" name="studyplans_id" id="studyplans_id">
-                                @foreach($studyplans as $studyplan)
-                                    <option value="{{ $studyplan->id }}"
-                                        @if($studyplan->planStudies ==  $resident->studyplan->planStudies)
+                            <h6>Resident :</h6>
+                            <select disabled class="form-control" name="residents_id" id="residents_id">
+                                @foreach($residents as $resident)
+                                    <option value="{{ $resident->id }}"
+                                        @if($resident->residentRegistration ==  $proyect->resident->residentRegistration)
                                             selected
                                         @endif
                                         >
-                                        {{ $studyplan->planStudies }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Relatives :</h6>
-                            <select disabled class="form-control" name="relatives_id" id="relatives_id">
-                                @foreach($relatives as $relative)
-                                    <option value="{{ $relative->id }}"
-                                        @if($relative->nameRelative ==  $resident->relative->nameRelative)
-                                            selected
-                                        @endif
-                                        >
-                                        {{ $relative->nameRelative }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Type Becas :</h6>
-                            <select disabled class="form-control" name="typebecas_id" id="typebecas_id">
-                                @foreach($typebecas as $typebeca)
-                                    <option value="{{ $typebeca->id }}"
-                                        @if($typebeca->descriptionBeca ==  $resident->typebeca->descriptionBeca)
-                                            selected
-                                        @endif
-                                        >
-                                        {{ $typebeca->descriptionBeca }}
+                                        {{ $resident->residentRegistration }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input disabled type="radio" id="statusresident1" name="statusResident" class="custom-control-input" value="1"
-                                @if ( $resident->statusResident =="1" )
+                            <input disabled type="radio" id="statusproyect1" name="statusProject" class="custom-control-input" value="1"
+                                @if ( $proyect->statusProject =="1" )
                                     checked
-                                @elseif ( old('statusResident')=="1" )
+                                @elseif ( old('statusProject')=="1" )
                                     checked
                                 @endif
                             >
-                            <label class="custom-control-label" for="statusresident1">Activo</label>
+                            <label class="custom-control-label" for="statusproyect1">Activo</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input disabled type="radio" id="statusresident0" name="statusResident" class="custom-control-input" value="0"
-                                @if ( $resident->statusResident =="0" )
+                            <input disabled type="radio" id="statusproyect0" name="statusProject" class="custom-control-input" value="0"
+                                @if ( $proyect->statusProject =="0" )
                                     checked
-                                @elseif ( old('statusResident')=="0" )
+                                @elseif ( old('statusProject')=="0" )
                                     checked
                                 @endif
                             >
-                            <label class="custom-control-label" for="statusresident0">Inactivo</label>
+                            <label class="custom-control-label" for="statusproyect0">Inactivo</label>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('resident.index') }}">Back</a>
+                                <a class="btn btn-danger" href="{{ route('proyect.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
-                                    @can('haveaccess','resident.edit')
-                                        <a class="btn btn-success" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
+                                    @can('haveaccess','proyect.edit')
+                                        <a class="btn btn-success" href="{{ route('proyect.edit',$proyect->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>
