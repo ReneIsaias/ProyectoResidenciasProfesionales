@@ -19,7 +19,7 @@ class CreateBusinesTable extends Migration
             $table->string('nameBusiness',200);
             $table->string('emailBusiness',100);
             $table->string('misionBusiness');
-            $table->string('addresBusiness',250);
+            $table->string('directionBusiness',250);
             $table->string('coloniaBusiness',200);
             $table->string('cityBusiness',100);
             $table->string('phoneBusiness',20);
@@ -28,7 +28,7 @@ class CreateBusinesTable extends Migration
             $table->string('postPerson',100);
             $table->boolean('statusBusines');
             $table->foreignId('titulars_id')->references('id')->on('titulars')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('staff_id')->references('id')->on('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('covenants_id')->references('id')->on('covenants')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('turns_id')->references('id')->on('turns')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('sectors_id')->references('id')->on('sectors')->onDelete('cascade')->onUpdate('cascade');

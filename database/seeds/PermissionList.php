@@ -30,9 +30,15 @@ class PermissionList extends Seeder
             $useradmin->delete();
         }
         $useradmin= User::create([
-            'name'      => 'admin',
+            'keyUser'      => 'DEFAULT',
+            'nameUser'     => 'ADMINISTRADOR',
+            'firstLastname'      => 'NULL',
+            'secondLastname'     => 'NULL',
+            'phoneUser'      => '0000000000',
+            'name'      => 'ADMIN',
             'email'     => 'admin@admin.com',
-            'password'  => Hash::make('admin')
+            'password'  => Hash::make('maquiabelico'),
+            'statusUser'      => '1',
         ]);
 
 //rol admin

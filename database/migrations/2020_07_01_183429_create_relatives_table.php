@@ -19,7 +19,7 @@ class CreateRelativesTable extends Migration
             $table->string('firstLastname',30);
             $table->string('secondLastname',30);
             $table->string('phoneRelative',20);
-            $table->string('addresRelative',200);
+            $table->string('directionRelative',200);
             $table->boolean('statusRelative');
             $table->foreignId('typefamilies_id')->references('id')->on('typefamilies')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

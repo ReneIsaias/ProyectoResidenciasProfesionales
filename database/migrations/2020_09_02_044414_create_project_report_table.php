@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResidentStaffTable extends Migration
+class CreateProjectReportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateResidentStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('resident_staff', function (Blueprint $table) {
+        Schema::create('project_report', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->references('id')->on('staff')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('residents_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('proyects_id')->references('id')->on('proyects')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('reports_id')->references('id')->on('reports')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateResidentStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resident_staff');
+        Schema::dropIfExists('project_report');
     }
 }
