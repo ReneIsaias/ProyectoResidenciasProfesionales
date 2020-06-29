@@ -47,17 +47,17 @@
                                         </td>
                                         <td>
                                             @can('haveaccess','resident.show')
-                                                <a class="btn btn-info" href="{{ route('resident.show',$resident->id) }}">Show</a>
+                                                <a class="btn btn-info" href="{{ route('resident.show', $resident->id ) }}">Show</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','resident.edit')
-                                                <a class="btn btn-success" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
+                                                <a class="btn btn-success" href="{{ route('resident.edit', $resident->id ) }}">Edit</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','resident.destroy')
-                                            <form action="{{ route('resident.destroy',$resident->id) }}" method="POST">
+                                            <form action="{{ route('resident.destroy', $resident->id ) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">Delete</button>

@@ -90,11 +90,11 @@ class BusinesController extends Controller
      * @param  \App\Busines  $busines
      * @return \Illuminate\Http\Response
      */
-    public function show(Busines $busines)
+    public function show(Busines $busine)
     {
         $this->authorize('haveaccess','busines.show');
-        return $busines;
 
+        $busines = $busine;
         $titulars = Titular::orderBy('nameTitular')->get();
         $staffs = Staff::orderBy('nameStaff')->get();
         $covenants = Covenant::orderBy('convenant')->get();
@@ -111,11 +111,11 @@ class BusinesController extends Controller
      * @param  \App\Busines  $busines
      * @return \Illuminate\Http\Response
      */
-    public function edit(Busines $busines)
+    public function edit(Busines $busine)
     {
         $this->authorize('haveaccess','busines.edit');
-        return $busines;
 
+        $busines = $busine;
         $titulars = Titular::orderBy('nameTitular')->get();
         $staffs = Staff::orderBy('nameStaff')->get();
         $covenants = Covenant::orderBy('convenant')->get();
@@ -133,16 +133,16 @@ class BusinesController extends Controller
      * @param  \App\Busines  $busines
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Busines $busines)
+    public function update(Request $request, Busines $busine)
     {
         $this->authorize('haveaccess','busines.edit');
 
         $request->validate([
-            'rfcBusiness'      => 'required|min:8|max:50,'.$busines->id,
-            'nameBusiness'     => 'required|min:2|max:200,'.$busines->id,
-            'emailBusiness'    => 'required|min:2|max:100|email,'.$busines->id,
-            'misionBusiness'   => 'required|min:2,'.$busines->id,
-            'addresBusiness'   => 'required,'.$busines->id,
+            'rfcBusiness'      => 'required|min:8|max:50',
+            'nameBusiness'     => 'required|min:2|max:200',
+            'emailBusiness'    => 'required|min:2|max:100|email',
+            'misionBusiness'   => 'required|min:2',
+            'addresBusiness'   => 'required',
             'coloniaBusiness'  => 'required|min:10',
             'cityBusiness'     => 'required|min:2|max:100',
             'phoneBusiness'    => 'required|min:2|numeric',
@@ -157,7 +157,7 @@ class BusinesController extends Controller
             'sectors_id'       => 'required'
         ]);
 
-        $busines -> update($request->all());
+        $busine -> update($request->all());
 
         return redirect()->route('busines.index')
             ->with('status_success','Busines updated successfully');

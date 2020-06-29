@@ -114,7 +114,7 @@
                             <select disabled class="form-control" name="postPerson" id="postPerson">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->namePost }}"
-                                        @if($post->namePost ==  $busines->post->namePost)
+                                        @if($post->namePost ==  $busines->namePost)
                                             selected
                                         @endif
                                         >

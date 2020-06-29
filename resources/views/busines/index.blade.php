@@ -30,16 +30,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($business as $busines)
+                                @forelse ($business as $busine)
                                     <tr>
-                                        <th scope="row">{{ $busines->id }}</th>
-                                        <td>{{ $busines->nameBusiness }}</td>
-                                        <td>{{ $busines->emailBusiness }}</td>
-                                        <td>{{ $busines->cityBusiness }}</td>
-                                        <td>{{ $busines->phoneBusiness }}</td>
-                                        <td>{{ $busines->sector->descriptionSector }}</td>
+                                        <th scope="row">{{ $busine->id }}</th>
+                                        <td>{{ $busine->nameBusiness }}</td>
+                                        <td>{{ $busine->emailBusiness }}</td>
+                                        <td>{{ $busine->cityBusiness }}</td>
+                                        <td>{{ $busine->phoneBusiness }}</td>
+                                        <td>{{ $busine->sector->descriptionSector }}</td>
                                         <td>
-                                            @if ($busines->statusBusines == "1")
+                                            @if ($busine->statusBusines == "1")
                                                 Activo
                                             @else
                                                 Inactivo
@@ -47,17 +47,17 @@
                                         </td>
                                         <td>
                                             @can('haveaccess','busines.show')
-                                                <a class="btn btn-info" href="{{ route('busines.show', $busines->id ) }}">Show</a>
+                                                <a class="btn btn-info" href="{{ route('busines.show', $busine->id ) }}">Show</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','busines.edit')
-                                                <a class="btn btn-success" href="{{ route('busines.edit', $busines->id ) }}">Edit</a>
+                                                <a class="btn btn-success" href="{{ route('busines.edit', $busine->id ) }}">Edit</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','busines.destroy')
-                                            <form action="{{ route('busines.destroy', $busines->id ) }}" method="POST">
+                                            <form action="{{ route('busines.destroy', $busine->id ) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">Delete</button>
