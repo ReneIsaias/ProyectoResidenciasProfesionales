@@ -54,17 +54,23 @@
                         </div>
                         <div class="form-group">
                             <h6>File :</h6>
-                            <input type="text"
-                                class="form-control @error('fileReport') is-invalid @enderror"
-                                id="fileReport" placeholder="Ruta del archivo"
-                                name="fileReport" value="{{ old('fileReport', $report->fileReport ) }}"
-                                autocomplete="fileReport" autofocus disabled required
-                            >
-                            @error('fileReport')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="searchFile">Search</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" required disabled
+                                        class="custom-file-input @error('fileReport') is-invalid @enderror"
+                                        name="fileReport" id="fileReport" aria-describedby="searchFile"
+                                    >
+                                    @error('fileReport')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    <label class="custom-file-label" for="fileReport">{{ $report->fileReport }}</label>
+                                </div>
+                            </div>
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">

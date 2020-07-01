@@ -6,6 +6,7 @@ use App\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Typefile;
+use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
 {
@@ -47,25 +48,26 @@ class ReportController extends Controller
     {
         Gate::authorize('haveaccess','report.create');
 
-        return $request;
+        $request->validate([
+            'nameReport'        => 'required|min:5|max:100',
+            'descriptionReport' => 'required|min:5|max:200',
+            'fileReport'        => 'required',
+            'statusReport'      => 'required',
+            'typefiles_id'      => 'required',
+        ]);
 
-        if($request->hasFile('fileReport')){
+        $report = Report::create($request->all());
+
+        if($request->file('fileReport')){
+            $path = Storage::disk('public')->put('reports', $request->file('fileReport'));
+            $report->fill(['fileReport'=> asset($path) ])->save();
+        }
+
+        /* if($request->hasFile('fileReport')){
             $file = $request->file('fileReport');
             $name = time() . $file->getClientOriginalName();
             $file->move(public_path().'/reports/images/',$name);
-
-            $request->validate([
-                'nameReport'        => 'required|min:5|max:100',
-                'descriptionReport' => 'required|min:5|max:200',
-                'fileReport'        => 'required',
-                'statusReport'      => 'required',
-                'typefiles_id'      => 'required',
-            ]);
-        }else{
-            return back()->with('status_success','Required file of report');
-        }
-
-        $report = Report::create($request->all());
+        } */
 
         return redirect()->route('report.index')
             ->with('status_success','Report saved successfully');
@@ -121,6 +123,11 @@ class ReportController extends Controller
         ]);
 
         $report -> update($request->all());
+
+        if($request->file('fileReport')){
+            $path = Storage::disk('public')->put('reports', $request->file('fileReport'));
+            $report->fill(['fileReport'=> asset($path) ])->save();
+        }
 
         return redirect()->route('report.index')
             ->with('status_success','Report updated successfully');
