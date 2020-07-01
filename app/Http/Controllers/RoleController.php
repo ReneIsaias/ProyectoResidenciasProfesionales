@@ -18,7 +18,7 @@ class RoleController extends Controller
     {
         Gate::authorize('haveaccess','role.index');
 
-        $roles =  Role::orderBy('id','Desc')->paginate(5);
+        $roles = Role::orderBy('id','Desc')->paginate(10);
 
         return view('role.index',compact('roles'));
     }
@@ -50,6 +50,7 @@ class RoleController extends Controller
         $request->validate([
             'name'          => 'required|max:100|unique:roles,name',
             'slug'          => 'required|max:100|unique:roles,slug',
+            'description'   => 'required|max:200',
             'full-access'   => 'required|in:yes,no'
         ]);
 
@@ -120,6 +121,7 @@ class RoleController extends Controller
         $request->validate([
             'name'          => 'required|max:100|unique:roles,name,'.$role->id,
             'slug'          => 'required|max:100|unique:roles,slug,'.$role->id,
+            'description'   => 'required|max:200',
             'full-access'   => 'required|in:yes,no'
         ]);
 

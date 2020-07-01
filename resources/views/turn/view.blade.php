@@ -4,10 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Turn</h2></div>
+                <div class="card-header bg-dark text-white"><h2>Ver Giro</h2></div>
                 <div class="card-body">
                     @include('custom.message')
-                    <form action="{{ route('turn.update', $turn->id) }}" method="POST">
+                    <form action="{{ route('turn.update', $turn->id ) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
@@ -16,23 +16,24 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="descriptionTurn"
-                                placeholder="Description Turn"
-                                name="descriptionTurn"
-                                value="{{ old('descriptionTurn' , $turn->descriptionTurn) }}"
-                                readonly
+                                class="form-control @error('descriptionTurn') is-invalid @enderror"
+                                id="descriptionTurn" placeholder="Descripcion del giro"
+                                name="descriptionTurn" value="{{ old('descriptionTurn', $turn->descriptionTurn ) }}"
+                                autocomplete="descriptionTurn" autofocus disabled required
                             >
+                            @error('descriptionTurn')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Created :</h6>
                             <input type="text"
                                 class="form-control"
-                                id="created_at"
-                                placeholder="created_at"
-                                name="created_at "
-                                value="{{ old('created_at' , $turn->created_at ) }}"
-                                readonly
+                                id="created_at" placeholder="created_at"
+                                name="created_at" value="{{ old('created_at' , $turn->created_at ) }}"
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>
@@ -59,12 +60,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('turn.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('turn.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','turn.edit')
-                                        <a class="btn btn-success" href="{{ route('turn.edit',$turn->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('turn.edit',$turn->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

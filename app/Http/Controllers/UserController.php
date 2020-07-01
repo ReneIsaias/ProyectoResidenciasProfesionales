@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Permission\Models\Role;
 use App\User;
+use App\Post;
+use App\Degrestudy;
+use App\Career;
 
 class UserController extends Controller
 {
@@ -17,7 +20,7 @@ class UserController extends Controller
     {
         $this->authorize('haveaccess','user.index');
 
-        $users =  User::with('roles')->orderBy('id','Desc')->paginate(10);
+        $users = User::with('roles','post','degrestudy','career')->orderBy('id','Desc')->paginate(10);
 
         return view('user.index',compact('users'));
     }
@@ -30,6 +33,7 @@ class UserController extends Controller
     public function create()
     {
         //$this->authorize('create', User::class);
+
         //return 'Create';
     }
 
@@ -54,9 +58,12 @@ class UserController extends Controller
     {
         $this->authorize('view', [$user, ['user.show','userown.show'] ]);
 
-        $roles= Role::orderBy('name')->get();
+        $roles = Role::orderBy('name')->get();
+        $posts = Post::orderBy('namePost')->get();
+        $degrestudys = Degrestudy::orderBy('degreeStudy')->get();
+        $careers = Career::orderBy('careerName')->get();
 
-        return view('user.view', compact('roles', 'user'));
+        return view('user.view', compact('roles', 'user', 'posts', 'degrestudys', 'careers'));
     }
 
     /**
@@ -70,8 +77,11 @@ class UserController extends Controller
         $this->authorize('update', [$user, ['user.edit','userown.edit'] ]);
 
         $roles= Role::orderBy('name')->get();
+        $posts = Post::orderBy('namePost')->get();
+        $degrestudys = Degrestudy::orderBy('degreeStudy')->get();
+        $careers = Career::orderBy('careerName')->get();
 
-        return view('user.edit', compact('roles', 'user'));
+        return view('user.edit', compact('roles', 'user', 'posts', 'degrestudys', 'careers'));
     }
 
     /**
@@ -84,11 +94,18 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'    => 'required|max:100|unique:users,name,'.$user->id,
-            'email'   => 'required|max:100|unique:users,email,'.$user->id
+            'keyUser'           => 'min:5|max:30|unique:users,keyUser,' . $user->id,
+            'nameUser'          => 'required|min:2|max:30',
+            'firstLastname'     => 'required|min:2|max:30|',
+            'secondLastname'    => 'required|min:2|max:30|',
+            'phoneUser'         => 'required|numeric|unique:users,phoneUser,' . $user->id,
+            'name'              => 'required|min:4|max:30|unique:users,name,' . $user->id,
+            'email'             => 'required|email|max:100|unique:users,email,' . $user->id,
+            'statusUser'        => 'required',
+            'posts_id'          => '',
+            'degrestudies_id'   => '',
+            'careers_id'        => '',
         ]);
-
-        //dd($request->all());
 
         $user->update($request->all());
 
@@ -107,7 +124,9 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $this->authorize('haveaccess','user.destroy');
+
         $user->delete();
+
         return redirect()->route('user.index')
             ->with('status_success','User successfully removed');
     }

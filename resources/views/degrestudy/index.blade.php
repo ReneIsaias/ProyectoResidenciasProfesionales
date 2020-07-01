@@ -59,11 +59,14 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>degree studys</td>
-                                        <td>registradas</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay nivel de estudios registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

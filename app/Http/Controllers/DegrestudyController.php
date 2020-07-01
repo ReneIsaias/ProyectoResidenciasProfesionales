@@ -17,7 +17,7 @@ class DegrestudyController extends Controller
     {
         Gate::authorize('haveaccess','degrestudy.index');
 
-        $degrestudys =  Degrestudy::orderBy('id','Desc')->paginate(5);
+        $degrestudys = Degrestudy::orderBy('id','Desc')->paginate(10);
 
         return view('degrestudy.index',compact('degrestudys'));
     }

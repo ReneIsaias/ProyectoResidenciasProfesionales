@@ -17,7 +17,7 @@ class TypefamilyController extends Controller
     {
         Gate::authorize('haveaccess','typefamily.index');
 
-        $typefamilys =  Typefamily::orderBy('id','Desc')->paginate(5);
+        $typefamilys = Typefamily::orderBy('id','Desc')->paginate(10);
 
         return view('typefamily.index',compact('typefamilys'));
     }

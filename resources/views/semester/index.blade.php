@@ -58,13 +58,15 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>semesters</td>
-                                        <td>registradas</td>
-                                        <td></td>
-                                    </tr>
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                <center><h3>No hay semestres registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

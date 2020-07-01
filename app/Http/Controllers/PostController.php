@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         Gate::authorize('haveaccess','post.index');
 
-        $posts =  Post::orderBy('id','Desc')->paginate(5);
+        $posts = Post::orderBy('id','Desc')->paginate(10);
 
         return view('post.index',compact('posts'));
     }

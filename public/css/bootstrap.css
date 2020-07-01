@@ -13,7 +13,12 @@
     background-image: url('tesjiLogo.png');
     size: auto;
 }
-
+.card-body{
+    background-color: #5a626b79;
+}
+main{
+    background-color: grey;
+}
 /* Estilos del navegador */
 body {
     padding-top: 0px;

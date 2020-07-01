@@ -7,7 +7,7 @@
                 <div class="card-header bg-dark text-white"><h2>Edit Report</h2></div>
                 <div class="card-body">
                     @include('custom.message')
-                    <form action="{{ route('report.update', $report->id) }}" method="POST">
+                    <form action="{{ route('report.update', $report->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="container">
@@ -16,31 +16,55 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameReport"
-                                placeholder="Name of Report"
-                                name="nameReport"
-                                value="{{ old('nameReport', $report->nameReport) }}"
-                                autofocus
+                                class="form-control @error('nameReport') is-invalid @enderror"
+                                id="nameReport" placeholder="Nombre del reporte"
+                                name="nameReport" value="{{ old('nameReport', $report->nameReport ) }}"
+                                autocomplete="nameReport" autofocus required
                             >
+                            @error('nameReport')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea class="form-control" placeholder="Description report" name="descriptionReport" id="descriptionReport" rows="3">{{ old('descriptionReport', $report->descriptionReport) }}</textarea>
+                            <textarea class="form-control @error('descriptionReport') is-invalid @enderror" placeholder="Descripcion del reporte" name="descriptionReport" id="descriptionReport" rows="3" required>{{ old('descriptionReport', $report->descriptionReport ) }}</textarea>
+                            @error('descriptionReport')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Type File :</h6>
                             <select class="form-control"  name="typefiles_id" id="typefiles_id">
                                 @foreach($typefiles as $typefile)
                                     <option value="{{ $typefile->id }}"
-                                        @if( $typefile->descriptionFile ==  $report->typefile->descriptionFile )
-                                            selected
-                                        @endif
+                                        @isset( $report->typefile->descriptionFile )
+                                            @if( $typefile->descriptionFile ==  $report->typefile->descriptionFile )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $typefile->descriptionFile }}
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <h6>File :</h6>
+                            <input type="text"
+                                class="form-control @error('fileReport') is-invalid @enderror"
+                                id="fileReport" placeholder="Ruta del archivo"
+                                name="fileReport" value="{{ old('fileReport', $report->fileReport ) }}"
+                                autocomplete="fileReport" autofocus required
+                            >
+                            @error('fileReport')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -66,10 +90,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('report.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('report.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

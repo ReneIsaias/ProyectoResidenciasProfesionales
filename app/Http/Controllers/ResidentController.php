@@ -58,23 +58,23 @@ class ResidentController extends Controller
         Gate::authorize('haveaccess','resident.create');
 
         $request->validate([
-            'residentRegistration'      => 'required|unique:residents,residentRegistration',
-            'nameResident'              => 'required|min:2|max:30',
-            'firtsLastnameResident'     => 'required|min:2|max:30',
-            'secondLastnameResident'    => 'required|min:2|max:30',
-            'emailResident'             => 'required|email|unique:residents,emailResident',
-            'phoneResident'             => 'required|numeric|unique:residents,phoneResident',
-            'periodResident'            => 'required|min:2|max:100',
-            'addessResidente'           => 'required|min:2|max:200',
-            'cityResident'              => 'required|min:3|max:100',
-            'cpResident'                => 'required|numeric|min:4',
-            'statusResident'            => 'required',
-            'careers_id'                => 'required',
-            'typesaves_id'              => 'required',
-            'semesters_id'              => 'required',
-            'studyplans_id'             => 'required',
-            'relatives_id'              => 'required',
-            'typebecas_id'              => 'required'
+            'residentRegistration'    => 'required|unique:residents,residentRegistration',
+            'nameResident'            => 'required|min:2|max:30',
+            'firtsLastnameResident'   => 'required|min:2|max:30',
+            'secondLastnameResident'  => 'required|min:2|max:30',
+            'emailResident'           => 'required|email|unique:residents,emailResident',
+            'phoneResident'           => 'required|numeric|unique:residents,phoneResident',
+            'periodResident'          => 'required|min:2|max:100',
+            'directionResident'       => 'required|min:2|max:200',
+            'cityResident'            => 'required|min:3|max:100',
+            'cpResident'              => 'required|numeric|min:4',
+            'statusResident'          => 'required',
+            'careers_id'              => 'required',
+            'typesaves_id'            => 'required',
+            'semesters_id'            => 'required',
+            'studyplans_id'           => 'required',
+            'relatives_id'            => '',
+            'typebecas_id'            => 'required'
 
         ]);
 
@@ -136,23 +136,23 @@ class ResidentController extends Controller
         $this->authorize('haveaccess','resident.edit');
 
         $request->validate([
-            'residentRegistration'      => 'required|min:2|unique:residents,residentRegistration,'.$resident->id,
-            'nameResident'              => 'required|min:2|max:30,'.$resident->id,
-            'firtsLastnameResident'     => 'required|min:2|max:30,'.$resident->id,
-            'secondLastnameResident'    => 'required|min:2|max:30,'.$resident->id,
-            'emailResident'             => 'required|email|max:50|unique:residents,emailResident,'.$resident->id,
-            'phoneResident'             => 'required|numeric|min:10|unique:residents,phoneResident,'.$resident->id,
-            'periodResident'            => 'required|min:2|max:100',
-            'addessResidente'           => 'required|min:2|max:200',
-            'cityResident'              => 'required|min:3|max:100',
-            'cpResident'                => 'required|numeric|min:4',
-            'statusResident'            => 'required',
-            'careers_id'                => 'required',
-            'typesaves_id'              => 'required',
-            'semesters_id'              => 'required',
-            'studyplans_id'             => 'required',
-            'relatives_id'              => 'required',
-            'typebecas_id'              => 'required'
+            'residentRegistration'   => 'required|min:2|unique:residents,residentRegistration,'.$resident->id,
+            'nameResident'           => 'required|min:2|max:30',
+            'firtsLastnameResident'  => 'required|min:2|max:30',
+            'secondLastnameResident' => 'required|min:2|max:30',
+            'emailResident'          => 'required|email|max:50|unique:residents,emailResident,'.$resident->id,
+            'phoneResident'          => 'required|numeric|min:10|unique:residents,phoneResident,'.$resident->id,
+            'periodResident'         => 'required|min:2|max:100',
+            'directionResident'      => 'required|min:2|max:200',
+            'cityResident'           => 'required|min:3|max:100',
+            'cpResident'             => 'required|numeric|min:4',
+            'statusResident'         => 'required',
+            'careers_id'             => 'required',
+            'typesaves_id'           => 'required',
+            'semesters_id'           => 'required',
+            'studyplans_id'          => 'required',
+            'relatives_id'           => 'required',
+            'typebecas_id'           => 'required',
         ]);
 
         $resident -> update($request->all());

@@ -16,13 +16,16 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="descriptionSector"
-                                placeholder="Description Sector"
-                                name="descriptionSector"
-                                value="{{ old('descriptionSector' , $sector->descriptionSector) }}"
-                                autofocus
+                                class="form-control @error('descriptionSector') is-invalid @enderror"
+                                id="descriptionSector" placeholder="Descripcion del sector"
+                                name="descriptionSector" value="{{ old('descriptionSector', $sector->descriptionSector ) }}"
+                                autocomplete="descriptionSector" autofocus required
                             >
+                            @error('descriptionSector')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -48,10 +51,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('sector.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('sector.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ class SituationproyectController extends Controller
     {
         Gate::authorize('haveaccess','situationproyect.index');
 
-        $situationproyects =  Situationproyect::orderBy('id','Desc')->paginate(5);
+        $situationproyects = Situationproyect::orderBy('id','Desc')->paginate(10);
 
         return view('situationproyect.index',compact('situationproyects'));
     }

@@ -17,9 +17,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'keyUser',
+        'nameUser',
+        'firstLastname',
+        'secondLastname',
+        'phoneUser',
         'name',
         'email',
         'password',
+        'statusUser',
+        'posts_id',
+        'degrestudies_id',
+        'careers_id',
     ];
 
     /**
@@ -40,4 +49,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function post()
+    {
+        return $this->belongsTo('App\Post', 'posts_id', 'id');
+    }
+
+    public function degrestudy()
+    {
+        return $this->belongsTo('App\Degrestudy', 'degrestudies_id', 'id');
+    }
+
+    public function career()
+    {
+        return $this->belongsTo('App\Career', 'careers_id', 'id');
+    }
 }

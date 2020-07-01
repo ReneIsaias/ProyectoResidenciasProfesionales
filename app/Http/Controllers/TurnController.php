@@ -17,7 +17,7 @@ class TurnController extends Controller
     {
         Gate::authorize('haveaccess','turn.index');
 
-        $turns =  Turn::orderBy('id','Desc')->paginate(5);
+        $turns =  Turn::orderBy('id','Desc')->paginate(10);
 
         return view('turn.index',compact('turns'));
     }

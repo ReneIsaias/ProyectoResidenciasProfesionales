@@ -17,7 +17,7 @@ class TypesafeController extends Controller
     {
         Gate::authorize('haveaccess','typesafe.index');
 
-        $typesafes = Typesafe::orderBy('id','Desc')->paginate(5);
+        $typesafes = Typesafe::orderBy('id','Desc')->paginate(10);
 
         return view('typesafe.index',compact('typesafes'));
     }

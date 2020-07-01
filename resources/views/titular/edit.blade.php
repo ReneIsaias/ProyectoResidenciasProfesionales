@@ -16,42 +16,55 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameTitular"
-                                placeholder="Name Titular"
-                                name="nameTitular"
-                                value="{{ old('nameTitular', $titular->nameTitular) }}"
-                                autofocus
+                                class="form-control @error('nameTitular') is-invalid @enderror"
+                                id="nameTitular" placeholder="Nombre del titular"
+                                name="nameTitular" value="{{ old('nameTitular' , $titular->nameTitular) }}"
+                                autocomplete="nameTitular" autofocus required
                             >
+                            @error('nameTitular')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Firs Last Name :</h6>
+                            <h6>First Last Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="firstLastname"
-                                placeholder="First Lastname Titular"
-                                name="firstLastname"
-                                value="{{ old('firstLastname' , $titular->firstLastname) }}"
+                                class="form-control @error('firstLastname') is-invalid @enderror"
+                                id="firstLastname" placeholder="Primer apellido del titular"
+                                name="firstLastname" value="{{ old('firstLastname', $titular->firstLastname ) }}"
+                                autocomplete="firstLastname" required
                             >
+                            @error('firstLastname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Second Last Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="secondLastname"
-                                placeholder="Second Lastname Titular"
-                                name="secondLastname"
-                                value="{{ old('secondLastname' , $titular->secondLastname) }}"
+                                class="form-control @error('secondLastname') is-invalid @enderror"
+                                id="secondLastname" placeholder="Segundo apellido del titular"
+                                name="secondLastname" value="{{ old('secondLastname', $titular->secondLastname ) }}"
+                                autocomplete="secondLastname" required
                             >
+                            @error('secondLastname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Post :</h6>
                             <select class="form-control"  name="posts_id" id="posts_id">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->id }}"
-                                        @if( $post->namePost ==  $titular->post->namePost )
-                                            selected
-                                        @endif
+                                        @isset( $titular->post->namePost )
+                                            @if( $post->namePost ==  $titular->post->namePost )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $post->namePost }}
                                     </option>
@@ -61,12 +74,16 @@
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneTitular"
-                                placeholder="Phone Titular"
-                                name="phoneTitular"
-                                value="{{ old('phoneTitular' , $titular->phoneTitular) }}"
+                                class="form-control @error('phoneTitular') is-invalid @enderror"
+                                id="phoneTitular" placeholder="Numero de telefono del titular"
+                                name="phoneTitular" value="{{ old('phoneTitular', $titular->phoneTitular ) }}"
+                                autocomplete="phoneTitular" required
                             >
+                            @error('phoneTitular')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -92,10 +109,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('titular.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('titular.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

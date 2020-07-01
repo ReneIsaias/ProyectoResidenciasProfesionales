@@ -16,22 +16,27 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameTitular"
-                                placeholder="nameTitular"
-                                name="nameTitular"
+                                class="form-control @error('nameTitular') is-invalid @enderror"
+                                id="nameTitular" placeholder="nameTitular"
+                                name="nameTitular" disabled
                                 value="{{ $titular->nameTitular }} {{ $titular->firstLastname }} {{ $titular->secondLastname }}"
-                                disabled
                             >
+                            @error('nameTitular')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Post :</h6>
-                            <select disabled class="form-control" name="posts_id" id="posts_id">
+                            <select disabled class="form-control"  name="posts_id" id="posts_id">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->id }}"
-                                        @if($post->namePost ==  $titular->post->namePost)
-                                            selected
-                                        @endif
+                                        @isset( $titular->post->namePost )
+                                            @if( $post->namePost ==  $titular->post->namePost )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $post->namePost }}
                                     </option>
@@ -41,13 +46,16 @@
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneTitular"
-                                placeholder="phoneTitular"
-                                name="phoneTitular"
+                                class="form-control @error('phoneTitular') is-invalid @enderror"
+                                id="phoneTitular" placeholder="phoneTitular"
+                                name="phoneTitular" disabled
                                 value="{{ old('phoneTitular' , $titular->phoneTitular) }}"
-                                disabled
                             >
+                            @error('phoneTitular')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -73,12 +81,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('titular.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('titular.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','titular.edit')
-                                        <a class="btn btn-success" href="{{ route('titular.edit',$titular->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('titular.edit',$titular->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

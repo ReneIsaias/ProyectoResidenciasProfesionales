@@ -14,33 +14,38 @@
                         <h3>Required data</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Key :</h6>
+                            <h6>Clave :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="keyCareer"
-                                placeholder="key career"
-                                name="keyCareer"
-                                value="{{ old('keyCareer', $career->keyCareer) }}"
-                                autofocus
+                                class="form-control @error('keyCareer') is-invalid @enderror"
+                                id="keyCareer" placeholder="Clave de la carrera"
+                                name="keyCareer" value="{{ old('keyCareer', $career->keyCareer ) }}"
+                                autocomplete="keyCareer" required autofocus
                             >
+                            @error('keyCareer')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="careerName"
-                                placeholder="career name"
-                                name="careerName"
-                                value="{{ old('careerName', $career->careerName) }}"
+                                class="form-control @error('careerName') is-invalid @enderror"
+                                id="careerName" placeholder="Nombre de la carrera"
+                                name="careerName" value="{{ old('careerName', $career->careerName ) }}"
+                                autocomplete="careerName" required
                             >
+                            @error('careerName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio"
-                                id="careerStatus1"
-                                name="careerStatus"
-                                class="custom-control-input"
-                                value="1"
+                                id="careerStatus1" name="careerStatus"
+                                class="custom-control-input" value="1"
                                 @if ( $career->careerStatus =="1" )
                                     checked
                                 @elseif ( old('careerStatus')=="1" )
@@ -66,10 +71,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('career.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('career.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ class CovenantController extends Controller
     {
         Gate::authorize('haveaccess','covenant.index');
 
-        $covenants =  Covenant::orderBy('id','Desc')->paginate(5);
+        $covenants =  Covenant::orderBy('id','Desc')->paginate(10);
 
         return view('covenant.index',compact('covenants'));
     }

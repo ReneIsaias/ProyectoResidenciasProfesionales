@@ -16,23 +16,23 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="descriptionBeca"
-                                placeholder="Description Beca"
-                                name="descriptionBeca"
-                                value="{{ old('descriptionBeca' , $typebeca->descriptionBeca) }}"
-                                readonly
+                                class="form-control @error('descriptionBeca') is-invalid @enderror"
+                                id="descriptionBeca" placeholder="Descripcion de la Beca"
+                                name="descriptionBeca" value="{{ old('descriptionBeca' , $typebeca->descriptionBeca) }}"
+                                autocomplete="descriptionBeca" disabled autofocus
                             >
+                            @error('descriptionBeca')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Created :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="created_at"
-                                placeholder="created_at"
-                                name="created_at "
+                            <input type="text" class="form-control" id="created_at"
+                                placeholder="created_at" name="created_at "
                                 value="{{ old('created_at' , $typebeca->created_at ) }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>
@@ -59,12 +59,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('typebeca.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('typebeca.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','typebeca.edit')
-                                        <a class="btn btn-success" href="{{ route('typebeca.edit',$typebeca->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('typebeca.edit',$typebeca->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

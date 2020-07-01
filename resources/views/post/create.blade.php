@@ -15,33 +15,39 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="namePost"
-                                placeholder="Name Post"
-                                name="namePost"
-                                value="{{ old('namePost') }}"
-                                autofocus
+                                class="form-control @error('namePost') is-invalid @enderror"
+                                id="namePost" placeholder="Nombre del puesto"
+                                name="namePost" value="{{ old('namePost') }}"
+                                autocomplete="namePost" autofocus required
                             >
+                            @error('namePost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea class="form-control" placeholder="Description Post" name="descriptionPost" id="descriptionPost" rows="3">{{ old('descriptionPost') }}</textarea>
+                            <textarea class="form-control @error('descriptionPost') is-invalid @enderror" placeholder="Descripcion del puesto" name="descriptionPost" id="descriptionPost" rows="3" required>{{ old('descriptionPost') }}</textarea>
+                            @error('descriptionPost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="hidden"
-                                class="form-control"
-                                id="statusPost"
-                                value="1"
-                                name="statusPost"
+                                class="form-control" id="statusPost"
+                                value="1" name="statusPost"
                             >
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('post.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('post.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

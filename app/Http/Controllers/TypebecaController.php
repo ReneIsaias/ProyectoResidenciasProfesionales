@@ -17,7 +17,7 @@ class TypebecaController extends Controller
     {
         Gate::authorize('haveaccess','typebeca.index');
 
-        $typebecas =  Typebeca::orderBy('id','Desc')->paginate(5);
+        $typebecas =  Typebeca::orderBy('id','Desc')->paginate(10);
 
         return view('typebeca.index',compact('typebecas'));
     }

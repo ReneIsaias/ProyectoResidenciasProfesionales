@@ -16,23 +16,24 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="degreeStudy"
-                                placeholder="Degree Study"
-                                name="degreeStudy"
-                                value="{{ old('degreeStudy' , $degrestudy->degreeStudy) }}"
-                                readonly
+                                class="form-control @error('degreeStudy') is-invalid @enderror"
+                                id="degreeStudy" placeholder="Descripcion del nivel de estudios"
+                                name="degreeStudy" value="{{ old('degreeStudy', $degrestudy->degreeStudy ) }}"
+                                autocomplete="degreeStudy" autofocus disabled required
                             >
+                            @error('degreeStudy')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Created :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="created_at"
-                                placeholder="created_at"
-                                name="created_at "
+                                class="form-control" id="created_at"
+                                placeholder="created_at" name="created_at "
                                 value="{{ old('created_at' , $degrestudy->created_at ) }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>
@@ -59,12 +60,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('degrestudy.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('degrestudy.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','degrestudy.edit')
-                                        <a class="btn btn-success" href="{{ route('degrestudy.edit',$degrestudy->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('degrestudy.edit',$degrestudy->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

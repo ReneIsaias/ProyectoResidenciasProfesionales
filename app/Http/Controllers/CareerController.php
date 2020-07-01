@@ -17,7 +17,7 @@ class CareerController extends Controller
     {
         Gate::authorize('haveaccess','career.index');
 
-        $careers =  Career::orderBy('id','Desc')->paginate(5);
+        $careers =  Career::orderBy('id','Desc')->paginate(10);
 
         return view('career.index',compact('careers'));
     }

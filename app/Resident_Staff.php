@@ -12,7 +12,7 @@ class Resident_Staff extends Model
      * @var array
      */
     protected $fillable = [
-        'staff_id',
+        'user_id',
         'residents_id',
     ];
 }

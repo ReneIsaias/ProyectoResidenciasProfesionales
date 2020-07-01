@@ -9,7 +9,7 @@
                 @can('haveaccess','busines.create')
                     <a href="{{ route('busines.create') }}"
                         class="btn btn-primary float-right"
-                        >
+                    >
                         Create
                     </a>
                     <br><br>
@@ -37,7 +37,11 @@
                                         <td>{{ $busine->emailBusiness }}</td>
                                         <td>{{ $busine->cityBusiness }}</td>
                                         <td>{{ $busine->phoneBusiness }}</td>
-                                        <td>{{ $busine->sector->descriptionSector }}</td>
+                                        <td>
+                                            @isset( $busine->sector->descriptionSector )
+                                                {{ $busine->sector->descriptionSector }}
+                                            @endisset
+                                        </td>
                                         <td>
                                             @if ($busine->statusBusines == "1")
                                                 Activo
@@ -70,10 +74,10 @@
                                         <td>-</td>
                                         <td>No</td>
                                         <td>hay</td>
-                                        <td>-</td>
                                         <td>business</td>
                                         <td>registradas</td>
                                         <td>aun</td>
+                                        <td>-</td>
                                         <td>-</td>
                                     </tr>
                                 @endforelse

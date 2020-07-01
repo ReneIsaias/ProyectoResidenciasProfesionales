@@ -16,22 +16,27 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameRelative"
-                                placeholder="nameRelative"
-                                name="nameRelative"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="Nombre del familiar" name="nameRelative"
                                 value="{{ $relative->nameRelative }} {{ $relative->firstLastname }} {{ $relative->secondLastname }}"
-                                readonly
+                                autocomplete="nameRelative" autofocus disabled required
                             >
+                            @error('nameRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Type Family :</h6>
-                            <select disabled class="form-control" name="id_typefamilies" id="id_typefamilies">
+                            <select disabled class="form-control"  name="typefamilies_id" id="typefamilies_id">
                                 @foreach($typefamilys as $typefamily)
                                     <option value="{{ $typefamily->id }}"
-                                        @if($typefamily->descriptionType ==  $relative->typefamily->descriptionType)
-                                            selected
-                                        @endif
+                                        @isset( $relative->typefamily->descriptionType )
+                                            @if( $typefamily->descriptionType ==  $relative->typefamily->descriptionType )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $typefamily->descriptionType }}
                                     </option>
@@ -41,17 +46,25 @@
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneRelative"
-                                placeholder="phoneRelative"
-                                name="phoneRelative"
-                                value="{{ old('phoneRelative' , $relative->phoneRelative) }}"
-                                readonly
+                                class="form-control @error('phoneRelative') is-invalid @enderror"
+                                id="phoneRelative" placeholder="Numero de telefono del familiar"
+                                name="phoneRelative" value="{{ old('phoneRelative', $relative->phoneRelative ) }}"
+                                autocomplete="phoneRelative" required disabled
                             >
+                            @error('phoneRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Address :</h6>
-                            <textarea readonly class="form-control" placeholder="Addres Relative" name="addresRelative" id="addresRelative" rows="3">{{ old('addresRelative', $relative->addresRelative) }}</textarea>
+                            <h6>Direction :</h6>
+                            <textarea class="form-control @error('directionRelative') is-invalid @enderror" disabled placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative', $relative->directionRelative ) }}</textarea>
+                            @error('directionRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -77,12 +90,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('relative.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('relative.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','relative.edit')
-                                        <a class="btn btn-success" href="{{ route('relative.edit',$relative->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('relative.edit',$relative->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

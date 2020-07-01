@@ -15,29 +15,30 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="degreeStudy"
-                                placeholder="Degree Study"
-                                name="degreeStudy"
-                                value="{{ old('degreeStudy') }}"
-                                autofocus
+                                class="form-control @error('degreeStudy') is-invalid @enderror"
+                                id="degreeStudy" placeholder="Descripcion del nivel de estudios"
+                                name="degreeStudy" value="{{ old('degreeStudy') }}"
+                                autocomplete="degreeStudy" autofocus required
                             >
+                            @error('degreeStudy')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="hidden"
-                                class="form-control"
-                                id="statusDegree"
-                                value="1"
-                                name="statusDegree"
+                                class="form-control" id="statusDegree"
+                                value="1" name="statusDegree"
                             >
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('degrestudy.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('degrestudy.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

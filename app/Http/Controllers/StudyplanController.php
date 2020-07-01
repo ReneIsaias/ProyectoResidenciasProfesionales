@@ -17,7 +17,7 @@ class StudyplanController extends Controller
     {
         Gate::authorize('haveaccess','studyplan.index');
 
-        $studyplans =  Studyplan::orderBy('id','Desc')->paginate(5);
+        $studyplans = Studyplan::orderBy('id','Desc')->paginate(10);
 
         return view('studyplan.index',compact('studyplans'));
     }
@@ -47,7 +47,7 @@ class StudyplanController extends Controller
         $request->validate([
             'planStudies'       => 'required|max:100|unique:studyplans,planStudies',
             'descriptionPlan'   => 'required|max:200',
-            'planDate'          => 'required|max:50|date|unique:studyplans,planDate',
+            'planDate'          => 'required|date|unique:studyplans,planDate',
             'planStatus'        => 'required'
         ]);
 
@@ -97,7 +97,7 @@ class StudyplanController extends Controller
         $request->validate([
             'planStudies'       => 'required|max:100|unique:studyplans,planStudies,'.$studyplan->id,
             'descriptionPlan'   => 'required|max:200',
-            'planDate'          => 'required|max:50|date|unique:studyplans,planDate,'.$studyplan->id,
+            'planDate'          => 'required|date|unique:studyplans,planDate,'.$studyplan->id,
             'planStatus'        => 'required'
         ]);
 

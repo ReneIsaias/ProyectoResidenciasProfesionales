@@ -16,27 +16,39 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="name"
-                                placeholder="Name"
-                                name="name"
-                                value="{{ old('name', $role->name) }}"
-                                autofocus
+                                class="form-control @error('name') is-invalid @enderror"
+                                id="name" placeholder="Name of role"
+                                name="name" value="{{ old('name', $role->name ) }}"
+                                autocomplete="name" autofocus required
                             >
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Slug :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="slug"
-                                placeholder="Slug"
-                                name="slug"
-                                value="{{ old('slug' , $role->slug) }}"
+                                class="form-control @error('slug') is-invalid @enderror"
+                                id="slug" placeholder="Slug of role"
+                                name="slug" value="{{ old('slug', $role->slug ) }}"
+                                autocomplete="slug" required
                             >
+                            @error('slug')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea class="form-control" placeholder="Description" name="description" id="description" rows="3">{{ old('description', $role->description) }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Description of role" name="description" id="description" rows="3" required>{{ old('description', $role->description ) }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <hr>
                         <h3>Full Access :</h3>
@@ -87,10 +99,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('role.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('role.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

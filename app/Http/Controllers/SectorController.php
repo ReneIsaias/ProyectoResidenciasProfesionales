@@ -17,7 +17,7 @@ class SectorController extends Controller
     {
         Gate::authorize('haveaccess','sector.index');
 
-        $sectors =  Sector::orderBy('id','Desc')->paginate(5);
+        $sectors =  Sector::orderBy('id','Desc')->paginate(10);
 
         return view('sector.index',compact('sectors'));
     }
@@ -76,7 +76,7 @@ class SectorController extends Controller
      */
     public function edit(Sector $sector)
     {
-         $this->authorize('haveaccess','sector.edit');
+        $this->authorize('haveaccess','sector.edit');
 
         return view('sector.edit', compact('sector'));
     }

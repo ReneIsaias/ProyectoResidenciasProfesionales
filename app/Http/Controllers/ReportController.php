@@ -47,12 +47,23 @@ class ReportController extends Controller
     {
         Gate::authorize('haveaccess','report.create');
 
-        $request->validate([
-            'nameReport'            => 'required|min:2|max:100',
-            'descriptionReport'     => 'required|min:5|max:200',
-            'statusReport'          => 'required',
-            'typefiles_id'          => 'required'
-        ]);
+        return $request;
+
+        if($request->hasFile('fileReport')){
+            $file = $request->file('fileReport');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path().'/reports/images/',$name);
+
+            $request->validate([
+                'nameReport'        => 'required|min:5|max:100',
+                'descriptionReport' => 'required|min:5|max:200',
+                'fileReport'        => 'required',
+                'statusReport'      => 'required',
+                'typefiles_id'      => 'required',
+            ]);
+        }else{
+            return back()->with('status_success','Required file of report');
+        }
 
         $report = Report::create($request->all());
 
@@ -102,10 +113,11 @@ class ReportController extends Controller
         $this->authorize('haveaccess','report.edit');
 
         $request->validate([
-            'nameReport'          => 'required|min:2|max:100,'.$report->id,
-            'descriptionReport'   => 'required|min:5|max:200,'.$report->id,
-            'statusReport'        => 'required',
-            'typefiles_id'        => 'required'
+            'nameReport'        => 'required|min:5|max:100',
+            'descriptionReport' => 'required|min:5|max:200',
+            'fileReport'        => 'required',
+            'statusReport'      => 'required',
+            'typefiles_id'      => 'required',
         ]);
 
         $report -> update($request->all());

@@ -59,11 +59,14 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>type familys</td>
-                                        <td>registradas</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay tipos de familia registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

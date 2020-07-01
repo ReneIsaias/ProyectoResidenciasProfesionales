@@ -36,7 +36,11 @@
                                             {{ $relative->secondLastname}}
                                         </td>
                                         <td>{{ $relative->phoneRelative }}</td>
-                                        <td>{{ $relative->typefamily->descriptionType }}</td>
+                                        <td>
+                                            @isset( $relative->typefamily->descriptionType )
+                                                {{ $relative->typefamily->descriptionType }}
+                                            @endisset
+                                        </td>
                                         <td>
                                             @if ($relative->statusRelative == "1")
                                                 Activa
@@ -66,13 +70,16 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>relatives</td>
-                                        <td>registradas</td>
-                                        <td>aun</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay familiares registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

@@ -16,17 +16,25 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="namePost"
-                                placeholder="Name Post"
-                                name="namePost"
-                                value="{{ old('namePost' , $post->namePost) }}"
-                                readonly
+                                class="form-control @error('namePost') is-invalid @enderror"
+                                id="namePost" placeholder="Nombre del puesto"
+                                name="namePost" value="{{ old('namePost', $post->namePost ) }}"
+                                autocomplete="namePost" autofocus disabled required
                             >
+                            @error('namePost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea readonly class="form-control" name="descriptionPost" id="descriptionPost" rows="3">{{ old('descriptionPost', $post->descriptionPost) }}</textarea>
+                            <textarea class="form-control @error('descriptionPost') is-invalid @enderror" disabled placeholder="Descripcion del puesto" name="descriptionPost" id="descriptionPost" rows="3" required>{{ old('descriptionPost', $post->descriptionPost ) }}</textarea>
+                            @error('descriptionPost')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Created :</h6>
@@ -36,7 +44,7 @@
                                 placeholder="created_at"
                                 name="created_at "
                                 value="{{ old('created_at' , $post->created_at ) }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>
@@ -63,12 +71,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('post.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('post.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','post.edit')
-                                        <a class="btn btn-success" href="{{ route('post.edit',$post->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('post.edit',$post->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

@@ -16,28 +16,25 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="convenant"
-                                placeholder="Name Convenant"
-                                name="convenant"
-                                value="{{ old('convenant' , $covenant->convenant) }}"
-                                readonly
+                                class="form-control @error('convenant') is-invalid @enderror"
+                                id="convenant" placeholder="Nombre del convenio"
+                                name="convenant" value="{{ old('convenant', $covenant->convenant ) }}"
+                                autocomplete="convenant" required disabled autofocus
                             >
+                            @error('convenant')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea class="form-control" name="descriptionConvenant" id="descriptionConvenant" rows="3" readonly>{{ old('descriptionConvenant', $covenant->descriptionConvenant) }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <h6>Created :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="created_at"
-                                placeholder="created_at"
-                                name="created_at "
-                                value="{{ old('created_at' , $covenant->created_at ) }}"
-                                readonly
-                            >
+                            <textarea disabled class="form-control @error('descriptionConvenant') is-invalid @enderror" placeholder="Descripción del convenio" name="descriptionConvenant" id="descriptionConvenant" rows="3" autocomplete="descriptionConvenant" required>{{ old('descriptionConvenant', $covenant->descriptionConvenant ) }}</textarea>
+                            @error('descriptionConvenant')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -63,12 +60,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('covenant.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('covenant.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','covenant.edit')
-                                        <a class="btn btn-success" href="{{ route('covenant.edit',$covenant->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('covenant.edit',$covenant->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

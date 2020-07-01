@@ -16,23 +16,24 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameSemester"
-                                placeholder="Name Semester"
-                                name="nameSemester"
-                                value="{{ old('nameSemester' , $semester->nameSemester) }}"
-                                readonly
+                                class="form-control @error('nameSemester') is-invalid @enderror"
+                                id="nameSemester" placeholder="Nombre del semestre"
+                                name="nameSemester" value="{{ old('nameSemester', $semester->nameSemester ) }}"
+                                autocomplete="nameSemester" required disabled autofocus
                             >
+                            @error('nameSemester')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Created :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="created_at"
-                                placeholder="created_at "
-                                name="created_at "
+                                class="form-control" id="created_at"
+                                placeholder="created_at " name="created_at "
                                 value="{{ old('created_at ' , $semester->created_at ) }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>
@@ -59,12 +60,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('semester.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('semester.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','semester.edit')
-                                        <a class="btn btn-success" href="{{ route('semester.edit',$semester->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('semester.edit',$semester->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

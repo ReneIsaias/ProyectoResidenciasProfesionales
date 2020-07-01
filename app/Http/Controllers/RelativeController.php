@@ -18,7 +18,7 @@ class RelativeController extends Controller
     {
         Gate::authorize('haveaccess','relative.index');
 
-        $relatives =  Relative::with('typefamily')->orderBy('id','Desc')->paginate(10);
+        $relatives = Relative::with('typefamily')->orderBy('id','Desc')->paginate(10);
 
         return view('relative.index',compact('relatives'));
     }
@@ -48,13 +48,13 @@ class RelativeController extends Controller
         Gate::authorize('haveaccess','relative.create');
 
         $request->validate([
-            'nameRelative'       => 'required|min:2|max:30',
-            'firstLastname'      => 'required|min:5|max:30',
-            'secondLastname'     => 'required|min:5|max:30',
-            'phoneRelative'      => 'required|min:10|numeric',
-            'addresRelative'     => 'required|min:10|max:200',
-            'statusRelative'     => 'required',
-            'typefamilies_id'    => 'required'
+            'nameRelative'      => 'required|min:2|max:30',
+            'firstLastname'     => 'required|min:5|max:30',
+            'secondLastname'    => 'required|min:5|max:30',
+            'phoneRelative'     => 'required|min:10|numeric|unique:relatives,phoneRelative',
+            'directionRelative' => 'required|min:10|max:200',
+            'statusRelative'    => 'required',
+            'typefamilies_id'   => 'required'
         ]);
 
         $relative = Relative::create($request->all());
@@ -105,13 +105,13 @@ class RelativeController extends Controller
         $this->authorize('haveaccess','relative.edit');
 
         $request->validate([
-            'nameRelative'       => 'required|min:2|max:30,'.$relative->id,
-            'firstLastname'      => 'required|min:5|max:30,'.$relative->id,
-            'secondLastname'     => 'required|min:5|max:30,'.$relative->id,
-            'phoneRelative'      => 'required|min:10|numeric',
-            'addresRelative'     => 'required|min:10|max:200',
-            'statusRelative'     => 'required',
-            'typefamilies_id'    => 'required'
+            'nameRelative'      => 'required|min:2|max:30',
+            'firstLastname'     => 'required|min:5|max:30',
+            'secondLastname'    => 'required|min:5|max:30',
+            'phoneRelative'     => 'required|min:10|numeric|unique:relatives,phoneRelative,'.$relative->id,
+            'directionRelative' => 'required|min:10|max:200',
+            'statusRelative'    => 'required',
+            'typefamilies_id'   => 'required'
         ]);
 
         $relative -> update($request->all());

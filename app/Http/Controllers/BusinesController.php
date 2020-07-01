@@ -6,7 +6,7 @@ use App\Busines;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Titular;
-use App\Staff;
+use App\User;
 use App\Covenant;
 use App\Turn;
 use App\Sector;
@@ -23,8 +23,7 @@ class BusinesController extends Controller
     {
         Gate::authorize('haveaccess','busines.index');
 
-        $business = Busines::with('titular','staff','covenant','turn','sector')->orderBy('id','Desc')->paginate(10);
-
+        $business = Busines::with('titular','user','covenant','turn','sector')->orderBy('id','Desc')->paginate(10);
 
         return view('busines.index',compact('business'));
     }
@@ -39,13 +38,13 @@ class BusinesController extends Controller
         Gate::authorize('haveaccess','busines.create');
 
         $titulars = Titular::where('statusTitular',1)->get();
-        $staffs = Staff::where('statusStaff',1)->get();
+        $users = User::where('statusUser',1)->get();
         $covenants = Covenant::where('statusConvenant',1)->get();
         $turns = Turn::where('statusTurn',1)->get();
         $sectors = Sector::where('statusSector',1)->get();
         $posts = Post::orderBy('namePost')->get();
 
-        return view('busines.create',compact('titulars','staffs','covenants','turns','sectors','posts'));
+        return view('busines.create',compact('titulars','users','covenants','turns','sectors','posts'));
     }
 
     /**
@@ -62,9 +61,9 @@ class BusinesController extends Controller
             'rfcBusiness'      => 'required|min:8|max:50',
             'nameBusiness'     => 'required|min:2|max:200',
             'emailBusiness'    => 'required|min:2|max:100|email',
-            'misionBusiness'   => 'required|min:2',
-            'addresBusiness'   => 'required',
-            'coloniaBusiness'  => 'required|min:10',
+            'misionBusiness'   => 'required|min:5',
+            'directionBusiness'=> 'required|min:5',
+            'coloniaBusiness'  => 'required|min:5',
             'cityBusiness'     => 'required|min:2|max:100',
             'phoneBusiness'    => 'required|min:2|numeric',
             'cpBusiness'       => 'required|min:4|numeric',
@@ -72,10 +71,10 @@ class BusinesController extends Controller
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
             'titulars_id'      => 'required',
-            'staff_id'         => 'required',
+            'user_id'          => 'required',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
-            'sectors_id'       => 'required'
+            'sectors_id'       => 'required',
         ]);
 
         $busines = Busines::create($request->all());
@@ -96,13 +95,13 @@ class BusinesController extends Controller
 
         $busines = $busine;
         $titulars = Titular::orderBy('nameTitular')->get();
-        $staffs = Staff::orderBy('nameStaff')->get();
+        $users = User::orderBy('nameStaff')->get();
         $covenants = Covenant::orderBy('convenant')->get();
         $turns = Turn::orderBy('descriptionTurn')->get();
         $sectors = Sector::orderBy('descriptionSector')->get();
         $posts = Post::orderBy('namePost')->get();
 
-        return view('busines.view', compact('busines','titulars', 'staffs','covenants','turns','sectors','posts'));
+        return view('busines.view', compact('busines','titulars', 'users','covenants','turns','sectors','posts'));
     }
 
     /**
@@ -117,13 +116,13 @@ class BusinesController extends Controller
 
         $busines = $busine;
         $titulars = Titular::orderBy('nameTitular')->get();
-        $staffs = Staff::orderBy('nameStaff')->get();
+        $users = User::orderBy('nameStaff')->get();
         $covenants = Covenant::orderBy('convenant')->get();
         $turns = Turn::orderBy('descriptionTurn')->get();
         $sectors = Sector::orderBy('descriptionSector')->get();
         $posts = Post::orderBy('namePost')->get();
 
-        return view('busines.edit', compact('busines','titulars', 'staffs','covenants','turns','sectors','posts'));
+        return view('busines.edit', compact('busines','titulars', 'users','covenants','turns','sectors','posts'));
     }
 
     /**
@@ -141,9 +140,9 @@ class BusinesController extends Controller
             'rfcBusiness'      => 'required|min:8|max:50',
             'nameBusiness'     => 'required|min:2|max:200',
             'emailBusiness'    => 'required|min:2|max:100|email',
-            'misionBusiness'   => 'required|min:2',
-            'addresBusiness'   => 'required',
-            'coloniaBusiness'  => 'required|min:10',
+            'misionBusiness'   => 'required|min:5',
+            'directionBusiness'=> 'required|min:5',
+            'coloniaBusiness'  => 'required|min:5',
             'cityBusiness'     => 'required|min:2|max:100',
             'phoneBusiness'    => 'required|min:2|numeric',
             'cpBusiness'       => 'required|min:4|numeric',
@@ -151,10 +150,10 @@ class BusinesController extends Controller
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
             'titulars_id'      => 'required',
-            'staff_id'         => 'required',
+            'user_id'          => 'required',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
-            'sectors_id'       => 'required'
+            'sectors_id'       => 'required',
         ]);
 
         $busine -> update($request->all());
@@ -171,7 +170,7 @@ class BusinesController extends Controller
      */
     public function destroy(Busines $busines)
     {
-         $this->authorize('haveaccess','busines.destroy');
+        $this->authorize('haveaccess','busines.destroy');
 
         $busines->delete();
 

@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Turns</h2></div>
+                <div class="card-header bg-dark text-white"><h2>Lista de Giros</h2></div>
                 <div class="card-body">
                 @can('haveaccess','turn.create')
                     <a href="{{ route('turn.create') }}"
@@ -59,11 +59,14 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>turns</td>
-                                        <td>registrados</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay giros registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

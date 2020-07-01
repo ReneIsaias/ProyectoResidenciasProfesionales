@@ -16,12 +16,16 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="descriptionBeca"
-                                placeholder="Description Beca"
-                                name="descriptionBeca"
-                                value="{{ old('descriptionBeca' , $typebeca->descriptionBeca) }}"
+                                class="form-control @error('descriptionBeca') is-invalid @enderror"
+                                id="descriptionBeca" placeholder="Descripcion de la Beca"
+                                name="descriptionBeca" value="{{ old('descriptionBeca' , $typebeca->descriptionBeca) }}"
+                                autocomplete="descriptionBeca" autofocus
                             >
+                            @error('descriptionBeca')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
@@ -47,10 +51,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('typebeca.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('typebeca.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

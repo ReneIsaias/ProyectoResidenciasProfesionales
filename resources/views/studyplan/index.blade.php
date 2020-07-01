@@ -61,12 +61,14 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>study plans</td>
-                                        <td>registrados</td>
-                                        <td></td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay planes de estudio registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

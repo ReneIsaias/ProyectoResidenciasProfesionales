@@ -19,7 +19,7 @@ class Resident extends Model
         'emailResident',
         'phoneResident',
         'periodResident',
-        'addessResidente',
+        'directionResident',
         'cityResident',
         'cpResident',
         'statusResident',

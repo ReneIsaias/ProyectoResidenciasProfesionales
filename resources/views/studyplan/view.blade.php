@@ -16,38 +16,47 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="planStudies"
-                                placeholder="planStudies"
-                                name="planStudies"
-                                value="{{ old('planStudies', $studyplan->planStudies) }}"
-                                readonly
+                                class="form-control @error('planStudies') is-invalid @enderror"
+                                id="planStudies" placeholder="Nombre del plan de estudios"
+                                name="planStudies" value="{{ old('planStudies', $studyplan->planStudies ) }}"
+                                autocomplete="planStudies" required disabled autofocus
                             >
+                            @error('planStudies')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Description :</h6>
-                            <textarea readonly class="form-control" placeholder="Description Plan Study" name="descriptionPlan" id="descriptionPlan" rows="3">{{ old('descriptionPlan', $studyplan->descriptionPlan) }}</textarea>
+                            <textarea disabled class="form-control @error('descriptionPlan') is-invalid @enderror" placeholder="Descripcion del plan de estudios" name="descriptionPlan" id="descriptionPlan" rows="3">{{ old('descriptionPlan', $studyplan->descriptionPlan ) }}</textarea>
+                            @error('descriptionPlan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Date :</h6>
                             <input type="date"
-                                class="form-control"
-                                id="planDate"
-                                placeholder="Plan Date"
-                                name="planDate"
-                                value="{{ old('planDate' , $studyplan->planDate) }}"
-                                readonly
+                                class="form-control @error('planDate') is-invalid @enderror"
+                                id="planDate" placeholder="Plan Date"
+                                name="planDate" value="{{ old('planDate', $studyplan->planDate ) }}"
+                                autocomplete="planDate" required disabled
                             >
+                            @error('planDate')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Created :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="created_at"
-                                placeholder="created_at "
-                                name="created_at "
+                                class="form-control" id="created_at"
+                                placeholder="created_at " name="created_at "
                                 value="{{ old('created_at ' , $studyplan->created_at ) }}"
-                                readonly
+                                disabled
                             >
                         </div>
                         <h6>Status :</h6>
@@ -74,12 +83,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('studyplan.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('studyplan.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','studyplan.edit')
-                                        <a class="btn btn-success" href="{{ route('studyplan.edit',$studyplan->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('studyplan.edit',$studyplan->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

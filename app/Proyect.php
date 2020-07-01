@@ -27,7 +27,6 @@ class Proyect extends Model
         'dateRealRevicion',
         'statusProject',
         'situationproyects_id',
-        'reports_id',
         'busines_id',
         'residents_id',
     ];
@@ -35,11 +34,6 @@ class Proyect extends Model
     public function situationproyect()
     {
         return $this->belongsTo('App\Situationproyect', 'situationproyects_id', 'id');
-    }
-
-    public function report()
-    {
-        return $this->belongsTo('App\Report', 'reports_id', 'id');
     }
 
     public function busine()

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-dark text-white"><h2>List of Users</h2></div>
                 <div class="card-body">
@@ -15,7 +15,10 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">User</th>
                                     <th scope="col">Role(s)</th>
+                                    <th scope="col">Status</th>
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
@@ -23,12 +26,21 @@
                                 @foreach ( $users as $user )
                                 <tr>
                                     <th scope="row">{{ $user->id }}</th>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->nameUser }} {{ $user->firstLastname }} {{ $user->secondLastname }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phoneUser }}</td>
+                                    <td>{{ $user->name }}</td>
                                     <td>
                                         @isset( $user->roles[0]->name )
                                             {{ $user->roles[0]->name }}
                                         @endisset
+                                    </td>
+                                    <td>
+                                        @if ($user->statusUser == "1")
+                                            Activo
+                                        @else
+                                            Inactivo
+                                        @endif
                                     </td>
                                     <td>
                                         @can('view',[$user, ['user.show','userown.show'] ])

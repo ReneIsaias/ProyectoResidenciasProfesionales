@@ -31,7 +31,11 @@
                                     <tr>
                                         <th scope="row">{{ $report->id }}</th>
                                         <td>{{ $report->nameReport }}</td>
-                                        <td>{{ $report->typefile->descriptionFile }}</td>
+                                        <td>
+                                            @isset( $report->typefile->descriptionFile )
+                                                {{ $report->typefile->descriptionFile }}
+                                            @endisset
+                                        </td>
                                         <td>
                                             @if ($report->statusReport == "1")
                                                 Activo
@@ -61,13 +65,15 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>reports</td>
-                                        <td>registrados</td>
-                                        <td>aun</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay reportes registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

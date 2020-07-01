@@ -17,7 +17,7 @@ class TypefileController extends Controller
     {
         Gate::authorize('haveaccess','typefile.index');
 
-        $typefiles =  Typefile::orderBy('id','Desc')->paginate(5);
+        $typefiles = Typefile::orderBy('id','Desc')->paginate(10);
 
         return view('typefile.index',compact('typefiles'));
     }

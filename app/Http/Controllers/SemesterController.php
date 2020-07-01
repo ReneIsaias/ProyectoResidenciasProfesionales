@@ -17,7 +17,7 @@ class SemesterController extends Controller
     {
         Gate::authorize('haveaccess','semester.index');
 
-        $semesters =  Semester::orderBy('id','Desc')->paginate(5);
+        $semesters =  Semester::orderBy('id','Desc')->paginate(10);
 
         return view('semester.index',compact('semesters'));
     }

@@ -6,7 +6,6 @@ use App\Proyect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Situationproyect;
-use App\Report;
 use App\Busines;
 use App\Resident;
 
@@ -21,7 +20,7 @@ class ProyectController extends Controller
     {
         Gate::authorize('haveaccess','proyect.index');
 
-        $proyects = Proyect::with('situationproyect','report','busine','resident')->orderBy('id','Desc')->paginate(10);
+        $proyects = Proyect::with('situationproyect','busine','resident')->orderBy('id','Desc')->paginate(10);
 
         return view('proyect.index',compact('proyects'));
     }
@@ -36,7 +35,6 @@ class ProyectController extends Controller
         Gate::authorize('haveaccess','proyect.create');
 
         $situationproyects = Situationproyect::where('statusSituation',1)->get();
-        $reports = Report::where('statusReport',1)->get();
         $busines = Busines::where('statusBusines',1)->get();
         $residents = Resident::where('statusResident',1)->get();
 
@@ -54,24 +52,23 @@ class ProyectController extends Controller
         Gate::authorize('haveaccess','proyect.create');
 
         $request->validate([
-            'keyProyect'                => 'required|min:8|max:50|unique:proyects,keyProyect',
-            'nameProyect'               => 'required|min:10|max:200|unique:proyects,nameProyect',
-            'descriptionProyect'        => 'required|min:10',
-            'objGeneProyect'            => 'required|min:10',
-            'objEspeciProyect'          => 'required|min:10',
-            'JustifyProject'            => 'required|min:10',
-            'dateStart'                 => 'required|date',
-            'dateEnd'                   => 'required|date',
-            'qualificationProyect'      => '',
-            'revisionProyect'           => '',
-            'dateRevision'              => '',
-            'hourlyProyect'             => 'required',
-            'dateRealRevicion'          => '',
-            'statusProject'             => 'required',
-            'situationproyects_id'      => 'required',
-            'reports_id'                => 'required',
-            'busines_id'                => 'required',
-            'residents_id'              => 'required'
+            'keyProyect'            => 'required|min:8|max:50|unique:proyects,keyProyect',
+            'nameProyect'           => 'required|min:10|max:200|unique:proyects,nameProyect',
+            'descriptionProyect'    => 'required|min:10',
+            'objGeneProyect'        => 'required|min:10',
+            'objEspeciProyect'      => 'required|min:10',
+            'JustifyProject'        => 'required|min:10',
+            'dateStart'             => 'required|date',
+            'dateEnd'               => 'required|date',
+            'qualificationProyect'  => '',
+            'revisionProyect'       => '',
+            'dateRevision'          => '',
+            'hourlyProyect'         => 'required',
+            'dateRealRevicion'      => '',
+            'statusProject'         => 'required',
+            'situationproyects_id'  => 'required',
+            'busines_id'            => 'required',
+            'residents_id'          => 'required'
         ]);
 
         $proyect = Proyect::create($request->all());
@@ -91,11 +88,10 @@ class ProyectController extends Controller
         $this->authorize('haveaccess','proyect.show');
 
         $situationproyects = Situationproyect::orderBy('projectSituation')->get();
-        $reports = Report::orderBy('nameReport')->get();
         $busines = Busines::orderBy('rfcBusiness')->get();
         $residents = Resident::orderBy('residentRegistration')->get();
 
-        return view('proyect.view', compact('proyect','situationproyects', 'reports','busines','residents'));
+        return view('proyect.view', compact('proyect','situationproyects','busines','residents'));
     }
 
     /**
@@ -109,11 +105,10 @@ class ProyectController extends Controller
         $this->authorize('haveaccess','proyect.edit');
 
         $situationproyects = Situationproyect::orderBy('projectSituation')->get();
-        $reports = Report::orderBy('nameReport')->get();
         $busines = Busines::orderBy('rfcBusiness')->get();
         $residents = Resident::orderBy('residentRegistration')->get();
 
-        return view('proyect.edit',  compact('proyect','situationproyects', 'reports','busines','residents'));
+        return view('proyect.edit',  compact('proyect','situationproyects','busines','residents'));
     }
 
     /**
@@ -128,24 +123,23 @@ class ProyectController extends Controller
         $this->authorize('haveaccess','proyect.edit');
 
         $request->validate([
-            'keyProyect'                => 'required|min:8|max:50|unique:proyects,keyProyect,'.$proyect->id,
-            'nameProyect'               => 'required|min:10|max:200|unique:proyects,nameProyect,'.$proyect->id,
-            'descriptionProyect'        => 'required|min:10,'.$proyect->id,
-            'objGeneProyect'            => 'required|min:10,'.$proyect->id,
-            'objEspeciProyect'          => 'required|min:10,'.$proyect->id,
-            'JustifyProject'            => 'required|min:10,'.$proyect->id,
-            'dateStart'                 => 'required|date',
-            'dateEnd'                   => 'required|date',
-            'qualificationProyect'      => '',
-            'revisionProyect'           => '',
-            'dateRevision'              => '',
-            'hourlyProyect'             => 'required',
-            'dateRealRevicion'          => '',
-            'statusProject'             => 'required',
-            'situationproyects_id'      => 'required',
-            'reports_id'                => 'required',
-            'busines_id'                => 'required',
-            'residents_id'              => 'required'
+            'keyProyect'            => 'required|min:8|max:50|unique:proyects,keyProyect,'.$proyect->id,
+            'nameProyect'           => 'required|min:10|max:200|unique:proyects,nameProyect,'.$proyect->id,
+            'descriptionProyect'    => 'required|min:10|unique:proyects,descriptionProyect,'.$proyect->id,
+            'objGeneProyect'        => 'required|min:10|unique:proyects,objGeneProyect,'.$proyect->id,
+            'objEspeciProyect'      => 'required|min:10|unique:proyects,objEspeciProyect,'.$proyect->id,
+            'JustifyProject'        => 'required|min:10|unique:proyects,JustifyProject,'.$proyect->id,
+            'dateStart'             => 'required|date',
+            'dateEnd'               => 'required|date',
+            'qualificationProyect'  => '',
+            'revisionProyect'       => '',
+            'dateRevision'          => '',
+            'hourlyProyect'         => 'required',
+            'dateRealRevicion'      => '',
+            'statusProject'         => 'required',
+            'situationproyects_id'  => 'required',
+            'busines_id'            => 'required',
+            'residents_id'          => 'required',
         ]);
 
         $proyect -> update($request->all());

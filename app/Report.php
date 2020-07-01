@@ -14,14 +14,10 @@ class Report extends Model
     protected $fillable = [
         'nameReport',
         'descriptionReport',
+        'fileReport',
         'statusReport',
         'typefiles_id',
     ];
-
-   /*  public function typefile(){
-        return $this->hasMany('App\Typefile','typefiles_id')->withTimesTamps();
-    } */
-
 
     public function typefile()
     {

@@ -51,7 +51,7 @@ class TitularController extends Controller
             'nameTitular'       => 'required|min:2|max:30',
             'firstLastname'     => 'required|min:2|max:30',
             'secondLastname'    => 'required|min:2|max:30',
-            'phoneTitular'      => 'required|min:10|numeric',
+            'phoneTitular'      => 'required|min:1000000000|max:9999999999|numeric',
             'statusTitular'     => 'required',
             'posts_id'          => 'required'
         ]);
@@ -104,10 +104,10 @@ class TitularController extends Controller
         $this->authorize('haveaccess','titular.edit');
 
         $request->validate([
-            'nameTitular'       => 'required|min:2|max:30,'.$titular->id,
-            'firstLastname'     => 'required|min:2|max:30,'.$titular->id,
-            'secondLastname'    => 'required|min:2|max:30,'.$titular->id,
-            'phoneTitular'      => 'required|min:10|numeric',
+            'nameTitular'       => 'required|min:2|max:30',
+            'firstLastname'     => 'required|min:2|max:30',
+            'secondLastname'    => 'required|min:2|max:30',
+            'phoneTitular'      => 'required|min:1000000000|max:9999999999|numeric',
             'statusTitular'     => 'required',
             'posts_id'          => 'required'
         ]);

@@ -15,7 +15,7 @@ class Proyect_Staff extends Model
         'calification',
         'descriptionCalification',
         'proyects_id',
-        'staff_id',
+        'user_id',
         'situationproyects_id',
     ];
 }

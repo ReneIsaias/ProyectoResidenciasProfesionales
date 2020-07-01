@@ -15,92 +15,154 @@
                         <div class="form-group">
                             <h6>Rfc :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="rfcBusiness"
-                                placeholder="RFC of Busines"
-                                name="rfcBusiness"
-                                value="{{ old('rfcBusiness') }}"
-                                autofocus
+                                class="form-control @error('rfcBusiness') is-invalid @enderror"
+                                id="rfcBusiness" placeholder="RFC of Busines"
+                                name="rfcBusiness" value="{{ old('rfcBusiness') }}"
+                                autocomplete="rfcBusiness" required autofocus
                             >
+                            @error('rfcBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameBusiness"
-                                placeholder="Name Busines"
-                                name="nameBusiness"
-                                value="{{ old('nameBusiness') }}"
+                                class="form-control @error('nameBusiness') is-invalid @enderror"
+                                id="nameBusiness" placeholder="Name Busines"
+                                name="nameBusiness" value="{{ old('nameBusiness') }}"
+                                autocomplete="nameBusiness" required
                             >
+                            @error('nameBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Email :</h6>
                             <input type="email"
-                                class="form-control"
+                                class="form-control @error('emailBusiness') is-invalid @enderror"
                                 id="emailBusiness"
                                 placeholder="Email Busines"
                                 name="emailBusiness"
                                 value="{{ old('emailBusiness') }}"
+                                autocomplete="emailBusiness" required
                             >
+                            @error('emailBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Mision :</h6>
-                            <textarea class="form-control" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3">{{ old('misionBusiness') }}</textarea>
+                            <textarea class="form-control @error('misionBusiness') is-invalid @enderror" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3" autocomplete="misionBusiness" required>{{ old('misionBusiness') }}</textarea>
+                            @error('misionBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Direction :</h6>
-                            <textarea class="form-control" placeholder="Direction of busines" name="addresBusiness" id="addresBusiness" rows="3">{{ old('addresBusiness') }}</textarea>
+                            <textarea class="form-control @error('directionBusiness') is-invalid @enderror" placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3" autocomplete="directionBusiness" required>{{ old('directionBusiness') }}</textarea>
+                            @error('directionBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Colonia :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="coloniaBusiness"
-                                placeholder="Colonia of busines"
-                                name="coloniaBusiness"
-                                value="{{ old('coloniaBusiness') }}"
+                                class="form-control @error('coloniaBusiness') is-invalid @enderror"
+                                id="coloniaBusiness" placeholder="Colonia of busines"
+                                name="coloniaBusiness" value="{{ old('coloniaBusiness') }}"
+                                autocomplete="coloniaBusiness" required
                             >
+                            @error('coloniaBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>City :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cityBusiness"
-                                placeholder="City of busines"
-                                name="cityBusiness"
-                                value="{{ old('cityBusiness') }}"
+                                class="form-control @error('cityBusiness') is-invalid @enderror"
+                                id="cityBusiness" placeholder="City of busines"
+                                name="cityBusiness" value="{{ old('cityBusiness') }}"
+                                autocomplete="cityBusiness" required
                             >
+                            @error('cityBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneBusiness"
-                                placeholder="Phone of busines"
-                                name="phoneBusiness"
-                                value="{{ old('phoneBusiness') }}"
+                                class="form-control @error('phoneBusiness') is-invalid @enderror"
+                                id="phoneBusiness" placeholder="Phone of busines"
+                                name="phoneBusiness" value="{{ old('phoneBusiness') }}"
+                                autocomplete="phoneBusiness" required
                             >
+                            @error('phoneBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>C.P. :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cpBusiness"
-                                placeholder="C.P. of busines"
-                                name="cpBusiness"
-                                value="{{ old('cpBusiness') }}"
+                                class="form-control @error('cpBusiness') is-invalid @enderror"
+                                id="cpBusiness" placeholder="C.P. of busines"
+                                name="cpBusiness" value="{{ old('cpBusiness') }}"
+                                autocomplete="cpBusiness" required
                             >
+                            @error('cpBusiness')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Persona Firm :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="personFirma"
-                                placeholder="Persona of firm convenat"
-                                name="personFirma"
-                                value="{{ old('personFirma') }}"
+                                class="form-control @error('personFirma') is-invalid @enderror"
+                                id="personFirma" placeholder="Persona of firm convenat"
+                                name="personFirma" value="{{ old('personFirma') }}"
+                                autocomplete="personFirma" required
                             >
+                            @error('personFirma')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+                        {{--
+                            <div class="form-group">
+                                <h6>Post :</h6>
+                                <select class="form-control"  name="postPerson" id="postPerson">
+                                    <option value="">--Seleccione Post--</option>
+                                    @foreach($posts as $post)
+                                        <option value="{{ $post->namePost }}"
+                                            @isset( $user->posts->namePost )
+                                                @if( $post->namePost ==  $user->posts->namePost )
+                                                    selected
+                                                @endif
+                                            @endisset
+                                            >
+                                            {{ $post->namePost }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        --}}
                         <div class="form-group">
                             <h6>Post :</h6>
                             <select class="form-control"
@@ -113,11 +175,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="hidden"
-                                class="form-control"
-                                id="statusBusines"
-                                value="1"
-                                name="statusBusines"
+                            <input type="hidden" class="form-control"
+                                id="statusBusines" value="1" name="statusBusines"
                             >
                         </div>
                         <div class="form-group">

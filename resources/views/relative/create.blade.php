@@ -15,74 +15,90 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameRelative"
-                                placeholder="Name Relative"
-                                name="nameRelative"
-                                value="{{ old('nameRelative') }}"
-                                autofocus
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="Nombre del familiar"
+                                name="nameRelative" value="{{ old('nameRelative') }}"
+                                autocomplete="nameRelative" autofocus required
                             >
+                            @error('nameRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>First Last Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="firstLastname"
-                                placeholder="First Lastname"
-                                name="firstLastname"
-                                value="{{ old('firstLastname') }}"
+                                class="form-control @error('firstLastname') is-invalid @enderror"
+                                id="firstLastname" placeholder="Primer apellido del familiar"
+                                name="firstLastname" value="{{ old('firstLastname') }}"
+                                autocomplete="firstLastname" required
                             >
+                            @error('firstLastname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Second Last Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="secondLastname"
-                                placeholder="Second Lastname"
-                                name="secondLastname"
-                                value="{{ old('secondLastname') }}"
+                                class="form-control @error('secondLastname') is-invalid @enderror"
+                                id="secondLastname" placeholder="Segundo apellido del familiar"
+                                name="secondLastname" value="{{ old('secondLastname') }}"
+                                autocomplete="secondLastname" required
                             >
+                            @error('secondLastname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Type Family :</h6>
-                            <select class="form-control"
-                                id="typefamilies_id"
-                                name="typefamilies_id">
-                                <option value="">--Seleccione Type Family--</option>
+                            <select required class="form-control" id="typefamilies_id" name="typefamilies_id">
+                                <option value="">--Seleccione el tipo de familiar--</option>
                                 @foreach ($typefamilys as $typefamily)
-                                    <option value="{{$typefamily->id}}">{{ old('typefile->descriptionFile', $typefamily->descriptionType) }}</option>
+                                    <option value="{{ $typefamily->id }}">{{ old('typefamily->descriptionType', $typefamily->descriptionType) }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneRelative"
-                                placeholder="Phone Relative"
-                                name="phoneRelative"
-                                value="{{ old('phoneRelative') }}"
+                                class="form-control @error('phoneRelative') is-invalid @enderror"
+                                id="phoneRelative" placeholder="Numero de telefono del familiar"
+                                name="phoneRelative" value="{{ old('phoneRelative') }}"
+                                autocomplete="phoneRelative" required
                             >
+                            @error('phoneRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Address :</h6>
-                            <textarea class="form-control" placeholder="Address Relative" name="addresRelative" id="addresRelative" rows="3">{{ old('addresRelative') }}</textarea>
+                            <h6>Direction :</h6>
+                            <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative') }}</textarea>
+                            @error('directionRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="hidden"
-                                class="form-control"
-                                id="statusRelative"
-                                value="1"
-                                name="statusRelative"
+                                class="form-control" id="statusRelative"
+                                value="1" name="statusRelative"
                             >
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('relative.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('relative.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

@@ -36,7 +36,11 @@
                                             {{ $titular->secondLastname }}
                                         </td>
                                         <td>{{ $titular->phoneTitular }}</td>
-                                        <td>{{ $titular->post->namePost }}</td>
+                                        <td>
+                                            @isset( $titular->post->namePost )
+                                                {{ $titular->post->namePost }}
+                                            @endisset
+                                        </td>
                                         <td>
                                             @if ($titular->statusTitular== "1")
                                                 Activo
@@ -66,13 +70,16 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>titulars</td>
-                                        <td>registradas</td>
-                                        <td>aun</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay titulares registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>
