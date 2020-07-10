@@ -7,12 +7,19 @@
                 <div class="card-header bg-dark text-white"><h2>Edit User</h2></div>
                 <div class="card-body">
                     @include('custom.message')
-                    <form action="{{ route('user.update', $user->id) }}" method="POST">
+                    <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="container">
                         <h3>Required data</h3>
                         <br>
+                        <center>
+                            <img width="40%" src="{{ Storage::url( $user->avatar ) }}" alt="Usuario">
+                        </center>
+                        <div>
+                            <center><h6>Cambiar :</h6></center>
+                            <center><input type="file" name="avatar"></center>
+                        </div>
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <h6>Clave :</h6>

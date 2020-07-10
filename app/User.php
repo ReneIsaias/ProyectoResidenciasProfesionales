@@ -18,6 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'keyUser',
+        'avatar',
         'nameUser',
         'firstLastname',
         'secondLastname',

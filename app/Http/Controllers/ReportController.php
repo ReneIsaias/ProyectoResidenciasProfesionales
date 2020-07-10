@@ -58,16 +58,16 @@ class ReportController extends Controller
 
         $report = Report::create($request->all());
 
-        if($request->file('fileReport')){
+        /* if($request->file('fileReport')){
             $path = Storage::disk('public')->put('reports', $request->file('fileReport'));
             $report->fill(['fileReport'=> asset($path) ])->save();
-        }
+        } */
 
-        /* if($request->hasFile('fileReport')){
+         if($request->hasFile('fileReport')){
             $file = $request->file('fileReport');
             $name = time() . $file->getClientOriginalName();
             $file->move(public_path().'/reports/images/',$name);
-        } */
+        }
 
         return redirect()->route('report.index')
             ->with('status_success','Report saved successfully');

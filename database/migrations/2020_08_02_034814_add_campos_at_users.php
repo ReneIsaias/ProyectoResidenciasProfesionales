@@ -16,7 +16,8 @@ class AddCamposAtUsers extends Migration
         Schema::table('users',  function(Blueprint $table) {
 
             $table->string('keyUser',30)->unique()->nullable()->after('id');
-            $table->string('nameUser',30)->nullable()->after('keyUser');
+            $table->string('avatar')->nullable()->after('id')->default('user.png');
+            $table->string('nameUser',30)->nullable()->after('avatar');
             $table->string('firstLastname',30)->nullable()->after('nameUser');
             $table->string('secondLastname',30)->nullable()->after('firstLastname');
             $table->string('phoneUser',20)->nullable()->after('secondLastname');

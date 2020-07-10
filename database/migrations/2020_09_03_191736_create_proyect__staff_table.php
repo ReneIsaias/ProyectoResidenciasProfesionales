@@ -19,7 +19,6 @@ class CreateProyectStaffTable extends Migration
             $table->string('descriptionCalification',200)->nullable();
             $table->foreignId('proyects_id')->references('id')->on('proyects')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('situationproyects_id')->references('id')->on('situationproyects')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

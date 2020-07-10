@@ -13,22 +13,9 @@
                     <div class="container">
                         <h3>Required data</h3>
                         <br>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <h6>Clave :</h6>
-                                <input id="keyUser" type="text" class="form-control
-                                    @error('keyUser') is-invalid @enderror"
-                                    name="keyUser" value="{{ old('keyUser', $user->keyUser ) }}"
-                                    required autocomplete="keyUser" placeholder="Clave del usuario"
-                                    disabled
-                                >
-                                @error('keyUser')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        <center>
+                            <img width="50%" src="{{ Storage::url( $user->avatar ) }}" alt="Usuario">
+                        </center>
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <h6>Name :</h6>

@@ -8,6 +8,7 @@ use App\User;
 use App\Post;
 use App\Degrestudy;
 use App\Career;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -101,6 +102,7 @@ class UserController extends Controller
             'phoneUser'         => 'required|numeric|unique:users,phoneUser,' . $user->id,
             'name'              => 'required|min:4|max:30|unique:users,name,' . $user->id,
             'email'             => 'required|email|max:100|unique:users,email,' . $user->id,
+            'avatar'            => 'image',
             'statusUser'        => 'required',
             'posts_id'          => '',
             'degrestudies_id'   => '',
@@ -108,6 +110,15 @@ class UserController extends Controller
         ]);
 
         $user->update($request->all());
+
+        if($request->file('avatar')){
+
+            $user->avatar = $request->file('avatar')->store('public');
+            $user->save();
+
+            /* $path = Storage::disk('public')->put('haber', $request->file('avatar'));
+            $user->fill(['avatar'=> asset($path) ])->save(); */
+        }
 
         $user->roles()->sync($request->get('roles'));
 
