@@ -43,9 +43,6 @@
                             @can('haveaccess','proyect.index')
                                 <a class="dropdown-item" href="{{ route('proyect.index') }}">Proyects</a>
                             @endcan
-                            @can('haveaccess','staff.index')
-                                <a class="dropdown-item" href="{{ route('staff.index') }}">Staffs</a>
-                            @endcan
                         </div>
                     </li>
                     <li class="nav-item dropdown">

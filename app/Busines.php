@@ -36,9 +36,9 @@ class Busines extends Model
         return $this->belongsTo('App\Titular', 'titulars_id', 'id');
     }
 
-    public function staff()
+    public function user()
     {
-        return $this->belongsTo('App\Staff', 'staff_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function covenant()

@@ -16,10 +16,8 @@
                         <div class="form-group">
                             <h6>Rfc :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="rfcBusiness"
-                                placeholder="RFC of Busines"
-                                name="rfcBusiness"
+                                class="form-control" id="rfcBusiness"
+                                placeholder="RFC of Busines" name="rfcBusiness"
                                 value="{{ old('rfcBusiness', $busines->rfcBusiness ) }}"
                                 disabled
                             >
@@ -27,10 +25,8 @@
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameBusiness"
-                                placeholder="Name Busines"
-                                name="nameBusiness"
+                                class="form-control" id="nameBusiness"
+                                placeholder="Name Busines" name="nameBusiness"
                                 value="{{ old('nameBusiness', $busines->nameBusiness ) }}"
                                 disabled
                             >
@@ -38,10 +34,8 @@
                         <div class="form-group">
                             <h6>Email :</h6>
                             <input type="email"
-                                class="form-control"
-                                id="emailBusiness"
-                                placeholder="Email Busines"
-                                name="emailBusiness"
+                                class="form-control" id="emailBusiness"
+                                placeholder="Email Busines" name="emailBusiness"
                                 value="{{ old('emailBusiness', $busines->emailBusiness ) }}"
                                 disabled
                             >
@@ -52,15 +46,13 @@
                         </div>
                         <div class="form-group">
                             <h6>Direction :</h6>
-                            <textarea disabled class="form-control" placeholder="Direction of busines" name="addresBusiness" id="addresBusiness" rows="3">{{ old('addresBusiness', $busines->addresBusiness ) }}</textarea>
+                            <textarea disabled class="form-control" placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3">{{ old('directionBusiness', $busines->directionBusiness ) }}</textarea>
                         </div>
                         <div class="form-group">
                             <h6>Colonia :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="coloniaBusiness"
-                                placeholder="Colonia of busines"
-                                name="coloniaBusiness"
+                                class="form-control" id="coloniaBusiness"
+                                placeholder="Colonia of busines" name="coloniaBusiness"
                                 value="{{ old('coloniaBusiness', $busines->coloniaBusiness ) }}"
                                 disabled
                             >
@@ -68,10 +60,8 @@
                         <div class="form-group">
                             <h6>City :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cityBusiness"
-                                placeholder="City of busines"
-                                name="cityBusiness"
+                                class="form-control" id="cityBusiness"
+                                placeholder="City of busines" name="cityBusiness"
                                 value="{{ old('cityBusiness', $busines->cityBusiness ) }}"
                                 disabled
                             >
@@ -79,10 +69,8 @@
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneBusiness"
-                                placeholder="Phone of busines"
-                                name="phoneBusiness"
+                                class="form-control" id="phoneBusiness"
+                                placeholder="Phone of busines" name="phoneBusiness"
                                 value="{{ old('phoneBusiness', $busines->phoneBusiness ) }}"
                                 disabled
                             >
@@ -90,10 +78,8 @@
                         <div class="form-group">
                             <h6>C.P. :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cpBusiness"
-                                placeholder="C.P. of busines"
-                                name="cpBusiness"
+                                class="form-control" id="cpBusiness"
+                                placeholder="C.P. of busines" name="cpBusiness"
                                 value="{{ old('cpBusiness', $busines->cpBusiness ) }}"
                                 disabled
                             >
@@ -101,10 +87,8 @@
                         <div class="form-group">
                             <h6>Persona Firm :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="personFirma"
-                                placeholder="Persona of firm convenat"
-                                name="personFirma"
+                                class="form-control" id="personFirma"
+                                placeholder="Persona of firm convenat" name="personFirma"
                                 value="{{ old('personFirma', $busines->personFirma ) }}"
                                 disabled
                             >
@@ -117,7 +101,7 @@
                                         @if($post->namePost ==  $busines->namePost)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $post->namePost }}
                                     </option>
                                 @endforeach
@@ -131,22 +115,22 @@
                                         @if($titular->nameTitular ==  $busines->titular->nameTitular)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $titular->nameTitular }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Staff :</h6>
+                            <h6>User :</h6>
                             <select disabled class="form-control" name="staff_id" id="staff_id">
-                                @foreach($staffs as $staff)
-                                    <option value="{{ $staff->id }}"
-                                        @if($staff->nameStaff ==  $busines->staff->nameStaff)
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}"
+                                        @if($user->name ==  $busines->user->name)
                                             selected
                                         @endif
-                                        >
-                                        {{ $staff->nameStaff }}
+                                    >
+                                        {{ $user->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -159,7 +143,7 @@
                                         @if($covenant->convenant ==  $busines->covenant->convenant)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $covenant->convenant }}
                                     </option>
                                 @endforeach
@@ -173,7 +157,7 @@
                                         @if($turn->descriptionTurn ==  $busines->turn->descriptionTurn)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $turn->descriptionTurn }}
                                     </option>
                                 @endforeach
@@ -187,7 +171,7 @@
                                         @if($sector->descriptionSector ==  $busines->sector->descriptionSector)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $sector->descriptionSector }}
                                     </option>
                                 @endforeach
@@ -217,12 +201,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('busines.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('busines.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','busines.edit')
-                                        <a class="btn btn-success" href="{{ route('busines.edit',$busines->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('busines.edit',$busines->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

@@ -72,14 +72,17 @@
                                 @empty
                                     <tr>
                                         <td>-</td>
-                                        <td>No</td>
-                                        <td>hay</td>
-                                        <td>business</td>
-                                        <td>registradas</td>
-                                        <td>aun</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay empresas registradas aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

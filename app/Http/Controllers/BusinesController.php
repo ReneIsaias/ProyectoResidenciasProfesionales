@@ -76,7 +76,6 @@ class BusinesController extends Controller
             'turns_id'         => 'required',
             'sectors_id'       => 'required',
         ]);
-
         $busines = Busines::create($request->all());
 
         return redirect()->route('busines.index')
@@ -95,7 +94,7 @@ class BusinesController extends Controller
 
         $busines = $busine;
         $titulars = Titular::orderBy('nameTitular')->get();
-        $users = User::orderBy('nameStaff')->get();
+        $users = User::orderBy('name')->get();
         $covenants = Covenant::orderBy('convenant')->get();
         $turns = Turn::orderBy('descriptionTurn')->get();
         $sectors = Sector::orderBy('descriptionSector')->get();
@@ -116,7 +115,7 @@ class BusinesController extends Controller
 
         $busines = $busine;
         $titulars = Titular::orderBy('nameTitular')->get();
-        $users = User::orderBy('nameStaff')->get();
+        $users = User::orderBy('name')->get();
         $covenants = Covenant::orderBy('convenant')->get();
         $turns = Turn::orderBy('descriptionTurn')->get();
         $sectors = Sector::orderBy('descriptionSector')->get();

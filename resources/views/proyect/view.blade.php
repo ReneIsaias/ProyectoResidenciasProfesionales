@@ -14,38 +14,36 @@
                         <h3>Required data</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Key :</h6>
+                            <h6>Clave :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="keyProyect"
-                                placeholder="Proyect Key"
-                                name="keyProyect"
+                                class="form-control" id="keyProyect"
+                                placeholder="Proyect Key" name="keyProyect"
                                 value="{{ old('keyProyect', $proyect->keyProyect ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>nameProyect :</h6>
+                            <h6>Nombre :</h6>
                             <textarea disabled class="form-control" placeholder="Name of Proyect" name="nameProyect" id="nameProyect" rows="3">{{ old('nameProyect', $proyect->nameProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>descriptionProyect :</h6>
+                            <h6>Descripcion :</h6>
                             <textarea disabled class="form-control" placeholder="Description of Proyect" name="descriptionProyect" id="descriptionProyect" rows="3">{{ old('descriptionProyect', $proyect->descriptionProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>objGeneProyect :</h6>
+                            <h6>Objetivo general :</h6>
                             <textarea disabled class="form-control" placeholder="Objetive General of Proyect" name="objGeneProyect" id="objGeneProyect" rows="3">{{ old('objGeneProyect', $proyect->objGeneProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>objEspeciProyect :</h6>
+                            <h6>Objetivo especifico :</h6>
                             <textarea disabled class="form-control" placeholder="objetives Especifics of Proyect" name="objEspeciProyect" id="objEspeciProyect" rows="3">{{ old('objEspeciProyect', $proyect->objEspeciProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>JustifyProject :</h6>
+                            <h6>Justificacion :</h6>
                             <textarea disabled class="form-control" placeholder="Justify of Proyect" name="JustifyProject" id="JustifyProject" rows="3">{{ old('JustifyProject', $proyect->JustifyProject ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>Date Start :</h6>
+                            <h6>Fecha de inicio :</h6>
                             <input type="date"
                                 class="form-control"
                                 id="dateStart"
@@ -56,7 +54,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Date End :</h6>
+                            <h6>Fecha de termino :</h6>
                             <input type="date"
                                 class="form-control"
                                 id="dateEnd"
@@ -67,7 +65,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Qualification :</h6>
+                            <h6>Calificacion :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="qualificationProyect"
@@ -89,7 +87,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Date :</h6>
+                            <h6>Fecha de revicion :</h6>
                             <input type="date"
                                 class="form-control"
                                 id="dateRevision"
@@ -100,7 +98,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Hourly :</h6>
+                            <h6>Horario :</h6>
                             <input type="text"
                                 class="form-control"
                                 id="hourlyProyect"
@@ -111,7 +109,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Date :</h6>
+                            <h6>Revicion real :</h6>
                             <input type="date"
                                 class="form-control"
                                 id="dateRealRevicion"
@@ -122,7 +120,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Situation :</h6>
+                            <h6>Situacion actual:</h6>
                             <select disabled class="form-control" name="situationproyects_id" id="situationproyects_id">
                                 @foreach($situationproyects as $situationproyect)
                                     <option value="{{ $situationproyect->id }}"
@@ -136,21 +134,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Report :</h6>
-                            <select disabled class="form-control" name="reports_id" id="reports_id">
-                                @foreach($reports as $report)
-                                    <option value="{{ $report->id }}"
-                                        @if($report->nameReport ==  $proyect->report->nameReport)
-                                            selected
-                                        @endif
-                                        >
-                                        {{ $report->nameReport }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Busines :</h6>
+                            <h6>Empresa :</h6>
                             <select disabled class="form-control" name="busines_id" id="busines_id">
                                 @foreach($busines as $busine)
                                     <option value="{{ $busine->id }}"
@@ -164,7 +148,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Resident :</h6>
+                            <h6>Residente :</h6>
                             <select disabled class="form-control" name="residents_id" id="residents_id">
                                 @foreach($residents as $resident)
                                     <option value="{{ $resident->id }}"
@@ -201,12 +185,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('proyect.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('proyect.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','proyect.edit')
-                                        <a class="btn btn-success" href="{{ route('proyect.edit',$proyect->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('proyect.edit',$proyect->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

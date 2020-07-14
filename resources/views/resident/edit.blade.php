@@ -16,107 +16,148 @@
                         <div class="form-group">
                             <h6>Matricula :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="residentRegistration"
-                                placeholder="Matricual Residente"
-                                name="residentRegistration"
-                                value="{{ old('residentRegistration', $resident->residentRegistration) }}"
-                                autofocus
+                                class="form-control @error('residentRegistration') is-invalid @enderror"
+                                id="residentRegistration" placeholder="Matricula del residente"
+                                name="residentRegistration" value="{{ old('residentRegistration', $resident->residentRegistration ) }}"
+                                autocomplete="residentRegistration" required autofocus
                             >
+                            @error('residentRegistration')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameResident"
-                                placeholder="Name Resident"
-                                name="nameResident"
-                                value="{{ old('nameResident', $resident->nameResident) }}"
-                                autofocus
+                                class="form-control @error('nameResident') is-invalid @enderror"
+                                id="nameResident" placeholder="Name resident"
+                                name="nameResident" value="{{ old('nameResident', $resident->nameResident ) }}"
+                                autocomplete="nameResident" required
                             >
+                            @error('nameResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Firs Last Name :</h6>
+                            <h6>First Last Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="firtsLastnameResident"
-                                placeholder="First Lastname Resident"
-                                name="firtsLastnameResident"
-                                value="{{ old('firtsLastnameResident' , $resident->firtsLastnameResident) }}"
+                                class="form-control @error('firtsLastnameResident') is-invalid @enderror"
+                                id="firtsLastnameResident" placeholder="First Lastname"
+                                name="firtsLastnameResident" value="{{ old('firtsLastnameResident', $resident->firtsLastnameResident ) }}"
+                                autocomplete="firtsLastnameResident" required
                             >
+                            @error('firtsLastnameResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Second Last Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="secondLastnameResident"
-                                placeholder="Second Lastname Resident"
-                                name="secondLastnameResident"
-                                value="{{ old('secondLastnameResident' , $resident->secondLastnameResident) }}"
+                                class="form-control @error('secondLastnameResident') is-invalid @enderror"
+                                id="secondLastnameResident" placeholder="Second Lastname"
+                                name="secondLastnameResident" value="{{ old('secondLastnameResident', $resident->secondLastnameResident ) }}"
+                                autocomplete="secondLastnameResident" required
                             >
+                            @error('secondLastnameResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Email :</h6>
-                            <input type="text"
-                                class="form-control"
-                                id="emailResident"
-                                placeholder="Email Resident"
-                                name="emailResident"
-                                value="{{ old('emailResident' , $resident->emailResident) }}"
+                            <input type="email"
+                                class="form-control @error('emailResident') is-invalid @enderror"
+                                id="emailResident" placeholder="Email residente"
+                                name="emailResident" value="{{ old('emailResident', $resident->emailResident ) }}"
+                                autocomplete="emailResident" required
                             >
+                            @error('emailResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneResident"
-                                placeholder="Phone Resident"
-                                name="phoneResident"
-                                value="{{ old('phoneResident' , $resident->phoneResident) }}"
+                                class="form-control @error('phoneResident') is-invalid @enderror"
+                                id="phoneResident" placeholder="Telefono residente"
+                                name="phoneResident" value="{{ old('phoneResident', $resident->phoneResident ) }}"
+                                autocomplete="phoneResident" required
                             >
+                            @error('phoneResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Perido :</h6>
+                            <h6>Period :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="periodResident"
-                                placeholder="Period Resident"
-                                name="periodResident"
-                                value="{{ old('periodResident' , $resident->periodResident) }}"
+                                class="form-control @error('periodResident') is-invalid @enderror"
+                                id="periodResident" placeholder="Periode residente"
+                                name="periodResident" value="{{ old('periodResident', $resident->periodResident ) }}"
+                                autocomplete="periodResident" required
                             >
+                            @error('periodResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Direction :</h6>
-                            <textarea class="form-control" placeholder="Direction resident" name="addessResidente" id="addessResidente" rows="3">{{ old('addessResidente', $resident->addessResidente) }}</textarea>
+                            <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction of resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident ) }}</textarea>
+                            @error('directionResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>City :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cityResident"
-                                placeholder="City Resident"
-                                name="cityResident"
-                                value="{{ old('cityResident' , $resident->cityResident) }}"
+                                class="form-control @error('cityResident') is-invalid @enderror"
+                                id="cityResident" placeholder="City resident"
+                                name="cityResident" value="{{ old('cityResident', $resident->cityResident ) }}"
+                                autocomplete="cityResident" required
                             >
+                            @error('cityResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>C.P. :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cpResident"
-                                placeholder="C.P. Resident"
-                                name="cpResident"
-                                value="{{ old('cpResident' , $resident->cpResident) }}"
+                                class="form-control @error('cpResident') is-invalid @enderror"
+                                id="cpResident" placeholder="C.P. resident"
+                                name="cpResident" value="{{ old('cpResident', $resident->cpResident ) }}"
+                                autocomplete="cpResident" required
                             >
+                            @error('cpResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Careers :</h6>
+                            <h6>Carrera :</h6>
                             <select class="form-control"  name="careers_id" id="careers_id">
                                 @foreach($careers as $career)
                                     <option value="{{ $career->id }}"
-                                        @if( $career->careerName ==  $resident->career->careerName )
-                                            selected
-                                        @endif
+                                        @isset( $resident->career->careerName )
+                                            @if( $career->careerName ==  $resident->career->careerName )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $career->careerName }}
                                     </option>
@@ -124,13 +165,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Type Safes :</h6>
-                            <select class="form-control"  name="typesaves_id" id="typesaves_id">
+                            <h6>Tipo de Seguro :</h6>
+                            <select required class="form-control" id="typesaves_id" name="typesaves_id">
                                 @foreach($typesafes as $typesafe)
                                     <option value="{{ $typesafe->id }}"
-                                        @if( $typesafe->safeName ==  $resident->typesafe->safeName )
-                                            selected
-                                        @endif
+                                        @isset( $resident->typesafe->safeName )
+                                            @if( $typesafe->safeName ==  $resident->typesafe->safeName )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $typesafe->safeName }}
                                     </option>
@@ -138,13 +181,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Semesters :</h6>
-                            <select class="form-control"  name="semesters_id" id="semesters_id">
+                            <h6>Semestre :</h6>
+                            <select required class="form-control" id="semesters_id" name="semesters_id">
                                 @foreach($semesters as $semester)
                                     <option value="{{ $semester->id }}"
-                                        @if( $semester->nameSemester ==  $resident->semester->nameSemester )
-                                            selected
-                                        @endif
+                                        @isset( $resident->semester->nameSemester )
+                                            @if( $semester->nameSemester ==  $resident->semester->nameSemester )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $semester->nameSemester }}
                                     </option>
@@ -152,13 +197,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Study Plans :</h6>
-                            <select class="form-control"  name="studyplans_id" id="studyplans_id">
+                            <h6>Plan Estudios :</h6>
+                            <select required class="form-control" id="studyplans_id" name="studyplans_id">
                                 @foreach($studyplans as $studyplan)
                                     <option value="{{ $studyplan->id }}"
-                                        @if( $studyplan->planStudies ==  $resident->studyplan->planStudies )
-                                            selected
-                                        @endif
+                                        @isset( $resident->studyplan->planStudies )
+                                            @if( $studyplan->planStudies ==  $resident->studyplan->planStudies )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $studyplan->planStudies }}
                                     </option>
@@ -166,13 +213,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Relatives :</h6>
-                            <select class="form-control"  name="relatives_id" id="relatives_id">
+                            <h6>Familiar :</h6>
+                            <select required class="form-control" id="relatives_id" name="relatives_id">
                                 @foreach($relatives as $relative)
                                     <option value="{{ $relative->id }}"
-                                        @if( $relative->nameRelative ==  $resident->relative->nameRelative )
-                                            selected
-                                        @endif
+                                        @isset( $resident->relative->nameRelative )
+                                            @if( $relative->nameRelative ==  $resident->relative->nameRelative )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $relative->nameRelative }}
                                     </option>
@@ -180,13 +229,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Type Becas :</h6>
-                            <select class="form-control"  name="typebecas_id" id="typebecas_id">
+                            <h6>Tipo De beca :</h6>
+                            <select required class="form-control" id="typebecas_id" name="typebecas_id">
                                 @foreach($typebecas as $typebeca)
                                     <option value="{{ $typebeca->id }}"
-                                        @if( $typebeca->descriptionBeca ==  $resident->typebeca->descriptionBeca )
-                                            selected
-                                        @endif
+                                        @isset( $resident->typebeca->descriptionBeca )
+                                            @if( $typebeca->descriptionBeca ==  $resident->typebeca->descriptionBeca )
+                                                selected
+                                            @endif
+                                        @endisset
                                         >
                                         {{ $typebeca->descriptionBeca }}
                                     </option>
@@ -217,10 +268,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('resident.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('resident.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

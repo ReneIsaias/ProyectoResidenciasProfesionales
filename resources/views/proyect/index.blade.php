@@ -36,8 +36,16 @@
                                         <td>{{ $proyect->nameProyect }}</td>
                                         <td>{{ $proyect->dateStart }}</td>
                                         <td>{{ $proyect->dateEnd }}</td>
-                                        <td>{{ $proyect->busine->nameBusiness }}</td>
-                                        <td>{{ $proyect->resident->nameResident }}</td>
+                                        <td>
+                                            @isset( $proyect->busine->nameBusiness )
+                                                {{ $proyect->busine->nameBusiness }}
+                                            @endisset
+                                        </td>
+                                        <td>
+                                            @isset( $proyect->resident->nameResident )
+                                                {{ $proyect->resident->nameResident }}
+                                            @endisset
+                                        </td>
                                         <td>
                                             @if ($proyect->statusProject == "1")
                                                 Activo
@@ -68,15 +76,17 @@
                                 @empty
                                     <tr>
                                         <td>-</td>
-                                        <td>No</td>
-                                        <td>hay</td>
                                         <td>-</td>
-                                        <td>proyects</td>
-                                        <td>registradas</td>
                                         <td>-</td>
-                                        <td>aun</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay proyectos registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>

@@ -11,7 +11,6 @@
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
                         <br>
                         <center>
                             <img width="40%" src="{{ Storage::url( $user->avatar ) }}" alt="Usuario">
@@ -20,6 +19,7 @@
                             <center><h6>Cambiar :</h6></center>
                             <center><input type="file" name="avatar"></center>
                         </div>
+                        <h3>Required data</h3>
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <h6>Clave :</h6>

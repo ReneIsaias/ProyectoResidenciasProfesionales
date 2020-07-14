@@ -13,7 +13,7 @@
                         <h3>Required data</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Rfc :</h6>
+                            <h6>R.F.C. :</h6>
                             <input type="text"
                                 class="form-control @error('rfcBusiness') is-invalid @enderror"
                                 id="rfcBusiness" placeholder="RFC of Busines"
@@ -44,10 +44,8 @@
                             <h6>Email :</h6>
                             <input type="email"
                                 class="form-control @error('emailBusiness') is-invalid @enderror"
-                                id="emailBusiness"
-                                placeholder="Email Busines"
-                                name="emailBusiness"
-                                value="{{ old('emailBusiness') }}"
+                                id="emailBusiness" placeholder="Email Busines"
+                                name="emailBusiness" value="{{ old('emailBusiness') }}"
                                 autocomplete="emailBusiness" required
                             >
                             @error('emailBusiness')
@@ -58,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <h6>Mision :</h6>
-                            <textarea class="form-control @error('misionBusiness') is-invalid @enderror" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3" autocomplete="misionBusiness" required>{{ old('misionBusiness') }}</textarea>
+                            <textarea class="form-control @error('misionBusiness') is-invalid @enderror" required placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3" autocomplete="misionBusiness" required>{{ old('misionBusiness') }}</textarea>
                             @error('misionBusiness')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -67,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <h6>Direction :</h6>
-                            <textarea class="form-control @error('directionBusiness') is-invalid @enderror" placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3" autocomplete="directionBusiness" required>{{ old('directionBusiness') }}</textarea>
+                            <textarea class="form-control @error('directionBusiness') is-invalid @enderror" required placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3" autocomplete="directionBusiness" required>{{ old('directionBusiness') }}</textarea>
                             @error('directionBusiness')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -134,7 +132,7 @@
                             <h6>Persona Firm :</h6>
                             <input type="text"
                                 class="form-control @error('personFirma') is-invalid @enderror"
-                                id="personFirma" placeholder="Persona of firm convenat"
+                                id="personFirma" placeholder="Persona of firm convenant"
                                 name="personFirma" value="{{ old('personFirma') }}"
                                 autocomplete="personFirma" required
                             >
@@ -144,33 +142,20 @@
                                 </span>
                             @enderror
                         </div>
-                        {{--
-                            <div class="form-group">
-                                <h6>Post :</h6>
-                                <select class="form-control"  name="postPerson" id="postPerson">
-                                    <option value="">--Seleccione Post--</option>
-                                    @foreach($posts as $post)
-                                        <option value="{{ $post->namePost }}"
-                                            @isset( $user->posts->namePost )
-                                                @if( $post->namePost ==  $user->posts->namePost )
-                                                    selected
-                                                @endif
-                                            @endisset
-                                            >
-                                            {{ $post->namePost }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        --}}
                         <div class="form-group">
                             <h6>Post :</h6>
-                            <select class="form-control"
-                                id="postPerson"
-                                name="postPerson">
+                            <select required class="form-control"  name="postPerson" id="postPerson">
                                 <option value="">--Seleccione Post--</option>
-                                @foreach ($posts as $post)
-                                    <option value="{{ $post->namePost }}">{{ old('post->namePost', $post->namePost) }}</option>
+                                @foreach($posts as $post)
+                                    <option value="{{ $post->namePost }}"
+                                        @isset( $user->post->namePost )
+                                            @if( $post->namePost ==  $user->post->namePost )
+                                                selected
+                                            @endif
+                                        @endisset
+                                        >
+                                        {{ $post->namePost }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -181,9 +166,7 @@
                         </div>
                         <div class="form-group">
                             <h6>Titular :</h6>
-                            <select class="form-control"
-                                id="titulars_id"
-                                name="titulars_id">
+                            <select required class="form-control"  name="titulars_id" id="titulars_id">
                                 <option value="">--Seleccione Titular--</option>
                                 @foreach ($titulars as $titular)
                                     <option value="{{ $titular->id }}">{{ old('titular->nameTitular', $titular->nameTitular) }}</option>
@@ -191,32 +174,26 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Staff :</h6>
-                            <select class="form-control"
-                                id="staff_id"
-                                name="staff_id">
-                                <option value="">--Seleccione Staff--</option>
-                                @foreach ($staffs as $staff)
-                                    <option value="{{$staff->id}}">{{ old('staff->nameStaff', $staff->nameStaff) }}</option>
+                            <h6>User :</h6>
+                            <select required class="form-control"  name="user_id" id="user_id">
+                                <option value="">--Seleccione Titular--</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ old('user->name', $user->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <h6>Convenant :</h6>
-                            <select class="form-control"
-                                id="covenants_id"
-                                name="covenants_id">
-                                <option value="">--Seleccione Convenat--</option>
+                            <select required class="form-control"  name="covenants_id" id="covenants_id">
+                                <option value="">--Seleccione Titular--</option>
                                 @foreach ($covenants as $covenant)
-                                    <option value="{{$covenant->id}}">{{ old('covenant->convenant', $covenant->convenant) }}</option>
+                                    <option value="{{ $covenant->id }}">{{ old('covenant->convenant', $covenant->convenant) }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <h6>Turn :</h6>
-                            <select class="form-control"
-                                id="turns_id"
-                                name="turns_id">
+                            <select required class="form-control" id="turns_id" name="turns_id">
                                 <option value="">--Seleccione Turn--</option>
                                 @foreach ($turns as $turn)
                                     <option value="{{$turn->id}}">{{ old('turn->descriptionTurn', $turn->descriptionTurn) }}</option>
@@ -225,9 +202,7 @@
                         </div>
                         <div class="form-group">
                             <h6>Sector :</h6>
-                            <select class="form-control"
-                                id="sectors_id"
-                                name="sectors_id">
+                            <select required class="form-control" id="sectors_id" name="sectors_id">
                                 <option value="">--Seleccione Sector--</option>
                                 @foreach ($sectors as $sector)
                                     <option value="{{$sector->id}}">{{ old('sector->descriptionSector', $sector->descriptionSector) }}</option>
@@ -237,10 +212,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('busines.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('busines.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                             </div>
                         </div>
                     </div>

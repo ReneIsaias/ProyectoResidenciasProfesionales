@@ -38,7 +38,7 @@ class ProyectController extends Controller
         $busines = Busines::where('statusBusines',1)->get();
         $residents = Resident::where('statusResident',1)->get();
 
-        return view('proyect.create',compact('situationproyects','reports','busines','residents'));
+        return view('proyect.create',compact('situationproyects','busines','residents'));
     }
 
     /**

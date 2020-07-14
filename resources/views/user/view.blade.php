@@ -11,11 +11,11 @@
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
                         <br>
                         <center>
                             <img width="50%" src="{{ Storage::url( $user->avatar ) }}" alt="Usuario">
                         </center>
+                        <h3>Required data</h3>
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <h6>Name :</h6>

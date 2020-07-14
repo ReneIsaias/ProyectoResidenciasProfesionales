@@ -16,83 +16,116 @@
                         <div class="form-group">
                             <h6>Matricula :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="residentRegistration"
-                                placeholder="residentRegistration"
+                                class="form-control @error('residentRegistration') is-invalid @enderror"
+                                id="residentRegistration" placeholder="residentRegistration"
                                 name="residentRegistration"
-                                value="{{ old('residentRegistration' , $resident->residentRegistration) }}"
+                                value="{{ old('residentRegistration', $resident->residentRegistration) }}"
                                 disabled
                             >
+                            @error('residentRegistration')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Name :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="nameresident"
-                                placeholder="nameresident"
+                                class="form-control @error('nameresident') is-invalid @enderror"
+                                id="nameresident" placeholder="nameresident"
                                 name="nameresident"
                                 value="{{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}"
                                 disabled
                             >
+                            @error('nameresident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Email :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="emailResident"
-                                placeholder="emailResident"
+                                class="form-control @error('emailResident') is-invalid @enderror"
+                                id="emailResident" placeholder="emailResident"
                                 name="emailResident"
                                 value="{{ old('emailResident' , $resident->emailResident) }}"
                                 disabled
                             >
+                            @error('emailResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Phone :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="phoneResident"
-                                placeholder="phoneResident"
+                                class="form-control @error('phoneResident') is-invalid @enderror"
+                                id="phoneResident" placeholder="phoneResident"
                                 name="phoneResident"
                                 value="{{ old('phoneResident' , $resident->phoneResident) }}"
                                 disabled
                             >
+                            @error('phoneResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Period :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="periodResident"
-                                placeholder="periodResident"
+                                class="form-control @error('periodResident') is-invalid @enderror"
+                                id="periodResident" placeholder="periodResident"
                                 name="periodResident"
                                 value="{{ old('periodResident' , $resident->periodResident) }}"
                                 disabled
                             >
+                            @error('periodResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Direction :</h6>
-                            <textarea readonly class="form-control" placeholder="Direction resident" name="addessResidente" id="addessResidente" rows="3">{{ old('addessResidente', $resident->addessResidente) }}</textarea>
+                            <textarea disabled  class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident) }}</textarea>
+                            @error('directionResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>City :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cityResident"
-                                placeholder="cityResident"
+                                class="form-control @error('cityResident') is-invalid @enderror"
+                                id="cityResident" placeholder="cityResident"
                                 name="cityResident"
                                 value="{{ old('cityResident' , $resident->cityResident) }}"
                                 disabled
                             >
+                            @error('cityResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>C.P. :</h6>
                             <input type="text"
-                                class="form-control"
-                                id="cpResident"
-                                placeholder="cpResident"
+                                class="form-control @error('cpResident') is-invalid @enderror"
+                                id="cpResident" placeholder="cpResident"
                                 name="cpResident"
                                 value="{{ old('cpResident' , $resident->cpResident) }}"
                                 disabled
                             >
+                            @error('cpResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Careers :</h6>
@@ -102,7 +135,7 @@
                                         @if($career->careerName ==  $resident->career->careerName)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $career->careerName }}
                                     </option>
                                 @endforeach
@@ -116,7 +149,7 @@
                                         @if($typesafe->safeName ==  $resident->typesafe->safeName)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $typesafe->safeName }}
                                     </option>
                                 @endforeach
@@ -130,7 +163,7 @@
                                         @if($semester->nameSemester ==  $resident->semester->nameSemester)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $semester->nameSemester }}
                                     </option>
                                 @endforeach
@@ -144,7 +177,7 @@
                                         @if($studyplan->planStudies ==  $resident->studyplan->planStudies)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $studyplan->planStudies }}
                                     </option>
                                 @endforeach
@@ -158,7 +191,7 @@
                                         @if($relative->nameRelative ==  $resident->relative->nameRelative)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $relative->nameRelative }}
                                     </option>
                                 @endforeach
@@ -172,7 +205,7 @@
                                         @if($typebeca->descriptionBeca ==  $resident->typebeca->descriptionBeca)
                                             selected
                                         @endif
-                                        >
+                                    >
                                         {{ $typebeca->descriptionBeca }}
                                     </option>
                                 @endforeach
@@ -202,12 +235,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger" href="{{ route('resident.index') }}">Back</a>
+                                <a class="btn btn-danger btn-lg" href="{{ route('resident.index') }}">Back</a>
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','resident.edit')
-                                        <a class="btn btn-success" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
                                     @endcan
                                 </center>
                             </div>

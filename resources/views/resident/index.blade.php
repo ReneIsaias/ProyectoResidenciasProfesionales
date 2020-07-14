@@ -37,7 +37,11 @@
                                         <td>{{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}</td>
                                         <td>{{ $resident->emailResident }}</td>
                                         <td>{{ $resident->phoneResident }}</td>
-                                        <td>{{ $resident->career->careerName }}</td>
+                                        <td>
+                                            @isset( $resident->career->careerName )
+                                                {{ $resident->career->careerName }}
+                                            @endisset
+                                        </td>
                                         <td>
                                             @if ($resident->statusResident == "1")
                                                 Activo
@@ -68,15 +72,17 @@
                                 @empty
                                     <tr>
                                         <td>-</td>
-                                        <td>No</td>
-                                        <td>hay</td>
                                         <td>-</td>
-                                        <td>residents</td>
-                                        <td>registradas</td>
                                         <td>-</td>
-                                        <td>aun</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                     </tr>
+                                    </tbody>
+                                    </table>
+                                    <center><h3>No hay residentes registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>
