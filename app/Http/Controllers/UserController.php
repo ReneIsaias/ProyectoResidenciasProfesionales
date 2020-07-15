@@ -103,7 +103,7 @@ class UserController extends Controller
             'name'              => 'required|min:4|max:30|unique:users,name,' . $user->id,
             'email'             => 'required|email|max:100|unique:users,email,' . $user->id,
             'avatar'            => 'image',
-            'statusUser'        => 'required',
+            'statusUser'        => '',
             'posts_id'          => '',
             'degrestudies_id'   => '',
             'careers_id'        => '',
