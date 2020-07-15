@@ -7,7 +7,9 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\UserRegistered;
 
 class RegisterController extends Controller
 {
@@ -70,7 +72,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //Creacion de usuario
+        $user = User::create([
             'nameUser'          => $data['nameUser'],
             'firstLastname'     => $data['firstLastname'],
             'secondLastname'    => $data['secondLastname'],
@@ -80,5 +83,13 @@ class RegisterController extends Controller
             'password'          => Hash::make($data['password']),
             'statusUser'        => $data['statusUser'],
         ]);
+
+        //Envio de email usando mailer
+        /* Mail::to($data['email'])->queue(new UserRegistered); */
+        Mail::to('admin@admin.com')->queue(new UserRegistered($user));
+
+        //Envio de correo usanod GMAIL
+        /* Mail::mailer('mailgun')->to('rene030498@gmail.com')->send(new UserRegistered($user)); */
+        return $user;
     }
 }

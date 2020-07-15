@@ -5,6 +5,7 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Permission\Traits\UserTrait;
 
 class RegisteredEvent
 {
