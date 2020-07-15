@@ -49,6 +49,15 @@ class PermissionList extends Seeder
             'full-access' => 'yes'
         ]);
 
+//rol por defecto
+$roluser=Role::create([
+    'name' => 'Default',
+    'slug' => 'default',
+    'description' => 'Rol que se crea al momento de que alguien se registre',
+    'full-access' => 'no'
+]);
+
+
 //table role_user
         $useradmin->roles()->sync([ $roladmin->id ]);
 

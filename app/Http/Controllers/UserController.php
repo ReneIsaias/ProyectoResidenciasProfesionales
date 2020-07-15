@@ -112,18 +112,19 @@ class UserController extends Controller
         $user->update($request->all());
 
         if($request->file('avatar')){
-
             $user->avatar = $request->file('avatar')->store('public');
             $user->save();
-
             /* $path = Storage::disk('public')->put('haber', $request->file('avatar'));
             $user->fill(['avatar'=> asset($path) ])->save(); */
         }
 
-        $user->roles()->sync($request->get('roles'));
+        if ($request->get('roles')) {
+            $user->roles()->sync($request->get('roles'));
+        }
 
-        return redirect()->route('user.index')
-            ->with('status_success','User updated successfully');
+        return redirect()->route('home');
+        /* return redirect()->route('user.index')
+            ->with('status_success','User updated successfully'); */
     }
 
     /**

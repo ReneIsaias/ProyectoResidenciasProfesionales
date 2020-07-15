@@ -121,6 +121,9 @@
                             @can('haveaccess','user.index')
                                 <a class="dropdown-item" href="{{ route('user.index') }}">Users</a>
                             @endcan
+                            @can('haveaccess','userown.show')
+                                <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id ) }}">Perfil</a>
+                            @endcan
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

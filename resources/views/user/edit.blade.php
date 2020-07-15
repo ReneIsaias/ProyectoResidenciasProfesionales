@@ -122,22 +122,24 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group">
-                            <h6>Role :</h6>
-                            <select class="form-control"  name="roles" id="roles">
-                                @foreach($roles as $role)
-                                    <option value="{{ $role->id }}"
-                                        @isset( $user->roles[0]->name )
-                                            @if( $role->name ==  $user->roles[0]->name )
-                                                selected
-                                            @endif
-                                        @endisset
-                                        >
-                                        {{ $role->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        @can('haveaccess','user.edit')
+                            <div class="form-group">
+                                <h6>Role :</h6>
+                                <select class="form-control"  name="roles" id="roles">
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->id }}"
+                                            @isset( $user->roles[0]->name )
+                                                @if( $role->name ==  $user->roles[0]->name )
+                                                    selected
+                                                @endif
+                                            @endisset
+                                            >
+                                            {{ $role->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endcan
                         <div class="form-group">
                             <h6>Post :</h6>
                             <select class="form-control"  name="posts_id" id="posts_id">
