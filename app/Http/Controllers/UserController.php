@@ -122,8 +122,10 @@ class UserController extends Controller
             $user->roles()->sync($request->get('roles'));
         }
 
+        /* return redirect()->back()->with('estatus','User updated successfully'); */
+
         return redirect()->route('home');
-        /* return redirect()->route('user.index')
+        /* return redirect()->route('user.index')BLOC
             ->with('status_success','User updated successfully'); */
     }
 

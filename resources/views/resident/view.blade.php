@@ -4,15 +4,13 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Resident</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Residente</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('resident.update', $resident->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
-                        <br>
                         <div class="form-group">
                             <h6>Matricula :</h6>
                             <input type="text"
@@ -29,7 +27,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameresident') is-invalid @enderror"
                                 id="nameresident" placeholder="nameresident"
@@ -59,7 +57,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneResident') is-invalid @enderror"
                                 id="phoneResident" placeholder="phoneResident"
@@ -74,7 +72,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Period :</h6>
+                            <h6>Periodo :</h6>
                             <input type="text"
                                 class="form-control @error('periodResident') is-invalid @enderror"
                                 id="periodResident" placeholder="periodResident"
@@ -89,7 +87,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
+                            <h6>Direccion :</h6>
                             <textarea disabled  class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident) }}</textarea>
                             @error('directionResident')
                                 <span class="invalid-feedback" role="alert">
@@ -98,7 +96,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>City :</h6>
+                            <h6>Ciudad :</h6>
                             <input type="text"
                                 class="form-control @error('cityResident') is-invalid @enderror"
                                 id="cityResident" placeholder="cityResident"
@@ -128,7 +126,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Careers :</h6>
+                            <h6>Carrera :</h6>
                             <select disabled class="form-control" name="careers_id" id="careers_id">
                                 @foreach($careers as $career)
                                     <option value="{{ $career->id }}"
@@ -142,7 +140,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Type Saves :</h6>
+                            <h6>Seguro :</h6>
                             <select disabled class="form-control" name="typesaves_id" id="typesaves_id">
                                 @foreach($typesafes as $typesafe)
                                     <option value="{{ $typesafe->id }}"
@@ -156,7 +154,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Semesters :</h6>
+                            <h6>Semestre :</h6>
                             <select disabled class="form-control" name="semesters_id" id="semesters_id">
                                 @foreach($semesters as $semester)
                                     <option value="{{ $semester->id }}"
@@ -170,7 +168,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Study Plans :</h6>
+                            <h6>Plan de estudios :</h6>
                             <select disabled class="form-control" name="studyplans_id" id="studyplans_id">
                                 @foreach($studyplans as $studyplan)
                                     <option value="{{ $studyplan->id }}"
@@ -184,21 +182,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Relatives :</h6>
-                            <select disabled class="form-control" name="relatives_id" id="relatives_id">
-                                @foreach($relatives as $relative)
-                                    <option value="{{ $relative->id }}"
-                                        @if($relative->nameRelative ==  $resident->relative->nameRelative)
-                                            selected
-                                        @endif
-                                    >
-                                        {{ $relative->nameRelative }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Type Becas :</h6>
+                            <h6>Beca :</h6>
                             <select disabled class="form-control" name="typebecas_id" id="typebecas_id">
                                 @foreach($typebecas as $typebeca)
                                     <option value="{{ $typebeca->id }}"
@@ -232,19 +216,49 @@
                             >
                             <label class="custom-control-label" for="statusresident0">Inactivo</label>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('resident.index') }}">Back</a>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <center>
-                                    @can('haveaccess','resident.edit')
-                                        <a class="btn btn-success btn-lg" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
-                                    @endcan
-                                </center>
-                            </div>
+                        <p>
+                        <div class="form-group">
+                            <h4>Familiar :</h4>
+                            <hr><p>
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="nameRelative"
+                                name="nameRelative"
+                                value="{{ $resident->relative->nameRelative }} {{ $resident->relative->firstLastname }} {{ $resident->relative->secondLastname }}"
+                                disabled
+                            >
                         </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control @error('phoneRelative') is-invalid @enderror"
+                                id="phoneRelative" placeholder="phoneRelative"
+                                name="phoneRelative"
+                                value="{{ $resident->relative->phoneRelative }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Direccion :</h6>
+                            <textarea disabled  class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direction resident" name="directionRelative" id="directionRelative" rows="3">{{ $resident->relative->directionRelative }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Parentesco :</h6>
+                            <input type="text"
+                                class="form-control @error('descriptionType') is-invalid @enderror"
+                                id="descriptionType" placeholder="descriptionType"
+                                name="descriptionType"
+                                value="{{ $resident->relative->typefamily->descriptionType }}"
+                                disabled
+                            >
+                        </div>
+                        <hr>
+                        <center>
+                            @can('haveaccess','resident.edit')
+                                <a class="btn btn-success btn-lg" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
+                            @endcan
+                        </center>
                     </div>
                     </form>
                 </div>

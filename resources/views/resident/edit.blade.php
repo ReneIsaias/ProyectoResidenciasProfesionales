@@ -4,14 +4,15 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Edit resident</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Editar Residente</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('resident.update', $resident->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
+                        <hr>
                         <br>
                         <div class="form-group">
                             <h6>Matricula :</h6>
@@ -28,7 +29,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameResident') is-invalid @enderror"
                                 id="nameResident" placeholder="Name resident"
@@ -42,7 +43,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>First Last Name :</h6>
+                            <h6>Primer apellido :</h6>
                             <input type="text"
                                 class="form-control @error('firtsLastnameResident') is-invalid @enderror"
                                 id="firtsLastnameResident" placeholder="First Lastname"
@@ -56,7 +57,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Second Last Name :</h6>
+                            <h6>Segundo apellido :</h6>
                             <input type="text"
                                 class="form-control @error('secondLastnameResident') is-invalid @enderror"
                                 id="secondLastnameResident" placeholder="Second Lastname"
@@ -84,7 +85,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneResident') is-invalid @enderror"
                                 id="phoneResident" placeholder="Telefono residente"
@@ -98,7 +99,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Period :</h6>
+                            <h6>Periodo :</h6>
                             <input type="text"
                                 class="form-control @error('periodResident') is-invalid @enderror"
                                 id="periodResident" placeholder="Periode residente"
@@ -112,7 +113,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
+                            <h6>Direccion :</h6>
                             <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction of resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident ) }}</textarea>
                             @error('directionResident')
                                 <span class="invalid-feedback" role="alert">
@@ -121,7 +122,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>City :</h6>
+                            <h6>Ciudad:</h6>
                             <input type="text"
                                 class="form-control @error('cityResident') is-invalid @enderror"
                                 id="cityResident" placeholder="City resident"
@@ -165,7 +166,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Tipo de Seguro :</h6>
+                            <h6>Seguro :</h6>
                             <select required class="form-control" id="typesaves_id" name="typesaves_id">
                                 @foreach($typesafes as $typesafe)
                                     <option value="{{ $typesafe->id }}"
@@ -197,7 +198,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Plan Estudios :</h6>
+                            <h6>Plan de Estudios :</h6>
                             <select required class="form-control" id="studyplans_id" name="studyplans_id">
                                 @foreach($studyplans as $studyplan)
                                     <option value="{{ $studyplan->id }}"
@@ -208,22 +209,6 @@
                                         @endisset
                                         >
                                         {{ $studyplan->planStudies }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Familiar :</h6>
-                            <select required class="form-control" id="relatives_id" name="relatives_id">
-                                @foreach($relatives as $relative)
-                                    <option value="{{ $relative->id }}"
-                                        @isset( $resident->relative->nameRelative )
-                                            @if( $relative->nameRelative ==  $resident->relative->nameRelative )
-                                                selected
-                                            @endif
-                                        @endisset
-                                        >
-                                        {{ $relative->nameRelative }}
                                     </option>
                                 @endforeach
                             </select>
@@ -264,6 +249,70 @@
                                 @endif
                             >
                             <label class="custom-control-label" for="statusresident0">Inactivo</label>
+                        </div>
+                        <p>
+                        <div class="form-group">
+                            <h4>Familiar :</h4>
+                            <hr><p>
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="nameRelative"
+                                name="nameRelative"
+                                value="{{ $resident->relative->nameRelative }} {{ $resident->relative->firstLastname }} {{ $resident->relative->secondLastname }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control @error('phoneRelative') is-invalid @enderror"
+                                id="phoneRelative" placeholder="phoneRelative"
+                                name="phoneRelative"
+                                value="{{ $resident->relative->phoneRelative }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Direccion :</h6>
+                            <textarea disabled  class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direction resident" name="directionRelative" id="directionRelative" rows="3">{{ $resident->relative->directionRelative }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Parentesco :</h6>
+                            <input type="text"
+                                class="form-control @error('descriptionType') is-invalid @enderror"
+                                id="descriptionType" placeholder="descriptionType"
+                                name="descriptionType"
+                                value="{{ $resident->relative->typefamily->descriptionType }}"
+                                disabled
+                            >
+                        </div>
+                        @can('haveaccess','relative.edit')
+                            <center><a class="btn btn-success" href="{{ route('relative.edit',$resident->relative->id) }}">Edit</a></center>
+                        @endcan
+                        <p>
+                        <h4>Asesor Interno</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Asesor :</h6>
+                            <select required class="form-control" id="user[]" name="user[]">
+                                <option value="">--Seleccione el asesor--</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ old('user->name', $user->name) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p>
+                        <h4>Asesor Externo</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Asesor :</h6>
+                            <select required class="form-control" id="user[]" name="user[]">
+                                <option value="">--Seleccione el asesor--</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ old('user->name', $user->name) }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <hr>
                         <div class="row">

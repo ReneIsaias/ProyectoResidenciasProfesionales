@@ -4,13 +4,14 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Create Resident</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Registro Residente</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('resident.store') }}" method="POST">
                     @csrf
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
+                        <hr>
                         <br>
                         <div class="form-group">
                             <h6>Matricula :</h6>
@@ -27,10 +28,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameResident') is-invalid @enderror"
-                                id="nameResident" placeholder="Name resident"
+                                id="nameResident" placeholder="Nombre del residente"
                                 name="nameResident" value="{{ old('nameResident') }}"
                                 autocomplete="nameResident" required
                             >
@@ -41,10 +42,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>First Last Name :</h6>
+                            <h6>Primer Apellido :</h6>
                             <input type="text"
                                 class="form-control @error('firtsLastnameResident') is-invalid @enderror"
-                                id="firtsLastnameResident" placeholder="First Lastname"
+                                id="firtsLastnameResident" placeholder="Primer apellido del residente"
                                 name="firtsLastnameResident" value="{{ old('firtsLastnameResident') }}"
                                 autocomplete="firtsLastnameResident" required
                             >
@@ -55,10 +56,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Second Last Name :</h6>
+                            <h6>Segundo Apellido :</h6>
                             <input type="text"
                                 class="form-control @error('secondLastnameResident') is-invalid @enderror"
-                                id="secondLastnameResident" placeholder="Second Lastname"
+                                id="secondLastnameResident" placeholder="Segundo apellido del residente"
                                 name="secondLastnameResident" value="{{ old('secondLastnameResident') }}"
                                 autocomplete="secondLastnameResident" required
                             >
@@ -72,7 +73,7 @@
                             <h6>Email :</h6>
                             <input type="email"
                                 class="form-control @error('emailResident') is-invalid @enderror"
-                                id="emailResident" placeholder="Email residente"
+                                id="emailResident" placeholder="Correo electronico del residente"
                                 name="emailResident" value="{{ old('emailResident') }}"
                                 autocomplete="emailResident" required
                             >
@@ -83,10 +84,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneResident') is-invalid @enderror"
-                                id="phoneResident" placeholder="Telefono residente"
+                                id="phoneResident" placeholder="Telefono del residente"
                                 name="phoneResident" value="{{ old('phoneResident') }}"
                                 autocomplete="phoneResident" required
                             >
@@ -97,10 +98,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Period :</h6>
+                            <h6>Periodo :</h6>
                             <input type="text"
                                 class="form-control @error('periodResident') is-invalid @enderror"
-                                id="periodResident" placeholder="Periode residente"
+                                id="periodResident" placeholder="Periodo que cursa el residente"
                                 name="periodResident" value="{{ old('periodResident') }}"
                                 autocomplete="periodResident" required
                             >
@@ -111,8 +112,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
-                            <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction of resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident') }}</textarea>
+                            <h6>Direccion :</h6>
+                            <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direccion del residente" name="directionResident" id="directionResident" rows="3">{{ old('directionResident') }}</textarea>
                             @error('directionResident')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -120,10 +121,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>City :</h6>
+                            <h6>Ciudad :</h6>
                             <input type="text"
                                 class="form-control @error('cityResident') is-invalid @enderror"
-                                id="cityResident" placeholder="City resident"
+                                id="cityResident" placeholder="Ciudad donde vive el residente"
                                 name="cityResident" value="{{ old('cityResident') }}"
                                 autocomplete="cityResident" required
                             >
@@ -137,7 +138,7 @@
                             <h6>C.P. :</h6>
                             <input type="text"
                                 class="form-control @error('cpResident') is-invalid @enderror"
-                                id="cpResident" placeholder="C.P. resident"
+                                id="cpResident" placeholder="Codigo postal de la ciudad del residente"
                                 name="cpResident" value="{{ old('cpResident') }}"
                                 autocomplete="cpResident" required
                             >
@@ -157,7 +158,7 @@
                         <div class="form-group">
                             <h6>Carrera :</h6>
                             <select required class="form-control" id="careers_id" name="careers_id">
-                                <option value="">--Seleccione la carrera--</option>
+                                <option value="">--Seleccione su carrera--</option>
                                 @foreach ($careers as $career)
                                     <option value="{{ $career->id }}">{{ old('career->careerName', $career->careerName) }}</option>
                                 @endforeach
@@ -166,7 +167,7 @@
                         <div class="form-group">
                             <h6>Tipo de Seguro :</h6>
                             <select required class="form-control" id="typesaves_id" name="typesaves_id">
-                                <option value="">--Seleccione el Tipo de Seguro--</option>
+                                <option value="">--Seleccione su tipo de seguro--</option>
                                 @foreach ($typesafes as $typesafe)
                                     <option value="{{ $typesafe->id }}">{{ old('typesafe->safeName', $typesafe->safeName) }}</option>
                                 @endforeach
@@ -175,7 +176,7 @@
                         <div class="form-group">
                             <h6>Semestre :</h6>
                             <select required class="form-control" id="semesters_id" name="semesters_id">
-                                <option value="">--Seleccione el Semestre--</option>
+                                <option value="">--Seleccione su semestre--</option>
                                 @foreach ($semesters as $semester)
                                     <option value="{{ $semester->id }}">{{ old('semester->nameSemester', $semester->nameSemester) }}</option>
                                 @endforeach
@@ -184,38 +185,32 @@
                         <div class="form-group">
                             <h6>Plan Estudios :</h6>
                             <select required class="form-control" id="studyplans_id" name="studyplans_id">
-                                <option value="">--Seleccione el Plan de Estudios--</option>
+                                <option value="">--Seleccione su plan de estudios--</option>
                                 @foreach ($studyplans as $studyplan)
                                     <option value="{{ $studyplan->id }}">{{ old('studyplan->planStudies', $studyplan->planStudies) }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Familiar :</h6>
-                            <select required class="form-control" id="relatives_id" name="relatives_id">
-                                <option value="">--Seleccione El familiar--</option>
-                                @foreach ($relatives as $relative)
-                                    <option value="{{ $relative->id }}">{{ old('relative->nameRelative', $relative->nameRelative) }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Tipo De beca :</h6>
+                            <h6>Tipo De Beca :</h6>
                             <select required class="form-control" id="typebecas_id" name="typebecas_id">
-                                <option value="">--Seleccione Tipo de Beca--</option>
+                                <option value="">--Seleccione su tipo de beca--</option>
                                 @foreach ($typebecas as $typebeca)
                                     <option value="{{ $typebeca->id }}">{{ old('typebeca->descriptionBeca', $typebeca->descriptionBeca) }}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <h6>Familiar :</h6>
+                            <select class="form-control" id="relatives_id" name="relatives_id">
+                                <option value="">--Seleccione su familiar--</option>
+                                @foreach ($relatives as $relative)
+                                    <option value="{{ $relative->id }}">{{ old('relative->nameRelative', $relative->nameRelative) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('resident.index') }}">Back</a>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
-                            </div>
+                        <center><input class="btn btn-primary btn-lg" type="submit" value="Next"></center>
                         </div>
                     </div>
                     </form>

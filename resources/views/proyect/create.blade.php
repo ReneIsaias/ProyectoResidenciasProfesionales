@@ -4,13 +4,13 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Create Proyect</h2></div>
+                <div class="card-header bg-dark text-white"><h2>Registro Proyecto</h2></div>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('proyect.store') }}" method="POST">
                     @csrf
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
                         <br>
                         <div class="form-group">
                             <h6>Clave :</h6>
@@ -101,9 +101,9 @@
                         </div>
                         <div class="form-group">
                             <h6>Calificacion :</h6>
-                            <input type="text"
+                            <input type="number"
                                 class="form-control @error('qualificationProyect') is-invalid @enderror"
-                                id="qualificationProyect" placeholder="Qualification of project"
+                                id="qualificationProyect" placeholder="Calificacion del proyecto"
                                 name="qualificationProyect" value="{{ old('qualificationProyect') }}"
                                 autocomplete="qualificationProyect"
                             >
@@ -209,13 +209,7 @@
                             </select>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('proyect.index') }}">Back</a>
-                            </div>
-                            <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
-                            </div>
+                        <center><input class="btn btn-primary btn-lg" type="submit" value="Next"></center>
                         </div>
                     </div>
                     </form>

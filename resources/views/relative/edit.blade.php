@@ -4,17 +4,18 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Edit Relative</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Editar Familiar</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('relative.update', $relative->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
+                        <hr>
                         <br>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameRelative') is-invalid @enderror"
                                 id="nameRelative" placeholder="Nombre del familiar"
@@ -28,7 +29,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>First Last Name :</h6>
+                            <h6>Primer Apellido :</h6>
                             <input type="text"
                                 class="form-control @error('firstLastname') is-invalid @enderror"
                                 id="firstLastname" placeholder="Primer apellido del familiar"
@@ -42,7 +43,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Second Last Name :</h6>
+                            <h6>Segundo Apellido :</h6>
                             <input type="text"
                                 class="form-control @error('secondLastname') is-invalid @enderror"
                                 id="secondLastname" placeholder="Segundo apellido del familiar"
@@ -56,7 +57,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Type Family :</h6>
+                            <h6>Parentesco :</h6>
                             <select class="form-control"  name="typefamilies_id" id="typefamilies_id">
                                 @foreach($typefamilys as $typefamily)
                                     <option value="{{ $typefamily->id }}"
@@ -72,7 +73,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneRelative') is-invalid @enderror"
                                 id="phoneRelative" placeholder="Numero de telefono del familiar"
@@ -86,7 +87,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
+                            <h6>Direccion :</h6>
                             <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative', $relative->directionRelative ) }}</textarea>
                             @error('directionRelative')
                                 <span class="invalid-feedback" role="alert">

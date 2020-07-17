@@ -230,7 +230,7 @@
             <p>Ahora que ya sabes mas sobre las residencias profecioanles, puedes empezar a tramitar tu solicitud de residencia profesional, claro que primero debes de registrarte</p>
         </div>
         <div class="col-md-4">
-            <a class="btn btn-lg btn-success btn-block" href="#">TRAMITAR</a>
+            <a class="btn btn-lg btn-success btn-block" href="{{ route('resident.create') }}">TRAMITAR</a>
         </div>
         </div>
 

@@ -4,14 +4,15 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Edit Busines</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Editar Empresa</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('busines.update', $busines->id ) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
+                        <hr>
                         <br>
                         <div class="form-group">
                             <h6>R.F.C. :</h6>
@@ -28,7 +29,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameBusiness') is-invalid @enderror"
                                 id="nameBusiness" placeholder="Name Busines"
@@ -65,7 +66,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
+                            <h6>Direccion :</h6>
                             <textarea class="form-control @error('directionBusiness') is-invalid @enderror" required placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3" autocomplete="directionBusiness" required>{{ old('directionBusiness', $busines->directionBusiness ) }}</textarea>
                             @error('directionBusiness')
                                 <span class="invalid-feedback" role="alert">
@@ -88,7 +89,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>City :</h6>
+                            <h6>Ciudad :</h6>
                             <input type="text"
                                 class="form-control @error('cityBusiness') is-invalid @enderror"
                                 id="cityBusiness" placeholder="City of busines"
@@ -102,7 +103,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneBusiness') is-invalid @enderror"
                                 id="phoneBusiness" placeholder="Phone of busines"
@@ -130,7 +131,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Persona Firm :</h6>
+                            <h6>Persona Responsable :</h6>
                             <input type="text"
                                 class="form-control @error('personFirma') is-invalid @enderror"
                                 id="personFirma" placeholder="Persona of firm convenant"
@@ -144,7 +145,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Post :</h6>
+                            <h6>Puesto :</h6>
                             <select required class="form-control" id="postPerson" name="postPerson">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->namePost }}"
@@ -160,39 +161,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Titular :</h6>
-                            <select required class="form-control" id="titulars_id" name="titulars_id">
-                                @foreach($titulars as $titular)
-                                    <option value="{{ $titular->id }}"
-                                        @isset( $busines->titular->nameTitular )
-                                            @if( $titular->nameTitular ==  $busines->titular->nameTitular )
-                                                selected
-                                            @endif
-                                        @endisset
-                                        >
-                                        {{ $titular->nameTitular }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>User :</h6>
-                            <select required class="form-control" id="user_id" name="user_id">
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}"
-                                        @isset( $busines->user->name )
-                                            @if( $user->name ==  $busines->user->name )
-                                                selected
-                                            @endif
-                                        @endisset
-                                        >
-                                        {{ $user->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Convenant :</h6>
+                            <h6>Convenio :</h6>
                             <select class="form-control" name="covenants_id" id="covenants_id">
                                 @foreach($covenants as $covenant)
                                     <option value="{{ $covenant->id }}"
@@ -208,7 +177,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Turn :</h6>
+                            <h6>Giro :</h6>
                             <select class="form-control" name="turns_id" id="turns_id">
                                 @foreach($turns as $turn)
                                     <option value="{{ $turn->id }}"
@@ -260,7 +229,77 @@
                             >
                             <label class="custom-control-label" for="statusbusines0">Inactivo</label>
                         </div>
-                        <hr>
+                        <p>
+                            <h4>Titular</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Nombre :</h6>
+                                <input type="text"
+                                    class="form-control" id="nameTitular"
+                                    placeholder="C.P. of busines" name="nameTitular"
+                                    value="{{ $busines->titular->nameTitular }} {{ $busines->titular->firstLastname }} {{ $busines->titular->secondLastname }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Telefono :</h6>
+                                <input type="text"
+                                    class="form-control" id="phoneTitular"
+                                    placeholder="C.P. of busines" name="phoneTitular"
+                                    value="{{ $busines->titular->phoneTitular }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Puesto :</h6>
+                                <input type="text"
+                                    class="form-control" id="postTitular"
+                                    placeholder="C.P. of busines" name="postTitular"
+                                    value="{{ $busines->titular->post->namePost }}"
+                                    disabled
+                                >
+                            </div>
+                            <center>
+                                @can('haveaccess','titular.edit')
+                                    <a class="btn btn-success" href="{{ route('titular.edit', $busines->titular->id ) }}">Edit</a>
+                                @endcan
+                            </center>
+                            <p>
+                            <h4>Usuario</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Nombre :</h6>
+                                <input type="text"
+                                    class="form-control" id="nameUser"
+                                    placeholder="C.P. of busines" name="nameUser"
+                                    value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Telefono :</h6>
+                                <input type="text"
+                                    class="form-control" id="phoneuser"
+                                    placeholder="C.P. of busines" name="phoneuser"
+                                    value="{{ $busines->user->phoneUser }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Email :</h6>
+                                <input type="text"
+                                    class="form-control" id="emailUser"
+                                    placeholder="C.P. of busines" name="emailUser"
+                                    value="{{ $busines->user->email }}"
+                                    disabled
+                                >
+                            </div>
+                            <center>
+                                @can('haveaccess','user.show')
+                                    <a class="btn btn-info" href="{{ route('user.show', $busines->user->id ) }}">Show</a>
+                                @endcan
+                            </center>
+                            <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
                                 <a class="btn btn-danger btn-lg" href="{{ route('busines.index') }}">Back</a>

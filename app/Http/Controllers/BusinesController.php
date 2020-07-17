@@ -70,15 +70,16 @@ class BusinesController extends Controller
             'personFirma'      => 'required|min:4|max:100',
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
-            'titulars_id'      => 'required',
+            'titulars_id'      => '',
             'user_id'          => 'required',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
             'sectors_id'       => 'required',
         ]);
+
         $busines = Busines::create($request->all());
 
-        return redirect()->route('busines.index')
+        return redirect()->route('titular.create')
             ->with('status_success','Busines saved successfully');
     }
 
@@ -148,8 +149,8 @@ class BusinesController extends Controller
             'personFirma'      => 'required|min:4|max:100',
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
-            'titulars_id'      => 'required',
-            'user_id'          => 'required',
+            'titulars_id'      => '',
+            'user_id'          => '',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
             'sectors_id'       => 'required',

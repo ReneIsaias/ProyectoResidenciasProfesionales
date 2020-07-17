@@ -4,17 +4,15 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Busines</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Empresa</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('busines.update', $busines->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
-                        <br>
                         <div class="form-group">
-                            <h6>Rfc :</h6>
+                            <h6>R.F.C :</h6>
                             <input type="text"
                                 class="form-control" id="rfcBusiness"
                                 placeholder="RFC of Busines" name="rfcBusiness"
@@ -23,7 +21,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control" id="nameBusiness"
                                 placeholder="Name Busines" name="nameBusiness"
@@ -45,7 +43,7 @@
                             <textarea disabled class="form-control" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3">{{ old('misionBusiness', $busines->misionBusiness ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
+                            <h6>Direccion :</h6>
                             <textarea disabled class="form-control" placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3">{{ old('directionBusiness', $busines->directionBusiness ) }}</textarea>
                         </div>
                         <div class="form-group">
@@ -58,7 +56,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>City :</h6>
+                            <h6>Ciudad :</h6>
                             <input type="text"
                                 class="form-control" id="cityBusiness"
                                 placeholder="City of busines" name="cityBusiness"
@@ -67,7 +65,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control" id="phoneBusiness"
                                 placeholder="Phone of busines" name="phoneBusiness"
@@ -85,7 +83,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Persona Firm :</h6>
+                            <h6>Persona Responsable :</h6>
                             <input type="text"
                                 class="form-control" id="personFirma"
                                 placeholder="Persona of firm convenat" name="personFirma"
@@ -94,7 +92,7 @@
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Post :</h6>
+                            <h6>Puesto :</h6>
                             <select disabled class="form-control" name="postPerson" id="postPerson">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->namePost }}"
@@ -108,35 +106,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Titular :</h6>
-                            <select disabled class="form-control" name="titulars_id" id="titulars_id">
-                                @foreach($titulars as $titular)
-                                    <option value="{{ $titular->id }}"
-                                        @if($titular->nameTitular ==  $busines->titular->nameTitular)
-                                            selected
-                                        @endif
-                                    >
-                                        {{ $titular->nameTitular }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>User :</h6>
-                            <select disabled class="form-control" name="staff_id" id="staff_id">
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}"
-                                        @if($user->name ==  $busines->user->name)
-                                            selected
-                                        @endif
-                                    >
-                                        {{ $user->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Convenant :</h6>
+                            <h6>Convenio :</h6>
                             <select disabled class="form-control" name="covenants_id" id="covenants_id">
                                 @foreach($covenants as $covenant)
                                     <option value="{{ $covenant->id }}"
@@ -150,7 +120,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Turn :</h6>
+                            <h6>Giro :</h6>
                             <select disabled class="form-control" name="turns_id" id="turns_id">
                                 @foreach($turns as $turn)
                                     <option value="{{ $turn->id }}"
@@ -197,6 +167,66 @@
                                 @endif
                             >
                             <label class="custom-control-label" for="statusbusines0">Inactivo</label>
+                        </div>
+                        <p>
+                        <h4>Titular</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control" id="nameTitular"
+                                placeholder="C.P. of busines" name="nameTitular"
+                                value="{{ $busines->titular->nameTitular }} {{ $busines->titular->firstLastname }} {{ $busines->titular->secondLastname }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control" id="phoneTitular"
+                                placeholder="C.P. of busines" name="phoneTitular"
+                                value="{{ $busines->titular->phoneTitular }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Puesto :</h6>
+                            <input type="text"
+                                class="form-control" id="postTitular"
+                                placeholder="C.P. of busines" name="postTitular"
+                                value="{{ $busines->titular->post->namePost }}"
+                                disabled
+                            >
+                        </div>
+                        <p>
+                        <h4>Usuario</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control" id="nameUser"
+                                placeholder="C.P. of busines" name="nameUser"
+                                value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control" id="phoneuser"
+                                placeholder="C.P. of busines" name="phoneuser"
+                                value="{{ $busines->user->phoneUser }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Email :</h6>
+                            <input type="text"
+                                class="form-control" id="emailUser"
+                                placeholder="C.P. of busines" name="emailUser"
+                                value="{{ $busines->user->email }}"
+                                disabled
+                            >
                         </div>
                         <hr>
                         <div class="row">

@@ -29,9 +29,9 @@ class CreateProyectsTable extends Migration
             $table->string('hourlyProyect');
             $table->date('dateRealRevicion')->nullable();
             $table->boolean('statusProject');
-            $table->foreignId('situationproyects_id')->references('id')->on('situationproyects')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->foreignId('busines_id')->references('id')->on('busines')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('residents_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('situationproyects_id')->nullable()->references('id')->on('situationproyects')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('busines_id')->nullable()->references('id')->on('busines')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('residents_id')->nullable()->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

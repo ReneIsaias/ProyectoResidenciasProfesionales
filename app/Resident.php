@@ -60,4 +60,8 @@ class Resident extends Model
     {
         return $this->belongsTo('App\Relative', 'relatives_id', 'id');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User', 'resident_user', 'id')->withTimesTamps();
+    }
 }

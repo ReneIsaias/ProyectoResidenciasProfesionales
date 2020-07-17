@@ -12,6 +12,10 @@ use App\Typesafe;
 use App\Studyplan;
 use App\Relative;
 
+use App\Typefamily;
+
+use App\User;
+
 class ResidentController extends Controller
 {
     /**
@@ -80,7 +84,7 @@ class ResidentController extends Controller
 
         $resident = Resident::create($request->all());
 
-        return redirect()->route('resident.index')
+        return redirect()->route('relative.create')
             ->with('status_success','Resident saved successfully');
     }
 
@@ -98,10 +102,13 @@ class ResidentController extends Controller
         $typesafes = Typesafe::orderBy('safeName')->get();
         $semesters = Semester::orderBy('nameSemester')->get();
         $studyplans = Studyplan::orderBy('planStudies')->get();
-        $relatives = Relative::orderBy('nameRelative')->get();
+        $relatives = Relative::get();
+        /* $relatives = Relative::orderBy('nameRelative')->get(); */
         $typebecas = Typebeca::orderBy('descriptionBeca')->get();
 
-        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas'));
+        $typefamilys = Typefamily::orderBy('descriptionType')->get();
+
+        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys'));
     }
 
     /**
@@ -120,8 +127,9 @@ class ResidentController extends Controller
         $studyplans = Studyplan::orderBy('planStudies')->get();
         $relatives = Relative::orderBy('nameRelative')->get();
         $typebecas = Typebeca::orderBy('descriptionBeca')->get();
+        $users = User::get();
 
-        return view('resident.edit', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas'));
+        return view('resident.edit', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'users'));
     }
 
     /**
@@ -151,11 +159,16 @@ class ResidentController extends Controller
             'typesaves_id'           => 'required',
             'semesters_id'           => 'required',
             'studyplans_id'          => 'required',
-            'relatives_id'           => 'required',
+            'relatives_id'           => '',
             'typebecas_id'           => 'required',
         ]);
 
         $resident -> update($request->all());
+
+        if ($request->get('user')) {
+            return $request->all();
+            $resident->users()->sync($request->get('user'));
+        }
 
         return redirect()->route('resident.index')
             ->with('status_success','Resident updated successfully');

@@ -29,8 +29,8 @@ class CreateResidentsTable extends Migration
             $table->foreignId('careers_id')->references('id')->on('careers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('typesaves_id')->references('id')->on('typesaves')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('semesters_id')->references('id')->on('semesters')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('studyplans_id')->references('id')->on('studyplans')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->foreignId('relatives_id')->references('id')->on('relatives')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('studyplans_id')->nullable()->references('id')->on('studyplans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('relatives_id')->nullable()->references('id')->on('relatives')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('typebecas_id')->references('id')->on('typebecas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
