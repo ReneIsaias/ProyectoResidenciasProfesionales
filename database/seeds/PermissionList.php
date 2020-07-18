@@ -30,15 +30,15 @@ class PermissionList extends Seeder
             $useradmin->delete();
         }
         $useradmin= User::create([
-            'keyUser'      => 'DEFAULT',
-            'nameUser'     => 'ADMINISTRADOR',
-            'firstLastname'      => 'NULL',
-            'secondLastname'     => 'NULL',
-            'phoneUser'      => '0000000000',
-            'name'      => 'ADMIN',
-            'email'     => 'admin@admin.com',
-            'password'  => Hash::make('maquiabelico'),
-            'statusUser'      => '1',
+            'keyUser'           => 'DEFAULT',
+            'nameUser'          => 'ADMINISTRADOR',
+            'firstLastname'     => 'NULL',
+            'secondLastname'    => 'NULL',
+            'phoneUser'         => '0000000000',
+            'name'              => 'ADMIN',
+            'email'             => 'admin@admin.com',
+            'password'          => Hash::make('maquiabelico'),
+            'statusUser'        => '1',
         ]);
 
 //rol admin
@@ -50,13 +50,12 @@ class PermissionList extends Seeder
         ]);
 
 //rol por defecto
-$roluser=Role::create([
-    'name' => 'Default',
-    'slug' => 'default',
-    'description' => 'Rol que se crea al momento de que alguien se registre',
-    'full-access' => 'no'
-]);
-
+        $roluser=Role::create([
+            'name' => 'Resident',
+            'slug' => 'resident',
+            'description' => 'Rol que se asigna a todos los usuarios al registrarse',
+            'full-access' => 'no'
+        ]);
 
 //table role_user
         $useradmin->roles()->sync([ $roladmin->id ]);
@@ -884,43 +883,43 @@ $roluser=Role::create([
 
         $permission_all[] = $permission->id;
 
-//Permission staff
+//Permission asesor
         $permission = Permission::create([
-            'name' => 'List staff',
-            'slug' => 'staff.index',
-            'description' => 'A user can list staff',
+            'name' => 'List asesor',
+            'slug' => 'asesor.index',
+            'description' => 'A user can list asesor',
         ]);
 
         $permission_all[] = $permission->id;
 
         $permission = Permission::create([
-            'name' => 'Show staff',
-            'slug' => 'staff.show',
-            'description' => 'A user can see staff',
+            'name' => 'Show asesor',
+            'slug' => 'asesor.show',
+            'description' => 'A user can see asesor',
         ]);
 
         $permission_all[] = $permission->id;
 
         $permission = Permission::create([
-            'name' => 'Create staff',
-            'slug' => 'staff.create',
-            'description' => 'A user can create staff',
+            'name' => 'Create asesor',
+            'slug' => 'asesor.create',
+            'description' => 'A user can create asesor',
         ]);
 
         $permission_all[] = $permission->id;
 
         $permission = Permission::create([
-            'name' => 'Edit staff',
-            'slug' => 'staff.edit',
-            'description' => 'A user can edit staff',
+            'name' => 'Edit asesor',
+            'slug' => 'asesor.edit',
+            'description' => 'A user can edit asesor',
         ]);
 
         $permission_all[] = $permission->id;
 
         $permission = Permission::create([
-            'name' => 'Destroy staff',
-            'slug' => 'staff.destroy',
-            'description' => 'A user can destroy staff',
+            'name' => 'Destroy asesor',
+            'slug' => 'asesor.destroy',
+            'description' => 'A user can destroy asesor',
         ]);
 
         $permission_all[] = $permission->id;
@@ -959,7 +958,7 @@ $roluser=Role::create([
         $permission_all[] = $permission->id;
 
 
-//new
+//solo para el usuario registrado
         $permission = Permission::create([
             'name' => 'Show own user',
             'slug' => 'userown.show',

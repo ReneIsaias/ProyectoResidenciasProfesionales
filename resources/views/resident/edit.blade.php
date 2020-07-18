@@ -295,10 +295,10 @@
                         <hr>
                         <div class="form-group">
                             <h6>Asesor :</h6>
-                            <select required class="form-control" id="user[]" name="user[]">
+                            <select class="form-control" id="user[]" name="user[]">
                                 <option value="">--Seleccione el asesor--</option>
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->id }}">{{ old('user->name', $user->name) }}</option>
+                                    <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -307,10 +307,10 @@
                         <hr>
                         <div class="form-group">
                             <h6>Asesor :</h6>
-                            <select required class="form-control" id="user[]" name="user[]">
+                            <select class="form-control" id="user[]" name="user[]">
                                 <option value="">--Seleccione el asesor--</option>
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->id }}">{{ old('user->name', $user->name) }}</option>
+                                    <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -108,7 +108,15 @@ class ResidentController extends Controller
 
         $typefamilys = Typefamily::orderBy('descriptionType')->get();
 
-        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys'));
+        $users = User::get();
+
+        $resident_user=[];
+
+        foreach($resident->users as $user) {
+            $resident_user[]= $user->id;
+        }
+
+        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys','users','resident_user'));
     }
 
     /**
@@ -166,7 +174,7 @@ class ResidentController extends Controller
         $resident -> update($request->all());
 
         if ($request->get('user')) {
-            return $request->all();
+            /* return $request->all(); */
             $resident->users()->sync($request->get('user'));
         }
 

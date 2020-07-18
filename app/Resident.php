@@ -62,6 +62,8 @@ class Resident extends Model
     }
 
     public function users(){
-        return $this->belongsToMany('App\User', 'resident_user', 'id')->withTimesTamps();
+
+        return $this->belongsToMany('App\User')->withTimesTamps();
+
     }
 }

@@ -253,6 +253,53 @@
                                 disabled
                             >
                         </div>
+                        <p>
+                            <h4>Asesor Interno</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Asesor :</h6>
+                                @foreach($users as $user)
+                                    <input type="text"
+                                        class="form-control"
+                                        id="user"
+                                        name="user[]"
+                                        @if( is_array(old('user')) && in_array("$user->id", old('user')) )
+                                            value="{{ $user->name }}"
+                                        @elseif( is_array($resident_user) && in_array("$user->id", $resident_user) )
+                                            value="{{ $user->email }}"
+                                        @endif
+                                    >
+                                @endforeach
+                                <h6>dale</h6>
+                                <div class="form-group">
+                                    <h6>Asesor :</h6>
+                                    <select class="form-control" id="user[]" name="user[]">
+                                        <option value="">--Seleccione el asesor--</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <h6>Haber</h6>
+                                <select class="form-control" id="user[]" name="user[]">
+                                    <option value="">--Seleccione el asesor--</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p>
+                            <h4>Asesor Externo</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Asesor :</h6>
+                                <select class="form-control" id="user[]" name="user[]">
+                                    <option value="">--Seleccione el asesor--</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         <hr>
                         <center>
                             @can('haveaccess','resident.edit')

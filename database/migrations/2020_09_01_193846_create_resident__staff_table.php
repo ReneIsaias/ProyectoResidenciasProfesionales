@@ -16,7 +16,7 @@ class CreateResidentStaffTable extends Migration
         Schema::create('resident_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('residents_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('resident_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

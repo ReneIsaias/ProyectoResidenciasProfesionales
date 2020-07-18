@@ -67,6 +67,8 @@ class User extends Authenticatable
     }
 
     public function residents(){
-        return $this->belongsToMany('App\Resident', 'resident_user', 'id')->withTimesTamps();
+
+        return $this->belongsToMany('App\Resident')->withTimesTamps();
+        
     }
 }

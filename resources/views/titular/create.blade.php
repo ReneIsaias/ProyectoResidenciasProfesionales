@@ -19,17 +19,17 @@
                                 disabled
                             >
                             {{-- <input type="text" value="{{ $busines->id }}"> --}}
-                            {{-- <select disabled class="form-control" name="staff_id" id="staff_id">
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}"
-                                        @if( {{ Auth::user()->name }} ==  $busines->user->name)
+                            <select class="form-control" name="staff_id" id="staff_id">
+                                @foreach($busines as $busine)
+                                    <option value="{{ $busine->id }}"
+                                       {{--  @if( $busine->name ==  $busine->user->name)
                                             selected
-                                        @endif
+                                        @endif --}}
                                     >
-                                        {{ $user->name }}
+                                        {{ $busine->name }}
                                     </option>
                                 @endforeach
-                            </select> --}}
+                            </select>
                         </div>
                         <div class="form-group">
                             <h6>Nombre :</h6>
