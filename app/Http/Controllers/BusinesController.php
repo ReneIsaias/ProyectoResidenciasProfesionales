@@ -37,7 +37,7 @@ class BusinesController extends Controller
     {
         Gate::authorize('haveaccess','busines.create');
 
-        $titulars = Titular::where('statusTitular',1)->get();
+        $titulars = Titular::orderBy('id','Desc')->where('statusTitular',1)->get();
         $users = User::where('statusUser',1)->get();
         $covenants = Covenant::where('statusConvenant',1)->get();
         $turns = Turn::where('statusTurn',1)->get();
@@ -79,7 +79,7 @@ class BusinesController extends Controller
         $busines = Busines::create($request->all());
 
         return redirect()->route('busines.index')
-            ->with('status_success','Busines saved successfully');
+            ->with('status_success','Empresa registrada satisfactoriamente ');
     }
 
     /**

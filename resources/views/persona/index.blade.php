@@ -2,14 +2,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="card">
-                <center><div class="card-header bg-dark text-white"><h2>Lista de Empresas</h2></div></center>
+                <div class="card-header bg-dark text-white"><h2>List of Students</h2></div>
                 <div class="card-body">
-                @can('haveaccess','busines.create')
-                    <a href="{{ route('busines.create') }}"
+                @can('haveaccess','persona.create')
+                    <a href="{{ route('persona.create') }}"
                         class="btn btn-primary float-right"
-                    >
+                        >
                         Create
                     </a>
                     <br><br>
@@ -19,49 +19,46 @@
                         <table class="table table-striped ">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Matricula</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Sector(s)</th>
+                                    <th scope="col">Genero</th>
+                                    <th scope="col">Semestre</th>
+                                    <th scope="col">Grupo</th>
                                     <th scope="col">Status</th>
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($business as $busine)
+                                @forelse ($personas as $persona)
                                     <tr>
-                                        <th scope="row">{{ $busine->id }}</th>
-                                        <td>{{ $busine->nameBusiness }}</td>
-                                        <td>{{ $busine->emailBusiness }}</td>
-                                        <td>{{ $busine->cityBusiness }}</td>
-                                        <td>{{ $busine->phoneBusiness }}</td>
-                                        <td>
-                                            @isset( $busine->sector->descriptionSector )
-                                                {{ $busine->sector->descriptionSector }}
-                                            @endisset
+                                        <td>{{ $persona->id }}</td>
+                                        <td>{{ $persona->nombrePersona}}
+                                            {{ $persona->apeUnoPersona}}
+                                            {{ $persona->apeDosPersona}}
                                         </td>
+                                        <td>{{ $persona->generoPersona }}</td>
+                                        <td>{{ $persona->semestrePersona }}</td>
+                                        <td>{{ $persona->grupoPersona }}</td>
                                         <td>
-                                            @if ($busine->statusBusines == "1")
-                                                Activo
+                                            @if ($persona->statusPersona == "1")
+                                                Activa
                                             @else
-                                                Inactivo
+                                                Inactiva
                                             @endif
                                         </td>
                                         <td>
-                                            @can('haveaccess','busines.show')
-                                                <a class="btn btn-info" href="{{ route('busines.show', $busine->id ) }}">Show</a>
+                                            @can('haveaccess','persona.show')
+                                                <a class="btn btn-info" href="{{ route('persona.show',$persona->id) }}">Show</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','busines.edit')
-                                                <a class="btn btn-success" href="{{ route('busines.edit', $busine->id ) }}">Edit</a>
+                                            @can('haveaccess','persona.edit')
+                                                <a class="btn btn-success" href="{{ route('persona.edit',$persona->id) }}">Edit</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','busines.destroy')
-                                            <form action="{{ route('busines.destroy', $busine->id ) }}" method="POST">
+                                            @can('haveaccess','persona.destroy')
+                                            <form action="{{ route('persona.destroy',$persona->id) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">Delete</button>
@@ -77,19 +74,17 @@
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
                                     </tr>
                                     </tbody>
                                     </table>
-                                    <center><h3>No hay empresas registradas aun</h3></center>
+                                    <center><h3>No hay estudiantes registrados aun</h3></center>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            {{ $business->links() }}
+                            {{ $personas->links() }}
                         </ul>
                     </nav>
                 </div>

@@ -73,10 +73,34 @@ Route::resource('/titular', 'TitularController')->names('titular');
 
 Route::resource('/report', 'ReportController')->names('report');
 
-Route::resource('/resident', 'ResidentController')->names('resident');
-
 Route::resource('/busines', 'BusinesController')->names('busines');
 
 Route::resource('/proyect', 'ProyectController')->names('proyect');
 
 Route::resource('/staff', 'StaffController')->names('staff');
+
+Route::resource('/persona', 'PersonaController')->names('persona');
+
+
+Route::resource('/resident', 'ResidentController')->names('resident');
+
+
+/*
+////Listar
+Route::get('/resident','ResidentController@index')->name('resident.index');
+////Ver fomrulario de creacion
+Route::post('/resident/create','ResidentController@create')->name('resident.create');
+////creacion
+Route::post('/resident/store','ResidentController@store')->name('resident.store');
+////Ver el detalle
+Route::get('/resident/{id}','ResidentController@show')->name('resident.show');
+////Ver formulario de edicion
+Route::get('/resident/{id}/edit','ResidentController@edit')->name('resident.edit');
+////Actuaiizar
+Route::put('/resident/{id}','ResidentController@update')->name('resident.update');
+////Eliminar
+Route::delete('/resident/{id}','ResidentController@destroy')->name('resident.destroy'); */
+////Buscar
+Route::get('/search','ResidentController@search')->name('search');
+////Tramita
+Route::post('/resident/tramita','ResidentController@tramita')->name('resident.tramita');

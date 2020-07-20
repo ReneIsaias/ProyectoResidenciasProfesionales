@@ -4,43 +4,39 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Proyect</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Proyecto</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('proyect.update', $proyect->id ) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>{{ $proyect->nameProyect }}</h3>
                         <br>
                         <div class="form-group">
                             <h6>Clave :</h6>
                             <input type="text"
                                 class="form-control" id="keyProyect"
-                                placeholder="Proyect Key" name="keyProyect"
+                                placeholder="Clave del proyecto" name="keyProyect"
                                 value="{{ old('keyProyect', $proyect->keyProyect ) }}"
                                 disabled
                             >
                         </div>
                         <div class="form-group">
-                            <h6>Nombre :</h6>
-                            <textarea disabled class="form-control" placeholder="Name of Proyect" name="nameProyect" id="nameProyect" rows="3">{{ old('nameProyect', $proyect->nameProyect ) }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <h6>Descripcion :</h6>
-                            <textarea disabled class="form-control" placeholder="Description of Proyect" name="descriptionProyect" id="descriptionProyect" rows="3">{{ old('descriptionProyect', $proyect->descriptionProyect ) }}</textarea>
+                            <h6>Descripción :</h6>
+                            <textarea disabled class="form-control" placeholder="Descripcion del proyecto" name="descriptionProyect" id="descriptionProyect" rows="3">{{ old('descriptionProyect', $proyect->descriptionProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
                             <h6>Objetivo general :</h6>
-                            <textarea disabled class="form-control" placeholder="Objetive General of Proyect" name="objGeneProyect" id="objGeneProyect" rows="3">{{ old('objGeneProyect', $proyect->objGeneProyect ) }}</textarea>
+                            <textarea disabled class="form-control" placeholder="Objetivo general del proyecto" name="objGeneProyect" id="objGeneProyect" rows="3">{{ old('objGeneProyect', $proyect->objGeneProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
                             <h6>Objetivo especifico :</h6>
-                            <textarea disabled class="form-control" placeholder="objetives Especifics of Proyect" name="objEspeciProyect" id="objEspeciProyect" rows="3">{{ old('objEspeciProyect', $proyect->objEspeciProyect ) }}</textarea>
+                            <textarea disabled class="form-control" placeholder="Objetivo especifico del proyecto" name="objEspeciProyect" id="objEspeciProyect" rows="3">{{ old('objEspeciProyect', $proyect->objEspeciProyect ) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <h6>Justificacion :</h6>
-                            <textarea disabled class="form-control" placeholder="Justify of Proyect" name="JustifyProject" id="JustifyProject" rows="3">{{ old('JustifyProject', $proyect->JustifyProject ) }}</textarea>
+                            <h6>Justificación :</h6>
+                            <textarea disabled class="form-control" placeholder="Justificacion del proyecto" name="JustifyProject" id="JustifyProject" rows="3">{{ old('JustifyProject', $proyect->JustifyProject ) }}</textarea>
                         </div>
                         <div class="form-group">
                             <h6>Fecha de inicio :</h6>
@@ -69,7 +65,7 @@
                             <input type="text"
                                 class="form-control"
                                 id="qualificationProyect"
-                                placeholder="Qualification of project"
+                                placeholder="Calificacion asignada al proyecto"
                                 name="qualificationProyect"
                                 value="{{ old('qualificationProyect', $proyect->qualificationProyect ) }}"
                                 disabled
@@ -80,7 +76,7 @@
                             <input type="text"
                                 class="form-control"
                                 id="revisionProyect"
-                                placeholder="Revicion of project"
+                                placeholder="Descripcion de revisor"
                                 name="revisionProyect"
                                 value="{{ old('revisionProyect', $proyect->revisionProyect ) }}"
                                 disabled
@@ -91,7 +87,7 @@
                             <input type="date"
                                 class="form-control"
                                 id="dateRevision"
-                                placeholder="Date of Revicion of project "
+                                placeholder="Fecha de revicion "
                                 name="dateRevision"
                                 value="{{ old('dateRevision', $proyect->dateRevision ) }}"
                                 disabled
@@ -102,7 +98,7 @@
                             <input type="text"
                                 class="form-control"
                                 id="hourlyProyect"
-                                placeholder="Hourly of project"
+                                placeholder="Horario del residente en el desarrollo del proyecto"
                                 name="hourlyProyect"
                                 value="{{ old('hourlyProyect', $proyect->hourlyProyect ) }}"
                                 disabled
@@ -133,34 +129,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <h6>Empresa :</h6>
-                            <select disabled class="form-control" name="busines_id" id="busines_id">
-                                @foreach($busines as $busine)
-                                    <option value="{{ $busine->id }}"
-                                        @if($busine->rfcBusiness ==  $proyect->busine->rfcBusiness)
-                                            selected
-                                        @endif
-                                        >
-                                        {{ $busine->rfcBusiness }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Residente :</h6>
-                            <select disabled class="form-control" name="residents_id" id="residents_id">
-                                @foreach($residents as $resident)
-                                    <option value="{{ $resident->id }}"
-                                        @if($resident->residentRegistration ==  $proyect->resident->residentRegistration)
-                                            selected
-                                        @endif
-                                        >
-                                        {{ $resident->residentRegistration }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input disabled type="radio" id="statusproyect1" name="statusProject" class="custom-control-input" value="1"
@@ -182,15 +150,179 @@
                             >
                             <label class="custom-control-label" for="statusproyect0">Inactivo</label>
                         </div>
+                        <br><br>
+                        <h4>Empresa</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <select disabled class="form-control" name="busines_id" id="busines_id">
+                                @foreach($busines as $busine)
+                                    <option value="{{ $busine->id }}"
+                                        @if($busine->rfcBusiness ==  $proyect->busine->rfcBusiness)
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $busine->nameBusiness }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="email"
+                                class="form-control" id="emailBusiness"
+                                placeholder="Email Busines" name="emailBusiness"
+                                value="{{ old('emailBusiness', $proyect->busine->nameBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>R.F.C :</h6>
+                            <input type="text"
+                                class="form-control" id="rfcBusiness"
+                                placeholder="RFC of Busines" name="rfcBusiness"
+                                value="{{ old('rfcBusiness', $proyect->busine->rfcBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Email :</h6>
+                            <input type="email"
+                                class="form-control" id="emailBusiness"
+                                placeholder="Email Busines" name="emailBusiness"
+                                value="{{ old('emailBusiness', $proyect->busine->emailBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Mision :</h6>
+                            <textarea disabled class="form-control" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3">{{ old('misionBusiness', $proyect->busine->misionBusiness ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Dirección :</h6>
+                            <textarea disabled class="form-control" placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3">{{ old('directionBusiness', $proyect->busine->directionBusiness ) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Colonia :</h6>
+                            <input type="text"
+                                class="form-control" id="coloniaBusiness"
+                                placeholder="Colonia of busines" name="coloniaBusiness"
+                                value="{{ old('coloniaBusiness', $proyect->busine->coloniaBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Ciudad :</h6>
+                            <input type="text"
+                                class="form-control" id="cityBusiness"
+                                placeholder="City of busines" name="cityBusiness"
+                                value="{{ old('cityBusiness', $proyect->busine->cityBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control" id="phoneBusiness"
+                                placeholder="Phone of busines" name="phoneBusiness"
+                                value="{{ old('phoneBusiness', $proyect->busine->phoneBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        @can('haveaccess','busines.show')
+                            <center><a class="btn btn-info" href="{{ route('busines.show', $proyect->busine->id ) }}">Mostrar</a></center>
+                        @endcan
+                        <h4>Residente</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Residente :</h6>
+                            <select disabled class="form-control" name="residents_id" id="residents_id">
+                                @foreach($residents as $resident)
+                                    <option value="{{ $resident->id }}"
+                                        @if($resident->residentRegistration ==  $proyect->resident->residentRegistration)
+                                            selected
+                                        @endif
+                                        >
+                                        {{ $resident->residentRegistration }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h6>Matricula :</h6>
+                            <input type="text"
+                                class="form-control @error('residentRegistration') is-invalid @enderror"
+                                id="residentRegistration" placeholder="residentRegistration"
+                                name="residentRegistration"
+                                value="{{ old('residentRegistration', $proyect->resident->residentRegistration) }}"
+                                disabled
+                            >
+                            @error('residentRegistration')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Name :</h6>
+                            <input type="text"
+                                class="form-control @error('nameresident') is-invalid @enderror"
+                                id="nameresident" placeholder="nameresident"
+                                name="nameresident"
+                                value="{{ $proyect->resident->nameResident }} {{ $proyect->resident->firtsLastnameResident }} {{ $proyect->resident->secondLastnameResident }}"
+                                disabled
+                            >
+                            @error('nameresident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Email :</h6>
+                            <input type="text"
+                                class="form-control @error('emailResident') is-invalid @enderror"
+                                id="emailResident" placeholder="emailResident"
+                                name="emailResident"
+                                value="{{ old('emailResident' , $proyect->resident->emailResident) }}"
+                                disabled
+                            >
+                            @error('emailResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Phone :</h6>
+                            <input type="text"
+                                class="form-control @error('phoneResident') is-invalid @enderror"
+                                id="phoneResident" placeholder="phoneResident"
+                                name="phoneResident"
+                                value="{{ old('phoneResident' , $proyect->resident->phoneResident) }}"
+                                disabled
+                            >
+                            @error('phoneResident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        @can('haveaccess','resident.show')
+                            <center><a class="btn btn-info" href="{{ route('resident.show', $proyect->resident->id ) }}">Mostrar</a></center>
+                        @endcan
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('proyect.index') }}">Back</a>
+                                @can('haveaccess','proyect.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('proyect.index') }}">Proyectos</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','proyect.edit')
-                                        <a class="btn btn-success btn-lg" href="{{ route('proyect.edit',$proyect->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('proyect.edit',$proyect->id) }}">Editar</a>
                                     @endcan
                                 </center>
                             </div>

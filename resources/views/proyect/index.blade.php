@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Proyects</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Lista de Proyectos de Residencias</h2></div></center>
                 <div class="card-body">
                 @can('haveaccess','proyect.create')
                     <a href="{{ route('proyect.create') }}"
