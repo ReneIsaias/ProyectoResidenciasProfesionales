@@ -65,4 +65,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Career', 'careers_id', 'id');
     }
+
+    public function residents(){
+        return $this->belongsToMany('App\Resident')->withTimesTamps();
+    }
+
+    public function proyects(){
+        return $this->belongsToMany('App\Proyect')->withTimesTamps();
+    }
+
 }

@@ -2,12 +2,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="card">
-                <center><div class="card-header bg-dark text-white"><h2>Lista de Residentes</h2></div></center>
+                <div class="card-header bg-dark text-white"><h2>Lista de proyectos a calificar</h2></div>
                 <div class="card-body">
-                @can('haveaccess','resident.create')
-                    <a href="{{ route('resident.create') }}"
+                @can('haveaccess','calificar.create')
+                    <a href="{{ route('calificar.create') }}"
                         class="btn btn-primary float-right"
                         >
                         Crear
@@ -20,48 +20,44 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Matricula</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Telfono</th>
-                                    <th scope="col">Carrera(s)</th>
-                                    <th scope="col">Estado</th>
+                                    <th scope="col">Proyecto</th>
+                                    <th scope="col">Residente</th>
+                                    <th scope="col">calificacion</th>
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($residents as $resident)
+                                @forelse ($calificars as $califica)
                                     <tr>
-                                        <th scope="row">{{ $resident->id }}</th>
-                                        <td>{{ $resident->residentRegistration }}</td>
-                                        <td>{{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}</td>
-                                        <td>{{ $resident->emailResident }}</td>
-                                        <td>{{ $resident->phoneResident }}</td>
+                                        <th scope="row">{{ $califica->id }}</th>
                                         <td>
-                                            @isset( $resident->career->careerName )
-                                                {{ $resident->career->careerName }}
+                                            @isset( $califica->proyects->id )
+                                                {{ $califica->proyects->nameProyect }}
                                             @endisset
                                         </td>
                                         <td>
-                                            @if ($resident->statusResident == "1")
-                                                Activo
-                                            @else
-                                                Inactivo
-                                            @endif
+                                            @isset( $califica->users->id )
+                                                {{ $califica->users->nameUser }} {{ $califica->users->firstLastname }} {{ $califica->users->secondLastname }}
+                                            @endisset
                                         </td>
                                         <td>
-                                            @can('haveaccess','resident.show')
-                                                <a class="btn btn-info" href="{{ route('resident.show', $resident->id ) }}">Ver</a>
+                                            @isset( $califica->calification )
+                                                {{ $califica->calification }}
+                                            @endisset
+                                        </td>
+                                        <td>
+                                            @can('haveaccess','calificar.show')
+                                                <a class="btn btn-info" href="{{ route('calificar.show',$califica->id) }}">Ver</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','resident.edit')
-                                                <a class="btn btn-success" href="{{ route('resident.edit', $resident->id ) }}">Editar</a>
+                                            @can('haveaccess','calificar.edit')
+                                                <a class="btn btn-success" href="{{ route('calificar.edit',$califica->id) }}">Editar</a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('haveaccess','resident.destroy')
-                                            <form action="{{ route('resident.destroy', $resident->id ) }}" method="POST">
+                                            @can('haveaccess','calificar.destroy')
+                                            <form action="{{ route('calificar.destroy',$califica->id) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">Borrar</button>
@@ -76,20 +72,17 @@
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
                                     </tr>
                                     </tbody>
                                     </table>
-                                    <center><h3>No hay residentes registrados aun</h3></center>
+                                    <center><h3>No hay calificaciones de proyectos registrados</h3></center>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            {{ $residents->links() }}
+                            {{ $calificars->links() }}
                         </ul>
                     </nav>
                 </div>

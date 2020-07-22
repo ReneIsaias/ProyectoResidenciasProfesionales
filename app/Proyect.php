@@ -45,4 +45,12 @@ class Proyect extends Model
     {
         return $this->belongsTo('App\Resident', 'residents_id', 'id');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User', 'user_id', 'id')->withTimesTamps();
+    }
+
+    public function reports(){
+        return $this->belongsToMany('App\Report')->withTimesTamps();
+    }
 }

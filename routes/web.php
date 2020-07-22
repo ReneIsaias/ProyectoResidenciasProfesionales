@@ -84,6 +84,8 @@ Route::resource('/persona', 'PersonaController')->names('persona');
 
 Route::resource('/resident', 'ResidentController')->names('resident');
 
+Route::resource('/calificar', 'ProyectUserController')->names('calificar');
+
 
 /*
 ////Listar

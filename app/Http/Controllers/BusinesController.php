@@ -37,7 +37,7 @@ class BusinesController extends Controller
     {
         Gate::authorize('haveaccess','busines.create');
 
-        $titulars = Titular::orderBy('id','Desc')->where('statusTitular',1)->get();
+        $titulars = Titular::where('statusTitular',1)->orderBy('id','Desc')->get();
         $users = User::where('statusUser',1)->get();
         $covenants = Covenant::where('statusConvenant',1)->get();
         $turns = Turn::where('statusTurn',1)->get();
@@ -71,14 +71,14 @@ class BusinesController extends Controller
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
             'titulars_id'      => 'required',
-            'user_id'          => 'required',
+            'user_id'          => '',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
             'sectors_id'       => 'required',
         ]);
         $busines = Busines::create($request->all());
 
-        return redirect()->route('busines.index')
+        return redirect()->route('proyect.create')
             ->with('status_success','Empresa registrada satisfactoriamente ');
     }
 
@@ -149,7 +149,7 @@ class BusinesController extends Controller
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
             'titulars_id'      => 'required',
-            'user_id'          => 'required',
+            'user_id'          => '',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
             'sectors_id'       => 'required',

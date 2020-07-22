@@ -13,7 +13,7 @@ class CreateProyectStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('proyect_user', function (Blueprint $table) {
+        Schema::create('proyect__users', function (Blueprint $table) {
             $table->id();
             $table->integer('calification');
             $table->string('descriptionCalification',200)->nullable();
@@ -30,6 +30,6 @@ class CreateProyectStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyect_user');
+        Schema::dropIfExists('proyect__users');
     }
 }

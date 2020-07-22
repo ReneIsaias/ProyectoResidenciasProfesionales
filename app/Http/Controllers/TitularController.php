@@ -58,8 +58,8 @@ class TitularController extends Controller
 
         $titular = Titular::create($request->all());
 
-        return redirect()->route('titular.index')
-            ->with('status_success','Titular saved successfully');
+        return redirect()->route('busines.create')
+            ->with('status_success','Titular registrado satisfactoriamente');
     }
 
     /**

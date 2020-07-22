@@ -13,6 +13,10 @@ use App\Studyplan;
 use App\Relative;
 use App\Persona;
 
+use App\Typefamily;
+
+use App\Permission\Models\Role;
+
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +31,7 @@ class ResidentController extends Controller
     {
         Gate::authorize('haveaccess','resident.index');
 
-        $residents = Resident::with('career','semester','typebeca','typesafe','studyplan','relative')->orderBy('id','Desc')->paginate(10);
+        $residents = Resident::with('career','semester','typebeca','typesafe','studyplan','relative')->orderBy('id','Desc')->paginate(25);
 
         return view('resident.index',compact('residents'));
     }
@@ -46,7 +50,7 @@ class ResidentController extends Controller
         $typebecas = Typebeca::where('statusBeca',1)->get();
         $typesafes = Typesafe::where('statusSafe',1)->get();
         $studyplans = Studyplan::where('planStatus',1)->get();
-        $relatives = Relative::where('statusRelative',1)->get();
+        $relatives = Relative::where('statusRelative',1)->orderBy('id','Desc')->get();
 
         return view('resident.create',compact('careers','semesters','typebecas','typesafes','studyplans','relatives'));
     }
@@ -84,8 +88,8 @@ class ResidentController extends Controller
 
         $resident = Resident::create($request->all());
 
-        return redirect()->route('resident.index')
-            ->with('status_success','Resident saved successfully');
+        return redirect()->route('titular.create')
+            ->with('status_success','Residente registrado satisfactoriamente');
     }
 
     /**
@@ -104,8 +108,18 @@ class ResidentController extends Controller
         $studyplans = Studyplan::orderBy('planStudies')->get();
         $relatives = Relative::orderBy('nameRelative')->get();
         $typebecas = Typebeca::orderBy('descriptionBeca')->get();
+        $typefamilys = Typefamily::orderBy('descriptionType')->get();
+        $roles = Role::orderBy('name')->get();
 
-        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas'));
+        $useres = User::orderBy('name')->get();
+
+        $resident_user=[];
+
+        foreach($resident->users as $asesor) {
+            $resident_user[]=$asesor->id;
+        }
+
+        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys','useres','resident_user','roles'));
     }
 
     /**
@@ -124,8 +138,19 @@ class ResidentController extends Controller
         $studyplans = Studyplan::orderBy('planStudies')->get();
         $relatives = Relative::orderBy('nameRelative')->get();
         $typebecas = Typebeca::orderBy('descriptionBeca')->get();
+        $typefamilys = Typefamily::orderBy('descriptionType')->get();
 
-        return view('resident.edit', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas'));
+        $roles = Role::orderBy('name')->get();
+
+        $useres = User::orderBy('name')->get();
+
+        $resident_user=[];
+
+        foreach($resident->users as $asesor) {
+            $resident_user[]=$asesor->id;
+        }
+
+        return view('resident.edit', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys','useres','resident_user','roles'));
     }
 
     /**
@@ -160,6 +185,12 @@ class ResidentController extends Controller
         ]);
 
         $resident -> update($request->all());
+
+        if ($request->get('asesor')) {
+            /* return "Si hay asesores"; */
+            $resident->users()->sync($request->get('asesor'));
+            /* return "Se sopone que se asignaron asesores"; */
+        }
 
         return redirect()->route('resident.index')
             ->with('status_success','Resident updated successfully');
@@ -221,7 +252,7 @@ class ResidentController extends Controller
                 if(Auth::user())
                 {
 
-                    return redirect()->route('resident.create');
+                    return redirect()->route('relative.create');
                    /*  Gate::authorize('haveaccess','resident.create');
 
                     $careers = Career::where('careerStatus',1)->get();

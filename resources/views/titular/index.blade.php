@@ -4,13 +4,13 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Titulars</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Lista de Titulares</h2></div></center>
                 <div class="card-body">
                 @can('haveaccess','titular.create')
                     <a href="{{ route('titular.create') }}"
                         class="btn btn-primary float-right"
                         >
-                        Create
+                        Crear
                     </a>
                     <br><br>
                 @endcan
@@ -20,10 +20,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Post(s)</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Puesto(s)</th>
+                                    <th scope="col">Estado</th>
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
@@ -50,12 +50,12 @@
                                         </td>
                                         <td>
                                             @can('haveaccess','titular.show')
-                                                <a class="btn btn-info" href="{{ route('titular.show',$titular->id) }}">Show</a>
+                                                <a class="btn btn-info" href="{{ route('titular.show',$titular->id) }}">Ver</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','titular.edit')
-                                                <a class="btn btn-success" href="{{ route('titular.edit',$titular->id) }}">Edit</a>
+                                                <a class="btn btn-success" href="{{ route('titular.edit',$titular->id) }}">Editar</a>
                                             @endcan
                                         </td>
                                         <td>
@@ -63,7 +63,7 @@
                                             <form action="{{ route('titular.destroy',$titular->id) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">Delete</button>
+                                                <button class="btn btn-danger">Borrar</button>
                                             </form>
                                             @endcan
                                         </td>

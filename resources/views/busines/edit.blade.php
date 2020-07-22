@@ -297,11 +297,11 @@
                             <center><a class="btn btn-success" href="{{ route('titular.edit',$titular->id) }}">Modificar</a></center>
                         @endcan
                         <p>
-                        <h4>Residente</h4>
+                        <h4>Asesor</h4>
                         <hr>
                         @can('haveaccess','user.edit')
                             <div class="form-group">
-                                <h6>Residente :</h6>
+                                <h6>Nombre :</h6>
                                 <select required class="form-control" id="user_id" name="user_id">
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}"
@@ -321,9 +321,11 @@
                             <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameUser') is-invalid @enderror"
-                                id="nameUser" placeholder="nameUser"
+                                id="nameUser" placeholder="Nombre del asesor"
                                 name="nameUser" disabled
-                                value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                @isset( $busines->user->name )
+                                    value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                @endisset
                             >
                             @error('nameUser')
                                 <span class="invalid-feedback" role="alert">
@@ -335,9 +337,11 @@
                             <h6>Email :</h6>
                             <input type="text"
                                 class="form-control @error('email') is-invalid @enderror"
-                                id="email" placeholder="email"
+                                id="email" placeholder="Correo electronico del asesor"
                                 name="email" disabled
-                                value="{{ old('email' , $busines->user->email ) }}"
+                                @isset( $busines->user->email )
+                                    value="{{ old('email' , $busines->user->email) }}"
+                                @endisset
                             >
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -349,9 +353,12 @@
                             <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneUser') is-invalid @enderror"
-                                id="phoneUser" placeholder="phoneUser"
+                                id="phoneUser" placeholder="Numero de telefono del asesor"
                                 name="phoneUser" disabled
-                                value="{{ old('phoneUser' , $busines->user->phoneUser) }}"
+                                @isset( $busines->user->phoneUser )
+                                    value="{{ old('phoneUser' ,$busines->user->phoneUser) }}"
+                                @endisset
+                                value=""
                             >
                             @error('phoneUser')
                                 <span class="invalid-feedback" role="alert">
@@ -359,8 +366,10 @@
                                 </span>
                             @enderror
                         </div>
-                        @can('haveaccess','user.edit')
-                            <center><a class="btn btn-success" href="{{ route('user.edit',$user->id) }}">Modificar</a></center>
+                        @can('haveaccess','user.show')
+                            @isset( $busines->user->id )
+                                <center><a class="btn btn-success" href="{{ route('user.edit',$busines->user->id) }}">Modificar</a></center>
+                            @endisset
                         @endcan
                         <hr>
                         <div class="row">

@@ -153,7 +153,7 @@
                         <br><br>
                         <h4>Empresa</h4>
                         <hr>
-                        <div class="form-group">
+                       {{--  <div class="form-group">
                             <h6>Nombre :</h6>
                             <select disabled class="form-control" name="busines_id" id="busines_id">
                                 @foreach($busines as $busine)
@@ -166,8 +166,7 @@
                                     </option>
                                 @endforeach
                             </select>
-                        </div>
-                        <br>
+                        </div> --}}
                         <div class="form-group">
                             <h6>Nombre :</h6>
                             <input type="email"
@@ -233,9 +232,10 @@
                         @can('haveaccess','busines.show')
                             <center><a class="btn btn-info" href="{{ route('busines.show', $proyect->busine->id ) }}">Mostrar</a></center>
                         @endcan
+                        <br>
                         <h4>Residente</h4>
                         <hr>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <h6>Residente :</h6>
                             <select disabled class="form-control" name="residents_id" id="residents_id">
                                 @foreach($residents as $resident)
@@ -244,10 +244,25 @@
                                             selected
                                         @endif
                                         >
-                                        {{ $resident->residentRegistration }}
+                                        {{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}
                                     </option>
                                 @endforeach
                             </select>
+                        </div> --}}
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameresident') is-invalid @enderror"
+                                id="nameresident" placeholder="nameresident"
+                                name="nameresident"
+                                value="{{ $proyect->resident->nameResident }} {{ $proyect->resident->firtsLastnameResident }} {{ $proyect->resident->secondLastnameResident }}"
+                                disabled
+                            >
+                            @error('nameresident')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <h6>Matricula :</h6>
@@ -259,21 +274,6 @@
                                 disabled
                             >
                             @error('residentRegistration')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <h6>Name :</h6>
-                            <input type="text"
-                                class="form-control @error('nameresident') is-invalid @enderror"
-                                id="nameresident" placeholder="nameresident"
-                                name="nameresident"
-                                value="{{ $proyect->resident->nameResident }} {{ $proyect->resident->firtsLastnameResident }} {{ $proyect->resident->secondLastnameResident }}"
-                                disabled
-                            >
-                            @error('nameresident')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -295,7 +295,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneResident') is-invalid @enderror"
                                 id="phoneResident" placeholder="phoneResident"

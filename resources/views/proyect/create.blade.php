@@ -11,7 +11,7 @@
                     @csrf
                     <div class="container">
                         <h3>Datos requeridos</h3>
-                        <br>
+                        <hr>
                         <div class="form-group">
                             <h6>Clave :</h6>
                             <input type="text"
@@ -36,7 +36,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Descripcion :</h6>
+                            <h6>Descripción :</h6>
                             <textarea class="form-control @error('descriptionProyect') is-invalid @enderror" required placeholder="Descripcion del proyecto a realizar" name="descriptionProyect" id="descriptionProyect" rows="3">{{ old('descriptionProyect') }}</textarea>
                             @error('descriptionProyect')
                                 <span class="invalid-feedback" role="alert">
@@ -182,37 +182,48 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Situacion :</h6>
-                            <select class="form-control" name="situationproyects_id" id="situationproyects_id">
+                            <input type="hidden"
+                                class="form-control @error('situationproyects_id') is-invalid @enderror"
+                                id="situationproyects_id" name="situationproyects_id"
                                 @foreach($situationproyects as $situationproyect)
-                                    <option value="{{ $situationproyect->id }}"
-                                    >
-                                        {{ $situationproyect->projectSituation }}
-                                    </option>
+                                    value="{{ $situationproyect->id }}"
                                 @endforeach
-                            </select>
+                                >
+                            @error('situationproyects_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Empresa :</h6>
-                            <select required class="form-control" name="busines_id" id="busines_id">
+                            <input type="hidden"
+                                class="form-control @error('busines_id') is-invalid @enderror"
+                                id="busines_id" name="busines_id"
                                 @foreach($busines as $busine)
-                                    <option value="{{ $busine->id }}"
-                                    >
-                                        {{ $busine->nameBusiness }}
-                                    </option>
+                                    value="{{ $busine->id }}"
                                 @endforeach
-                            </select>
+                                >
+                            @error('busines_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Residente :</h6>
-                            <select required class="form-control" name="residents_id" id="residents_id">
+                            <input type="hidden"
+                                class="form-control @error('residents_id') is-invalid @enderror"
+                                id="residents_id"
+                                name="residents_id"
                                 @foreach($residents as $resident)
-                                    <option value="{{ $resident->id }}"
-                                    >
-                                        {{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}
-                                    </option>
+                                    value="{{ $resident->id }}"
                                 @endforeach
-                            </select>
+                                >
+                            >
+                            @error('residents_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <hr>
                         <div class="row">

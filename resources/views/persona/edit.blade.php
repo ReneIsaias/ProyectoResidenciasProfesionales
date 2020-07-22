@@ -13,7 +13,6 @@
                     <div class="container">
                         <h3>Datos requeridos</h3>
                         <hr>
-                        <br>
                         <div class="form-group">
                             <h6>Matricula:</h6>
                             <input type="text"
@@ -144,10 +143,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('persona.index') }}">Back</a>
+                                @can('haveaccess','persona.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('persona.index') }}">Estudiantes</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Guardar"></center>
                             </div>
                         </div>
                     </div>

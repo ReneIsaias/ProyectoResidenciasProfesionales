@@ -113,12 +113,14 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('persona.index') }}">Back</a>
+                                @can('haveaccess','persona.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('persona.index') }}">Estudiantes</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','persona.edit')
-                                        <a class="btn btn-success btn-lg" href="{{ route('persona.edit',$persona->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('persona.edit',$persona->id) }}">Editar</a>
                                     @endcan
                                 </center>
                             </div>

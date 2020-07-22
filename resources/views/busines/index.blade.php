@@ -10,7 +10,7 @@
                     <a href="{{ route('busines.create') }}"
                         class="btn btn-primary float-right"
                     >
-                        Create
+                        Crear
                     </a>
                     <br><br>
                 @endcan
@@ -20,12 +20,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Sector(s)</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Ciudad</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Sector(es)</th>
+                                    <th scope="col">Estado</th>
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
@@ -51,12 +51,12 @@
                                         </td>
                                         <td>
                                             @can('haveaccess','busines.show')
-                                                <a class="btn btn-info" href="{{ route('busines.show', $busine->id ) }}">Show</a>
+                                                <a class="btn btn-info" href="{{ route('busines.show', $busine->id ) }}">Ver</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','busines.edit')
-                                                <a class="btn btn-success" href="{{ route('busines.edit', $busine->id ) }}">Edit</a>
+                                                <a class="btn btn-success" href="{{ route('busines.edit', $busine->id ) }}">Editar</a>
                                             @endcan
                                         </td>
                                         <td>
@@ -64,7 +64,7 @@
                                             <form action="{{ route('busines.destroy', $busine->id ) }}" method="POST">
                                             @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">Delete</button>
+                                                <button class="btn btn-danger">Borrar</button>
                                             </form>
                                             @endcan
                                         </td>

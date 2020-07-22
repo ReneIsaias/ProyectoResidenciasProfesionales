@@ -11,7 +11,7 @@
                     @csrf
                     <div class="container">
                         <h3>Datos requeridos</h3>
-                        <br>
+                        <hr>
                         <div class="form-group">
                             <h6>R.F.C. :</h6>
                             <input type="text"
@@ -192,18 +192,21 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Titular :</h6>
-                            <select required class="form-control" name="titulars_id" id="titulars_id">
+                            <input type="hidden"
+                                class="form-control @error('titulars_id') is-invalid @enderror"
+                                id="titulars_id" name="titulars_id"
                                 @foreach($titulars as $titular)
-                                    <option value="{{ $titular->id }}"
-                                    >
-                                        {{ $titular->nameTitular }} {{ $titular->firstLastname }} {{ $titular->secondLastname }}
-                                    </option>
+                                    value="{{ $titular->id }}"
                                 @endforeach
-                            </select>
+                                >
+                            @error('titulars_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <div class="form-group">
-                            <h6>Usuario :</h6>
+                        {{-- <div class="form-group">
+                            <h6>Asesor :</h6>
                             <input type="text"
                                 class="form-control @error('user_id') is-invalid @enderror"
                                 id="user_id" placeholder="Usuario que esta realizando el tramite"
@@ -216,7 +219,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">

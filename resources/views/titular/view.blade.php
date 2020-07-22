@@ -4,31 +4,17 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Titular</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Titular</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('titular.update', $titular->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>{{ $titular->nameTitular }} {{ $titular->firstLastname }} {{ $titular->secondLastname }}</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Name :</h6>
-                            <input type="text"
-                                class="form-control @error('nameTitular') is-invalid @enderror"
-                                id="nameTitular" placeholder="nameTitular"
-                                name="nameTitular" disabled
-                                value="{{ $titular->nameTitular }} {{ $titular->firstLastname }} {{ $titular->secondLastname }}"
-                            >
-                            @error('nameTitular')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <h6>Post :</h6>
+                            <h6>Puesto :</h6>
                             <select disabled class="form-control"  name="posts_id" id="posts_id">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->id }}"
@@ -44,7 +30,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneTitular') is-invalid @enderror"
                                 id="phoneTitular" placeholder="phoneTitular"
@@ -81,12 +67,14 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('titular.index') }}">Back</a>
+                                @can('haveaccess','titular.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('titular.index') }}">Titulares</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','titular.edit')
-                                        <a class="btn btn-success btn-lg" href="{{ route('titular.edit',$titular->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('titular.edit',$titular->id) }}">Editar</a>
                                     @endcan
                                 </center>
                             </div>

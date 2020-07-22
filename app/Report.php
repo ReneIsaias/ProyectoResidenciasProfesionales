@@ -23,4 +23,8 @@ class Report extends Model
     {
         return $this->belongsTo('App\Typefile', 'typefiles_id', 'id');
     }
+
+    public function proyects(){
+        return $this->belongsToMany('App\Proyect')->withTimesTamps();
+    }
 }

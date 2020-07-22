@@ -35,8 +35,8 @@ class ProyectController extends Controller
         Gate::authorize('haveaccess','proyect.create');
 
         $situationproyects = Situationproyect::get()->where('projectSituation','=','En proceso');
-        $busines = Busines::where('statusBusines',1)->get();
-        $residents = Resident::where('statusResident',1)->get();
+        $busines = Busines::where('statusBusines',1)->orderBy('id','Desc')->get();
+        $residents = Resident::where('statusResident',1)->orderBy('id','Desc')->get();
 
         return view('proyect.create',compact('situationproyects','busines','residents'));
     }
@@ -52,7 +52,7 @@ class ProyectController extends Controller
         Gate::authorize('haveaccess','proyect.create');
 
         $request->validate([
-            'keyProyect'            => 'required|min:8|max:50|unique:proyects,keyProyect',
+            'keyProyect'            => 'required|min:10|max:50|unique:proyects,keyProyect',
             'nameProyect'           => 'required|min:10|max:200|unique:proyects,nameProyect',
             'descriptionProyect'    => 'required|min:10',
             'objGeneProyect'        => 'required|min:10',
@@ -68,13 +68,13 @@ class ProyectController extends Controller
             'statusProject'         => 'required',
             'situationproyects_id'  => 'required',
             'busines_id'            => 'required',
-            'residents_id'          => 'required'
+            'residents_id'          => 'required',
         ]);
 
         $proyect = Proyect::create($request->all());
 
-        return redirect()->route('proyect.index')
-            ->with('status_success','Proyect saved successfully');
+        return redirect()->route('report.create')
+            ->with('status_success','Proyecto registrado satisfactoriamente');
     }
 
     /**

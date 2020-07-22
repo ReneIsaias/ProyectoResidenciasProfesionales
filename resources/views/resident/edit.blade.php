@@ -4,14 +4,14 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Edit resident</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Editar Residente</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
-                    <form action="{{ route('resident.update', $resident->id) }}" method="POST">
+                    <form action="{{ route('resident.update', $resident->id ) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
                         <br>
                         <div class="form-group">
                             <h6>Matricula :</h6>
@@ -28,10 +28,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameResident') is-invalid @enderror"
-                                id="nameResident" placeholder="Name resident"
+                                id="nameResident" placeholder="Nombre del residente"
                                 name="nameResident" value="{{ old('nameResident', $resident->nameResident ) }}"
                                 autocomplete="nameResident" required
                             >
@@ -42,10 +42,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>First Last Name :</h6>
+                            <h6>Primer apellido :</h6>
                             <input type="text"
                                 class="form-control @error('firtsLastnameResident') is-invalid @enderror"
-                                id="firtsLastnameResident" placeholder="First Lastname"
+                                id="firtsLastnameResident" placeholder="Primer apellido del residente"
                                 name="firtsLastnameResident" value="{{ old('firtsLastnameResident', $resident->firtsLastnameResident ) }}"
                                 autocomplete="firtsLastnameResident" required
                             >
@@ -56,10 +56,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Second Last Name :</h6>
+                            <h6>Segundo apellido :</h6>
                             <input type="text"
                                 class="form-control @error('secondLastnameResident') is-invalid @enderror"
-                                id="secondLastnameResident" placeholder="Second Lastname"
+                                id="secondLastnameResident" placeholder="Segundo apellido del residente"
                                 name="secondLastnameResident" value="{{ old('secondLastnameResident', $resident->secondLastnameResident ) }}"
                                 autocomplete="secondLastnameResident" required
                             >
@@ -73,7 +73,7 @@
                             <h6>Email :</h6>
                             <input type="email"
                                 class="form-control @error('emailResident') is-invalid @enderror"
-                                id="emailResident" placeholder="Email residente"
+                                id="emailResident" placeholder="Direccion de correo electronico del residente"
                                 name="emailResident" value="{{ old('emailResident', $resident->emailResident ) }}"
                                 autocomplete="emailResident" required
                             >
@@ -84,10 +84,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneResident') is-invalid @enderror"
-                                id="phoneResident" placeholder="Telefono residente"
+                                id="phoneResident" placeholder="Numero telefonico del residente"
                                 name="phoneResident" value="{{ old('phoneResident', $resident->phoneResident ) }}"
                                 autocomplete="phoneResident" required
                             >
@@ -98,10 +98,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Period :</h6>
+                            <h6>Periodo :</h6>
                             <input type="text"
                                 class="form-control @error('periodResident') is-invalid @enderror"
-                                id="periodResident" placeholder="Periode residente"
+                                id="periodResident" placeholder="Periodo del residente"
                                 name="periodResident" value="{{ old('periodResident', $resident->periodResident ) }}"
                                 autocomplete="periodResident" required
                             >
@@ -112,8 +112,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
-                            <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction of resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident ) }}</textarea>
+                            <h6>Dirección :</h6>
+                            <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direccion de ubicación del residente" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident ) }}</textarea>
                             @error('directionResident')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -121,10 +121,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>City :</h6>
+                            <h6>Ciudad :</h6>
                             <input type="text"
                                 class="form-control @error('cityResident') is-invalid @enderror"
-                                id="cityResident" placeholder="City resident"
+                                id="cityResident" placeholder="Ciudad del residente a la que pertenece"
                                 name="cityResident" value="{{ old('cityResident', $resident->cityResident ) }}"
                                 autocomplete="cityResident" required
                             >
@@ -138,7 +138,7 @@
                             <h6>C.P. :</h6>
                             <input type="text"
                                 class="form-control @error('cpResident') is-invalid @enderror"
-                                id="cpResident" placeholder="C.P. resident"
+                                id="cpResident" placeholder="Codigo postal del residente"
                                 name="cpResident" value="{{ old('cpResident', $resident->cpResident ) }}"
                                 autocomplete="cpResident" required
                             >
@@ -165,7 +165,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Tipo de Seguro :</h6>
+                            <h6>Seguro :</h6>
                             <select required class="form-control" id="typesaves_id" name="typesaves_id">
                                 @foreach($typesafes as $typesafe)
                                     <option value="{{ $typesafe->id }}"
@@ -197,7 +197,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Plan Estudios :</h6>
+                            <h6>Plan de estudios :</h6>
                             <select required class="form-control" id="studyplans_id" name="studyplans_id">
                                 @foreach($studyplans as $studyplan)
                                     <option value="{{ $studyplan->id }}"
@@ -213,23 +213,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Familiar :</h6>
-                            <select required class="form-control" id="relatives_id" name="relatives_id">
-                                @foreach($relatives as $relative)
-                                    <option value="{{ $relative->id }}"
-                                        @isset( $resident->relative->nameRelative )
-                                            @if( $relative->nameRelative ==  $resident->relative->nameRelative )
-                                                selected
-                                            @endif
-                                        @endisset
-                                        >
-                                        {{ $relative->nameRelative }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <h6>Tipo De beca :</h6>
+                            <h6>Beca :</h6>
                             <select required class="form-control" id="typebecas_id" name="typebecas_id">
                                 @foreach($typebecas as $typebeca)
                                     <option value="{{ $typebeca->id }}"
@@ -265,13 +249,140 @@
                             >
                             <label class="custom-control-label" for="statusresident0">Inactivo</label>
                         </div>
+                        <p>
+                        <h4>Familiar</h4>
                         <hr>
+                        @can('haveaccess','relative.edit')
+                            <div class="form-group">
+                                <h6>Familiar :</h6>
+                                <select class="form-control" name="relatives_id" id="relatives_id">
+                                    @foreach($relatives as $relative)
+                                        <option value="{{ $relative->id }}"
+                                            @if($relative->nameRelative ==  $resident->relative->nameRelative)
+                                                selected
+                                            @endif
+                                        >
+                                            {{ $relative->nameRelative }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endcan
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="Nombre del familiar" name="nameRelative"
+                                value="{{ $resident->relative->nameRelative }} {{ $resident->relative->firstLastname }} {{ $resident->relative->secondLastname }}"
+                                autocomplete="nameRelative" disabled
+                            >
+                            @error('nameRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Parentesco :</h6>
+                            <select disabled class="form-control"  name="typefamilies_id" id="typefamilies_id">
+                                @foreach($typefamilys as $typefamily)
+                                    <option value="{{ $typefamily->id }}"
+                                        @isset( $resident->relative->typefamily->descriptionType )
+                                            @if( $typefamily->descriptionType ==  $resident->relative->typefamily->descriptionType )
+                                                selected
+                                            @endif
+                                        @endisset
+                                        >
+                                        {{ $typefamily->descriptionType }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control @error('phoneRelative') is-invalid @enderror"
+                                id="phoneRelative" placeholder="Numero de telefono del familiar"
+                                name="phoneRelative" value="{{ old('phoneRelative', $resident->relative->phoneRelative ) }}"
+                                autocomplete="phoneRelative" disabled
+                            >
+                            @error('phoneRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Dirección :</h6>
+                            <textarea disabled class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3">{{ old('directionRelative', $resident->relative->directionRelative ) }}</textarea>
+                            @error('directionRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <center>
+                            @can('haveaccess','relative.edit')
+                                <a class="btn btn-success" href="{{ route('relative.edit', $resident->relative->id ) }}">Modificar</a>
+                            @endcan
+                        </center>
+                        <hr>
+                        @can('haveaccess','asesor.view')
+                            <h3>Asesores</h3>
+                            <hr>
+                            @foreach( $useres as $user )
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" disabled class="custom-control-input"
+                                        id="useres_{{ $user->id }}"
+                                        value="{{ $user->id }}" name="useres[]"
+                                        @if( is_array(old('useres')) && in_array("$user->id", old('useres')) )
+                                            checked
+                                        @elseif( is_array($resident_user) && in_array("$user->id", $resident_user) )
+                                            checked
+                                        @endif
+                                    >
+                                    <label class="custom-control-label"
+                                        for="useres_{{ $user->id }}">
+                                        {{ $user->id }}
+                                        -
+                                        {{ $user->nameUser }} {{ $user->firstLastname }} {{ $user->secondLastname }}
+                                        <em>( {{ $user->name }} )</em>
+                                    </label>
+                                </div>
+                            @endforeach
+                            <hr>
+                        @endcan
+                        @can('haveaccess','asesor.edit')
+                            <h5>Asesor Externo :</h5>
+                            <div class="form-group">
+                                <select class="form-control"  name="asesor[]" id="asesor[]">
+                                    <option value="">--Seleccione al asesor externo--</option>
+                                    @foreach ($useres as $user)
+                                        <option value="{{ $user->id }}">{{ $user->nameUser }} {{ $user->firstLastname }} {{ $user->secondLastname }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <h5>Asesor Interno :</h5>
+                                <select class="form-control"  name="asesor[]" id="asesor[]">
+                                    <option value="">--Seleccione al asesor interno--</option>
+                                    @foreach ($useres as $user)
+                                        <option value="{{ $user->id }}">{{ $user->nameUser }} {{ $user->firstLastname }} {{ $user->secondLastname }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <hr>
+                        @endcan
+                        <br>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('resident.index') }}">Back</a>
+                                @can('haveaccess','resident.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('resident.index') }}">Residentes</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Guardar"></center>
                             </div>
                         </div>
                     </div>

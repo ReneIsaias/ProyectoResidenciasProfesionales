@@ -212,15 +212,18 @@
                             <center><a class="btn btn-info" href="{{ route('titular.show',$busines->titular->id) }}">Mostrar</a></center>
                         @endcan
                         <p>
-                        <h4>Residente</h4>
+                        <h4>Asesor</h4>
                         <hr>
                         <div class="form-group">
                             <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameUser') is-invalid @enderror"
-                                id="nameUser" placeholder="nameUser"
+                                id="nameUser" placeholder="Nombre del asesor"
                                 name="nameUser" disabled
-                                value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                @isset( $busines->user->name )
+                                    value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                @endisset
+                                value="Aun no se le asigna el asesor a esta empresa, por lo tanto no hay nombre"
                             >
                             @error('nameUser')
                                 <span class="invalid-feedback" role="alert">
@@ -232,9 +235,12 @@
                             <h6>Email :</h6>
                             <input type="text"
                                 class="form-control @error('email') is-invalid @enderror"
-                                id="email" placeholder="email"
+                                id="email" placeholder="Email del asesor"
                                 name="email" disabled
-                                value="{{ old('email' , $busines->user->email ) }}"
+                                @isset( $busines->user->email )
+                                    value="{{ $busines->user->email }}"
+                                @endisset
+                                value="Aun no se le asigna el asesor a esta empresa, por lo tanto no tiene email"
                             >
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -246,9 +252,12 @@
                             <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneUser') is-invalid @enderror"
-                                id="phoneUser" placeholder="phoneUser"
+                                id="phoneUser" placeholder="Telenofono del asesor"
                                 name="phoneUser" disabled
-                                value="{{ old('phoneUser' , $busines->user->phoneUser) }}"
+                                @isset( $busines->user->phoneUser )
+                                    value="{{ $busines->user->phoneUser }}"
+                                @endisset
+                                value="Aun no se le asigna el asesor a esta empresa, por lo tanto no hay telefono"
                             >
                             @error('phoneUser')
                                 <span class="invalid-feedback" role="alert">
@@ -257,7 +266,9 @@
                             @enderror
                         </div>
                         @can('haveaccess','user.show')
-                            <center><a class="btn btn-info" href="{{ route('user.show',$busines->user->id) }}">Mostrar</a></center>
+                            @isset( $busines->user->id )
+                                <center><a class="btn btn-info" href="{{ route('user.show',$busines->user->id) }}">Mostrar</a></center>
+                            @endisset
                         @endcan
                         <hr>
                         <div class="row">

@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View User</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Usuario</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('user.update', $user->id) }}" method="POST">
@@ -19,7 +19,7 @@
                         </center>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <h6>Name :</h6>
+                                <h6>Nombre :</h6>
                                 <input id="nameUser" type="text"class="form-control
                                     @error('nameUser') is-invalid @enderror"
                                     name="nameUser" value="{{ $user->nameUser }} {{ $user->firstLastname }} {{ $user->secondLastname }}"
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <h6>Phone :</h6>
+                                <h6>Telefono :</h6>
                                 <input id="phoneUser" type="text" class="form-control
                                     @error('phoneUser') is-invalid @enderror"
                                     name="phoneUser" value="{{ old('phoneUser', $user->phoneUser ) }}"
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <h6>Role :</h6>
+                            <h6>Rol :</h6>
                             <select disabled class="form-control"  name="roles" id="roles">
                                 @foreach($roles as $role)
                                     <option value="{{ $role->id }}"
@@ -82,7 +82,16 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Post :</h6>
+                            <h6>Descripción :</h6>
+                            <textarea class="form-control @error('descriptionRole') is-invalid @enderror" disabled name="descriptionRole" id="descriptionRole" rows="3">{{ $user->roles[0]->description }}</textarea>
+                            @error('descriptionRole')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Puesto :</h6>
                             <select disabled class="form-control"  name="roles" id="roles">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->id }}"
@@ -98,7 +107,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Degree Study :</h6>
+                            <h6>Nivel de Estudios :</h6>
                             <select disabled class="form-control"  name="roles" id="roles">
                                 @foreach($degrestudys as $degrestudy)
                                     <option value="{{ $degrestudy->id }}"
@@ -114,7 +123,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Career :</h6>
+                            <h6>Carrera :</h6>
                             <select disabled class="form-control"  name="roles" id="roles">
                                 @foreach($careers as $career)
                                     <option value="{{ $career->id }}"
@@ -161,12 +170,14 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('user.index') }}">Back</a>
+                                @can('haveaccess','user.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('user.index') }}">Usuarios</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('view', [$user, ['user.edit','userown.edit'] ])
-                                        <a class="btn btn-success btn-lg" href="{{ route('user.edit',$user->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('user.edit',$user->id) }}">Editar</a>
                                     @endcan
                                 </center>
                             </div>

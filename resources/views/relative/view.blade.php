@@ -4,31 +4,17 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>View Relative</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Familiar</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('relative.update', $relative->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>{{ $relative->nameRelative }} {{ $relative->firstLastname }} {{ $relative->secondLastname }}</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Name :</h6>
-                            <input type="text"
-                                class="form-control @error('nameRelative') is-invalid @enderror"
-                                id="nameRelative" placeholder="Nombre del familiar" name="nameRelative"
-                                value="{{ $relative->nameRelative }} {{ $relative->firstLastname }} {{ $relative->secondLastname }}"
-                                autocomplete="nameRelative" autofocus disabled required
-                            >
-                            @error('nameRelative')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <h6>Type Family :</h6>
+                            <h6>Parentesco :</h6>
                             <select disabled class="form-control"  name="typefamilies_id" id="typefamilies_id">
                                 @foreach($typefamilys as $typefamily)
                                     <option value="{{ $typefamily->id }}"
@@ -44,7 +30,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneRelative') is-invalid @enderror"
                                 id="phoneRelative" placeholder="Numero de telefono del familiar"
@@ -58,7 +44,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
+                            <h6>Dirección :</h6>
                             <textarea class="form-control @error('directionRelative') is-invalid @enderror" disabled placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative', $relative->directionRelative ) }}</textarea>
                             @error('directionRelative')
                                 <span class="invalid-feedback" role="alert">
@@ -90,12 +76,14 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('relative.index') }}">Back</a>
+                                @can('haveaccess','relative.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('relative.index') }}">Familiares</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center>
                                     @can('haveaccess','relative.edit')
-                                        <a class="btn btn-success btn-lg" href="{{ route('relative.edit',$relative->id) }}">Edit</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('relative.edit',$relative->id) }}">Editar</a>
                                     @endcan
                                 </center>
                             </div>

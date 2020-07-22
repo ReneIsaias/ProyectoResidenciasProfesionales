@@ -30,44 +30,47 @@
                 {{-- lista de urls --}}
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Mamalonas <span class="caret"></span>
+                            Tramites <span class="caret"></span>
                         </a>
                         {{-- Acceso a los proyectos --}}
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @can('haveaccess','resident.index')
-                                <a class="dropdown-item" href="{{ route('resident.index') }}">Residents</a>
+                                <a class="dropdown-item" href="{{ route('resident.index') }}">Residentes</a>
                             @endcan
                             @can('haveaccess','busines.index')
-                                <a class="dropdown-item" href="{{ route('busines.index') }}">Business</a>
+                                <a class="dropdown-item" href="{{ route('busines.index') }}">Empresas</a>
                             @endcan
                             @can('haveaccess','proyect.index')
-                                <a class="dropdown-item" href="{{ route('proyect.index') }}">Proyects</a>
+                                <a class="dropdown-item" href="{{ route('proyect.index') }}">Proyectos</a>
                             @endcan
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            tablas debiles <span class="caret"></span>
+                            Auxiliares <span class="caret"></span>
                         </a>
                         {{-- Acceso a los residentes --}}
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @can('haveaccess','relative.index')
-                                <a class="dropdown-item" href="{{ route('relative.index') }}">Relative</a>
+                                <a class="dropdown-item" href="{{ route('relative.index') }}">Familiares</a>
                             @endcan
                             @can('haveaccess','titular.index')
                                 <a class="dropdown-item" href="{{ route('titular.index') }}">Titulares</a>
                             @endcan
                             @can('haveaccess','report.index')
-                                <a class="dropdown-item" href="{{ route('report.index') }}">Reports</a>
+                                <a class="dropdown-item" href="{{ route('report.index') }}">Reportes</a>
                             @endcan
                             @can('haveaccess','persona.index')
-                                <a class="dropdown-item" href="{{ route('persona.index') }}">Students</a>
+                                <a class="dropdown-item" href="{{ route('persona.index') }}">Estudiantes</a>
+                            @endcan
+                            @can('haveaccess','calificar.index')
+                                <a class="dropdown-item" href="{{ route('calificar.index') }}">Calificar</a>
                             @endcan
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            tablas fuertes <span class="caret"></span>
+                            Configuracion <span class="caret"></span>
                         </a>
                         {{-- Acceso a mis pruebas --}}
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

@@ -31,7 +31,7 @@ class CreateProyectsTable extends Migration
             $table->boolean('statusProject');
             $table->foreignId('situationproyects_id')->nullable()->references('id')->on('situationproyects')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('busines_id')->references('id')->on('busines')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('residents_id')->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('residents_id')->nullable()->references('id')->on('residents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

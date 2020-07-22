@@ -4,16 +4,16 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>Create Relative</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>Registro Familiar</h2></div></center>
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('relative.store') }}" method="POST">
                     @csrf
                     <div class="container">
-                        <h3>Required data</h3>
+                        <h3>Datos requeridos</h3>
                         <br>
                         <div class="form-group">
-                            <h6>Name :</h6>
+                            <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameRelative') is-invalid @enderror"
                                 id="nameRelative" placeholder="Nombre del familiar"
@@ -27,7 +27,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>First Last Name :</h6>
+                            <h6>Primer apellido :</h6>
                             <input type="text"
                                 class="form-control @error('firstLastname') is-invalid @enderror"
                                 id="firstLastname" placeholder="Primer apellido del familiar"
@@ -41,7 +41,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Second Last Name :</h6>
+                            <h6>Segundo apellido :</h6>
                             <input type="text"
                                 class="form-control @error('secondLastname') is-invalid @enderror"
                                 id="secondLastname" placeholder="Segundo apellido del familiar"
@@ -55,16 +55,16 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Type Family :</h6>
+                            <h6>Parentesco :</h6>
                             <select required class="form-control" id="typefamilies_id" name="typefamilies_id">
-                                <option value="">--Seleccione el tipo de familiar--</option>
+                                <option value="">--Seleccione el parentesco--</option>
                                 @foreach ($typefamilys as $typefamily)
                                     <option value="{{ $typefamily->id }}">{{ old('typefamily->descriptionType', $typefamily->descriptionType) }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <h6>Phone :</h6>
+                            <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneRelative') is-invalid @enderror"
                                 id="phoneRelative" placeholder="Numero de telefono del familiar"
@@ -78,8 +78,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <h6>Direction :</h6>
-                            <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative') }}</textarea>
+                            <h6>Dirección :</h6>
+                            <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion de ubicacioón del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative') }}</textarea>
                             @error('directionRelative')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -95,10 +95,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">
-                                <a class="btn btn-danger btn-lg" href="{{ route('relative.index') }}">Back</a>
+                                @can('haveaccess','relative.index')
+                                    <a class="btn btn-danger btn-lg" href="{{ route('relative.index') }}">Familiares</a>
+                                @endcan
                             </div>
                             <div class="col-lg-6 mb-4">
-                                <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
+                                <center><input class="btn btn-primary btn-lg" type="submit" value="Siguiente"></center>
                             </div>
                         </div>
                     </div>

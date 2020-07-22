@@ -51,7 +51,7 @@ class ReportController extends Controller
         $request->validate([
             'nameReport'        => 'required|min:5|max:100',
             'descriptionReport' => 'required|min:5|max:200',
-            'fileReport'        => 'required',
+            'fileReport'        => 'required|file',
             'statusReport'      => 'required',
             'typefiles_id'      => 'required',
         ]);
@@ -69,8 +69,9 @@ class ReportController extends Controller
             $file->move(public_path().'/reports/images/',$name);
         }
 
-        return redirect()->route('report.index')
-            ->with('status_success','Report saved successfully');
+        /* return redirect()->route('report.index') */
+        return redirect()->route('home')
+            ->with('status_success','Reporte guadado satisfactorimante');
     }
 
     /**

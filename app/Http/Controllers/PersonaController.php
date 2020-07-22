@@ -58,7 +58,7 @@ class PersonaController extends Controller
         $personas = Persona::create($request->all());
 
         return redirect()->route('persona.index')
-            ->with('status_success','Person saved successfully');
+            ->with('status_success','Estudiantes guardado satisfactorimente');
     }
 
     /**
