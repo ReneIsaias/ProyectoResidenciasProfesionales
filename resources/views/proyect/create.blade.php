@@ -218,7 +218,7 @@
                                     value="{{ $resident->id }}"
                                 @endforeach
                                 >
-                            >
+
                             @error('residents_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
