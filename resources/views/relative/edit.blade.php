@@ -13,6 +13,10 @@
                     <div class="container">
                         <h3>Datos requeridos</h3>
                         <hr>
+<<<<<<< HEAD
+=======
+                        <br>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <div class="form-group">
                             <h6>Nombre :</h6>
                             <input type="text"
@@ -28,7 +32,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Primer apellido :</h6>
+=======
+                            <h6>Primer Apellido :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('firstLastname') is-invalid @enderror"
                                 id="firstLastname" placeholder="Primer apellido del familiar"
@@ -42,7 +50,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Segundo apellido :</h6>
+=======
+                            <h6>Segundo Apellido :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('secondLastname') is-invalid @enderror"
                                 id="secondLastname" placeholder="Segundo apellido del familiar"
@@ -86,7 +98,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Dirección :</h6>
+=======
+                            <h6>Direccion :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative', $relative->directionRelative ) }}</textarea>
                             @error('directionRelative')
                                 <span class="invalid-feedback" role="alert">

@@ -12,6 +12,10 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Datos requeridos</h3>
+<<<<<<< HEAD
+=======
+                        <hr>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <br>
                         <div class="form-group">
                             <h6>Matricula :</h6>
@@ -112,8 +116,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Dirección :</h6>
                             <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direccion de ubicación del residente" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident ) }}</textarea>
+=======
+                            <h6>Direccion :</h6>
+                            <textarea class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction of resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident ) }}</textarea>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             @error('directionResident')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -121,7 +130,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Ciudad :</h6>
+=======
+                            <h6>Ciudad:</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('cityResident') is-invalid @enderror"
                                 id="cityResident" placeholder="Ciudad del residente a la que pertenece"
@@ -197,7 +210,11 @@
                             </select>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Plan de estudios :</h6>
+=======
+                            <h6>Plan de Estudios :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <select required class="form-control" id="studyplans_id" name="studyplans_id">
                                 @foreach($studyplans as $studyplan)
                                     <option value="{{ $studyplan->id }}"
@@ -213,7 +230,11 @@
                             </select>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Beca :</h6>
+=======
+                            <h6>Tipo De beca :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <select required class="form-control" id="typebecas_id" name="typebecas_id">
                                 @foreach($typebecas as $typebeca)
                                     <option value="{{ $typebeca->id }}"
@@ -250,6 +271,7 @@
                             <label class="custom-control-label" for="statusresident0">Inactivo</label>
                         </div>
                         <p>
+<<<<<<< HEAD
                         <h4>Familiar</h4>
                         <hr>
                         @can('haveaccess','relative.edit')
@@ -297,11 +319,25 @@
                                     </option>
                                 @endforeach
                             </select>
+=======
+                        <div class="form-group">
+                            <h4>Familiar :</h4>
+                            <hr><p>
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="nameRelative"
+                                name="nameRelative"
+                                value="{{ $resident->relative->nameRelative }} {{ $resident->relative->firstLastname }} {{ $resident->relative->secondLastname }}"
+                                disabled
+                            >
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         </div>
                         <div class="form-group">
                             <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneRelative') is-invalid @enderror"
+<<<<<<< HEAD
                                 id="phoneRelative" placeholder="Numero de telefono del familiar"
                                 name="phoneRelative" value="{{ old('phoneRelative', $resident->relative->phoneRelative ) }}"
                                 autocomplete="phoneRelative" disabled
@@ -326,6 +362,55 @@
                                 <a class="btn btn-success" href="{{ route('relative.edit', $resident->relative->id ) }}">Modificar</a>
                             @endcan
                         </center>
+=======
+                                id="phoneRelative" placeholder="phoneRelative"
+                                name="phoneRelative"
+                                value="{{ $resident->relative->phoneRelative }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Direccion :</h6>
+                            <textarea disabled  class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direction resident" name="directionRelative" id="directionRelative" rows="3">{{ $resident->relative->directionRelative }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Parentesco :</h6>
+                            <input type="text"
+                                class="form-control @error('descriptionType') is-invalid @enderror"
+                                id="descriptionType" placeholder="descriptionType"
+                                name="descriptionType"
+                                value="{{ $resident->relative->typefamily->descriptionType }}"
+                                disabled
+                            >
+                        </div>
+                        @can('haveaccess','relative.edit')
+                            <center><a class="btn btn-success" href="{{ route('relative.edit',$resident->relative->id) }}">Edit</a></center>
+                        @endcan
+                        <p>
+                        <h4>Asesor Interno</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Asesor :</h6>
+                            <select class="form-control" id="user[]" name="user[]">
+                                <option value="">--Seleccione el asesor--</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p>
+                        <h4>Asesor Externo</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Asesor :</h6>
+                            <select class="form-control" id="user[]" name="user[]">
+                                <option value="">--Seleccione el asesor--</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <hr>
                         @can('haveaccess','asesor.view')
                             <h3>Asesores</h3>

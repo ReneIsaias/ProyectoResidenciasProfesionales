@@ -4,15 +4,43 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
+<<<<<<< HEAD
                 <center><div class="card-header bg-dark text-white"><h2>Registro Titular de Empresa</h2></div></center>
+=======
+                <div class="card-header bg-dark text-white"><h2>Registro Titular</h2></div>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('titular.store') }}" method="POST">
                     @csrf
                     <div class="container">
                         <h3>Datos requeridos</h3>
+<<<<<<< HEAD
                         <hr>
                         <div class="form-group">
+=======
+                        <br>
+                        <div class="form-group">
+                            <h6>Empresa :</h6>
+                            <input type="text"
+                                value="{{ Auth::user()->name }}"
+                                disabled
+                            >
+                            {{-- <input type="text" value="{{ $busines->id }}"> --}}
+                            <select class="form-control" name="staff_id" id="staff_id">
+                                @foreach($busines as $busine)
+                                    <option value="{{ $busine->id }}"
+                                       {{--  @if( $busine->name ==  $busine->user->name)
+                                            selected
+                                        @endif --}}
+                                    >
+                                        {{ $busine->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameTitular') is-invalid @enderror"
@@ -27,7 +55,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Primer apellido :</h6>
+=======
+                            <h6>Primer Apellido :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('firstLastname') is-invalid @enderror"
                                 id="firstLastname" placeholder="Primer apellido del titular"
@@ -41,7 +73,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Segundo apellido :</h6>
+=======
+                            <h6>Segundo Apellido :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('secondLastname') is-invalid @enderror"
                                 id="secondLastname" placeholder="Segundo apellido del titular"
@@ -84,6 +120,7 @@
                             >
                         </div>
                         <hr>
+<<<<<<< HEAD
                         <div class="row">
                             <div class="col-lg-3 mb-4">
                                 @can('haveaccess','titular.index')
@@ -93,6 +130,9 @@
                             <div class="col-lg-6 mb-4">
                                 <center><input class="btn btn-primary btn-lg" type="submit" value="Siguiente"></center>
                             </div>
+=======
+                        <center><input class="btn btn-primary btn-lg" type="submit" value="Next"></center>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         </div>
                     </div>
                     </form>

@@ -59,8 +59,13 @@ class RelativeController extends Controller
 
         $relative = Relative::create($request->all());
 
+<<<<<<< HEAD
         return redirect()->route('resident.create')
             ->with('status_success','Familiar registrado satisfactoriamente');
+=======
+        return redirect()->route('busines.create')
+            ->with('status_success','Relative saved successfully');
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 
     /**

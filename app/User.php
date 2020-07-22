@@ -67,6 +67,7 @@ class User extends Authenticatable
     }
 
     public function residents(){
+<<<<<<< HEAD
         return $this->belongsToMany('App\Resident')->withTimesTamps();
     }
 
@@ -74,4 +75,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Proyect')->withTimesTamps();
     }
 
+=======
+
+        return $this->belongsToMany('App\Resident')->withTimesTamps();
+        
+    }
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
 }

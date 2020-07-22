@@ -11,8 +11,11 @@
                     @csrf
                     @method('PUT')
                     <div class="container">
+<<<<<<< HEAD
                         <h4>{{ $busines->nameBusiness }}</h4>
                         <hr>
+=======
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <div class="form-group">
                             <h6>R.F.C :</h6>
                             <input type="text"
@@ -23,6 +26,18 @@
                             >
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
+=======
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control" id="nameBusiness"
+                                placeholder="Name Busines" name="nameBusiness"
+                                value="{{ old('nameBusiness', $busines->nameBusiness ) }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <h6>Email :</h6>
                             <input type="email"
                                 class="form-control" id="emailBusiness"
@@ -36,7 +51,11 @@
                             <textarea disabled class="form-control" placeholder="Mision of busines" name="misionBusiness" id="misionBusiness" rows="3">{{ old('misionBusiness', $busines->misionBusiness ) }}</textarea>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Dirección :</h6>
+=======
+                            <h6>Direccion :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <textarea disabled class="form-control" placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3">{{ old('directionBusiness', $busines->directionBusiness ) }}</textarea>
                         </div>
                         <div class="form-group">
@@ -76,7 +95,11 @@
                             >
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Persona responsable :</h6>
+=======
+                            <h6>Persona Responsable :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control" id="personFirma"
                                 placeholder="Persona of firm convenat" name="personFirma"
@@ -85,7 +108,11 @@
                             >
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Puesto de la persona responsable :</h6>
+=======
+                            <h6>Puesto :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <select disabled class="form-control" name="postPerson" id="postPerson">
                                 @foreach($posts as $post)
                                     <option value="{{ $post->namePost }}"
@@ -265,11 +292,74 @@
                                 </span>
                             @enderror
                         </div>
+<<<<<<< HEAD
                         @can('haveaccess','user.show')
                             @isset( $busines->user->id )
                                 <center><a class="btn btn-info" href="{{ route('user.show',$busines->user->id) }}">Mostrar</a></center>
                             @endisset
                         @endcan
+=======
+                        <p>
+                        <h4>Titular</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control" id="nameTitular"
+                                placeholder="C.P. of busines" name="nameTitular"
+                                value="{{ $busines->titular->nameTitular }} {{ $busines->titular->firstLastname }} {{ $busines->titular->secondLastname }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control" id="phoneTitular"
+                                placeholder="C.P. of busines" name="phoneTitular"
+                                value="{{ $busines->titular->phoneTitular }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Puesto :</h6>
+                            <input type="text"
+                                class="form-control" id="postTitular"
+                                placeholder="C.P. of busines" name="postTitular"
+                                value="{{ $busines->titular->post->namePost }}"
+                                disabled
+                            >
+                        </div>
+                        <p>
+                        <h4>Usuario</h4>
+                        <hr>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control" id="nameUser"
+                                placeholder="C.P. of busines" name="nameUser"
+                                value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Telefono :</h6>
+                            <input type="text"
+                                class="form-control" id="phoneuser"
+                                placeholder="C.P. of busines" name="phoneuser"
+                                value="{{ $busines->user->phoneUser }}"
+                                disabled
+                            >
+                        </div>
+                        <div class="form-group">
+                            <h6>Email :</h6>
+                            <input type="text"
+                                class="form-control" id="emailUser"
+                                placeholder="C.P. of busines" name="emailUser"
+                                value="{{ $busines->user->email }}"
+                                disabled
+                            >
+                        </div>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <hr>
                         <div class="row">
                             <div class="col-lg-3 mb-4">

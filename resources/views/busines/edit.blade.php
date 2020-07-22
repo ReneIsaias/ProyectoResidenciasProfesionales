@@ -12,6 +12,10 @@
                     @method('PUT')
                     <div class="container">
                         <h3>Datos requeridos</h3>
+<<<<<<< HEAD
+=======
+                        <hr>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <br>
                         <div class="form-group">
                             <h6>R.F.C. :</h6>
@@ -65,8 +69,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Direcciòn :</h6>
                             <textarea class="form-control @error('directionBusiness') is-invalid @enderror" required placeholder="Direccion de la ubicacion de la empresa " name="directionBusiness" id="directionBusiness" rows="3" autocomplete="directionBusiness" required>{{ old('directionBusiness', $busines->directionBusiness ) }}</textarea>
+=======
+                            <h6>Direccion :</h6>
+                            <textarea class="form-control @error('directionBusiness') is-invalid @enderror" required placeholder="Direction of busines" name="directionBusiness" id="directionBusiness" rows="3" autocomplete="directionBusiness" required>{{ old('directionBusiness', $busines->directionBusiness ) }}</textarea>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             @error('directionBusiness')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -130,7 +139,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Persona responsable :</h6>
+=======
+                            <h6>Persona Responsable :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('personFirma') is-invalid @enderror"
                                 id="personFirma" placeholder="Nombre completo de la persona que firma el acuerdo"
@@ -228,6 +241,7 @@
                             >
                             <label class="custom-control-label" for="statusbusines0">Inactivo</label>
                         </div>
+<<<<<<< HEAD
                         <p><br>
                         <h4>Titular</h4>
                         <hr>
@@ -372,6 +386,79 @@
                             @endisset
                         @endcan
                         <hr>
+=======
+                        <p>
+                            <h4>Titular</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Nombre :</h6>
+                                <input type="text"
+                                    class="form-control" id="nameTitular"
+                                    placeholder="C.P. of busines" name="nameTitular"
+                                    value="{{ $busines->titular->nameTitular }} {{ $busines->titular->firstLastname }} {{ $busines->titular->secondLastname }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Telefono :</h6>
+                                <input type="text"
+                                    class="form-control" id="phoneTitular"
+                                    placeholder="C.P. of busines" name="phoneTitular"
+                                    value="{{ $busines->titular->phoneTitular }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Puesto :</h6>
+                                <input type="text"
+                                    class="form-control" id="postTitular"
+                                    placeholder="C.P. of busines" name="postTitular"
+                                    value="{{ $busines->titular->post->namePost }}"
+                                    disabled
+                                >
+                            </div>
+                            <center>
+                                @can('haveaccess','titular.edit')
+                                    <a class="btn btn-success" href="{{ route('titular.edit', $busines->titular->id ) }}">Edit</a>
+                                @endcan
+                            </center>
+                            <p>
+                            <h4>Usuario</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Nombre :</h6>
+                                <input type="text"
+                                    class="form-control" id="nameUser"
+                                    placeholder="C.P. of busines" name="nameUser"
+                                    value="{{ $busines->user->nameUser }} {{ $busines->user->firstLastname }} {{ $busines->user->secondLastname }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Telefono :</h6>
+                                <input type="text"
+                                    class="form-control" id="phoneuser"
+                                    placeholder="C.P. of busines" name="phoneuser"
+                                    value="{{ $busines->user->phoneUser }}"
+                                    disabled
+                                >
+                            </div>
+                            <div class="form-group">
+                                <h6>Email :</h6>
+                                <input type="text"
+                                    class="form-control" id="emailUser"
+                                    placeholder="C.P. of busines" name="emailUser"
+                                    value="{{ $busines->user->email }}"
+                                    disabled
+                                >
+                            </div>
+                            <center>
+                                @can('haveaccess','user.show')
+                                    <a class="btn btn-info" href="{{ route('user.show', $busines->user->id ) }}">Show</a>
+                                @endcan
+                            </center>
+                            <hr>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <div class="row">
                             <div class="col-lg-3 mb-4">
                                 @can('haveaccess','busines.index')

@@ -20,6 +20,10 @@ use App\Permission\Models\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
+use App\Typefamily;
+
+use App\User;
+
 class ResidentController extends Controller
 {
     /**
@@ -88,8 +92,13 @@ class ResidentController extends Controller
 
         $resident = Resident::create($request->all());
 
+<<<<<<< HEAD
         return redirect()->route('titular.create')
             ->with('status_success','Residente registrado satisfactoriamente');
+=======
+        return redirect()->route('relative.create')
+            ->with('status_success','Resident saved successfully');
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 
     /**
@@ -106,7 +115,8 @@ class ResidentController extends Controller
         $typesafes = Typesafe::orderBy('safeName')->get();
         $semesters = Semester::orderBy('nameSemester')->get();
         $studyplans = Studyplan::orderBy('planStudies')->get();
-        $relatives = Relative::orderBy('nameRelative')->get();
+        $relatives = Relative::get();
+        /* $relatives = Relative::orderBy('nameRelative')->get(); */
         $typebecas = Typebeca::orderBy('descriptionBeca')->get();
         $typefamilys = Typefamily::orderBy('descriptionType')->get();
         $roles = Role::orderBy('name')->get();
@@ -115,11 +125,25 @@ class ResidentController extends Controller
 
         $resident_user=[];
 
+<<<<<<< HEAD
         foreach($resident->users as $asesor) {
             $resident_user[]=$asesor->id;
         }
 
         return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys','useres','resident_user','roles'));
+=======
+        $typefamilys = Typefamily::orderBy('descriptionType')->get();
+
+        $users = User::get();
+
+        $resident_user=[];
+
+        foreach($resident->users as $user) {
+            $resident_user[]= $user->id;
+        }
+
+        return view('resident.view', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys','users','resident_user'));
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 
     /**
@@ -138,6 +162,7 @@ class ResidentController extends Controller
         $studyplans = Studyplan::orderBy('planStudies')->get();
         $relatives = Relative::orderBy('nameRelative')->get();
         $typebecas = Typebeca::orderBy('descriptionBeca')->get();
+<<<<<<< HEAD
         $typefamilys = Typefamily::orderBy('descriptionType')->get();
 
         $roles = Role::orderBy('name')->get();
@@ -151,6 +176,11 @@ class ResidentController extends Controller
         }
 
         return view('resident.edit', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'typefamilys','useres','resident_user','roles'));
+=======
+        $users = User::get();
+
+        return view('resident.edit', compact('resident','careers', 'typesafes','semesters','studyplans','relatives','typebecas', 'users'));
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 
     /**
@@ -180,16 +210,22 @@ class ResidentController extends Controller
             'typesaves_id'           => 'required',
             'semesters_id'           => 'required',
             'studyplans_id'          => 'required',
-            'relatives_id'           => 'required',
+            'relatives_id'           => '',
             'typebecas_id'           => 'required',
         ]);
 
         $resident -> update($request->all());
 
+<<<<<<< HEAD
         if ($request->get('asesor')) {
             /* return "Si hay asesores"; */
             $resident->users()->sync($request->get('asesor'));
             /* return "Se sopone que se asignaron asesores"; */
+=======
+        if ($request->get('user')) {
+            /* return $request->all(); */
+            $resident->users()->sync($request->get('user'));
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
         }
 
         return redirect()->route('resident.index')

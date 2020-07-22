@@ -11,14 +11,38 @@
                     @csrf
                     @method('PUT')
                     <div class="container">
+<<<<<<< HEAD
                         <h4>{{ $resident->residentRegistration }}</h4>
                         <br>
+=======
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <div class="form-group">
                             <h6>Nombre :</h6>
                             <input type="text"
+<<<<<<< HEAD
                                 class="form-control @error('nameResident') is-invalid @enderror"
                                 id="nameResident" placeholder="emailResident"
                                 name="nameResident"
+=======
+                                class="form-control @error('residentRegistration') is-invalid @enderror"
+                                id="residentRegistration" placeholder="residentRegistration"
+                                name="residentRegistration"
+                                value="{{ old('residentRegistration', $resident->residentRegistration) }}"
+                                disabled
+                            >
+                            @error('residentRegistration')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameresident') is-invalid @enderror"
+                                id="nameresident" placeholder="nameresident"
+                                name="nameresident"
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                                 value="{{ $resident->nameResident }} {{ $resident->firtsLastnameResident }} {{ $resident->secondLastnameResident }}"
                                 disabled
                             >
@@ -74,7 +98,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Dirección :</h6>
+=======
+                            <h6>Direccion :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <textarea disabled  class="form-control @error('directionResident') is-invalid @enderror" placeholder="Direction resident" name="directionResident" id="directionResident" rows="3">{{ old('directionResident', $resident->directionResident) }}</textarea>
                             @error('directionResident')
                                 <span class="invalid-feedback" role="alert">
@@ -141,6 +169,7 @@
                             </select>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Descripción :</h6>
                             <textarea disabled  class="form-control @error('descripctionSafe') is-invalid @enderror" name="descripctionSafe" id="descripctionSafe" rows="2">{{ $resident->typesafe->descriptionSafe }}</textarea>
                             @error('descripctionSafe')
@@ -150,6 +179,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
+=======
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <h6>Semestre :</h6>
                             <select disabled class="form-control" name="semesters_id" id="semesters_id">
                                 @foreach($semesters as $semester)
@@ -178,6 +209,7 @@
                             </select>
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Descripción :</h6>
                             <textarea disabled  class="form-control @error('descripctionPlan') is-invalid @enderror" name="descripctionPlan" id="descripctionPlan" rows="2">{{ $resident->studyplan->descriptionPlan }}</textarea>
                             @error('descripctionPlan')
@@ -187,6 +219,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
+=======
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <h6>Beca :</h6>
                             <select disabled class="form-control" name="typebecas_id" id="typebecas_id">
                                 @foreach($typebecas as $typebeca)
@@ -221,6 +255,7 @@
                             >
                             <label class="custom-control-label" for="statusresident0">Inactivo</label>
                         </div>
+<<<<<<< HEAD
                         <hr>
                         <h4>Familiar</h4>
                         <hr>
@@ -253,11 +288,26 @@
                                     </option>
                                 @endforeach
                             </select>
+=======
+                        <p>
+                        <div class="form-group">
+                            <h4>Familiar :</h4>
+                            <hr><p>
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="nameRelative"
+                                name="nameRelative"
+                                value="{{ $resident->relative->nameRelative }} {{ $resident->relative->firstLastname }} {{ $resident->relative->secondLastname }}"
+                                disabled
+                            >
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         </div>
                         <div class="form-group">
                             <h6>Telefono :</h6>
                             <input type="text"
                                 class="form-control @error('phoneRelative') is-invalid @enderror"
+<<<<<<< HEAD
                                 id="phoneRelative" placeholder="Numero de telefono del familiar"
                                 name="phoneRelative" value="{{ old('phoneRelative', $resident->relative->phoneRelative ) }}"
                                 autocomplete="phoneRelative" required disabled
@@ -336,8 +386,81 @@
                                         <a class="btn btn-success btn-lg" href="{{ route('resident.edit',$resident->id) }}">Editar</a>
                                     @endcan
                                 </center>
-                            </div>
+=======
+                                id="phoneRelative" placeholder="phoneRelative"
+                                name="phoneRelative"
+                                value="{{ $resident->relative->phoneRelative }}"
+                                disabled
+                            >
                         </div>
+                        <div class="form-group">
+                            <h6>Direccion :</h6>
+                            <textarea disabled  class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direction resident" name="directionRelative" id="directionRelative" rows="3">{{ $resident->relative->directionRelative }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h6>Parentesco :</h6>
+                            <input type="text"
+                                class="form-control @error('descriptionType') is-invalid @enderror"
+                                id="descriptionType" placeholder="descriptionType"
+                                name="descriptionType"
+                                value="{{ $resident->relative->typefamily->descriptionType }}"
+                                disabled
+                            >
+                        </div>
+                        <p>
+                            <h4>Asesor Interno</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Asesor :</h6>
+                                @foreach($users as $user)
+                                    <input type="text"
+                                        class="form-control"
+                                        id="user"
+                                        name="user[]"
+                                        @if( is_array(old('user')) && in_array("$user->id", old('user')) )
+                                            value="{{ $user->name }}"
+                                        @elseif( is_array($resident_user) && in_array("$user->id", $resident_user) )
+                                            value="{{ $user->email }}"
+                                        @endif
+                                    >
+                                @endforeach
+                                <h6>dale</h6>
+                                <div class="form-group">
+                                    <h6>Asesor :</h6>
+                                    <select class="form-control" id="user[]" name="user[]">
+                                        <option value="">--Seleccione el asesor--</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <h6>Haber</h6>
+                                <select class="form-control" id="user[]" name="user[]">
+                                    <option value="">--Seleccione el asesor--</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p>
+                            <h4>Asesor Externo</h4>
+                            <hr>
+                            <div class="form-group">
+                                <h6>Asesor :</h6>
+                                <select class="form-control" id="user[]" name="user[]">
+                                    <option value="">--Seleccione el asesor--</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }} -> {{ $user->email }}</option>
+                                    @endforeach
+                                </select>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
+                            </div>
+                        <hr>
+                        <center>
+                            @can('haveaccess','resident.edit')
+                                <a class="btn btn-success btn-lg" href="{{ route('resident.edit',$resident->id) }}">Edit</a>
+                            @endcan
+                        </center>
                     </div>
                     </form>
                 </div>
