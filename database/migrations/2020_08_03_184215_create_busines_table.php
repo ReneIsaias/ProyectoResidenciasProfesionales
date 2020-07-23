@@ -19,7 +19,7 @@ class CreateBusinesTable extends Migration
             $table->string('nameBusiness',200);
             $table->string('emailBusiness',100);
             $table->string('misionBusiness');
-            $table->string('directionBusiness',250);
+            $table->string('directionBusiness',200);
             $table->string('coloniaBusiness',200);
             $table->string('cityBusiness',100);
             $table->string('phoneBusiness',20);

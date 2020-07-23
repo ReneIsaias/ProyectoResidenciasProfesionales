@@ -15,8 +15,8 @@ class CreateProyectsTable extends Migration
     {
         Schema::create('proyects', function (Blueprint $table) {
             $table->id();
-            $table->string('keyProyect',50)->unique();
-            $table->string('nameProyect',200)->unique();
+            $table->string('keyProyect',50);
+            $table->string('nameProyect',200);
             $table->string('descriptionProyect');
             $table->string('objGeneProyect');
             $table->string('objEspeciProyect');
