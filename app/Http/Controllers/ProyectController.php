@@ -73,11 +73,11 @@ class ProyectController extends Controller
 
         $proyect = Proyect::create($request->all());
 
-        try
+       /*  try
         {
             $template = new \PhpOffice\PhpWord\TemplateProcessor('documents/AnteproyectoResidencia.docx');
 
-            /* return $proyect->resident; */
+            //return $proyect->resident;
 
             $template->setValue('tituloProyect', $request->nameProyect);
             $template->setValue('objGeneral', $request->objGeneProyect);
@@ -98,14 +98,14 @@ class ProyectController extends Controller
 
             return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
 
-            /* $temFile = tempnam(sys_get_tem_dir(),'PHPWord');
-            $template->saveAs($temFile); */
+            // $temFile = tempnam(sys_get_tem_dir(),'PHPWord');
+            //$template->saveAs($temFile);
 
         }
         catch(\PhpOffice\PhpWord\Exception\Exception $e)
         {
             return back($e->getCode());
-        }
+        } */
 
         return redirect()->route('report.create')
             ->with('status_success','Proyecto registrado satisfactoriamente, por el momento llene bien el formato que se ha descargado y subalo aqui');
