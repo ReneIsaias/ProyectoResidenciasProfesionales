@@ -11,9 +11,27 @@
                     @csrf
                     @method('PUT')
                     <div class="container">
+<<<<<<< HEAD
                         <h3>{{ $relative->nameRelative }} {{ $relative->firstLastname }} {{ $relative->secondLastname }}</h3>
                         <br>
                         <div class="form-group">
+=======
+                        <div class="form-group">
+                            <h6>Nombre :</h6>
+                            <input type="text"
+                                class="form-control @error('nameRelative') is-invalid @enderror"
+                                id="nameRelative" placeholder="Nombre del familiar" name="nameRelative"
+                                value="{{ $relative->nameRelative }} {{ $relative->firstLastname }} {{ $relative->secondLastname }}"
+                                autocomplete="nameRelative" autofocus disabled required
+                            >
+                            @error('nameRelative')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <h6>Parentesco :</h6>
                             <select disabled class="form-control"  name="typefamilies_id" id="typefamilies_id">
                                 @foreach($typefamilys as $typefamily)
@@ -44,7 +62,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Dirección :</h6>
+=======
+                            <h6>Direccion :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <textarea class="form-control @error('directionRelative') is-invalid @enderror" disabled placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative', $relative->directionRelative ) }}</textarea>
                             @error('directionRelative')
                                 <span class="invalid-feedback" role="alert">

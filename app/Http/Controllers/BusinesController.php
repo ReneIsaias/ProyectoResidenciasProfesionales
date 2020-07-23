@@ -70,16 +70,27 @@ class BusinesController extends Controller
             'personFirma'      => 'required|min:4|max:100',
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
+<<<<<<< HEAD
             'titulars_id'      => 'required',
             'user_id'          => '',
+=======
+            'titulars_id'      => '',
+            'user_id'          => 'required',
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
             'covenants_id'     => 'required',
             'turns_id'         => 'required',
             'sectors_id'       => 'required',
         ]);
+
         $busines = Busines::create($request->all());
 
+<<<<<<< HEAD
         return redirect()->route('proyect.create')
             ->with('status_success','Empresa registrada satisfactoriamente ');
+=======
+        return redirect()->route('titular.create')
+            ->with('status_success','Busines saved successfully');
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 
     /**
@@ -148,7 +159,11 @@ class BusinesController extends Controller
             'personFirma'      => 'required|min:4|max:100',
             'postPerson'       => 'required|min:2|max:100',
             'statusBusines'    => 'required',
+<<<<<<< HEAD
             'titulars_id'      => 'required',
+=======
+            'titulars_id'      => '',
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
             'user_id'          => '',
             'covenants_id'     => 'required',
             'turns_id'         => 'required',

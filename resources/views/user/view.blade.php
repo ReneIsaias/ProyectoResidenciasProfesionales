@@ -14,12 +14,30 @@
                         <br>
                         <center>
                             <h4>{{ $user->name }}</h4>
-                            <br>
                             <img width="50%" src="{{ Storage::url( $user->avatar ) }}" alt="Usuario">
                         </center>
                         <div class="form-group row">
                             <div class="col-md-12">
+<<<<<<< HEAD
                                 <h6>Nombre :</h6>
+=======
+                                <h6>Clave :</h6>
+                                <input id="keyUser" type="text" class="form-control
+                                    @error('keyUser') is-invalid @enderror"
+                                    name="keyUser" value="{{ old('keyUser', $user->keyUser ) }}"
+                                    autocomplete="keyUser" placeholder="Clave del usuario" autofocus disabled
+                                >
+                                @error('keyUser')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <h6>Name :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                                 <input id="nameUser" type="text"class="form-control
                                     @error('nameUser') is-invalid @enderror"
                                     name="nameUser" value="{{ $user->nameUser }} {{ $user->firstLastname }} {{ $user->secondLastname }}"
@@ -168,6 +186,7 @@
                             <label class="custom-control-label" for="statusUser0">Inactivo</label>
                         </div>
                         <hr>
+<<<<<<< HEAD
                         <div class="row">
                             <div class="col-lg-3 mb-4">
                                 @can('haveaccess','user.index')
@@ -181,8 +200,15 @@
                                     @endcan
                                 </center>
                             </div>
+=======
+                        <center>
+                            @can('view', [$user, ['user.edit','userown.edit'] ])
+                                <a class="btn btn-success btn-lg" href="{{ route('user.edit',$user->id) }}">Edit</a>
+                            @endcan
+                        </center>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         </div>
-                     </div>
+                    </div>
                     </form>
                 </div>
             </div>

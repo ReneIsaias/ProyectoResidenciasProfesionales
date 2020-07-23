@@ -30,15 +30,15 @@ class PermissionList extends Seeder
             $useradmin->delete();
         }
         $useradmin= User::create([
-            'keyUser'      => 'DEFAULT',
-            'nameUser'     => 'ADMINISTRADOR',
-            'firstLastname'      => 'NULL',
-            'secondLastname'     => 'NULL',
-            'phoneUser'      => '0000000000',
-            'name'      => 'ADMIN',
-            'email'     => 'admin@admin.com',
-            'password'  => Hash::make('maquiabelico'),
-            'statusUser'      => '1',
+            'keyUser'           => 'DEFAULT',
+            'nameUser'          => 'ADMINISTRADOR',
+            'firstLastname'     => 'NULL',
+            'secondLastname'    => 'NULL',
+            'phoneUser'         => '0000000000',
+            'name'              => 'ADMIN',
+            'email'             => 'admin@admin.com',
+            'password'          => Hash::make('maquiabelico'),
+            'statusUser'        => '1',
         ]);
 
 //rol admin
@@ -50,6 +50,7 @@ class PermissionList extends Seeder
         ]);
 
 //rol por defecto
+<<<<<<< HEAD
 $roluser=Role::create([
     'name' => 'Residente',
     'slug' => 'residente',
@@ -57,6 +58,14 @@ $roluser=Role::create([
     'full-access' => 'no'
 ]);
 
+=======
+        $roluser=Role::create([
+            'name' => 'Resident',
+            'slug' => 'resident',
+            'description' => 'Rol que se asigna a todos los usuarios al registrarse',
+            'full-access' => 'no'
+        ]);
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
 
 //table role_user
         $useradmin->roles()->sync([ $roladmin->id ]);
@@ -891,7 +900,11 @@ $roluser=Role::create([
 
         $permission_all[] = $permission->id;
 
+<<<<<<< HEAD
 //Permission Asesor
+=======
+//Permission asesor
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
         $permission = Permission::create([
             'name' => 'List asesor',
             'slug' => 'calificar.index',
@@ -928,6 +941,7 @@ $roluser=Role::create([
             'name' => 'Destroy asesor',
             'slug' => 'calificar.destroy',
             'description' => 'A user can destroy asesor',
+<<<<<<< HEAD
         ]);
 
         $permission_all[] = $permission->id;
@@ -969,6 +983,8 @@ $roluser=Role::create([
             'name' => 'Destroy persona',
             'slug' => 'persona.destroy',
             'description' => 'A user can destroy persona',
+=======
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
         ]);
 
         $permission_all[] = $permission->id;

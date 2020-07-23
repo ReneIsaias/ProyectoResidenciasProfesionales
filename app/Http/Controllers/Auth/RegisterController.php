@@ -7,8 +7,12 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Mail;
+=======
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
 use App\Mail\UserRegistered;
 
 class RegisterController extends Controller
@@ -71,6 +75,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+<<<<<<< HEAD
+=======
+        //Creacion de usuario
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
         $user = User::create([
             'nameUser'          => $data['nameUser'],
             'firstLastname'     => $data['firstLastname'],

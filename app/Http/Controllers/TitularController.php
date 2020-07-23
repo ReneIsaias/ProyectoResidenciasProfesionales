@@ -6,6 +6,8 @@ use App\Titular;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Post;
+use App\Busines;
+use App\User;
 
 class TitularController extends Controller
 {
@@ -33,8 +35,10 @@ class TitularController extends Controller
         Gate::authorize('haveaccess','titular.create');
 
         $posts = Post::where('statusPost',1)->get();
+        $users = User::get()->all();
+        $busines = Busines::orderBy('id','Desc')->get()->all();
 
-        return view('titular.create',compact('posts'));
+        return view('titular.create',compact('posts','users','busines'));
     }
 
     /**
@@ -58,8 +62,13 @@ class TitularController extends Controller
 
         $titular = Titular::create($request->all());
 
+<<<<<<< HEAD
         return redirect()->route('busines.create')
             ->with('status_success','Titular registrado satisfactoriamente');
+=======
+        return redirect()->route('proyect.create')
+            ->with('status_success','Titular saved successfully');
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 
     /**

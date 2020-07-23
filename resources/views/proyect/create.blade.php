@@ -4,14 +4,22 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
+<<<<<<< HEAD
                 <center><div class="card-header bg-dark text-white"><h2>Registrar Proyecto</h2></div></center>
+=======
+                <div class="card-header bg-dark text-white"><h2>Registro Proyecto</h2></div>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                 <div class="card-body">
                     @include('custom.message')
                     <form action="{{ route('proyect.store') }}" method="POST">
                     @csrf
                     <div class="container">
                         <h3>Datos requeridos</h3>
+<<<<<<< HEAD
                         <hr>
+=======
+                        <br>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         <div class="form-group">
                             <h6>Clave :</h6>
                             <input type="text"
@@ -101,7 +109,7 @@
                         </div>
                         {{-- <div class="form-group">
                             <h6>Calificacion :</h6>
-                            <input type="text"
+                            <input type="number"
                                 class="form-control @error('qualificationProyect') is-invalid @enderror"
                                 id="qualificationProyect" placeholder="Calificacion del proyecto"
                                 name="qualificationProyect" value="{{ old('qualificationProyect') }}"
@@ -226,6 +234,7 @@
                             @enderror
                         </div>
                         <hr>
+<<<<<<< HEAD
                         <div class="row">
                             <div class="col-lg-3 mb-4">
                                 @can('haveaccess','proyect.index')
@@ -235,6 +244,9 @@
                             <div class="col-lg-6 mb-4">
                                 <center><input class="btn btn-primary btn-lg" type="submit" value="Siguiente"></center>
                             </div>
+=======
+                        <center><input class="btn btn-primary btn-lg" type="submit" value="Next"></center>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         </div>
                     </div>
                     </form>

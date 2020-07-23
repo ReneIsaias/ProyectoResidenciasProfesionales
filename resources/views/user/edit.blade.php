@@ -19,6 +19,7 @@
                             <center><h6>Cambiar avatar :</h6></center>
                             <center><input type="file" name="avatar"></center>
                         </div>
+<<<<<<< HEAD
                         <h3>Datos requeridos </h3>
                         <div class="form-group row">
                             <div class="col-md-12">
@@ -34,8 +35,26 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+=======
+                        <h3>Required data</h3>
+                        @can('haveaccess','user.edit')
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <h6>Clave :</h6>
+                                    <input id="keyUser" type="text" class="form-control
+                                        @error('keyUser') is-invalid @enderror"
+                                        name="keyUser" value="{{ old('keyUser', $user->keyUser ) }}"
+                                        autocomplete="keyUser" placeholder="Clave del usuario" autofocus
+                                    >
+                                    @error('keyUser')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             </div>
-                        </div>
+                        @endcan
                         <div class="form-group row">
                             <div class="col-md-4">
                                 <h6>Nombre :</h6>
@@ -188,6 +207,7 @@
                                 @endforeach
                             </select>
                         </div>
+<<<<<<< HEAD
                         <h6>Status :</h6>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="statusUser1"
@@ -220,8 +240,35 @@
                             </div>
                             <div class="col-lg-6 mb-4">
                                 <center><input class="btn btn-primary btn-lg" type="submit" value="Guardar"></center>
+=======
+                        @can('haveaccess','user.edit')
+                            <h6>Status :</h6>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="statusUser1"
+                                    name="statusUser" class="custom-control-input" value="1"
+                                    @if ( $user->statusUser =="1" )
+                                        checked
+                                    @elseif ( old('statusUser')=="1" )
+                                        checked
+                                    @endif
+                                >
+                                <label class="custom-control-label" for="statusUser1">Activo</label>
                             </div>
-                        </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="statusUser0"
+                                    name="statusUser" class="custom-control-input" value="0"
+                                    @if ( $user->statusUser =="0" )
+                                        checked
+                                    @elseif ( old('statusUser')=="0" )
+                                        checked
+                                    @endif
+                                >
+                                <label class="custom-control-label" for="statusUser0">Inactivo</label>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
+                            </div>
+                        @endcan
+                        <hr>
+                        <center><input class="btn btn-primary btn-lg" type="submit" value="Save"></center>
                     </div>
                     </form>
                 </div>

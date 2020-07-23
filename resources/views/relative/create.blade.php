@@ -11,8 +11,23 @@
                     @csrf
                     <div class="container">
                         <h3>Datos requeridos</h3>
+<<<<<<< HEAD
                         <br>
                         <div class="form-group">
+=======
+                        <hr>
+                        <br>
+                        <div class="form-group">
+                            <h6>Residente:</h6>
+                            <input type="text"
+                                class="form-control"
+                                id="residente" placeholder="Nombre del residente"
+                                name="residente" value="{{ Auth::user()->nameUser }} {{ Auth::user()->firstLastname }} {{ Auth::user()->secondLastname }}"
+                                autocomplete="residente" autofocus disabled
+                            >
+                        </div>
+                        <div class="form-group">
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <h6>Nombre :</h6>
                             <input type="text"
                                 class="form-control @error('nameRelative') is-invalid @enderror"
@@ -27,7 +42,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Primer apellido :</h6>
+=======
+                            <h6>Primer Apellido :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('firstLastname') is-invalid @enderror"
                                 id="firstLastname" placeholder="Primer apellido del familiar"
@@ -41,7 +60,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Segundo apellido :</h6>
+=======
+                            <h6>Segundo Apellido :</h6>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             <input type="text"
                                 class="form-control @error('secondLastname') is-invalid @enderror"
                                 id="secondLastname" placeholder="Segundo apellido del familiar"
@@ -78,8 +101,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+<<<<<<< HEAD
                             <h6>Dirección :</h6>
                             <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion de ubicacioón del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative') }}</textarea>
+=======
+                            <h6>Direccion :</h6>
+                            <textarea class="form-control @error('directionRelative') is-invalid @enderror" placeholder="Direccion del familiar" name="directionRelative" id="directionRelative" rows="3" required>{{ old('directionRelative') }}</textarea>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                             @error('directionRelative')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -93,6 +121,7 @@
                             >
                         </div>
                         <hr>
+<<<<<<< HEAD
                         <div class="row">
                             <div class="col-lg-3 mb-4">
                                 @can('haveaccess','relative.index')
@@ -102,6 +131,9 @@
                             <div class="col-lg-6 mb-4">
                                 <center><input class="btn btn-primary btn-lg" type="submit" value="Siguiente"></center>
                             </div>
+=======
+                        <center><input class="btn btn-primary btn-lg" type="submit" value="Next"></center>
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
                         </div>
                     </div>
                     </form>

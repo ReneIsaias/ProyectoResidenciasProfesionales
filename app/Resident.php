@@ -62,6 +62,12 @@ class Resident extends Model
     }
 
     public function users(){
+<<<<<<< HEAD
         return $this->belongsToMany('App\User')->withTimesTamps();
+=======
+
+        return $this->belongsToMany('App\User')->withTimesTamps();
+
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
     }
 }

@@ -16,7 +16,11 @@ class CreateProjectReportTable extends Migration
         Schema::create('project_report', function (Blueprint $table) {
             $table->id();
             $table->foreignId('proyect_id')->references('id')->on('proyects')->onDelete('cascade')->onUpdate('cascade');
+<<<<<<< HEAD
             $table->foreignId('report_id')->nullable()->references('id')->on('reports')->onDelete('cascade')->onUpdate('cascade');
+=======
+            $table->foreignId('report_id')->references('id')->on('reports')->onDelete('cascade')->onUpdate('cascade')->nullable();
+>>>>>>> ca7ef86cdc8a1cb5e8400d24ea4d6f00ab6c4cd9
             $table->timestamps();
         });
     }
