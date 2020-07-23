@@ -314,17 +314,22 @@
                         @endcan
                         <hr>
                         <div class="row">
-                            <div class="col-lg-3 mb-4">
+                            <div class="col-lg-5 mb-4">
                                 @can('haveaccess','proyect.index')
                                     <a class="btn btn-danger btn-lg" href="{{ route('proyect.index') }}">Proyectos</a>
                                 @endcan
                             </div>
-                            <div class="col-lg-6 mb-4">
-                                <center>
+                            <div class="col-lg-5 mb-4">
+
                                     @can('haveaccess','proyect.edit')
-                                        <a class="btn btn-success btn-lg" href="{{ route('proyect.edit',$proyect->id) }}">Editar</a>
+                                        <a class="btn btn-success btn-lg" href="{{ route('proyect.edit',$proyect->id ) }}">Editar</a>
                                     @endcan
-                                </center>
+
+                            </div>
+                            <div class="col-lg-1 mb-4">
+                                @can('haveaccess','project.export')
+                                    <a class="btn btn-info btn-lg" href="{{ route('project.export',$proyect->id ) }}">Descargar</a>
+                                @endcan
                             </div>
                         </div>
                     </div>

@@ -75,8 +75,6 @@ Route::resource('/report', 'ReportController')->names('report');
 
 Route::resource('/busines', 'BusinesController')->names('busines');
 
-Route::resource('/proyect', 'ProyectController')->names('proyect');
-
 Route::resource('/staff', 'StaffController')->names('staff');
 
 Route::resource('/persona', 'PersonaController')->names('persona');
@@ -86,6 +84,9 @@ Route::resource('/resident', 'ResidentController')->names('resident');
 
 Route::resource('/calificar', 'ProyectUserController')->names('calificar');
 
+Route::resource('/proyect', 'ProyectController')->names('proyect');
+
+Route::get('/project/{proyect}', 'ProyectController@export')->name('project.export');
 
 /*
 ////Listar

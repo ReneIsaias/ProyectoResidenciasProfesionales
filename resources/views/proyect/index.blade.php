@@ -21,12 +21,10 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Fecha de inicio</th>
-                                    <th scope="col">Fecha de termino</th>
                                     <th scope="col">Empresa(s)</th>
                                     <th scope="col">Residente(s)</th>
                                     <th scope="col">Estado</th>
-                                    <th colspan="3"></th>
+                                    <th colspan="4"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,7 +41,7 @@
                                         </td>
                                         <td>
                                             @isset( $proyect->resident->nameResident )
-                                                {{ $proyect->resident->nameResident }}
+                                                {{ $proyect->resident->nameResident }} {{ $proyect->resident->firtsLastnameResident }} {{ $proyect->resident->secondLastnameResident }}
                                             @endisset
                                         </td>
                                         <td>
@@ -55,12 +53,17 @@
                                         </td>
                                         <td>
                                             @can('haveaccess','proyect.show')
-                                                <a class="btn btn-info" href="{{ route('proyect.show',$proyect->id) }}">Ver</a>
+                                                <a class="btn btn-info" href="{{ route('proyect.show',$proyect->id ) }}">Ver</a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('haveaccess','proyect.edit')
-                                                <a class="btn btn-success" href="{{ route('proyect.edit',$proyect->id) }}">Editar</a>
+                                                <a class="btn btn-success" href="{{ route('proyect.edit',$proyect->id ) }}">Editar</a>
+                                            @endcan
+                                        </td>
+                                        <td>
+                                            @can('haveaccess','project.export')
+                                                <a class="btn btn-info" href="{{ route('project.export',$proyect->id ) }}">Descargar</a>
                                             @endcan
                                         </td>
                                         <td>

@@ -163,4 +163,69 @@ class ProyectController extends Controller
         return redirect()->route('proyect.index')
             ->with('status_success','Proyect successfully removed');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Proyect  $proyect
+     * @return \Illuminate\Http\Response
+     */
+    public function export(Proyect $proyect)
+    {
+        $this->authorize('haveaccess','project.export');
+
+        try
+        {
+
+            $template = new \PhpOffice\PhpWord\TemplateProcessor('documents/SolicitudResidenciaProfesional.docx');
+
+            /* return $proyect->resident; */
+
+            $template->setValue('nombreProyect', $proyect->nameProyect);
+            $template->setValue('horarioProyect', $proyect->hourlyProyect);
+            $template->setValue('fechaProyect', $proyect->created_at);
+            $template->setValue('lugarProyect', $proyect->busine->directionBusiness);
+
+            $template->setValue('nombreEmpresa', $proyect->busine->nameBusiness);
+            $template->setValue('giroEmpresa', $proyect->busine->turn->descriptionTurn);
+            $template->setValue('sectorEmpresa', $proyect->busine->sector->descriptionSector);
+            $template->setValue('rfcEmpresa', $proyect->busine->rfcBusiness);
+            $template->setValue('domicilioEmpresa', $proyect->busine->directionBusiness);
+            $template->setValue('coloniaEmpresa', $proyect->busine->coloniaBusiness);
+            $template->setValue('cpEmpresa', $proyect->busine->cpBusiness);
+            $template->setValue('ciudadEmpresa', $proyect->busine->cityBusiness);
+            $template->setValue('telefonoEmpresa', $proyect->busine->phoneBusiness);
+            $template->setValue('titularEmpresa', $proyect->busine->titular->nameTitular .' '. $proyect->busine->titular->firstLastname .' '. $proyect->busine->titular->secondLastname);
+            $template->setValue('puestoTitular', $proyect->busine->titular->post->namePost);
+            $template->setValue('asesorEmpresa', $proyect->busine->user->nameUser .' '. $proyect->busine->user->firstLastname .' '. $proyect->busine->user->secondLastname);
+            $template->setValue('puestoAsesor ', $proyect->busine->user->post->namePost);
+            $template->setValue('responsableEmpresa', $proyect->busine->personFirma);
+            $template->setValue('puestoResponsable', $proyect->busine->postPerson);
+
+            $template->setValue('nombreResidente', $proyect->resident->nameResident .' '. $proyect->resident->firtsLastnameResident .' '. $proyect->resident->secondLastnameResident);
+            $template->setValue('carreraResidente', $proyect->resident->career->careerName);
+            $template->setValue('matriuclaResidente', $proyect->resident->residentRegistration);
+            $template->setValue('domicilioResidente', $proyect->resident->directionResident);
+            $template->setValue('ciudadResidente', $proyect->resident->cityResident);
+            $template->setValue('cpResidente', $proyect->resident->cpResident);
+            $template->setValue('emailResidente', $proyect->resident->emailResident);
+            $template->setValue('telefonoResidente', $proyect->resident->phoneResident);
+            $template->setValue('seguroResidente', $proyect->resident->typesafe->safeName);
+
+            $fileName = $proyect->nameProyect;
+            $template->saveAs($fileName . '.docx');
+
+            return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+
+            /* $temFile = tempnam(sys_get_tem_dir(),'PHPWord');
+            $template->saveAs($temFile); */
+
+        }
+        catch(\PhpOffice\PhpWord\Exception\Exception $e)
+        {
+            return back($e->getCode());
+        }
+
+        return view('proyect.view', compact('proyect','situationproyects','busines','residents'));
+    }
 }
