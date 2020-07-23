@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <img style="width:50px; height:50px; margin-right: .5rem;" src="asset/img/tesjiLogo.png"/>
+        <img style="width:50px; height:50px; margin-right: .5rem;" src="img/tesjiLogo.png"/>
         {{-- <a href="{{ url('/') }}"><img class="gato" href="{{ url('/') }}" src="asset/img/tesjiLogo.png"></a> --}}
         <a class="navbar-brand" href="{{ url('/') }}">
             {{-- {{ config('app.name', 'T E S J I') }} --}}

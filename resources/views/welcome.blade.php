@@ -27,37 +27,37 @@
         </ol>
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="asset/img/ActividadExtraEscolar.png" class="d-block w-100" alt="ActividadExtraEscolar">
+            <img src="img/ActividadExtraEscolar.png" class="d-block w-100" alt="ActividadExtraEscolar">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/Seguro-Estudinatil.png" class="d-block w-100" alt="Alumnos">
+            <img src="img/Seguro-Estudinatil.png" class="d-block w-100" alt="Alumnos">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/Marco_Juridico.png" class="d-block w-100" alt="convocatoriasFull">
+            <img src="img/Marco_Juridico.png" class="d-block w-100" alt="convocatoriasFull">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/Egresados 2019.png" class="d-block w-100" alt="Egresados">
+            <img src="img/Egresados 2019.png" class="d-block w-100" alt="Egresados">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/IngLogística.png" class="d-block w-100" alt="IngLogística">
+            <img src="img/IngLogística.png" class="d-block w-100" alt="IngLogística">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/ModeloEducativo.png" class="d-block w-100" alt="ModeloEducativo">
+            <img src="img/ModeloEducativo.png" class="d-block w-100" alt="ModeloEducativo">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/Proyecta100mil-TESJI.png" class="d-block w-100" alt="Proyecta100mil">
+            <img src="img/Proyecta100mil-TESJI.png" class="d-block w-100" alt="Proyecta100mil">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/TESJILOTEPEC.png" class="d-block w-100" alt="TESJILOTEPEC">
+            <img src="img/TESJILOTEPEC.png" class="d-block w-100" alt="TESJILOTEPEC">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/Tutoria_TESJI.png" class="d-block w-100" alt="Tutoria_TESJI">
+            <img src="img/Tutoria_TESJI.png" class="d-block w-100" alt="Tutoria_TESJI">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/Alumnos.png" class="d-block w-100" alt="Seguro-Estudinatil">
+            <img src="img/Alumnos.png" class="d-block w-100" alt="Seguro-Estudinatil">
         </div>
         <div class="carousel-item">
-            <img src="asset/img/convocatoriasFull.png" class="d-block w-100" alt="Marco_Juridico">
+            <img src="img/convocatoriasFull.png" class="d-block w-100" alt="Marco_Juridico">
         </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -133,7 +133,7 @@
         <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="asset/img/ServiciosEscolares.png" alt=""></a>
+            <a href="#"><img class="card-img-top" src="img/ServiciosEscolares.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                 <p class="text-info">Solicitud de residencia profesional</p>
@@ -144,7 +144,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="asset/img/Residencia-profesional.png" alt=""></a>
+            <a href="#"><img class="card-img-top" src="img/Residencia-profesional.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <p class="text-info">Evaluacion de Solicitud</p>
@@ -155,7 +155,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="asset/img/RecursosEducativos--TESJI.png" alt=""></a>
+            <a href="#"><img class="card-img-top" src="img/RecursosEducativos--TESJI.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <p class="text-info">Entrega de Carta de Presentacion</p>
@@ -166,7 +166,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="asset/img/Proyecta100mil-TESJI.png" alt=""></a>
+            <a href="#"><img class="card-img-top" src="img/Proyecta100mil-TESJI.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <p class="text-info">Carta de Aceptacion</p>
@@ -177,7 +177,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="asset/img/PreguntasFrecuentes2.png" alt=""></a>
+            <a href="#"><img class="card-img-top" src="img/PreguntasFrecuentes2.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <p class="text-info">Asignacion de asesor interno</p>
@@ -188,7 +188,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="asset/img/Preguntas_Frecuentes.png" alt=""></a>
+            <a href="#"><img class="card-img-top" src="img/Preguntas_Frecuentes.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <p class="text-info">Elaboracion de Anteproyecto</p>
@@ -218,8 +218,8 @@
             <p>Otro dato importante es que debes de tomar en cuenta el calendario escolar, para que termines con buen tiempo tu residencia profecional y asi puedas estar en la ceremonia de graduacion XD</p>
         </div>
         <div class="col-lg-6">
-            <img class="img-fluid rounded" src="asset/img/diagrama.png" alt="">
-            <center><a href="asset/img/diagrama.png" class="p-2  bg-secondary text-white">Ver mejor</a></center>
+            <img class="img-fluid rounded" src="img/diagrama.png" alt="">
+            <center><a href="img/diagrama.png" class="p-2  bg-secondary text-white">Ver mejor</a></center>
         </div>
         </div>
 
