@@ -34,7 +34,7 @@ class ProyectController extends Controller
     {
         Gate::authorize('haveaccess','proyect.create');
 
-        $situationproyects = Situationproyect::get()->where('projectSituation','=','En proceso');
+        $situationproyects = Situationproyect::get()->where('projectSituation','=','EN PROCESO');
         $busines = Busines::where('statusBusines',1)->orderBy('id','Desc')->get();
         $residents = Resident::where('statusResident',1)->orderBy('id','Desc')->get();
 
