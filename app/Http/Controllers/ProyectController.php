@@ -73,8 +73,42 @@ class ProyectController extends Controller
 
         $proyect = Proyect::create($request->all());
 
+        try
+        {
+            $template = new \PhpOffice\PhpWord\TemplateProcessor('documents/AnteproyectoResidencia.docx');
+
+            /* return $proyect->resident; */
+
+            $template->setValue('tituloProyect', $request->nameProyect);
+            $template->setValue('objGeneral', $request->objGeneProyect);
+            $template->setValue('objEspecifico', $request->objEspeciProyect);
+            $template->setValue('justificacion', $request->JustifyProject);
+
+            $template->setValue('nombreEmpresa', $request->busine->nameBusiness);
+            $template->setValue('giroEmpresa', $request->busine->turn->descriptionTurn);
+            $template->setValue('sectorEmpresa', $request->busine->sector->descriptionSector);
+            $template->setValue('teleTitular', $request->titular->nameTitular);
+            $template->setValue('emailAsesor ', $request->busine->user->email);
+            $template->setValue('domicilioEmpresa', $request->busine->directionBusiness);
+
+            $template->setValue('periodo', $proyect->resident->cityResident);
+
+            $fileName = $proyect->nameProyect;
+            $template->saveAs($fileName . '.docx');
+
+            return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+
+            /* $temFile = tempnam(sys_get_tem_dir(),'PHPWord');
+            $template->saveAs($temFile); */
+
+        }
+        catch(\PhpOffice\PhpWord\Exception\Exception $e)
+        {
+            return back($e->getCode());
+        }
+
         return redirect()->route('report.create')
-            ->with('status_success','Proyecto registrado satisfactoriamente');
+            ->with('status_success','Proyecto registrado satisfactoriamente, por el momento llene bien el formato que se ha descargado y subalo aqui');
     }
 
     /**
@@ -225,7 +259,5 @@ class ProyectController extends Controller
         {
             return back($e->getCode());
         }
-
-        return view('proyect.view', compact('proyect','situationproyects','busines','residents'));
     }
 }

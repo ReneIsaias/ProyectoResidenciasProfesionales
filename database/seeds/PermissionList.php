@@ -877,17 +877,24 @@ $roluser=Role::create([
         $permission_all[] = $permission->id;
 
         $permission = Permission::create([
-            'name' => 'Destroy proyect',
-            'slug' => 'proyect.destroy',
-            'description' => 'A user can destroy proyect',
+            'name' => 'Export proyect',
+            'slug' => 'project.export',
+            'description' => 'A user can export proyect',
         ]);
+
+        $permission = Permission::create([
+            'name' => 'Califation proyect',
+            'slug' => 'proyect.calificar',
+            'description' => 'A user can calificate proyect',
+        ]);
+
 
         $permission_all[] = $permission->id;
 
 //Permission Asesor
         $permission = Permission::create([
             'name' => 'List asesor',
-            'slug' => 'asesor.index',
+            'slug' => 'calificar.index',
             'description' => 'A user can list asesor',
         ]);
 
@@ -895,7 +902,7 @@ $roluser=Role::create([
 
         $permission = Permission::create([
             'name' => 'Show asesor',
-            'slug' => 'asesor.show',
+            'slug' => 'calificar.show',
             'description' => 'A user can see asesor',
         ]);
 
@@ -903,7 +910,7 @@ $roluser=Role::create([
 
         $permission = Permission::create([
             'name' => 'Create asesor',
-            'slug' => 'asesor.create',
+            'slug' => 'calificar.create',
             'description' => 'A user can create asesor',
         ]);
 
@@ -911,7 +918,7 @@ $roluser=Role::create([
 
         $permission = Permission::create([
             'name' => 'Edit asesor',
-            'slug' => 'asesor.edit',
+            'slug' => 'calificar.edit',
             'description' => 'A user can edit asesor',
         ]);
 
@@ -919,7 +926,7 @@ $roluser=Role::create([
 
         $permission = Permission::create([
             'name' => 'Destroy asesor',
-            'slug' => 'asesor.destroy',
+            'slug' => 'calificar.destroy',
             'description' => 'A user can destroy asesor',
         ]);
 

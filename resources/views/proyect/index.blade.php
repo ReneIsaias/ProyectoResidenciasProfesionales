@@ -32,8 +32,6 @@
                                     <tr>
                                         <th scope="row">{{ $proyect->id }}</th>
                                         <td>{{ $proyect->nameProyect }}</td>
-                                        <td>{{ $proyect->dateStart }}</td>
-                                        <td>{{ $proyect->dateEnd }}</td>
                                         <td>
                                             @isset( $proyect->busine->nameBusiness )
                                                 {{ $proyect->busine->nameBusiness }}

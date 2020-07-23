@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header bg-dark text-white"><h2>List of Roles</h2></div>
+                <center><div class="card-header bg-dark text-white"><h2>List of Roles</h2></div></center>
                 <div class="card-body">
                 @can('haveaccess','role.create')
                     <a href="{{ route('role.create') }}"

@@ -57,7 +57,11 @@ class ReportController extends Controller
         ]);
 
         $report = Report::create($request->all());
-
+/*
+        if($request->file('fileReport')){
+            $path = Storage::disk('public')->put('reports', $request->file('fileReport'));
+            $report->fill(['fileReport'=> asset($path) ])->save();
+        } */
         /* if($request->file('fileReport')){
             $path = Storage::disk('public')->put('reports', $request->file('fileReport'));
             $report->fill(['fileReport'=> asset($path) ])->save();

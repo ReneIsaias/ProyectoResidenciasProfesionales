@@ -117,8 +117,9 @@
             <div class="card h-100">
             <h4 class="p-3 mb-2 bg-dark text-white">¿Cumpló con los requistos?</h4>
             <div class="card-body">
-                <p class="card-text">Solo se les autoriza la residencia profecioanl aquellos alumnos que sean regulares, no tengan adeudos, sobre todo que ya esten listos para realizar el tramite.</p>
-                <p>Puedes preguntar a tus superiores ellos te evaluaran para saber si estas en las condiciones requeridas.</p>
+                <p class="card-text">Solo se les autoriza la residencia profecional aquellos alumnos que sean regulares, no tengan adeudos y sobre todo que ya esten quieran realizar el tramite.</p>
+                <p>Puedes preguntar a tus superiores, ellos te evaluaran para saber si estas en las condiciones requeridas.</p>
+                <p>Otra forma mas facil, ve al final de esta pagina y preciona el boton de tramitar, ingresa tu matricula para que verifiques si puedes realizar el tramite</p>
             </div>
             <div class="card-footer">
                 {{-- texto --}}
@@ -138,7 +139,7 @@
                 <h4 class="card-title">
                 <p class="text-info">Solicitud de residencia profesional</p>
                 </h4>
-                <p class="card-text">Primero debes de solicitar tu tramite de residencia profecional con tu Jefe de Divicion, claro que debes de cumplir los requistos necesarios</p>
+                <p class="card-text">Si ya puedes realizar las residencias, registrate en esta pagina, aqui ingresaras todos los datos necesarios para que te evaluen el proceso de las residencias profecionales</p>
             </div>
             </div>
         </div>
@@ -149,7 +150,7 @@
                 <h4 class="card-title">
                     <p class="text-info">Evaluacion de Solicitud</p>
                 </h4>
-                <p class="card-text">Una vez solicitado tu tramiete, se evaluaran tus datos y el tipo de proyecto que escageras, ya sea eleccion propia o del banco de proyectos</p>
+                <p class="card-text">Una vez finalizado el registro en esta pagina tus superiores la revisaran y evaluaran de acuedo a la información que se registre y en base a esa informacion te calificaran.</p>
             </div>
             </div>
         </div>
@@ -160,7 +161,7 @@
                 <h4 class="card-title">
                     <p class="text-info">Entrega de Carta de Presentacion</p>
                 </h4>
-                <p class="card-text">Una vez aceptado tus datos de solicitud, deberas de entragar tu carta de presentacion a la Academia de tu carrera</p>
+                <p class="card-text">La carta de presentación se hace entrega a la empresa, la cual expone los motivos para llevar a cavo la residencia profesioanal</p>
             </div>
             </div>
         </div>
@@ -171,7 +172,7 @@
                 <h4 class="card-title">
                     <p class="text-info">Carta de Aceptacion</p>
                 </h4>
-                <p class="card-text">Deberas de ir a la empresa que realizas tu residencia y deberan de proporcionarte la carta de aceptacion la cual la debes de presentar en tu academia</p>
+                <p class="card-text">Esta carta es asignada por parte de la empresa en la que se realizara la residencia profecioanl y es otorgada por ella misma en donde expone que esta de acuerdo.</p>
             </div>
             </div>
         </div>
@@ -182,7 +183,7 @@
                 <h4 class="card-title">
                     <p class="text-info">Asignacion de asesor interno</p>
                 </h4>
-                <p class="card-text">Se evaluaran los datos entregados, si son correctos, se te asignara un asesor interno el cual te orinetara durante tu residencia profecional </p>
+                <p class="card-text">Se te asignaran dos asesores, uno interno por parte del TESJI y otro externo por parte de la empresa los cuales te evaluaran durante todo el proceso. </p>
             </div>
             </div>
         </div>
@@ -191,9 +192,9 @@
             <a href="#"><img class="card-img-top" src="img/Preguntas_Frecuentes.png" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
-                    <p class="text-info">Elaboracion de Anteproyecto</p>
+                    <p class="text-info">Formatos de residencias</p>
                 </h4>
-                <p class="card-text">Elaboraras tu Anteproyecto el cual sera evaluado por tu asesor interno, extertno, precidente de academia, la academia y tu Jefe de Divicion </p>
+                <p class="card-text">El Proyecto se genera con los datos que se registre por parte de los residentes, tener en cuenta que solo se puede realizar una vez el tramite.</p>
             </div>
             </div>
         </div>
@@ -214,8 +215,8 @@
             <li>Estar dispuesto a trabajar</li>
             <li>Cursar el noveno semestre o en adelante</li>
             </ul>
-            <p>Si cumples con estos requisitos, entonces que esperas para empezar tu tramite, recuerda que solo tienes 4 4 meses para llevar a cavo tu residencia profecional, ademas de documentar todo tu proyecto si es que fuese aceptado.</p>
-            <p>Otro dato importante es que debes de tomar en cuenta el calendario escolar, para que termines con buen tiempo tu residencia profecional y asi puedas estar en la ceremonia de graduacion XD</p>
+            <p>Si cumples con estos requisitos, entonces que esperas para empezar tu tramite, recuerda que solo tienes 4 meses para llevar a cavo tu residencia profecional, ademas de documentar todo tu proyecto si es que fuese aceptado.</p>
+            <p>Otro dato importante es que debes de tomar en cuenta el calendario escolar, para que termines con buen tiempo tu residencia profecional y asi puedas estar en la ceremonia de graduación.</p>
         </div>
         <div class="col-lg-6">
             <img class="img-fluid rounded" src="img/diagrama.png" alt="">
